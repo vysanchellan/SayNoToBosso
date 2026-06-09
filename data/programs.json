@@ -1,1 +1,645 @@
-[]
+{
+  "tiers": {
+    "moderate": {
+      "totalWeeks": 10,
+      "weeks": [
+        {
+          "weekNumber": 1,
+          "title": "Detox & Stabilise",
+          "theme": "Your body is beginning to clear. This week is about safety, hydration, and sleep.",
+          "color": "#6B9E78",
+          "unlocked": true,
+          "completed": false,
+          "activities": [
+            {
+              "id": "w1a1",
+              "type": "lesson",
+              "title": "What Happens When You Stop: The First 72 Hours",
+              "duration": "12 min",
+              "completed": true,
+              "content": "w1a1"
+            },
+            {
+              "id": "w1a2",
+              "type": "lesson",
+              "title": "Cannabis Withdrawal: What's Normal, What's Not",
+              "duration": "10 min",
+              "completed": true,
+              "content": "w1a2"
+            },
+            {
+              "id": "w1a3",
+              "type": "exercise",
+              "title": "4-7-8 Breathing for Withdrawal Anxiety",
+              "duration": "5 min",
+              "completed": false
+            },
+            {
+              "id": "w1a4",
+              "type": "journal",
+              "title": "Week 1 Reflection: Why I'm Here",
+              "duration": "10 min",
+              "completed": false,
+              "prompt": "In your own words, describe what brought you to this point. What do you want your life to look like in 3 months?"
+            },
+            {
+              "id": "w1a5",
+              "type": "quiz",
+              "title": "Week 1 Knowledge Check",
+              "duration": "5 min",
+              "completed": false,
+              "questions": [
+                {
+                  "id": "w1q1",
+                  "question": "When does cannabis withdrawal typically peak?",
+                  "options": ["6-12 hours", "24-72 hours", "7-10 days", "2-3 weeks"],
+                  "correct": 1,
+                  "explanation": "Withdrawal symptoms typically peak between 24-72 hours after the last use."
+                },
+                {
+                  "id": "w1q2",
+                  "question": "Which of the following is a common physical withdrawal symptom?",
+                  "options": ["Increased appetite", "Night sweats", "Improved focus", "Lower heart rate"],
+                  "correct": 1,
+                  "explanation": "Night sweats, headaches, and digestive discomfort are common physical withdrawal symptoms."
+                },
+                {
+                  "id": "w1q3",
+                  "question": "The 4-7-8 breathing technique helps by:",
+                  "options": ["Increasing heart rate", "Activating the parasympathetic nervous system", "Releasing dopamine", "Improving lung capacity"],
+                  "correct": 1,
+                  "explanation": "4-7-8 breathing activates the parasympathetic nervous system, which promotes calm and reduces anxiety."
+                },
+                {
+                  "id": "w1q4",
+                  "question": "How long does THC stay detectable in heavy users?",
+                  "options": ["24 hours", "3-5 days", "Up to 30 days or more", "It leaves immediately"],
+                  "correct": 2,
+                  "explanation": "In heavy, chronic users, THC can remain detectable in fat tissue for 30 days or more."
+                },
+                {
+                  "id": "w1q5",
+                  "question": "What is the single most important thing you can do during detox?",
+                  "options": ["Stay hydrated and rest", "Exercise intensely", "Replace cannabis with alcohol", "Isolate yourself"],
+                  "correct": 0,
+                  "explanation": "Hydration and rest are crucial during detox. Your body is healing and needs support."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "weekNumber": 2,
+          "title": "Brain Reset",
+          "theme": "Mood, anxiety, and sleep science. Your brain is recalibrating its natural chemistry.",
+          "color": "#6B9E78",
+          "unlocked": true,
+          "completed": false,
+          "activities": [
+            {
+              "id": "w2a1",
+              "type": "lesson",
+              "title": "Anxiety & The Cannabis Connection",
+              "duration": "15 min",
+              "completed": false,
+              "content": "w2a1"
+            },
+            {
+              "id": "w2a2",
+              "type": "lesson",
+              "title": "Sleep Hygiene Science: Repairing Your Circadian Rhythm",
+              "duration": "12 min",
+              "completed": false,
+              "content": "w2a2"
+            },
+            {
+              "id": "w2a3",
+              "type": "exercise",
+              "title": "Body Scan Meditation for Sleep",
+              "duration": "10 min",
+              "completed": false
+            },
+            {
+              "id": "w2a4",
+              "type": "journal",
+              "title": "Week 2 Reflection: My Mood Tracker",
+              "duration": "10 min",
+              "completed": false,
+              "prompt": "Track your mood over the past week. What patterns do you notice? When did you feel most triggered, and when did you feel most at peace?"
+            },
+            {
+              "id": "w2a5",
+              "type": "quiz",
+              "title": "Week 2 Knowledge Check",
+              "duration": "5 min",
+              "completed": false,
+              "questions": [
+                {
+                  "id": "w2q1",
+                  "question": "How does cannabis affect REM sleep?",
+                  "options": ["It enhances REM sleep", "It suppresses REM sleep", "It has no effect", "It doubles REM cycles"],
+                  "correct": 1,
+                  "explanation": "THC suppresses REM sleep, which is why withdrawal often causes vivid dreams and nightmares."
+                },
+                {
+                  "id": "w2q2",
+                  "question": "The anxiety-cannabis cycle refers to:",
+                  "options": ["Using cannabis to cope with anxiety, which increases anxiety long-term", "Exercising to reduce anxiety", "Medication for anxiety disorders", "Social support for anxiety"],
+                  "correct": 0,
+                  "explanation": "Many people use cannabis to manage anxiety, but chronic use can actually increase baseline anxiety levels."
+                },
+                {
+                  "id": "w2q3",
+                  "question": "What is the recommended room temperature for optimal sleep?",
+                  "options": ["15-19°C", "21-24°C", "25-28°C", "30°C+"],
+                  "correct": 0,
+                  "explanation": "A cooler room (15-19°C) supports the natural temperature drop that signals your body to sleep."
+                },
+                {
+                  "id": "w2q4",
+                  "question": "How long does it typically take for dopamine receptors to begin normalising?",
+                  "options": ["Days", "Weeks", "Months", "Years"],
+                  "correct": 1,
+                  "explanation": "Dopamine receptor sensitivity begins to improve within weeks, though full recovery can take months."
+                },
+                {
+                  "id": "w2q5",
+                  "question": "Which hormone is primarily responsible for regulating sleep-wake cycles?",
+                  "options": ["Cortisol", "Melatonin", "Serotonin", "Dopamine"],
+                  "correct": 1,
+                  "explanation": "Melatonin is the primary hormone that regulates your circadian rhythm and sleep-wake cycle."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "weekNumber": 3,
+          "title": "Body Recovery",
+          "theme": "Nutrition, exercise, and gut health. Heal your body from the inside out.",
+          "color": "#D4A017",
+          "unlocked": false,
+          "completed": false,
+          "activities": [
+            {
+              "id": "w3a1",
+              "type": "lesson",
+              "title": "Nutrition for Recovery: Fueling Your Brain",
+              "duration": "12 min",
+              "completed": false
+            },
+            {
+              "id": "w3a2",
+              "type": "exercise",
+              "title": "Morning Movement Routine (15 min)",
+              "duration": "15 min",
+              "completed": false
+            },
+            {
+              "id": "w3a3",
+              "type": "lesson",
+              "title": "Gut-Brain Axis: Why Your Second Brain Matters",
+              "duration": "10 min",
+              "completed": false
+            },
+            {
+              "id": "w3a4",
+              "type": "journal",
+              "title": "Week 3 Reflection: Body Awareness",
+              "duration": "10 min",
+              "completed": false,
+              "prompt": "How does your body feel compared to Week 1? What physical changes have you noticed? Describe your energy levels, appetite, and sleep quality."
+            },
+            {
+              "id": "w3a5",
+              "type": "quiz",
+              "title": "Week 3 Knowledge Check",
+              "duration": "5 min",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "weekNumber": 4,
+          "title": "Habit Rewiring",
+          "theme": "Triggers, cues, and the neuroscience of cravings. Rewire your brain's reward system.",
+          "color": "#D4A017",
+          "unlocked": false,
+          "completed": false,
+          "activities": [
+            {
+              "id": "w4a1",
+              "type": "lesson",
+              "title": "The Habit Loop: Cue, Craving, Response, Reward",
+              "duration": "14 min",
+              "completed": false
+            },
+            {
+              "id": "w4a2",
+              "type": "exercise",
+              "title": "Trigger Mapping Exercise",
+              "duration": "15 min",
+              "completed": false
+            },
+            {
+              "id": "w4a3",
+              "type": "lesson",
+              "title": "Cravings Are Brain Waves: Riding the Urge",
+              "duration": "10 min",
+              "completed": false
+            },
+            {
+              "id": "w4a4",
+              "type": "journal",
+              "title": "Week 4 Reflection: Trigger Log",
+              "duration": "10 min",
+              "completed": false,
+              "prompt": "What situations, emotions, or people trigger your cravings? Rank them from most to least challenging. What healthy alternative can you try for each trigger?"
+            },
+            {
+              "id": "w4a5",
+              "type": "quiz",
+              "title": "Week 4 Knowledge Check",
+              "duration": "5 min",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "weekNumber": 5,
+          "title": "Emotional Intelligence",
+          "theme": "Anger, grief, and loneliness. Learn to sit with uncomfortable emotions without substances.",
+          "color": "#D4A017",
+          "unlocked": false,
+          "completed": false,
+          "activities": [
+            {
+              "id": "w5a1",
+              "type": "lesson",
+              "title": "Emotional Agility: Don't Fight Your Feelings",
+              "duration": "12 min",
+              "completed": false
+            },
+            {
+              "id": "w5a2",
+              "type": "exercise",
+              "title": "RAIN Meditation: Recognize, Allow, Investigate, Nurture",
+              "duration": "12 min",
+              "completed": false
+            },
+            {
+              "id": "w5a3",
+              "type": "lesson",
+              "title": "The Grief of Letting Go: Mourning Your Old Relationship With Cannabis",
+              "duration": "10 min",
+              "completed": false
+            },
+            {
+              "id": "w5a4",
+              "type": "journal",
+              "title": "Week 5 Reflection: Emotional Inventory",
+              "duration": "10 min",
+              "completed": false,
+              "prompt": "What emotions have you been avoiding? Describe a moment this week when you felt a strong emotion. How did you respond? What would emotional mastery look like?"
+            },
+            {
+              "id": "w5a5",
+              "type": "quiz",
+              "title": "Week 5 Knowledge Check",
+              "duration": "5 min",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "weekNumber": 6,
+          "title": "Relationships & Boundaries",
+          "theme": "Communication, support systems, and repairing trust with loved ones.",
+          "color": "#6B9E78",
+          "unlocked": false,
+          "completed": false,
+          "activities": [
+            {
+              "id": "w6a1",
+              "type": "lesson",
+              "title": "Setting Boundaries: The Art of Saying No",
+              "duration": "14 min",
+              "completed": false
+            },
+            {
+              "id": "w6a2",
+              "type": "exercise",
+              "title": "Role Play: Declining an Offer",
+              "duration": "10 min",
+              "completed": false
+            },
+            {
+              "id": "w6a3",
+              "type": "lesson",
+              "title": "Rebuilding Trust: Conversations With Loved Ones",
+              "duration": "12 min",
+              "completed": false
+            },
+            {
+              "id": "w6a4",
+              "type": "journal",
+              "title": "Week 6 Reflection: My Support Network",
+              "duration": "10 min",
+              "completed": false,
+              "prompt": "Who in your life supports your recovery? Who might be challenging it? Write a letter (you don't have to send it) to someone who needs to understand your journey."
+            },
+            {
+              "id": "w6a5",
+              "type": "quiz",
+              "title": "Week 6 Knowledge Check",
+              "duration": "5 min",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "weekNumber": 7,
+          "title": "Mindfulness & Meditation",
+          "theme": "Present-moment awareness as a recovery superpower.",
+          "color": "#6B9E78",
+          "unlocked": false,
+          "completed": false,
+          "activities": [
+            {
+              "id": "w7a1",
+              "type": "lesson",
+              "title": "Mindfulness 101: The Science of Present-Moment Awareness",
+              "duration": "12 min",
+              "completed": false
+            },
+            {
+              "id": "w7a2",
+              "type": "exercise",
+              "title": "10-Minute Guided Sitting Meditation",
+              "duration": "10 min",
+              "completed": false
+            },
+            {
+              "id": "w7a3",
+              "type": "lesson",
+              "title": "Mindful Walking: Moving Meditation in Nature",
+              "duration": "8 min",
+              "completed": false
+            },
+            {
+              "id": "w7a4",
+              "type": "journal",
+              "title": "Week 7 Reflection: Mindfulness Log",
+              "duration": "10 min",
+              "completed": false,
+              "prompt": "Describe a moment this week when you were fully present. What did you see, hear, feel, and smell? How does mindfulness change your relationship with cravings?"
+            },
+            {
+              "id": "w7a5",
+              "type": "quiz",
+              "title": "Week 7 Knowledge Check",
+              "duration": "5 min",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "weekNumber": 8,
+          "title": "Purpose & Identity",
+          "theme": "Who am I without cannabis? Rediscover your values, passions, and sense of self.",
+          "color": "#D4A017",
+          "unlocked": false,
+          "completed": false,
+          "activities": [
+            {
+              "id": "w8a1",
+              "type": "lesson",
+              "title": "Identity Shift: From Consumer to Recoverer",
+              "duration": "12 min",
+              "completed": false
+            },
+            {
+              "id": "w8a2",
+              "type": "exercise",
+              "title": "Values Sort: What Truly Matters to You",
+              "duration": "20 min",
+              "completed": false
+            },
+            {
+              "id": "w8a3",
+              "type": "lesson",
+              "title": "Finding Flow: Healthy Addictions That Serve You",
+              "duration": "10 min",
+              "completed": false
+            },
+            {
+              "id": "w8a4",
+              "type": "journal",
+              "title": "Week 8 Reflection: My Future Self",
+              "duration": "10 min",
+              "completed": false,
+              "prompt": "Describe the person you are becoming. What do you value most? What does your ideal day look like 6 months from now? What hobbies or passions are you rediscovering?"
+            },
+            {
+              "id": "w8a5",
+              "type": "quiz",
+              "title": "Week 8 Knowledge Check",
+              "duration": "5 min",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "weekNumber": 9,
+          "title": "Relapse Prevention",
+          "theme": "Warning signs, safety planning, and building a crisis-proof recovery.",
+          "color": "#E05C4B",
+          "unlocked": false,
+          "completed": false,
+          "activities": [
+            {
+              "id": "w9a1",
+              "type": "lesson",
+              "title": "The Stages of Relapse: Emotional, Mental, Physical",
+              "duration": "14 min",
+              "completed": false
+            },
+            {
+              "id": "w9a2",
+              "type": "exercise",
+              "title": "Creating Your Personal Safety Plan",
+              "duration": "20 min",
+              "completed": false
+            },
+            {
+              "id": "w9a3",
+              "type": "lesson",
+              "title": "The Abstinence Violation Effect: One Slip Doesn't Erase Progress",
+              "duration": "10 min",
+              "completed": false
+            },
+            {
+              "id": "w9a4",
+              "type": "journal",
+              "title": "Week 9 Reflection: My Warning Signs",
+              "duration": "10 min",
+              "completed": false,
+              "prompt": "What are your early warning signs that you're heading toward relapse? Make a list. What is your emergency action plan for each warning sign?"
+            },
+            {
+              "id": "w9a5",
+              "type": "quiz",
+              "title": "Week 9 Knowledge Check",
+              "duration": "5 min",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "weekNumber": 10,
+          "title": "Graduation & Maintenance",
+          "theme": "Long-term strategy, celebrating your progress, and paying it forward.",
+          "color": "#1A5C3A",
+          "unlocked": false,
+          "completed": false,
+          "activities": [
+            {
+              "id": "w10a1",
+              "type": "lesson",
+              "title": "Your Recovery Toolkit: What You've Learned and How to Keep It",
+              "duration": "12 min",
+              "completed": false
+            },
+            {
+              "id": "w10a2",
+              "type": "exercise",
+              "title": "Writing Your Recovery Legacy Letter",
+              "duration": "20 min",
+              "completed": false
+            },
+            {
+              "id": "w10a3",
+              "type": "lesson",
+              "title": "Maintenance Mode: Thriving, Not Just Surviving",
+              "duration": "10 min",
+              "completed": false
+            },
+            {
+              "id": "w10a4",
+              "type": "journal",
+              "title": "Week 10 Reflection: Letter to My Younger Self",
+              "duration": "15 min",
+              "completed": false,
+              "prompt": "Write a letter to yourself at the beginning of this program. What would you want them to know? What advice would you give? How far have you come?"
+            },
+            {
+              "id": "w10a5",
+              "type": "quiz",
+              "title": "Graduation Knowledge Check",
+              "duration": "10 min",
+              "completed": false
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "lessons": {
+    "w1a1": {
+      "sections": [
+        {
+          "heading": "The First Hour: What's Happening Inside Your Body",
+          "body": "The moment you stop using cannabis, your body begins a remarkable process of readjustment. THC, the primary psychoactive compound in cannabis, has been interacting with your endocannabinoid system — a vast network of receptors that helps regulate mood, appetite, sleep, and pain sensation.\n\nWithin the first hour, your heart rate begins to normalize. The initial 'high' fog starts to lift. But this is just the beginning. Your endocannabinoid system, which has adapted to the presence of external cannabinoids, now needs to relearn how to produce and regulate its own.\n\nFor regular users, the body has reduced its natural endocannabinoid production because THC was filling those receptor sites. When you stop, there's a temporary deficiency — like a factory that stopped making a product because imports were flooding the market. Now the factory needs to restart production."
+        },
+        {
+          "heading": "Hours 6–12: The Onset of Withdrawal",
+          "body": "As THC levels in your blood begin to decline significantly, early withdrawal symptoms may appear. You might notice:\n\n• Irritability or mood swings\n• Mild anxiety or restlessness\n• Difficulty falling asleep\n• Changes in appetite (usually suppressed)\n• Cravings for cannabis\n\nThese symptoms are normal and expected. They are signs that your body is healing and recalibrating. Think of them as withdrawal symptoms — temporary discomfort on the path to long-term freedom.\n\nThe severity of early withdrawal depends on several factors: frequency of use, potency of cannabis consumed, duration of use, individual metabolism, and overall health. Someone who used high-THC concentrates daily for years will experience more pronounced symptoms than someone who used lower-potency flower occasionally."
+        },
+        {
+          "heading": "Hours 24–72: The Peak Window",
+          "body": "This is typically the most challenging period. Withdrawal symptoms usually peak between 24 and 72 hours after last use. During this window, you may experience:\n\nPhysical Symptoms:\n• Headaches and tension\n• Night sweats or chills\n• Stomach discomfort or nausea\n• Tremors or shakiness\n• Muscle aches\n\nEmotional Symptoms:\n• Anxiety that may feel intense\n• Irritability or anger\n• Sadness or weepiness\n• Brain fog and difficulty concentrating\n• Vivid dreams or nightmares (if you do sleep)\n\nSleep disruption is one of the most common and frustrating symptoms. Many people report lying awake despite feeling exhausted, or waking repeatedly throughout the night. This is because THC suppresses REM sleep, and your brain is now experiencing a REM rebound — making up for lost dream time."
+        },
+        {
+          "heading": "Days 4–7: The Turning Point",
+          "body": "By day four, most people notice a shift. The acute physical symptoms begin to subside. You may still feel irritable or have sleep issues, but the intensity decreases. Day 5 often brings a moment of clarity — a morning where you wake up feeling more like yourself.\n\nYour appetite typically returns around this time, often stronger than usual. This is your body's way of catching up on nutritional needs. Your energy levels may still fluctuate, but the crushing fatigue of the first three days lifts.\n\nTip: This is a good time to introduce light physical activity. A 20-minute walk can boost your mood through natural endorphin release and help regulate your sleep cycle."
+        },
+        {
+          "heading": "Days 7–14: The New Normal Begins",
+          "body": "By the end of week one, most acute withdrawal symptoms have resolved. What remains is the psychological work — establishing new routines, managing triggers, and building a life without cannabis. Sleep often improves significantly after the first week.\n\nYour brain's chemistry is slowly rebalancing. Dopamine receptors, which may have been downregulated from chronic cannabis use, begin to regain sensitivity. This means you'll start finding pleasure in everyday activities again — a phenomenon called 'natural reward recovery.'\n\nKey Takeaway: The first 72 hours are the hardest, but they are also the most important. Every hour you get through is a victory. Your body knows how to heal — you just need to give it time, hydration, rest, and compassion."
+        },
+        {
+          "heading": "When to Seek Medical Help",
+          "body": "While cannabis withdrawal is rarely medically dangerous, severe symptoms can be distressing. Contact a healthcare provider if you experience:\n\n• Suicidal thoughts or self-harm urges\n• Severe depression that doesn't lift\n• Chest pain or difficulty breathing\n• Vomiting that prevents fluid retention\n• Hallucinations or confusion\n\nIf you're in a rehab facility like White River Manor, your care team is available 24/7. You don't have to go through this alone."
+        }
+      ]
+    },
+    "w1a2": {
+      "sections": [
+        {
+          "heading": "Understanding Cannabis Withdrawal Syndrome (CWS)",
+          "body": "Cannabis Withdrawal Syndrome is a recognised medical condition (included in the DSM-5 and ICD-11). This matters because it validates what you're experiencing — it's not a moral failing or a lack of willpower. It's a physiological and neurological process that affects a significant portion of regular users who stop.\n\nResearch shows that approximately 47% of regular cannabis users experience clinically significant withdrawal when they quit. The syndrome typically includes at least three of the following symptoms: irritability, anxiety, sleep difficulty, decreased appetite or weight loss, restlessness, depressed mood, and at least one physical symptom like abdominal pain or headaches.\n\nThe simple fact that you're experiencing these symptoms confirms that your body was physically dependent on cannabis. That's not shameful — it's biological reality. And like any biological process, it has a predictable course."
+        },
+        {
+          "heading": "What's Normal: The Full Spectrum of Symptoms",
+          "body": "Let's normalise what you might be experiencing. Each of these symptoms is a common, expected part of cannabis withdrawal:\n\nIrritability & Anger: Your brain's emotion regulation centres are recalibrating. You might snap at loved ones or feel rage over small things. This is temporary. Warn your support network that you may be irritable for a few days.\n\nAnxiety & Panic: Without cannabis's calming effect on your amygdala (the brain's fear centre), anxiety can spike. This is a rebound effect — your anxiety levels will typically settle below baseline within 2-3 weeks.\n\nSleep Disturbance: The most common and persistent symptom. Vivid dreams, insomnia, night sweats, and restless sleep are all normal. Your brain is making up for lost REM sleep.\n\nDepressed Mood: Cannabis use can artificially elevate mood. When you stop, your natural mood regulation needs time to reboot. Feeling flat, sad, or unmotivated is a normal part of this process.\n\nBrain Fog: Difficulty concentrating, forgetfulness, and feeling 'slower' mentally are common. Your prefrontal cortex — responsible for executive function — is recovering from THC's effects."
+        },
+        {
+          "heading": "What's NOT Normal: When to Be Concerned",
+          "body": "While most withdrawal symptoms are uncomfortable but not dangerous, some signs warrant professional attention:\n\nNot Normal: Suicidal ideation or self-harm thoughts.\nNot Normal: Severe confusion or disorientation.\nNot Normal: Hallucinations (seeing or hearing things that aren't there).\nNot Normal: Chest pain, rapid heart rate accompanied by panic.\nNot Normal: Inability to keep fluids down for more than 24 hours.\n\nIf you experience any of these, reach out to a healthcare provider immediately. At White River Manor, crisis support is available around the clock."
+        },
+        {
+          "heading": "The Timeline of Healing",
+          "body": "Days 1-3: Acute withdrawal. Physical symptoms peak. Focus on survival — hydrate, rest, breathe.\n\nDays 4-7: Symptoms begin to subside. Energy and appetite return. Clearer thinking emerges.\n\nWeeks 2-4: Emotional symptoms may persist but with decreasing intensity. Sleep often improves significantly.\n\nWeeks 4-8: Most withdrawal symptoms resolve. Baseline mood stabilises. Brain fog lifts.\n\nMonths 2-6: Continued improvement in cognitive function, emotional regulation, and overall well-being. Natural reward sensitivity returns.\n\nKey Takeaway: Withdrawal is not a sign of weakness — it's a sign that your body was adapting to a substance, and now it's adapting to living without it. Both are forms of adaptation. One leads to dependence. The other leads to freedom."
+        }
+      ]
+    },
+    "w2a1": {
+      "sections": [
+        {
+          "heading": "The Cannabis-Anxiety Paradox",
+          "body": "Many people begin using cannabis specifically to manage anxiety. They discover that a few puffs can quiet racing thoughts, soften social discomfort, and bring a sense of ease. This immediate relief reinforces the belief that cannabis helps with anxiety.\n\nHowever, research reveals a more complex picture. While cannabis can produce short-term anxiety relief, chronic use actually increases baseline anxiety levels and reduces your ability to cope with stress naturally.\n\nThis is the cannabis-anxiety paradox: the very substance you turn to for relief is making your anxiety worse over time. Understanding how this works is crucial for long-term recovery."
+        },
+        {
+          "heading": "How Cannabis Tricks Your Anxiety System",
+          "body": "Your brain has a built-in stress response system. When you encounter a threat (real or perceived), your amygdala activates, triggering the HPA axis (hypothalamic-pituitary-adrenal axis), which releases cortisol — your primary stress hormone.\n\nTHC temporarily suppresses amygdala activity, making threats seem less threatening. This is why cannabis feels relaxing. But over time, your brain adapts:\n\n1. Downregulation: Your CB1 receptors (which THC binds to) decrease in number and sensitivity. You need more cannabis to achieve the same calming effect.\n\n2. Tolerance to Calm: Your brain's natural calming system becomes dependent on external cannabinoids. Without THC, the amygdala becomes hyperactive — a rebound effect.\n\n3. Increased Baseline Anxiety: Studies show that chronic cannabis users have higher resting cortisol levels and greater amygdala reactivity during withdrawal than non-users.\n\nThe result: you need cannabis just to feel normal, and without it, you experience more anxiety than you would have without ever using cannabis."
+        },
+        {
+          "heading": "The Cycle: Use → Relief → Rebound → More Use",
+          "body": "This pattern typically looks like:\n\nMorning: You wake up feeling anxious (rebound from last night's use).\nMidday: You use cannabis to feel calm and functional.\nEvening: The relief fades. You use again to relax or sleep.\nRepeat: Daily cycle deepens the dependency.\n\nThe shorter the interval between uses, the more your brain stays in rebound mode. By the time you realise you're caught in this cycle, it can feel impossible to break free.\n\nBreaking the cycle requires a period of abstinence — typically 2-4 weeks — to allow your CB1 receptors to upregulate and your natural stress response system to recalibrate."
+        },
+        {
+          "heading": "Research: What the Science Says",
+          "body": "A 2021 meta-analysis in The Lancet Psychiatry examined 31 studies on cannabis and anxiety. Key findings:\n\n• Daily cannabis users had 2.5 times higher odds of developing an anxiety disorder compared to non-users.\n• Cannabis use before age 16 was associated with the highest risk.\n• Stopping cannabis use was associated with significant reductions in anxiety symptoms within 3 months.\n\nA 2023 study from Stanford University found that THC exposure caused long-lasting changes to the amygdala and prefrontal cortex connectivity — changes that correlated with increased anxiety scores even after 30 days of abstinence.\n\nDid You Know? The endocannabinoid system is sometimes called the 'body's natural cannabis system.' It produces compounds called endocannabinoids that help regulate stress. Chronic THC use suppresses your body's natural endocannabinoid production — meaning you're essentially outsourcing your calm to an external source."
+        },
+        {
+          "heading": "Your Anxiety Will Decrease — Here's the Evidence",
+          "body": "Research consistently shows that anxiety decreases after stopping cannabis — but not immediately. Here's what the timeline typically looks like:\n\nWeek 1: Anxiety may increase (rebound effect). This is normal.\nWeeks 2-3: Anxiety begins to decrease below pre-cessation levels.\nWeeks 4-6: Significant improvement in anxiety symptoms.\nMonths 2-3: Many people report their anxiety is lower than when they were using.\n\nKey Takeaway: The anxiety you feel in early recovery is withdrawal, not your baseline. Your brain has the remarkable ability to heal and recalibrate. Every day without cannabis, your natural stress response system is getting stronger. The temporary discomfort is a sign of healing, not a permanent state."
+        }
+      ]
+    },
+    "w2a2": {
+      "sections": [
+        {
+          "heading": "Why Cannabis Disrupts Sleep — Even When It Helps You Fall Asleep",
+          "body": "Many cannabis users report that it helps them fall asleep faster. This is true — THC can reduce sleep latency (the time it takes to fall asleep). But here's what most people don't realise: while cannabis helps you fall asleep, it significantly reduces sleep quality.\n\nTHC suppresses REM sleep — the stage of sleep associated with dreaming, memory consolidation, and emotional processing. It also fragments your sleep architecture, reducing the amount of time spent in deep, restorative slow-wave sleep.\n\nThe result: you fall asleep quickly but wake up feeling unrefreshed, groggy, and foggy. Over months and years of daily use, this chronic poor sleep quality accumulates, contributing to mood disorders, cognitive decline, and physical health problems."
+        },
+        {
+          "heading": "Understanding Your Circadian Rhythm",
+          "body": "Your circadian rhythm is your body's internal 24-hour clock. It regulates the sleep-wake cycle, hormone release, body temperature, and metabolism. Light is the primary cue that sets this clock.\n\nCannabis disrupts your circadian rhythm in several ways:\n\nMelatonin Suppression: THC can interfere with the natural evening rise in melatonin, the hormone that signals your body it's time to sleep.\n\nTemperature Dysregulation: Cannabis affects the hypothalamus, which regulates body temperature. The natural evening temperature drop that facilitates sleep may be blunted.\n\nBlue Light + Late-Night Use: Many people use cannabis in the evening while looking at screens, which compounds the circadian disruption."
+        },
+        {
+          "heading": "The REM Rebound Effect",
+          "body": "When you stop using cannabis, your brain enters a REM rebound state — it tries to make up for all the lost dream time. This typically starts within 24-48 hours of cessation and can last 1-3 weeks.\n\nWhat to expect:\n\n• Extremely vivid, bizarre, or intense dreams\n• Dreams that feel 'real' and may wake you up\n• Nightmares or disturbing dream content (common)\n• Multiple dreams per night with detailed recall\n\nThis is a positive sign! Your brain is rapidly recovering REM function. The vivid dreams can be unsettling, but they indicate healthy neurological healing. They will gradually normalise as your sleep architecture stabilises."
+        },
+        {
+          "heading": "Practical Sleep Hygiene for Recovery",
+          "body": "Building healthy sleep habits is essential during recovery. Here's what works:\n\n1. Consistent Schedule: Go to bed and wake up at the same time every day — even weekends. This trains your circadian rhythm.\n\n2. Cool, Dark Room: Keep your bedroom at 15-19°C. Use blackout curtains or an eye mask. Darkness triggers melatonin production.\n\n3. No Screens 60 Minutes Before Bed: Blue light from phones and laptops suppresses melatonin. Use this time for reading, gentle stretching, or journaling.\n\n4. Temperature Regulation: Take a warm bath 90 minutes before bed. The subsequent temperature drop signals your body to sleep.\n\n5. Caffeine Cutoff: No caffeine after 2 PM. Cannabis withdrawal already disrupts sleep — don't compound it with stimulants.\n\n6. Don't Force Sleep: If you can't sleep after 20 minutes, get up and do something calming in dim light. Return to bed when you feel sleepy."
+        },
+        {
+          "heading": "The Recovery Sleep Timeline",
+          "body": "Week 1: Sleep disruption peaks. Difficulty falling asleep, frequent waking, vivid dreams. Focus on basic sleep hygiene.\n\nWeeks 2-3: Sleep begins to consolidate. Fewer awakenings. Dreams remain vivid but less disturbing.\n\nWeeks 4-6: Significant improvement. Most people report feeling rested. Sleep quality often exceeds pre-cannabis levels.\n\nMonths 2+: Sleep architecture fully normalised. Natural, restorative sleep cycles are restored.\n\nKey Takeaway: Poor sleep in early recovery is normal and temporary. Each night of disrupted sleep is a sign that your brain is actively healing. Consistent sleep hygiene practices will accelerate your return to deep, restorative sleep."
+        }
+      ]
+    }
+  }
+}
