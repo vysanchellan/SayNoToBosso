@@ -91,7 +91,7 @@ export default function ProgramPage() {
   }
 
   return (
-    <div className="space-y-6 max-w-4xl mx-auto">
+    <div id="main-content" className="space-y-6 max-w-4xl mx-auto">
       <div>
         <h1 className="text-2xl font-bold text-foreground sm:text-3xl">My Recovery Program</h1>
         <div className="mt-2 flex flex-wrap items-center gap-2">

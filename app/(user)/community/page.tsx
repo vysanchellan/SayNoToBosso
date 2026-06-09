@@ -4,7 +4,7 @@ import { AlertTriangle, Users } from "lucide-react"
 
 export default function CommunityPage() {
   return (
-    <div className="max-w-6xl mx-auto space-y-6">
+    <div id="main-content" className="max-w-6xl mx-auto space-y-6">
       <div>
         <h1 className="text-2xl font-bold">Recovery Community</h1>
         <p className="text-sm text-muted-foreground">Anonymous, supportive, moderated.</p>

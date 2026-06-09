@@ -13,7 +13,7 @@ export default function ToolsPage() {
   const [activeTab, setActiveTab] = useState("Breathing")
 
   return (
-    <div className="space-y-6 max-w-4xl mx-auto">
+    <div id="main-content" className="space-y-6 max-w-4xl mx-auto">
       <div>
         <h1 className="text-2xl font-bold text-foreground sm:text-3xl">Daily Tools</h1>
         <p className="mt-1 text-muted-foreground text-sm">

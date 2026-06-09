@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { toast } from "sonner"
 import { HeartPulse, Phone, MessageCircle, Wind } from "lucide-react"
 import {
   Dialog,
@@ -21,7 +22,10 @@ export default function CrisisModal() {
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    window.__openCrisisModal = () => setOpen(true)
+    window.__openCrisisModal = () => {
+      setOpen(true)
+      toast.info("Support resources are available below", { duration: Infinity })
+    }
     return () => { delete window.__openCrisisModal }
   }, [])
 

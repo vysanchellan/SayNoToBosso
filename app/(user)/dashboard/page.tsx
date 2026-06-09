@@ -15,7 +15,7 @@ export default function UserDashboard() {
   const [activeTab, setActiveTab] = useState("Today")
 
   return (
-    <div className="space-y-6 max-w-6xl mx-auto">
+    <div id="main-content" className="space-y-6 max-w-6xl mx-auto">
       <NotificationBanner />
 
       <div className="rounded-2xl bg-gradient-to-br from-secondary/10 to-white border p-6 sm:p-8 relative overflow-hidden">

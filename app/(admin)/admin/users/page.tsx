@@ -4,7 +4,7 @@ import UserTable from "@/components/features/admin/UserTable"
 
 export default function AdminUsersPage() {
   return (
-    <div className="space-y-6">
+    <div id="main-content" className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-xl font-bold">User Management</h1>

@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Sun, Moon } from "lucide-react"
+import { toast } from "sonner"
 
 export default function ProfileSettings() {
   const [name, setName] = useState("Jordan")
@@ -16,6 +17,7 @@ export default function ProfileSettings() {
   const [saved, setSaved] = useState(false)
 
   const handleSave = () => {
+    toast.success("Settings updated")
     setSaved(true)
     setTimeout(() => setSaved(false), 2000)
   }

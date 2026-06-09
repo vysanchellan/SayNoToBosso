@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Check, X, Flag, Pin, RotateCcw, Download } from "lucide-react"
+import { toast } from "sonner"
 
 interface Post {
   id: string
@@ -50,6 +51,7 @@ export default function AdminCommunityPage() {
     setPosts((prev) => prev.map((p) =>
       p.id === id ? { ...p, status: "approved" as const, approvedBy: "Dr. Naledi Sithole", approvedAt: "Just now" } : p
     ))
+    toast.success("Post approved and published")
   }
 
   const handleRemove = (id: string) => {
@@ -80,7 +82,7 @@ export default function AdminCommunityPage() {
   })
 
   return (
-    <div className="space-y-6">
+    <div id="main-content" className="space-y-6">
       <div>
         <h1 className="text-xl font-bold">Community Moderation</h1>
         <div className="flex items-center gap-3 mt-1">

@@ -17,7 +17,7 @@ export const metadata = {
 
 export default function LandingPage() {
   return (
-    <>
+    <div id="main-content">
       <Navbar />
       <Hero />
       <StatsBanner />
@@ -27,6 +27,6 @@ export default function LandingPage() {
       <ClinicCTA />
       <Footer />
       <POPIABanner />
-    </>
+    </div>
   )
 }

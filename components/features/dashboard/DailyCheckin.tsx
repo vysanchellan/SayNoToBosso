@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { Clock, CheckCircle2 } from "lucide-react"
+import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
@@ -132,7 +133,7 @@ export default function DailyCheckin() {
         </div>
 
         <Button
-          onClick={() => setSubmitted(true)}
+          onClick={() => { setSubmitted(true); toast.success("Check-in logged ✓ Keep it up!") }}
           disabled={!mood}
           className="w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90 py-3 text-base"
         >

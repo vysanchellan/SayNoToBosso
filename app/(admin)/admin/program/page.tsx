@@ -85,7 +85,7 @@ export default function AdminProgramPage() {
   const currentActivities = weekActivities[selectedWeek] || []
 
   return (
-    <div className="space-y-6">
+    <div id="main-content" className="space-y-6">
       <div>
         <h1 className="text-xl font-bold">Program Manager</h1>
         <p className="text-sm text-muted-foreground">Manage recovery program content across all three tiers</p>

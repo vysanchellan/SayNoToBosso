@@ -9,7 +9,7 @@ import { Users, Flame, TrendingUp, AlertTriangle } from "lucide-react"
 
 export default function AdminDashboard() {
   return (
-    <div className="space-y-6">
+    <div id="main-content" className="space-y-6">
       <div>
         <h1 className="text-xl font-bold">Facility Overview</h1>
         <p className="text-sm text-muted-foreground">June 2026 · White River Manor Recovery Centre</p>

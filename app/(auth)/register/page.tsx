@@ -7,8 +7,10 @@ export const metadata = {
 
 export default function RegisterPage() {
   return (
-    <AuthLayout>
-      <RegisterForm />
-    </AuthLayout>
+    <div id="main-content">
+      <AuthLayout>
+        <RegisterForm />
+      </AuthLayout>
+    </div>
   )
 }

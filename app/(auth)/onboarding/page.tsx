@@ -5,5 +5,5 @@ export const metadata = {
 }
 
 export default function Onboarding() {
-  return <OnboardingPage />
+  return <div id="main-content"><OnboardingPage /></div>
 }

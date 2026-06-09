@@ -38,7 +38,7 @@ export default function ResearchPage() {
   })
 
   return (
-    <div className="space-y-8 max-w-6xl mx-auto">
+    <div id="main-content" className="space-y-8 max-w-6xl mx-auto">
       <div>
         <h1 className="text-2xl font-bold text-foreground sm:text-3xl">Research &amp; Recovery Library</h1>
         <p className="mt-1 text-muted-foreground text-sm">

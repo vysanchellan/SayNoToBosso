@@ -102,7 +102,7 @@ export default function AdminFlagsPage() {
   const lowCount = alerts.filter((a) => a.priority === "LOW").length
 
   return (
-    <div className="space-y-6">
+    <div id="main-content" className="space-y-6">
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
           <h1 className="text-xl font-bold">Clinical Alert Flags</h1>

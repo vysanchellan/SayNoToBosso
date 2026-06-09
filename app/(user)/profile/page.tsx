@@ -17,7 +17,7 @@ export default function ProfilePage() {
   const [tab, setTab] = useState("overview")
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6">
+    <div id="main-content" className="max-w-4xl mx-auto space-y-6">
       <h1 className="text-2xl font-bold">Your Profile</h1>
 
       <div className="flex gap-1 rounded-2xl border bg-white p-1 overflow-x-auto" style={{ scrollbarWidth: "none" }}>

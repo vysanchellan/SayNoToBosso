@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { Lock, Eye, Tag, Trash2 } from "lucide-react"
+import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -74,6 +75,7 @@ export default function JournalEditor({
         isShared: !((updated.isPrivate as boolean) ?? isPrivate),
       })
       setSaved(true)
+      toast.info("Entry saved automatically")
     }, 800)
   }
 

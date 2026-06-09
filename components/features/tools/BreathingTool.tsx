@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { Play, Pause, StopCircle, Volume2, VolumeX } from "lucide-react"
+import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 
 type Phase = "inhale" | "hold" | "exhale"
@@ -103,6 +104,7 @@ export default function BreathingTool() {
     if (nextPi >= ex.phases.length) {
       if (round >= ex.totalRounds) {
         setState("complete")
+        toast.success("Session complete. That's this week's 🌿")
         return
       }
       setRound((r) => r + 1)

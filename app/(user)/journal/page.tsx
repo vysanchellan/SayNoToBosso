@@ -120,7 +120,7 @@ export default function JournalPage() {
   }
 
   return (
-    <div className="flex h-[calc(100vh-8rem)] -mx-4 sm:-mx-6 lg:-mx-8">
+    <div id="main-content" className="flex h-[calc(100vh-8rem)] -mx-4 sm:-mx-6 lg:-mx-8">
       <div className={`w-80 shrink-0 border-r bg-white overflow-hidden ${showMobileList ? "block" : "hidden lg:block"}`}>
         <JournalSidebar
           entries={entries}
