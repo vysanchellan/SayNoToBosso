@@ -2,10 +2,20 @@ import type { Metadata } from "next"
 import "./globals.css"
 import { Toaster } from "sonner"
 import { ThemeProvider } from "next-themes"
+import { DemoProvider } from "@/lib/demo-context"
+import DemoBanner from "@/components/features/demo/DemoBanner"
+import PageTransition from "@/components/ui/PageTransition"
 
 export const metadata: Metadata = {
   title: "CannaClear — Your guided path to cannabis-free living",
-  description: "A clinical-warm cannabis recovery program for South African rehab centres.",
+  description: "A clinically guided, week-by-week cannabis recovery platform. Built for South Africa.",
+  keywords: "cannabis recovery, rehabilitation, South Africa, addiction support",
+  openGraph: {
+    title: "CannaClear",
+    description: "Your guided path to cannabis-free living",
+    type: "website",
+  },
+  icons: { icon: "/favicon.svg" },
 }
 
 export default function RootLayout({
@@ -14,13 +24,16 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="h-full antialiased" suppressHydrationWarning>
+    <html lang="en" className="h-full scroll-smooth antialiased" suppressHydrationWarning>
       <body className="min-h-full flex flex-col">
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-4 focus:left-4 bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium">
           Skip to main content
         </a>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-          {children}
+          <DemoProvider>
+            <DemoBanner />
+            <PageTransition>{children}</PageTransition>
+          </DemoProvider>
         </ThemeProvider>
         <Toaster
           position="top-right"

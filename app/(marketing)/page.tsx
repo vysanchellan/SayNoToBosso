@@ -7,6 +7,7 @@ import Testimonial from "@/components/features/landing/Testimonial"
 import ClinicCTA from "@/components/features/landing/ClinicCTA"
 import Footer from "@/components/layout/Footer"
 import POPIABanner from "@/components/features/landing/POPIABanner"
+import DemoShortcuts from "@/components/features/demo/DemoShortcuts"
 import { APP_NAME } from "@/lib/constants"
 
 export const metadata = {
@@ -27,6 +28,7 @@ export default function LandingPage() {
       <ClinicCTA />
       <Footer />
       <POPIABanner />
+      <DemoShortcuts />
     </div>
   )
 }
