@@ -7,6 +7,7 @@ import {
   LayoutDashboard, Users, BarChart3, BookOpen, MessageSquare, Settings,
   AlertTriangle, ChevronDown, Menu, Download,
 } from "lucide-react"
+import ThemeToggle from "@/components/ui/ThemeToggle"
 
 const navItems = [
   { href: "/admin", label: "Overview", icon: LayoutDashboard },
@@ -98,6 +99,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             </div>
           </div>
           <div className="flex items-center gap-3">
+            <ThemeToggle />
             <input type="text" placeholder="Jun 2026" className="w-28 rounded-lg border border-muted-foreground/20 bg-white px-2.5 py-1.5 text-xs text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30" />
             <button className="flex items-center gap-1.5 rounded-lg border border-muted-foreground/20 px-3 py-1.5 text-xs text-muted-foreground hover:bg-muted transition-colors">
               <Download className="size-3.5" />

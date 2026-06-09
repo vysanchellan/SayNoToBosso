@@ -17,6 +17,8 @@ import {
   Flame,
 } from "lucide-react"
 import CrisisModal from "@/components/features/dashboard/CrisisModal"
+import ThemeToggle from "@/components/ui/ThemeToggle"
+import MobileBottomNav from "@/components/layout/MobileBottomNav"
 import {
   SidebarProvider,
   Sidebar,
@@ -147,7 +149,8 @@ export default function UserLayout({ children }: { children: ReactNode }) {
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <button className="relative p-1 text-muted-foreground hover:text-foreground" aria-label="Notifications">
+                  <ThemeToggle />
+                  <button className="relative p-1 text-muted-foreground hover:text-foreground min-h-[44px] min-w-[44px] flex items-center justify-center" aria-label="Notifications">
                     <Bell className="size-5" />
                     <span className="absolute -top-0.5 -right-0.5 flex size-4 items-center justify-center rounded-full bg-destructive text-[10px] font-bold text-destructive-foreground">
                       3
@@ -176,13 +179,14 @@ export default function UserLayout({ children }: { children: ReactNode }) {
                 </div>
               </div>
             </header>
-            <main className="flex-1 p-4 sm:p-6 lg:p-8">
+            <main className="flex-1 p-4 sm:p-6 lg:p-8 pb-20 lg:pb-8">
               {children}
             </main>
           </div>
         </SidebarInset>
       </div>
       <CrisisModal />
+      <MobileBottomNav />
     </SidebarProvider>
   )
 }

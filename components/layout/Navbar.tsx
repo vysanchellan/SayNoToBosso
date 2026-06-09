@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import ThemeToggle from "@/components/ui/ThemeToggle"
 
 const navLinks = [
   { label: "How It Works", href: "#how-it-works" },
@@ -51,6 +52,7 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
+          <ThemeToggle />
           <Link href="/login">
             <Button variant="ghost">Sign In</Button>
           </Link>
