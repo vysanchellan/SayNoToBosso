@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Flame } from "lucide-react"
 
 export default function StreakCounter() {
   const [count, setCount] = useState(0)
@@ -26,22 +25,20 @@ export default function StreakCounter() {
     <div className="flex flex-col items-center">
       <div className="relative size-28">
         <svg className="size-28 -rotate-90" viewBox="0 0 96 96">
-          <circle cx="48" cy="48" r="42" fill="none" stroke="hsl(var(--muted))" strokeWidth="6" />
+          <circle cx="48" cy="48" r="42" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="6" />
           <circle
             cx="48" cy="48" r="42" fill="none"
-            stroke="hsl(var(--accent))" strokeWidth="6" strokeLinecap="round"
+            stroke="hsl(38, 85%, 55%)" strokeWidth="6" strokeLinecap="round"
             strokeDasharray={circumference}
             strokeDashoffset={circumference * (1 - percentToNext / 100)}
             className="transition-all duration-1000"
           />
         </svg>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <Flame className="size-5 text-accent" />
-          <span className="text-2xl font-bold text-primary">{count}</span>
+          <span className="text-5xl font-bold font-display text-white" style={{ fontVariantNumeric: 'tabular-nums' }}>{count}</span>
         </div>
       </div>
-      <p className="mt-2 text-sm font-semibold text-foreground">Days Clean</p>
-      <p className="text-xs text-muted-foreground">Keep going &mdash; Day 30 badge incoming</p>
+      <p className="mt-1 text-sm text-white/60">Days Clean</p>
     </div>
   )
 }

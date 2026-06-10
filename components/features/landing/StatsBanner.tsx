@@ -52,20 +52,26 @@ function CountUp({ end, suffix = "", delay = 0 }: { end: string; suffix?: string
 
   return (
     <div ref={ref} className="text-center">
-      <div className="text-5xl font-bold text-primary sm:text-6xl">{display}{suffix}</div>
+      <div className="font-display text-5xl font-bold sm:text-6xl" style={{ color: 'hsl(var(--primary))' }}>{display}{suffix}</div>
     </div>
   )
 }
 
 export default function StatsBanner() {
   return (
-    <section className="bg-muted/60 py-16 sm:py-20" aria-label="Key statistics">
+    <section
+      className="py-16 sm:py-20"
+      aria-label="Key statistics"
+      style={{
+        background: 'linear-gradient(135deg, hsl(var(--sage-light) / 0.6) 0%, hsl(var(--sage-mist)) 100%)',
+      }}
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-12">
           {stats.map((stat) => (
             <div key={stat.label} className="text-center space-y-3">
               <CountUp end={stat.value} />
-              <p className="text-sm text-muted-foreground leading-relaxed max-w-[200px] mx-auto">
+              <p className="text-sm leading-relaxed max-w-[200px] mx-auto" style={{ color: 'hsl(var(--text-secondary))' }}>
                 {stat.label}
               </p>
             </div>

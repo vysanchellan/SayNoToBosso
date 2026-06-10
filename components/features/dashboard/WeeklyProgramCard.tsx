@@ -14,20 +14,34 @@ export default function WeeklyProgramCard() {
   const total = activities.length
 
   return (
-    <div className="rounded-2xl border bg-white p-6 shadow-sm">
+    <div
+      className="relative overflow-hidden rounded-2xl border bg-card p-5"
+      style={{ borderLeft: '3px solid hsl(var(--accent))', borderColor: 'hsl(var(--border))' }}
+    >
       <div className="flex items-center justify-between mb-4">
-        <div className="inline-flex rounded-full bg-accent/20 px-3 py-1 text-xs font-semibold text-accent">
+        <span
+          className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold"
+          style={{
+            background: 'linear-gradient(135deg, hsl(var(--accent) / 0.15), hsl(var(--accent) / 0.05))',
+            color: 'hsl(var(--accent))',
+            border: '1px solid hsl(var(--accent) / 0.2)',
+          }}
+        >
+          <span className="size-1.5 rounded-full" style={{ background: 'hsl(var(--accent))' }} />
           Week 2
-        </div>
+        </span>
         <span className="text-xs text-muted-foreground">{completed} of {total} activities complete</span>
       </div>
 
-      <h3 className="text-lg font-semibold text-foreground mb-1">Brain Reset</h3>
+      <h3 className="text-lg font-display font-semibold" style={{ color: 'hsl(var(--forest))' }}>Brain Reset</h3>
 
-      <div className="relative h-2 rounded-full bg-muted mb-4">
+      <div className="relative h-2 rounded-full overflow-hidden mt-3 mb-4" style={{ background: 'hsl(var(--muted))' }}>
         <div
-          className="h-full rounded-full bg-primary transition-all"
-          style={{ width: `${(completed / total) * 100}%` }}
+          className="h-full rounded-full transition-all duration-500"
+          style={{
+            width: `${(completed / total) * 100}%`,
+            background: 'linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)))',
+          }}
         />
       </div>
 
@@ -35,40 +49,57 @@ export default function WeeklyProgramCard() {
         {activities.map((a) => (
           <li key={a.label} className="flex items-center gap-3">
             <div
-              className={`flex size-5 shrink-0 items-center justify-center rounded-full border ${
-                a.done
-                  ? "border-green-400 bg-green-50"
-                  : a.inProgress
-                    ? "border-accent bg-accent/10"
-                    : "border-muted-foreground/30"
-              }`}
+              className="flex size-5 shrink-0 items-center justify-center rounded-full"
+              style={{
+                border: `1.5px solid ${
+                  a.done
+                    ? 'hsl(var(--sage))'
+                    : a.inProgress
+                      ? 'hsl(var(--accent))'
+                      : 'hsl(var(--muted-foreground) / 0.3)'
+                }`,
+                background: a.done ? 'hsl(var(--sage-light))' : a.inProgress ? 'hsl(var(--accent) / 0.1)' : 'transparent',
+              }}
             >
               {a.done ? (
-                <span className="text-[10px] text-green-500 font-bold">&#10003;</span>
+                <span className="text-[10px] font-bold" style={{ color: 'hsl(var(--sage))' }}>&#10003;</span>
               ) : a.inProgress ? (
-                <span className="size-2 rounded-full bg-accent" />
+                <span className="size-2 rounded-full" style={{ background: 'hsl(var(--accent))' }} />
               ) : null}
             </div>
             <span
-              className={`text-sm ${
-                a.done
-                  ? "text-muted-foreground line-through"
-                  : a.inProgress
-                    ? "text-accent font-medium"
-                    : "text-foreground"
-              }`}
+              className="text-sm flex-1"
+              style={{
+                color: a.done ? 'hsl(var(--muted-foreground))' : a.inProgress ? 'hsl(var(--accent))' : 'hsl(var(--foreground))',
+                textDecoration: a.done ? 'line-through' : 'none',
+                fontWeight: a.inProgress ? 500 : 400,
+              }}
             >
               {a.label}
             </span>
             {a.isToday && (
-              <span className="ml-auto rounded-full bg-primary/10 px-2 py-0.5 text-[10px] text-primary">Today</span>
+              <span
+                className="rounded-full px-2 py-0.5 text-[10px] font-semibold"
+                style={{
+                  background: 'hsl(var(--primary) / 0.1)',
+                  color: 'hsl(var(--primary))',
+                }}
+              >
+                Today
+              </span>
             )}
           </li>
         ))}
       </ul>
 
       <Link href="/program">
-        <Button className="w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90">
+        <Button
+          className="w-full rounded-full font-semibold"
+          style={{
+            background: 'linear-gradient(135deg, hsl(var(--primary)), hsl(var(--forest-mid)))',
+            color: 'hsl(var(--primary-foreground))',
+          }}
+        >
           Continue Program
         </Button>
       </Link>

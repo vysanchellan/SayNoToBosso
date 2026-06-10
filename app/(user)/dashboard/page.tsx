@@ -18,20 +18,21 @@ export default function UserDashboard() {
     <div id="main-content" className="space-y-6 max-w-6xl mx-auto">
       <NotificationBanner />
 
-      <div className="rounded-2xl bg-gradient-to-br from-secondary/10 to-white border p-6 sm:p-8 relative overflow-hidden">
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.03]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cpath d='M150 30C200 30 250 70 270 130C290 190 270 250 220 280C170 310 100 300 60 260C20 220 10 160 30 110C50 60 100 30 150 30Z' fill='%231A5C3A' opacity='0.5'/%3E%3C/svg%3E")`,
-            backgroundSize: "200px",
-          }}
-        />
+      <div
+        className="rounded-2xl p-6 sm:p-8 relative overflow-hidden text-white"
+        style={{
+          background: 'linear-gradient(135deg, #0D3D24 0%, #1A5C38 60%, #0A2B18 100%)',
+          border: '1px solid rgba(255,255,255,0.08)',
+          boxShadow: '0 8px 32px rgba(13,61,36,0.35)',
+        }}
+      >
+        <div className="absolute top-0 right-0 size-40 rounded-full blur-3xl pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(217,146,10,0.20) 0%, transparent 70%)' }} />
         <div className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
-            <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
-              Good morning, Thabo. 🌿
+            <h2 className="text-2xl font-bold text-white sm:text-3xl font-display">
+              Good morning, Thabo.
             </h2>
-            <p className="mt-1 text-muted-foreground">Day 14 of your recovery. You&apos;ve come a long way.</p>
+            <p className="mt-1 text-white/70">Day 14 of your recovery. You&apos;ve come a long way.</p>
           </div>
           <StreakCounter />
         </div>

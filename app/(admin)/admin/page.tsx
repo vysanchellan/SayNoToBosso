@@ -16,10 +16,10 @@ export default function AdminDashboard() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <KPICard label="Active Users" value="47" trend="↑ 12% this month" trendDir="up" icon={Users} iconBg="bg-slate-500" />
-        <KPICard label="Average Sobriety Days" value="18.4 days" trend="↑ 3.2 days vs last month" trendDir="up" icon={Flame} iconBg="bg-amber-500" />
-        <KPICard label="Program Completion Rate" value="73%" trend="↑ 5% this quarter" trendDir="up" icon={TrendingUp} iconBg="bg-green-600" />
-        <KPICard label="At-Risk Users" value="3" trend="Flagged for clinical attention" trendDir="down" icon={AlertTriangle} iconBg="bg-rose-500" />
+        <KPICard label="Active Users" value="47" trend="↑ 12% this month" icon={Users} variant="slate" />
+        <KPICard label="Average Sobriety Days" value="18.4 days" trend="↑ 3.2 days vs last month" icon={Flame} variant="amber" />
+        <KPICard label="Program Completion Rate" value="73%" trend="↑ 5% this quarter" icon={TrendingUp} variant="forest" />
+        <KPICard label="At-Risk Users" value="3" trend="Flagged for clinical attention" icon={AlertTriangle} variant="coral" />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">

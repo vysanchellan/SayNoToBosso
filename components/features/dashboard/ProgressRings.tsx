@@ -29,22 +29,24 @@ function Ring({ label, value, percent, color, sublabel }: RingProps) {
           />
         </svg>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-lg font-bold text-foreground">{value}</span>
+          <span className="text-2xl font-bold font-display ring-label" style={{ fontVariantNumeric: 'tabular-nums' }}>{value}</span>
         </div>
       </div>
       <span className="mt-2 text-sm font-medium text-foreground">{label}</span>
-      <span className="text-xs text-muted-foreground">{sublabel}</span>
+      <span className="text-xs text-muted-foreground uppercase tracking-wide">{sublabel}</span>
     </div>
   )
 }
 
 export default function ProgressRings() {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-      <Ring label="Sleep" value="6.5 hrs" percent={81} color="hsl(var(--secondary))" sublabel="vs 8hr goal" />
-      <Ring label="Hydration" value="50%" percent={50} color="hsl(200 60% 50%)" sublabel="glasses vs goal" />
-      <Ring label="Mood Avg" value="7.2" percent={72} color="hsl(var(--accent))" sublabel="week average" />
-      <Ring label="Craving" value="↓ 32%" percent={68} color="hsl(var(--primary))" sublabel="vs last week" />
+    <div className="rounded-2xl bg-card p-5 border" style={{ borderColor: 'hsl(var(--border))', boxShadow: 'inset 0 1px 3px rgba(13,61,36,0.04)' }}>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <Ring label="Sleep" value="6.5" percent={81} color="hsl(145, 40%, 48%)" sublabel="Sleep" />
+        <Ring label="Hydration" value="50%" percent={50} color="hsl(200, 65%, 48%)" sublabel="Hydration" />
+        <Ring label="Mood Avg" value="7.2" percent={72} color="hsl(38, 85%, 48%)" sublabel="Mood" />
+        <Ring label="Craving" value="↓ 32%" percent={68} color="hsl(155, 55%, 30%)" sublabel="Craving" />
+      </div>
     </div>
   )
 }

@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Clock, CheckCircle2 } from "lucide-react"
+import { CheckCircle2 } from "lucide-react"
 import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
@@ -42,11 +42,8 @@ export default function DailyCheckin() {
   }
 
   return (
-    <div className="rounded-2xl border bg-white p-6 shadow-sm">
-      <div className="flex items-center gap-2 mb-5">
-        <Clock className="size-4 text-muted-foreground" />
-        <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Morning Check-In</span>
-      </div>
+    <div className="rounded-2xl bg-card p-6 border" style={{ borderTop: '2px solid hsl(var(--primary))', borderColor: 'hsl(var(--border))' }}>
+      <p className="eyebrow mb-5">Morning Check-In</p>
 
       <h3 className="text-lg font-semibold text-foreground mb-1">Today&apos;s Check-In</h3>
       <p className="text-sm text-muted-foreground mb-6">How are you feeling this morning?</p>
@@ -61,7 +58,7 @@ export default function DailyCheckin() {
                 onClick={() => setMood(m.value)}
                 className={`flex flex-col items-center gap-1 rounded-xl p-3 transition-all ${
                   mood === m.value
-                    ? "scale-110 ring-2 ring-primary bg-primary/5"
+                    ? "scale-125 ring-2 ring-accent shadow-lg"
                     : "hover:bg-muted/50"
                 }`}
                 aria-label={`Mood: ${m.label}`}
@@ -71,7 +68,7 @@ export default function DailyCheckin() {
                   <motion.span
                     initial={{ opacity: 0, y: -5 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-[10px] font-medium text-primary"
+                    className="text-[10px] font-medium text-accent"
                   >
                     {m.label}
                   </motion.span>
@@ -95,8 +92,7 @@ export default function DailyCheckin() {
               onChange={(e) => setCraving(Number(e.target.value))}
               className="flex-1 h-2 rounded-full appearance-none cursor-pointer"
               style={{
-                background: `linear-gradient(to right, hsl(var(--primary)) ${craving * 10}%, hsl(var(--muted)) ${craving * 10}%)`,
-                accentColor: "hsl(var(--accent))",
+                background: `linear-gradient(to right, hsl(38, 85%, 48%), hsl(155, 55%, 30%) ${craving * 10}%, hsl(var(--muted)) ${craving * 10}%)`,
               }}
               aria-label="Craving intensity"
             />
@@ -135,7 +131,11 @@ export default function DailyCheckin() {
         <Button
           onClick={() => { setSubmitted(true); toast.success("Check-in logged ✓ Keep it up!") }}
           disabled={!mood}
-          className="w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90 py-3 text-base"
+          className="w-full rounded-full font-medium text-white py-3 text-base"
+          style={{
+            background: 'linear-gradient(135deg, hsl(155, 48%, 22%), hsl(155, 55%, 28%))',
+            boxShadow: '0 4px 14px rgba(13,61,36,0.40)',
+          }}
         >
           Log Today&apos;s Check-In
         </Button>
