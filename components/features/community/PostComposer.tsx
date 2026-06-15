@@ -25,7 +25,8 @@ export default function PostComposer() {
     return (
       <button
         onClick={() => setOpen(true)}
-        className="w-full rounded-2xl border-2 border-dashed border-muted-foreground/20 bg-white p-4 text-center text-sm text-muted-foreground hover:border-primary/50 hover:text-primary transition-colors"
+        className="w-full rounded-2xl border-2 border-dashed p-4 text-center text-sm transition-colors hover:border-primary/50 hover:text-primary"
+        style={{ borderColor: 'hsl(var(--muted-foreground) / 0.2)', color: 'hsl(var(--muted-foreground))', background: 'hsl(var(--card))' }}
       >
         Share with the community...
       </button>
@@ -33,7 +34,7 @@ export default function PostComposer() {
   }
 
   return (
-    <div className="rounded-2xl border bg-white p-4 shadow-sm">
+    <div className="rounded-2xl border p-4 shadow-sm" style={{ borderColor: 'hsl(var(--border))', background: 'hsl(var(--card))' }}>
       <textarea
         value={text}
         onChange={(e) => setText(e.target.value)}

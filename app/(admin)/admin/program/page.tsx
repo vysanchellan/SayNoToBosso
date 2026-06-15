@@ -4,7 +4,7 @@ import { useState } from "react"
 import type { LucideIcon } from "lucide-react"
 import { BookOpen, Activity, PenLine, HelpCircle, Eye, ToggleLeft, ToggleRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
+import { toast } from "sonner"
 
 const tiers = [
   { key: "mild", label: "Mild (6 weeks)" },
@@ -91,7 +91,7 @@ export default function AdminProgramPage() {
         <p className="text-sm text-muted-foreground">Manage recovery program content across all three tiers</p>
       </div>
 
-      <div className="flex gap-1 rounded-2xl border bg-white p-1 w-fit">
+      <div className="flex gap-1 rounded-2xl border bg-card p-1 w-fit">
         {tiers.map((t) => (
           <button
             key={t.key}
@@ -107,7 +107,7 @@ export default function AdminProgramPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <aside className="lg:col-span-3 space-y-1">
-          <div className="rounded-2xl border bg-white p-3">
+          <div className="rounded-2xl border bg-card p-3">
             <p className="text-xs font-semibold text-muted-foreground mb-2">WEEKS</p>
             {weeks.map((w) => (
               <button
@@ -131,7 +131,7 @@ export default function AdminProgramPage() {
         </aside>
 
         <div className="lg:col-span-6 space-y-4">
-          <div className="rounded-2xl border bg-white p-5">
+          <div className="rounded-2xl border bg-card p-5">
             <div className="flex items-center gap-3 mb-4">
               <span className="inline-flex items-center rounded-full bg-primary px-3 py-1 text-xs font-bold text-primary-foreground">Week {selectedWeek}</span>
               <div>
@@ -149,7 +149,7 @@ export default function AdminProgramPage() {
                 const toggled = toggles[`${selectedWeek}-${i}`]
 
                 return (
-                  <div key={i} className="rounded-xl border bg-white p-4">
+                  <div key={i} className="rounded-xl border bg-card p-4">
                     <div className="flex items-start gap-3">
                       <div className="size-9 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
                         <Icon className="size-4 text-primary" />
@@ -165,18 +165,17 @@ export default function AdminProgramPage() {
                       </div>
                     </div>
                     <div className="flex items-center gap-2 mt-3 border-t pt-3">
-                      <Tooltip>
-                        <TooltipTrigger render={
-                          <Button className="rounded-full h-7 text-[10px] bg-white border border-muted-foreground/20 text-muted-foreground hover:bg-muted">
-                            Edit Content
-                          </Button>
-                        } />
-                        <TooltipContent>Content editing available in production</TooltipContent>
-                      </Tooltip>
+                      <Button
+                        onClick={() => toast.success("Content editing opened. In production this would load the content editor.")}
+                        className="rounded-full h-7 text-[10px] border bg-card text-muted-foreground hover:bg-muted"
+                        style={{ borderColor: 'hsl(var(--border))' }}
+                      >
+                        Edit Content
+                      </Button>
                       {act.type === "Quiz" && (
                         <Button
                           onClick={() => setPreviewQuiz(act)}
-                          className="rounded-full h-7 text-[10px] bg-white border border-muted-foreground/20 text-muted-foreground hover:bg-muted"
+                          className="rounded-full h-7 text-[10px] bg-card border border-muted-foreground/20 text-muted-foreground hover:bg-muted"
                         >
                           <Eye className="size-3 mr-1" /> Preview
                         </Button>
@@ -209,7 +208,7 @@ export default function AdminProgramPage() {
         </div>
 
         <aside className="lg:col-span-3 space-y-4">
-          <div className="rounded-2xl border bg-white p-4">
+          <div className="rounded-2xl border bg-card p-4">
             <p className="text-xs font-semibold text-muted-foreground mb-3">WEEK {selectedWeek} STATISTICS</p>
             {stats.map((s) => (
               <div key={s.label} className="flex items-center justify-between py-2 border-b last:border-0">
@@ -223,7 +222,7 @@ export default function AdminProgramPage() {
 
       {previewQuiz && (
         <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/40 pt-12">
-          <div className="w-full max-w-lg rounded-2xl bg-white p-6 shadow-xl mx-4">
+          <div className="w-full max-w-lg rounded-2xl bg-card p-6 shadow-xl mx-4">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-base font-semibold">{previewQuiz.title}</h3>
               <button onClick={() => setPreviewQuiz(null)} className="size-8 rounded-lg flex items-center justify-center hover:bg-muted" aria-label="Close preview">

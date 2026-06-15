@@ -5,9 +5,14 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import {
   LayoutDashboard, Users, BarChart3, BookOpen, MessageSquare, Settings,
-  AlertTriangle, ChevronDown, Menu, Download,
+  AlertTriangle, ChevronDown, Menu, Download, LogOut,
 } from "lucide-react"
+import { useDemo } from "@/lib/demo-context"
 import ThemeToggle from "@/components/ui/ThemeToggle"
+
+function getInitials(name: string) {
+  return name.split(" ").map((n) => n[0]).join("").toUpperCase().slice(0, 2)
+}
 
 const navItems = [
   { href: "/admin", label: "Overview", icon: LayoutDashboard },
@@ -20,6 +25,10 @@ const navItems = [
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
+  const { admin } = useDemo()
+  const adminName = admin?.name || "Admin"
+  const adminRole = admin?.role || ""
+  const adminInitials = getInitials(adminName)
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   const isActive = (href: string) => pathname === href
@@ -76,16 +85,25 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <AlertTriangle className="size-4 shrink-0" />
             Alert Flags
           </Link>
+          <div className="my-2 mx-4 h-px" style={{ background: 'rgba(255,255,255,0.06)' }} />
+          <Link
+            href="/"
+            onClick={() => setSidebarOpen(false)}
+            className="flex items-center gap-3 px-3 py-2.5 rounded-xl mx-0 text-sm font-medium transition-all duration-150 cursor-pointer text-[hsl(145,25%,62%)] hover:text-[hsl(145,25%,85%)] hover:bg-white/[0.05]"
+          >
+            <LogOut className="size-4 shrink-0" />
+            Sign Out
+          </Link>
         </nav>
 
         <div className="mx-2 mb-3 p-3 rounded-xl" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}>
           <div className="flex items-center gap-3">
             <div className="size-9 rounded-full flex items-center justify-center text-sm font-bold" style={{ background: 'linear-gradient(135deg, hsl(155,48%,22%), hsl(155,55%,16%))', color: 'white' }}>
-              NS
+              {adminInitials}
             </div>
             <div>
-              <p className="text-sm font-medium" style={{ color: 'hsl(145,25%,85%)' }}>Dr. Naledi Sithole</p>
-              <p className="text-xs" style={{ color: 'hsl(145,15%,48%)' }}>Clinical Director</p>
+              <p className="text-sm font-medium" style={{ color: 'hsl(145,25%,85%)' }}>{adminName}</p>
+              <p className="text-xs" style={{ color: 'hsl(145,15%,48%)' }}>{adminRole}</p>
             </div>
           </div>
         </div>

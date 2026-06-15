@@ -121,34 +121,38 @@ export default function QuizCard({
             if (revealed && i === q.correct) state = "correct"
             else if (revealed && i === selected && i !== q.correct) state = "wrong"
 
+            const isSelected = selected === i && !revealed
+
             return (
               <button
                 key={i}
                 onClick={() => handleSelect(i)}
-                className={`flex w-full items-center gap-3 rounded-xl border p-3 text-left text-sm transition-all ${
+                className={`flex w-full items-center gap-3 rounded-xl border p-3 text-left text-sm transition-all cursor-pointer ${
                   state === "correct"
-                    ? "border-green-400 bg-green-50 text-green-800"
+                    ? "border-green-500 bg-green-50 text-green-800 ring-2 ring-green-300"
                     : state === "wrong"
-                      ? "border-red-300 bg-red-50 text-red-800"
-                      : selected === i
-                        ? "border-primary bg-primary/5 text-foreground"
-                        : "border-muted-foreground/20 bg-white text-foreground hover:border-primary/50"
+                      ? "border-red-400 bg-red-50 text-red-800 ring-2 ring-red-200"
+                      : isSelected
+                        ? "ring-2 ring-primary/40 text-foreground font-medium"
+                        : "border-muted-foreground/20 bg-card text-foreground hover:border-primary/50"
                 }`}
+                style={isSelected ? { borderColor: 'hsl(var(--primary))', background: 'hsl(var(--primary) / 0.06)' } : {}}
               >
                 <div
-                  className={`flex size-6 shrink-0 items-center justify-center rounded-full text-xs font-medium ${
+                  className={`flex size-7 shrink-0 items-center justify-center rounded-full text-sm font-bold ${
                     state === "correct"
                       ? "bg-green-500 text-white"
                       : state === "wrong"
                         ? "bg-red-500 text-white"
-                        : selected === i
-                          ? "bg-primary text-white"
+                        : isSelected
+                          ? "text-white"
                           : "bg-muted text-muted-foreground"
                   }`}
+                  style={isSelected ? { background: 'hsl(var(--primary))' } : {}}
                 >
-                  {state === "correct" ? <Check className="size-3" /> : state === "wrong" ? <X className="size-3" /> : String.fromCharCode(65 + i)}
+                  {state === "correct" ? <Check className="size-4" /> : state === "wrong" ? <X className="size-4" /> : String.fromCharCode(65 + i)}
                 </div>
-                {opt}
+                <span className={isSelected ? "font-medium" : ""}>{opt}</span>
               </button>
             )
           })}

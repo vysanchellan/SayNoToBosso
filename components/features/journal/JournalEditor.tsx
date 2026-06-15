@@ -109,8 +109,9 @@ export default function JournalEditor({
           </span>
           {entry.id && (
             <Dialog open={showDelete} onOpenChange={setShowDelete}>
-              <DialogTrigger render={<button className="p-1 text-muted-foreground hover:text-destructive" aria-label="Delete entry" />}>
-                <Trash2 className="size-4" />
+              <DialogTrigger render={<button className="flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium text-muted-foreground hover:text-destructive hover:border-destructive/30 hover:bg-destructive/5 transition-all" aria-label="Delete entry" style={{ borderColor: 'hsl(var(--border))' }} />}>
+                <Trash2 className="size-3.5" />
+                Delete
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
@@ -119,7 +120,7 @@ export default function JournalEditor({
                 </DialogHeader>
                 <DialogFooter showCloseButton>
                   <Button variant="destructive" onClick={() => { onDelete(entry.id); setShowDelete(false) }} className="rounded-full">
-                    Delete
+                    Delete Permanently
                   </Button>
                 </DialogFooter>
               </DialogContent>
@@ -183,17 +184,24 @@ export default function JournalEditor({
           <div className="mt-8 border-t pt-6">
             <p className="text-sm font-medium text-foreground mb-3">How are you feeling right now?</p>
             <div className="flex gap-2">
-              {moodEmojis.map((emoji) => (
-                <button
-                  key={emoji}
-                  onClick={() => { setMood(emoji); persist({ mood: emoji }) }}
-                  className={`rounded-xl border px-3 py-2 text-lg transition-all ${
-                    mood === emoji ? "border-primary bg-primary/10" : "border-muted-foreground/20 hover:border-primary/50"
-                  }`}
-                >
-                  {emoji}
-                </button>
-              ))}
+              {moodEmojis.map((emoji) => {
+                const isSelected = mood === emoji
+                return (
+                  <button
+                    key={emoji}
+                    onClick={() => { setMood(emoji); persist({ mood: emoji }) }}
+                    className="rounded-xl px-4 py-2.5 text-xl transition-all duration-150"
+                    style={{
+                      border: isSelected ? '2px solid hsl(var(--primary))' : '2px solid hsl(var(--border))',
+                      background: isSelected ? 'hsl(var(--primary) / 0.08)' : 'transparent',
+                      boxShadow: isSelected ? '0 0 0 4px hsl(var(--primary) / 0.12)' : 'none',
+                      transform: isSelected ? 'scale(1.15)' : 'scale(1)',
+                    }}
+                  >
+                    {emoji}
+                  </button>
+                )
+              })}
             </div>
           </div>
         </div>

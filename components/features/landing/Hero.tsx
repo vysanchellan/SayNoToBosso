@@ -32,7 +32,7 @@ const stats = [
 export default function Hero() {
   return (
     <section
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden dark"
       style={{
         background: "linear-gradient(135deg, #0a1f14 0%, #1a3d28 50%, #0f2d1e 100%)",
       }}

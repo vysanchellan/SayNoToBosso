@@ -2,7 +2,8 @@
 
 import { useState, useMemo } from "react"
 import { AnimatePresence } from "framer-motion"
-import { BookOpen, Award, Calendar } from "lucide-react"
+import { BookOpen, Award, Calendar, X, Check } from "lucide-react"
+import { Button } from "@/components/ui/button"
 import programData from "@/data/programs.json"
 import WeekCard from "@/components/features/program/WeekCard"
 import LessonViewer from "@/components/features/program/LessonViewer"
@@ -74,6 +75,7 @@ export default function ProgramPage() {
   const [activeLesson, setActiveLesson] = useState<string | null>(null)
   const [activeQuiz, setActiveQuiz] = useState<Activity | null>(null)
   const [activeJournal, setActiveJournal] = useState<Activity | null>(null)
+  const [quizScore, setQuizScore] = useState<{ score: number; total: number } | null>(null)
 
   const overallCompleted = useMemo(() => calcProgress(weeks), [weeks])
   const currentWeekCompleted = useMemo(() => calcCurrentWeek(weeks), [weeks])
@@ -81,6 +83,7 @@ export default function ProgramPage() {
   const progressPercent = (overallCompleted.done / overallCompleted.total) * 100
 
   const handleStartActivity = (activity: Activity) => {
+    setQuizScore(null)
     if (activity.type === "lesson") {
       setActiveLesson(activity.id)
     } else if (activity.type === "quiz") {
@@ -88,6 +91,11 @@ export default function ProgramPage() {
     } else if (activity.type === "journal") {
       setActiveJournal(activity)
     }
+  }
+
+  const handleQuizComplete = (score: number) => {
+    setQuizScore({ score, total: activeQuiz?.questions?.length || 0 })
+    setActiveQuiz(null)
   }
 
   return (
@@ -126,39 +134,63 @@ export default function ProgramPage() {
         ))}
       </div>
 
-      <AnimatePresence>
-        {activeLesson && (
-          <LessonViewer
-            key="lesson"
-            lessonId={activeLesson}
-            onClose={() => setActiveLesson(null)}
-            onComplete={() => setActiveLesson(null)}
-          />
-        )}
-      </AnimatePresence>
+      {quizScore && (
+        <div className="rounded-2xl border bg-card p-6 text-center" style={{ borderColor: 'hsl(var(--border))' }}>
+          <div className="mx-auto mb-3 flex size-14 items-center justify-center rounded-full" style={{ background: quizScore.score === quizScore.total ? 'hsl(var(--accent) / 0.15)' : 'hsl(var(--primary) / 0.1)' }}>
+            {quizScore.score === quizScore.total ? <Award className="size-7" style={{ color: 'hsl(var(--accent))' }} /> : <Check className="size-7" style={{ color: 'hsl(var(--primary))' }} />}
+          </div>
+          <h3 className="text-xl font-semibold" style={{ color: 'hsl(var(--forest))' }}>{quizScore.score}/{quizScore.total} Correct</h3>
+          <p className="text-sm mt-1" style={{ color: 'hsl(var(--text-secondary))' }}>
+            {quizScore.score === quizScore.total ? "Perfect score!" : quizScore.score >= quizScore.total * 0.8 ? "Great work!" : "Keep going!"}
+          </p>
+          <Button onClick={() => setQuizScore(null)} className="mt-4 rounded-full" variant="outline">Dismiss</Button>
+        </div>
+      )}
 
-      {activeQuiz && activeQuiz.questions && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/90 backdrop-blur-sm p-4">
-          <div className="w-full max-w-lg">
-            <QuizCard
-              questions={activeQuiz.questions}
-              onComplete={() => setActiveQuiz(null)}
-              onBack={() => setActiveQuiz(null)}
+      {activeLesson && (
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-background" onClick={(e) => { if (e.target === e.currentTarget) setActiveLesson(null) }}>
+          <div className="min-h-full">
+            <LessonViewer
+              key="lesson"
+              lessonId={activeLesson}
+              onClose={() => setActiveLesson(null)}
+              onComplete={() => setActiveLesson(null)}
             />
           </div>
         </div>
       )}
 
-      <AnimatePresence>
-        {activeJournal && activeJournal.prompt && (
-          <JournalPrompt
-            key="journal"
-            prompt={activeJournal.prompt}
-            onSave={() => {}}
-            onClose={() => setActiveJournal(null)}
-          />
-        )}
-      </AnimatePresence>
+      {activeQuiz && activeQuiz.questions && (
+        <div className="fixed inset-0 z-50 overflow-y-auto" style={{ background: 'hsl(var(--background) / 0.95)' }}>
+          <div className="min-h-full flex items-center justify-center p-4">
+            <div className="w-full max-w-lg">
+              <div className="flex justify-end mb-2">
+                <button onClick={() => setActiveQuiz(null)} className="p-2 text-muted-foreground hover:text-foreground" aria-label="Close quiz">
+                  <X className="size-5" />
+                </button>
+              </div>
+              <QuizCard
+                questions={activeQuiz.questions}
+                onComplete={handleQuizComplete}
+                onBack={() => setActiveQuiz(null)}
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {activeJournal && activeJournal.prompt && (
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-background">
+          <div className="min-h-full">
+            <JournalPrompt
+              key="journal"
+              prompt={activeJournal.prompt}
+              onSave={() => {}}
+              onClose={() => setActiveJournal(null)}
+            />
+          </div>
+        </div>
+      )}
     </div>
   )
 }

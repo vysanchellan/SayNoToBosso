@@ -82,7 +82,7 @@ export default function AdminReportsPage() {
           <p className="text-sm text-muted-foreground">White River Manor Recovery Centre</p>
         </div>
         <div className="flex items-center gap-2">
-          <div className="flex rounded-lg border border-muted-foreground/20 bg-white overflow-hidden">
+          <div className="flex rounded-lg border overflow-hidden" style={{ borderColor: 'hsl(var(--border))', background: 'hsl(var(--card))' }}>
             {["7", "30", "90", "custom"].map((r) => (
               <button
                 key={r}
@@ -103,7 +103,7 @@ export default function AdminReportsPage() {
             {generating ? <Loader2 className="size-4 mr-1 animate-spin" /> : <FileText className="size-4 mr-1" />}
             {generating ? "Generating..." : "Generate PDF Report"}
           </Button>
-          <Button className="rounded-full bg-white border border-muted-foreground/20 text-muted-foreground hover:bg-muted">
+          <Button className="rounded-full bg-card border border-muted-foreground/20 text-muted-foreground hover:bg-muted">
             <Download className="size-4 mr-1" /> Export CSV
           </Button>
         </div>
@@ -113,7 +113,7 @@ export default function AdminReportsPage() {
         <h2 className="text-sm font-semibold mb-3">Recovery Outcomes Summary</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {metricCards.map((m) => (
-            <div key={m.label} className="rounded-2xl border bg-white p-4">
+            <div key={m.label} className="rounded-2xl border bg-card p-4">
               <p className="text-xs text-muted-foreground mb-1">{m.label}</p>
               <p className="text-2xl font-bold text-foreground">{m.value}</p>
               {m.change && (
@@ -129,7 +129,7 @@ export default function AdminReportsPage() {
 
       <section>
         <h2 className="text-sm font-semibold mb-3">Mood &amp; Craving Trends (Facility-Wide)</h2>
-        <div className="rounded-2xl border bg-white p-5">
+        <div className="rounded-2xl border bg-card p-5">
           <div className="h-72">
             <ResponsiveContainer width="100%" height="100%">
               <ComposedChart data={moodData}>
@@ -154,7 +154,7 @@ export default function AdminReportsPage() {
 
       <section>
         <h2 className="text-sm font-semibold mb-3">Tool Engagement Rates</h2>
-        <div className="rounded-2xl border bg-white p-5">
+        <div className="rounded-2xl border bg-card p-5">
           <div className="h-72">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={toolData} layout="vertical">
@@ -180,7 +180,7 @@ export default function AdminReportsPage() {
 
       <section>
         <h2 className="text-sm font-semibold mb-3">Program Week Funnel</h2>
-        <div className="rounded-2xl border bg-white p-5">
+        <div className="rounded-2xl border bg-card p-5">
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={funnelData}>
@@ -206,7 +206,7 @@ export default function AdminReportsPage() {
 
       <section>
         <h2 className="text-sm font-semibold mb-3">Weekly Summary Table</h2>
-        <div className="rounded-2xl border bg-white overflow-hidden">
+        <div className="rounded-2xl border bg-card overflow-hidden">
           <table className="w-full text-xs">
             <thead>
               <tr className="border-b bg-muted/30">
@@ -221,7 +221,7 @@ export default function AdminReportsPage() {
             </thead>
             <tbody>
               {summaryRows.map((row, i) => (
-                <tr key={i} className={`border-b last:border-0 ${i % 2 === 0 ? "bg-white" : "bg-muted/10"}`}>
+                <tr key={i} className={`border-b last:border-0 ${i % 2 === 0 ? "bg-card" : "bg-muted/10"}`}>
                   <td className="p-3 font-medium">{row.week}</td>
                   <td className="p-3">{row.enrolled}</td>
                   <td className="p-3">{row.started}</td>

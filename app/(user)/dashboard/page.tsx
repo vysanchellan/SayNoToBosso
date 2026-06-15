@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useDemo } from "@/lib/demo-context"
 import StreakCounter from "@/components/features/dashboard/StreakCounter"
 import DailyCheckin from "@/components/features/dashboard/DailyCheckin"
 import { HydrationGoal, BreathingGoal, ProgramLesson } from "@/components/features/dashboard/TodaysGoals"
@@ -12,6 +13,8 @@ import TabBar from "@/components/features/dashboard/TabBar"
 import QuickTools from "@/components/features/dashboard/QuickTools"
 
 export default function UserDashboard() {
+  const { user } = useDemo()
+  const firstName = user?.firstName || "there"
   const [activeTab, setActiveTab] = useState("Today")
 
   return (
@@ -30,7 +33,7 @@ export default function UserDashboard() {
         <div className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <h2 className="text-2xl font-bold text-white sm:text-3xl font-display">
-              Good morning, Thabo.
+              Good morning, {firstName}.
             </h2>
             <p className="mt-1 text-white/70">Day 14 of your recovery. You&apos;ve come a long way.</p>
           </div>

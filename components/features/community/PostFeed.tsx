@@ -12,46 +12,47 @@ interface Post {
   timeAgo: string
   reactions: { helpful: number; relate: number; strength: number }
   replies: number
+  category?: string
 }
 
 const mockPosts: Post[] = [
   {
-    id: 1, initials: "JM", name: "J***n M.", day: 14,
+    id: 1, initials: "JM", name: "J***n M.", day: 14, category: "milestone",
     content: "The vivid dreams are finally getting less intense. Week 2 breathing exercises helped so much.",
     timeAgo: "2 hours ago", reactions: { helpful: 5, relate: 8, strength: 3 }, replies: 2,
   },
   {
-    id: 2, initials: "SK", name: "S***h K.", day: 7,
+    id: 2, initials: "SK", name: "S***h K.", day: 7, category: "struggling",
     content: "Today was really hard. Cravings at 3pm almost got me. Used the grounding tool and it actually worked.",
     timeAgo: "5 hours ago", reactions: { helpful: 12, relate: 15, strength: 7 }, replies: 4,
   },
   {
-    id: 3, initials: "MT", name: "M***k T.", day: 30,
+    id: 3, initials: "MT", name: "M***k T.", day: 30, category: "milestone",
     content: "ONE MONTH. I genuinely didn't think I could do this. The nutrition tips in week 3 changed my relationship with food entirely.",
     timeAgo: "1 day ago", reactions: { helpful: 18, relate: 10, strength: 20 }, replies: 6,
   },
   {
-    id: 4, initials: "LN", name: "L***e N.", day: 21,
+    id: 4, initials: "LN", name: "L***e N.", day: 21, category: "gratitude",
     content: "The sleep tracker showed me I'm finally getting REM sleep again. My counsellor explained what that means and I cried.",
     timeAgo: "1 day ago", reactions: { helpful: 7, relate: 12, strength: 9 }, replies: 3,
   },
   {
-    id: 5, initials: "TD", name: "T***o D.", day: 3,
+    id: 5, initials: "TD", name: "T***o D.", day: 3, category: "general",
     content: "Just starting. Terrified. But I'm here.",
     timeAgo: "2 days ago", reactions: { helpful: 22, relate: 18, strength: 25 }, replies: 8,
   },
   {
-    id: 6, initials: "RM", name: "R***l M.", day: 45,
+    id: 6, initials: "RM", name: "R***l M.", day: 45, category: "tip",
     content: "For anyone in week 1 reading this — it gets so much easier. I promise. Day 45 here.",
     timeAgo: "2 days ago", reactions: { helpful: 14, relate: 9, strength: 11 }, replies: 5,
   },
   {
-    id: 7, initials: "CB", name: "C***l B.", day: 14,
+    id: 7, initials: "CB", name: "C***l B.", day: 14, category: "tip",
     content: "The journal prompts feel cheesy at first but they sneak up on you. Wrote for 40 minutes last night without realising.",
     timeAgo: "3 days ago", reactions: { helpful: 6, relate: 11, strength: 4 }, replies: 2,
   },
   {
-    id: 8, initials: "DP", name: "D***n P.", day: 60,
+    id: 8, initials: "DP", name: "D***n P.", day: 60, category: "milestone",
     content: "Just got my 60-day badge. Two months clean. My family noticed before I did.",
     timeAgo: "4 days ago", reactions: { helpful: 25, relate: 13, strength: 30 }, replies: 7,
   },
@@ -65,36 +66,73 @@ function getColor(initials: string) {
   return colorMap[idx % colorMap.length]
 }
 
+const sortTabs = ["Latest", "Most Helpful", "Milestones"]
+const categoryTabs = ["All", "Milestone", "Struggling", "Tip", "Gratitude", "General"]
+
 export default function PostFeed() {
-  const [filter, setFilter] = useState("Latest")
+  const [sortFilter, setSortFilter] = useState("Latest")
+  const [categoryFilter, setCategoryFilter] = useState("All")
+
+  let filtered = [...mockPosts]
+
+  if (categoryFilter !== "All") {
+    filtered = filtered.filter((p) => p.category === categoryFilter.toLowerCase())
+  }
+
+  if (sortFilter === "Most Helpful") {
+    filtered.sort((a, b) => (b.reactions.helpful + b.reactions.relate + b.reactions.strength) - (a.reactions.helpful + a.reactions.relate + a.reactions.strength))
+  } else if (sortFilter === "Milestones") {
+    filtered = filtered.filter((p) => p.category === "milestone")
+  }
+
   const [expanded, setExpanded] = useState<number | null>(null)
 
   return (
     <div className="space-y-4">
-      <div className="flex gap-2">
-        {["Latest", "Most Helpful", "Milestones"].map((f) => (
+      <div className="flex flex-wrap gap-2">
+        {categoryTabs.map((f) => (
           <button
             key={f}
-            onClick={() => setFilter(f)}
+            onClick={() => setCategoryFilter(f)}
             className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
-              filter === f ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-muted/80"
+              categoryFilter === f
+                ? "text-foreground"
+                : "text-muted-foreground hover:text-foreground"
             }`}
+            style={categoryFilter === f ? { background: 'hsl(var(--sage-light))', color: 'hsl(var(--forest))' } : {}}
           >
             {f}
           </button>
         ))}
       </div>
 
-      {mockPosts.map((post) => (
-        <div key={post.id} className="rounded-2xl border bg-white p-4 shadow-sm">
+      <div className="flex gap-2">
+        {sortTabs.map((f) => (
+          <button
+            key={f}
+            onClick={() => setSortFilter(f)}
+            className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
+              sortFilter === f
+                ? "text-foreground"
+                : "text-muted-foreground hover:text-foreground"
+            }`}
+            style={sortFilter === f ? { background: 'hsl(var(--sage-light))', color: 'hsl(var(--forest))' } : {}}
+          >
+            {f}
+          </button>
+        ))}
+      </div>
+
+      {filtered.map((post) => (
+        <div key={post.id} className="rounded-2xl border bg-card p-4 shadow-sm" style={{ borderColor: 'hsl(var(--border))' }}>
           <div className="flex items-start gap-3">
             <div className={`size-9 shrink-0 rounded-full ${getColor(post.initials)} flex items-center justify-center text-xs font-bold text-white`}>
               {post.initials}
             </div>
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-sm font-medium">{post.name}</span>
-                <span className="rounded-full bg-accent/10 px-2 py-0.5 text-[10px] font-medium text-accent">
+                <span className="text-sm font-medium text-foreground">{post.name}</span>
+                <span className="rounded-full px-2 py-0.5 text-[10px] font-medium" style={{ background: 'hsl(var(--accent) / 0.1)', color: 'hsl(var(--accent))' }}>
                   Day {post.day}
                 </span>
                 <span className="text-[10px] text-muted-foreground">{post.timeAgo}</span>
@@ -123,7 +161,7 @@ export default function PostFeed() {
               </div>
 
               {expanded === post.id && (
-                <div className="mt-3 border-t pt-3 space-y-2">
+                <div className="mt-3 border-t pt-3 space-y-2" style={{ borderColor: 'hsl(var(--border))' }}>
                   <div className="flex items-start gap-2 text-xs text-muted-foreground">
                     <div className="size-6 shrink-0 rounded-full bg-muted flex items-center justify-center text-[9px] font-medium">
                       AN

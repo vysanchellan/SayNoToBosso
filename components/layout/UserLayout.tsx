@@ -14,8 +14,8 @@ import {
   HeartPulse,
   Bell,
   ChevronDown,
-  Flame,
 } from "lucide-react"
+import { useDemo } from "@/lib/demo-context"
 import CrisisModal from "@/components/features/dashboard/CrisisModal"
 import ThemeToggle from "@/components/ui/ThemeToggle"
 import MobileBottomNav from "@/components/layout/MobileBottomNav"
@@ -52,8 +52,17 @@ const navItems = [
   { label: "Profile", icon: UserCircle, href: "/profile" },
 ]
 
+function getInitials(name: string) {
+  return name.split(" ").map((n) => n[0]).join("").toUpperCase().slice(0, 2)
+}
+
 export default function UserLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname()
+  const { user } = useDemo()
+  const displayName = user?.name || "User"
+  const initials = getInitials(displayName)
+  const firstName = user?.firstName || "User"
+  const streak = user?.streak || 0
 
   return (
     <SidebarProvider defaultOpen>
@@ -136,13 +145,13 @@ export default function UserLayout({ children }: { children: ReactNode }) {
                 <SidebarMenuButton size="lg">
                   <Avatar className="size-6 shrink-0">
                     <AvatarImage src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" />
-                    <AvatarFallback>TM</AvatarFallback>
+                    <AvatarFallback>{initials}</AvatarFallback>
                   </Avatar>
                   <div className="grid flex-1 text-left text-sm leading-tight group-data-[collapsible=icon]:hidden">
-                    <span className="truncate font-semibold text-white">Thabo M.</span>
+                    <span className="truncate font-semibold text-white">{displayName}</span>
                     <div className="flex items-center gap-1 mt-0.5">
                       <span className="text-amber-400 text-xs">🔥</span>
-                      <span className="text-amber-400 text-xs font-semibold tabular-nums">14</span>
+                      <span className="text-amber-400 text-xs font-semibold tabular-nums">{streak}</span>
                       <span style={{ color: 'hsl(145,15%,45%)' }} className="text-xs">day streak</span>
                     </div>
                   </div>
@@ -162,7 +171,7 @@ export default function UserLayout({ children }: { children: ReactNode }) {
                 </h1>
                 <div className="hidden sm:flex items-center">
                   <span className="rounded-full px-3 py-1 text-xs font-medium" style={{ background: 'hsl(var(--secondary) / 0.2)', color: 'hsl(var(--secondary))' }}>
-                    Day 14 of 70 &mdash; Week 2: Brain Reset
+                    Day {user?.dayInProgram || 14} of 70 &mdash; Week {user?.currentWeek || 2}: Brain Reset
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
@@ -177,7 +186,7 @@ export default function UserLayout({ children }: { children: ReactNode }) {
                     <DropdownMenuTrigger render={<button className="flex items-center gap-2" aria-label="User menu" />}>
                       <Avatar className="size-8">
                         <AvatarImage src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" />
-                        <AvatarFallback>TM</AvatarFallback>
+                        <AvatarFallback>{initials}</AvatarFallback>
                       </Avatar>
                       <ChevronDown className="size-4 text-muted-foreground hidden sm:block" />
                     </DropdownMenuTrigger>
@@ -189,7 +198,7 @@ export default function UserLayout({ children }: { children: ReactNode }) {
                         <Link href="/settings" className="w-full">Settings</Link>
                       </DropdownMenuItem>
                       <DropdownMenuItem>
-                        <Link href="/login" className="w-full">Sign Out</Link>
+                        <Link href="/" className="w-full">Sign Out</Link>
                       </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>

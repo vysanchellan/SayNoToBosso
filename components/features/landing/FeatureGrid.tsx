@@ -35,7 +35,7 @@ const features = [
 
 export default function FeatureGrid() {
   return (
-    <section className="py-20 sm:py-28 bg-muted/30" aria-label="Features">
+    <section id="research" className="py-20 sm:py-28 bg-muted/30" aria-label="Features">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
@@ -47,15 +47,25 @@ export default function FeatureGrid() {
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="group rounded-2xl bg-white p-6 sm:p-8 transition-all duration-300 hover:shadow-md"
+              className="group rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              style={{
+                background: 'hsl(var(--card))',
+                border: '1px solid hsl(var(--border))',
+                boxShadow: '0 2px 12px rgba(13,61,36,0.06)',
+              }}
             >
-              <div className="mb-4 flex size-11 items-center justify-center rounded-full bg-secondary/20 sm:size-12">
-                <feature.icon className="size-5 text-secondary sm:size-6" />
+              <div
+                className="mb-4 flex size-12 items-center justify-center rounded-full sm:size-14"
+                style={{
+                  background: 'linear-gradient(135deg, hsl(var(--secondary) / 0.3), hsl(var(--secondary) / 0.1))',
+                }}
+              >
+                <feature.icon className="size-6 sm:size-7" style={{ color: 'hsl(var(--primary))' }} />
               </div>
-              <h3 className="mb-2 text-lg font-semibold text-foreground">
+              <h3 className="mb-2 text-lg font-semibold" style={{ color: 'hsl(var(--forest))' }}>
                 {feature.title}
               </h3>
-              <p className="text-sm leading-relaxed text-muted-foreground">
+              <p className="text-sm leading-relaxed" style={{ color: 'hsl(var(--text-secondary))' }}>
                 {feature.description}
               </p>
             </div>

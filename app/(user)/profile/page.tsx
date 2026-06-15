@@ -20,7 +20,7 @@ export default function ProfilePage() {
     <div id="main-content" className="max-w-4xl mx-auto space-y-6">
       <h1 className="text-2xl font-bold">Your Profile</h1>
 
-      <div className="flex gap-1 rounded-2xl border bg-white p-1 overflow-x-auto" style={{ scrollbarWidth: "none" }}>
+      <div className="flex gap-1 rounded-2xl border p-1 overflow-x-auto" style={{ scrollbarWidth: "none", background: 'hsl(var(--card))', borderColor: 'hsl(var(--border))' }}>
         {tabs.map((t) => (
           <button
             key={t.key}

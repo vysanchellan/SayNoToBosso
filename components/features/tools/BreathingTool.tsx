@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useCallback } from "react"
 import { Play, Pause, StopCircle, Volume2, VolumeX } from "lucide-react"
 import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
@@ -54,7 +54,7 @@ const phaseColor: Record<Phase, { from: string; to: string }> = {
   exhale: { from: "#1A5C3A", to: "#9fcfb6" },
 }
 
-function playBeepSound(soundOn: boolean) {
+function playBeep(soundOn: boolean) {
   if (!soundOn) return
   try {
     const ctx = new AudioContext()
@@ -82,101 +82,111 @@ export default function BreathingTool() {
   const [elapsed, setElapsed] = useState(0)
 
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
-  const animRef = useRef<number | null>(null)
+  const animRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const roundRef = useRef(round)
+  const phaseRef = useRef(phaseIndex)
+  const soundRef = useRef(soundOn)
 
-  const runTimer = (duration: number) => {
+  useEffect(() => { roundRef.current = round }, [round])
+  useEffect(() => { phaseRef.current = phaseIndex }, [phaseIndex])
+  useEffect(() => { soundRef.current = soundOn }, [soundOn])
+
+  const clearTimers = useCallback(() => {
+    if (timerRef.current) { clearInterval(timerRef.current); timerRef.current = null }
+    if (animRef.current) { clearInterval(animRef.current); animRef.current = null }
+  }, [])
+
+  const advance = useCallback(() => {
+    const ex = selected
+    if (!ex) return
+    const nextPi = phaseRef.current + 1
+    if (nextPi >= ex.phases.length) {
+      if (roundRef.current >= ex.totalRounds) {
+        setState("complete")
+        toast.success("Session complete. That's this week's 🌿")
+        return
+      }
+      setRound((r) => { const nr = r + 1; roundRef.current = nr; return nr })
+      setPhaseIndex(0)
+      phaseRef.current = 0
+      const p = ex.phases[0]
+      setCountdown(p.duration)
+      setProgress(0)
+      playBeep(soundRef.current)
+      runTimerFunc(p.duration)
+    } else {
+      setPhaseIndex(nextPi)
+      phaseRef.current = nextPi
+      const p = ex.phases[nextPi]
+      setCountdown(p.duration)
+      setProgress(0)
+      playBeep(soundRef.current)
+      runTimerFunc(p.duration)
+    }
+  }, [selected])
+
+  const runTimerFunc = useCallback((duration: number) => {
     let c = duration
     timerRef.current = setInterval(() => {
       c -= 0.05
       setCountdown(Math.ceil(c))
       setProgress(1 - c / duration)
       if (c <= 0) {
-        clearInterval(timerRef.current!)
+        if (timerRef.current) clearInterval(timerRef.current)
         advance()
       }
     }, 50)
-  }
+  }, [advance])
 
-  const advance = () => {
-    const ex = selected
-    if (!ex) return
-    const nextPi = phaseIndex + 1
-    if (nextPi >= ex.phases.length) {
-      if (round >= ex.totalRounds) {
-        setState("complete")
-        toast.success("Session complete. That's this week's 🌿")
-        return
-      }
-      setRound((r) => r + 1)
-      setPhaseIndex(0)
-      const p = ex.phases[0]
-      setCountdown(p.duration)
-      setProgress(0)
-      playBeepSound(soundOn)
-      runTimer(p.duration)
-    } else {
-      setPhaseIndex(nextPi)
-      const p = ex.phases[nextPi]
-      setCountdown(p.duration)
-      setProgress(0)
-      playBeepSound(soundOn)
-      runTimer(p.duration)
-    }
-  }
-
-  const startExercise = () => {
+  const startExercise = useCallback(() => {
     if (!selected) return
     setState("active")
     setRound(1)
+    roundRef.current = 1
     setPhaseIndex(0)
+    phaseRef.current = 0
     setElapsed(0)
-    startTimeRef.current = Date.now()
 
     const firstPhase = selected.phases[0]
     setCountdown(firstPhase.duration)
     setProgress(0)
-    playBeepSound(soundOn)
-    runTimer(firstPhase.duration)
+    playBeep(soundRef.current)
+    runTimerFunc(firstPhase.duration)
 
-    animRef.current = window.setInterval(() => {
+    animRef.current = setInterval(() => {
       setElapsed((e) => e + 0.1)
     }, 100)
-  }
+  }, [selected, runTimerFunc])
 
-  const startTimeRef = useRef(0)
-
-  const pause = () => {
-    if (timerRef.current) clearInterval(timerRef.current)
-    if (animRef.current) clearInterval(animRef.current)
+  const pause = useCallback(() => {
+    clearTimers()
     setState("paused")
-  }
+  }, [clearTimers])
 
-  const resume = () => {
-    if (!selected) return
+  const resume = useCallback(() => {
     setState("active")
-    runTimer(countdown)
-    animRef.current = window.setInterval(() => {
+    if (!selected) return
+    runTimerFunc(countdown)
+    animRef.current = setInterval(() => {
       setElapsed((e) => e + 0.1)
     }, 100)
-  }
+  }, [selected, countdown, runTimerFunc])
 
-  const stop = () => {
-    if (timerRef.current) clearInterval(timerRef.current)
-    if (animRef.current) clearInterval(animRef.current)
+  const stop = useCallback(() => {
+    clearTimers()
     setState("idle")
     setRound(1)
+    roundRef.current = 1
     setPhaseIndex(0)
+    phaseRef.current = 0
     setCountdown(0)
     setProgress(0)
     setElapsed(0)
-  }
+  }, [clearTimers])
 
   useEffect(() => {
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current)
-      if (animRef.current) clearInterval(animRef.current)
-    }
-  }, [])
+    return () => clearTimers()
+  }, [clearTimers])
 
   const phase = selected?.phases[phaseIndex]
   const scale = phase
@@ -192,7 +202,7 @@ export default function BreathingTool() {
 
   if (state === "complete") {
     return (
-      <div className="flex flex-col items-center justify-center rounded-2xl bg-gradient-to-br from-green-900 to-primary p-8 text-white min-h-[400px]">
+      <div className="flex flex-col items-center justify-center rounded-2xl p-8 min-h-[400px] text-white" style={{ background: 'linear-gradient(135deg, hsl(var(--primary)), hsl(var(--forest-mid)))' }}>
         <div className="flex size-16 items-center justify-center rounded-full bg-white/20 mb-4">
           <svg className="size-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5"/></svg>
         </div>
@@ -217,9 +227,10 @@ export default function BreathingTool() {
             <button
               key={ex.name}
               onClick={() => setSelected(ex)}
-              className="rounded-2xl border bg-white p-5 text-left hover:shadow-md hover:-translate-y-0.5 transition-all"
+              className="rounded-2xl border bg-card p-5 text-left hover:shadow-md hover:-translate-y-0.5 transition-all"
+              style={{ borderColor: 'hsl(var(--border))' }}
             >
-              <h4 className="text-sm font-semibold text-foreground">{ex.name}</h4>
+              <h4 className="text-sm font-semibold" style={{ color: 'hsl(var(--forest))' }}>{ex.name}</h4>
               <p className="mt-1 text-xs text-muted-foreground">{ex.desc}</p>
               <div className="mt-3 flex gap-1">
                 {ex.phases.map((p, i) => (
@@ -234,7 +245,7 @@ export default function BreathingTool() {
   }
 
   return (
-    <div className="rounded-2xl bg-gradient-to-br from-green-900 to-primary p-8 text-white">
+    <div className="rounded-2xl p-8 text-white" style={{ background: 'linear-gradient(135deg, hsl(var(--primary)), hsl(var(--forest-mid)))' }}>
       <div className="flex items-center justify-between mb-6">
         <div>
           <h3 className="text-lg font-semibold">{selected.name}</h3>

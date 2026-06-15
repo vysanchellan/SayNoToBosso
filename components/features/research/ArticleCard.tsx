@@ -1,11 +1,19 @@
-import { Clock } from "lucide-react"
+import { Clock, ArrowRight } from "lucide-react"
 
-const categoryColors: Record<string, string> = {
-  Science: "bg-blue-100 text-blue-700",
-  Nutrition: "bg-orange-100 text-orange-700",
-  Sleep: "bg-indigo-100 text-indigo-700",
-  "Mental Health": "bg-purple-100 text-purple-700",
-  "Cannabis & SA": "bg-amber-100 text-amber-700",
+const categoryColors: Record<string, { bg: string; text: string }> = {
+  Science: { bg: 'hsl(210,40%,92%)', text: 'hsl(210,65%,35%)' },
+  Nutrition: { bg: 'hsl(30,80%,92%)', text: 'hsl(25,70%,40%)' },
+  Sleep: { bg: 'hsl(240,50%,92%)', text: 'hsl(240,55%,40%)' },
+  "Mental Health": { bg: 'hsl(280,30%,92%)', text: 'hsl(280,45%,45%)' },
+  "Cannabis & SA": { bg: 'hsl(42,90%,92%)', text: 'hsl(38,85%,35%)' },
+}
+
+const categoryIconColors: Record<string, string> = {
+  Science: 'hsl(210,65%,35%)',
+  Nutrition: 'hsl(25,70%,40%)',
+  Sleep: 'hsl(240,55%,40%)',
+  "Mental Health": 'hsl(280,45%,45%)',
+  "Cannabis & SA": 'hsl(38,85%,35%)',
 }
 
 export default function ArticleCard({
@@ -15,7 +23,6 @@ export default function ArticleCard({
   readTime,
   author,
   date,
-  featured,
   onClick,
 }: {
   category: string
@@ -24,18 +31,24 @@ export default function ArticleCard({
   readTime: string
   author: string
   date: string
-  featured?: boolean
   onClick: () => void
 }) {
+  const cc = categoryColors[category] || { bg: 'hsl(var(--muted))', text: 'hsl(var(--muted-foreground))' }
+
   return (
     <button
       onClick={onClick}
-      className={`group flex flex-col rounded-2xl border bg-white p-5 text-left shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5 ${
-        featured ? "border-primary/20 hover:border-primary/40" : ""
-      }`}
+      className="group flex flex-col rounded-2xl border bg-card p-5 text-left transition-all duration-200 hover:-translate-y-0.5"
+      style={{
+        borderColor: 'hsl(var(--border))',
+        boxShadow: '0 2px 8px rgba(13,61,36,0.05)',
+      }}
     >
       <div className="flex items-center gap-2 mb-3">
-        <span className={`rounded-full px-2.5 py-0.5 text-[10px] font-medium ${categoryColors[category] || "bg-muted text-muted-foreground"}`}>
+        <span
+          className="rounded-full px-2.5 py-0.5 text-[10px] font-semibold"
+          style={{ background: cc.bg, color: cc.text }}
+        >
           {category}
         </span>
         <span className="flex items-center gap-1 text-[10px] text-muted-foreground">
@@ -43,20 +56,23 @@ export default function ArticleCard({
         </span>
       </div>
 
-      <h3 className="text-base font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+      <h3
+        className="text-base font-semibold mb-2 group-hover:underline underline-offset-2 transition-colors"
+        style={{ color: 'hsl(var(--forest))' }}
+      >
         {title}
       </h3>
 
-      <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2 mb-4 flex-1">
+      <p className="text-sm leading-relaxed line-clamp-2 mb-4 flex-1" style={{ color: 'hsl(var(--text-secondary))' }}>
         {summary}
       </p>
 
-      <div className="flex items-center justify-between border-t pt-3 mt-auto">
+      <div className="flex items-center justify-between pt-3 mt-auto" style={{ borderTop: '1px solid hsl(var(--border))' }}>
         <span className="text-xs text-muted-foreground">
           {author} · {date}
         </span>
-        <span className="text-xs font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-          Read Article →
+        <span className="flex items-center gap-1 text-xs font-semibold transition-all group-hover:gap-1.5" style={{ color: 'hsl(var(--primary))' }}>
+          Read <ArrowRight className="size-3" />
         </span>
       </div>
     </button>

@@ -1,11 +1,15 @@
 "use client"
 
+import { usePathname } from "next/navigation"
 import { useDemo } from "@/lib/demo-context"
 import { AlertTriangle } from "lucide-react"
 
 export default function DemoBanner() {
   const { isDemo } = useDemo()
+  const pathname = usePathname()
+
   if (!isDemo) return null
+  if (pathname.startsWith("/dashboard") || pathname.startsWith("/admin") || pathname.startsWith("/program") || pathname.startsWith("/tools") || pathname.startsWith("/journal") || pathname.startsWith("/research") || pathname.startsWith("/community") || pathname.startsWith("/profile") || pathname.startsWith("/crisis")) return null
 
   return (
     <div

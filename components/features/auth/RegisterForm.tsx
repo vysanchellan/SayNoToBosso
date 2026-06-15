@@ -306,15 +306,15 @@ export default function RegisterForm() {
                 Age Range
               </Label>
               <Select value={ageRange} onValueChange={(v) => v && setAgeRange(v)}>
-                <SelectTrigger className="w-full border-white/20 bg-white/5 text-white data-placeholder:text-white/30">
+                <SelectTrigger className="w-full rounded-xl border-white/20 bg-white/5 text-white shadow-sm backdrop-blur data-placeholder:text-white/40 transition-all focus:border-accent/50 focus:ring-2 focus:ring-accent/20">
                   <SelectValue placeholder="Select your age range" />
                 </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="18-24">18-24</SelectItem>
-                  <SelectItem value="25-34">25-34</SelectItem>
-                  <SelectItem value="35-44">35-44</SelectItem>
-                  <SelectItem value="45-54">45-54</SelectItem>
-                  <SelectItem value="55+">55+</SelectItem>
+                <SelectContent className="rounded-xl border-white/10 bg-[#1a2a1e] text-white shadow-2xl backdrop-blur-xl">
+                  <SelectItem value="18-24" className="text-white/80 hover:text-white hover:bg-white/10 focus:bg-white/10 focus:text-white cursor-pointer">18-24</SelectItem>
+                  <SelectItem value="25-34" className="text-white/80 hover:text-white hover:bg-white/10 focus:bg-white/10 focus:text-white cursor-pointer">25-34</SelectItem>
+                  <SelectItem value="35-44" className="text-white/80 hover:text-white hover:bg-white/10 focus:bg-white/10 focus:text-white cursor-pointer">35-44</SelectItem>
+                  <SelectItem value="45-54" className="text-white/80 hover:text-white hover:bg-white/10 focus:bg-white/10 focus:text-white cursor-pointer">45-54</SelectItem>
+                  <SelectItem value="55+" className="text-white/80 hover:text-white hover:bg-white/10 focus:bg-white/10 focus:text-white cursor-pointer">55+</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -324,15 +324,15 @@ export default function RegisterForm() {
                 How long have you been using cannabis?
               </Label>
               <Select value={duration} onValueChange={(v) => v && setDuration(v)}>
-                <SelectTrigger className="w-full border-white/20 bg-white/5 text-white data-placeholder:text-white/30">
+                <SelectTrigger className="w-full rounded-xl border-white/20 bg-white/5 text-white shadow-sm backdrop-blur data-placeholder:text-white/40 transition-all focus:border-accent/50 focus:ring-2 focus:ring-accent/20">
                   <SelectValue placeholder="Select duration" />
                 </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="Less than 6 months">Less than 6 months</SelectItem>
-                  <SelectItem value="6-12 months">6-12 months</SelectItem>
-                  <SelectItem value="1-2 years">1-2 years</SelectItem>
-                  <SelectItem value="3-5 years">3-5 years</SelectItem>
-                  <SelectItem value="5+ years">5+ years</SelectItem>
+                <SelectContent className="rounded-xl border-white/10 bg-[#1a2a1e] text-white shadow-2xl backdrop-blur-xl">
+                  <SelectItem value="Less than 6 months" className="text-white/80 hover:text-white hover:bg-white/10 focus:bg-white/10 focus:text-white cursor-pointer">Less than 6 months</SelectItem>
+                  <SelectItem value="6-12 months" className="text-white/80 hover:text-white hover:bg-white/10 focus:bg-white/10 focus:text-white cursor-pointer">6-12 months</SelectItem>
+                  <SelectItem value="1-2 years" className="text-white/80 hover:text-white hover:bg-white/10 focus:bg-white/10 focus:text-white cursor-pointer">1-2 years</SelectItem>
+                  <SelectItem value="3-5 years" className="text-white/80 hover:text-white hover:bg-white/10 focus:bg-white/10 focus:text-white cursor-pointer">3-5 years</SelectItem>
+                  <SelectItem value="5+ years" className="text-white/80 hover:text-white hover:bg-white/10 focus:bg-white/10 focus:text-white cursor-pointer">5+ years</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -342,14 +342,14 @@ export default function RegisterForm() {
                 How often do you currently use?
               </Label>
               <Select value={frequency} onValueChange={(v) => v && setFrequency(v)}>
-                <SelectTrigger className="w-full border-white/20 bg-white/5 text-white data-placeholder:text-white/30">
+                <SelectTrigger className="w-full rounded-xl border-white/20 bg-white/5 text-white shadow-sm backdrop-blur data-placeholder:text-white/40 transition-all focus:border-accent/50 focus:ring-2 focus:ring-accent/20">
                   <SelectValue placeholder="Select frequency" />
                 </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="Occasionally (1-2×/week)">Occasionally (1-2×/week)</SelectItem>
-                  <SelectItem value="Regularly (3-5×/week)">Regularly (3-5×/week)</SelectItem>
-                  <SelectItem value="Daily">Daily</SelectItem>
-                  <SelectItem value="Multiple times daily">Multiple times daily</SelectItem>
+                <SelectContent className="rounded-xl border-white/10 bg-[#1a2a1e] text-white shadow-2xl backdrop-blur-xl">
+                  <SelectItem value="Occasionally (1-2×/week)" className="text-white/80 hover:text-white hover:bg-white/10 focus:bg-white/10 focus:text-white cursor-pointer">Occasionally (1-2×/week)</SelectItem>
+                  <SelectItem value="Regularly (3-5×/week)" className="text-white/80 hover:text-white hover:bg-white/10 focus:bg-white/10 focus:text-white cursor-pointer">Regularly (3-5×/week)</SelectItem>
+                  <SelectItem value="Daily" className="text-white/80 hover:text-white hover:bg-white/10 focus:bg-white/10 focus:text-white cursor-pointer">Daily</SelectItem>
+                  <SelectItem value="Multiple times daily" className="text-white/80 hover:text-white hover:bg-white/10 focus:bg-white/10 focus:text-white cursor-pointer">Multiple times daily</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -379,7 +379,7 @@ export default function RegisterForm() {
               )}
             </div>
 
-            <div className="flex items-center justify-between rounded-lg border border-white/10 p-4">
+            <div className="flex items-center justify-between rounded-lg border border-white/10 p-4" onClick={(e) => e.stopPropagation()}>
               <div>
                 <Label htmlFor="inFacility" className="text-sm text-white/80">
                   Currently in a residential facility?

@@ -131,17 +131,23 @@ export default function ArticleReader({
 
   return (
     <motion.div
-      initial={{ x: "100%" }}
-      animate={{ x: 0 }}
-      exit={{ x: "100%" }}
-      transition={{ type: "spring", damping: 25, stiffness: 200 }}
-      className="fixed inset-0 z-50 bg-background flex flex-col"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 overflow-y-auto" style={{ background: 'hsl(var(--background) / 0.95)' }}
+      onClick={(e) => { if (e.target === e.currentTarget) onClose() }}
     >
-      <header className="sticky top-0 z-10 flex items-center justify-between border-b bg-white px-6 py-4">
+      <div className="min-h-full flex items-start justify-center p-4 pt-12">
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          className="relative w-full max-w-2xl rounded-2xl border bg-card p-6 sm:p-8 shadow-2xl" style={{ borderColor: 'hsl(var(--border))' }}
+        >
+      <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
-          <BookOpen className="size-5 text-primary" />
+          <BookOpen className="size-5" style={{ color: 'hsl(var(--primary))' }} />
           <div className="flex items-center gap-2">
-            <span className="rounded-full bg-blue-100 px-2 py-0.5 text-[10px] font-medium text-blue-700">
+            <span className="rounded-full px-2 py-0.5 text-[10px] font-medium" style={{ background: 'hsl(210,40%,92%)', color: 'hsl(210,65%,35%)' }}>
               {article.category}
             </span>
             <span className="text-xs text-muted-foreground">{article.readTime}</span>
@@ -150,7 +156,7 @@ export default function ArticleReader({
         <button onClick={onClose} className="p-1 text-muted-foreground hover:text-foreground" aria-label="Close article">
           <X className="size-5" />
         </button>
-      </header>
+      </div>
 
       <div className="flex-1 overflow-y-auto">
         <article className="mx-auto max-w-2xl px-6 py-8">
@@ -189,6 +195,8 @@ export default function ArticleReader({
             </div>
           </div>
         </article>
+      </div>
+        </motion.div>
       </div>
     </motion.div>
   )

@@ -1,8 +1,10 @@
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
 export default function ClinicCTA() {
   return (
     <section
+      id="for-clinics"
       className="relative overflow-hidden py-20 sm:py-28"
       style={{ background: "hsl(var(--primary))" }}
       aria-label="For clinics"
@@ -25,19 +27,23 @@ export default function ClinicCTA() {
           and clinical reporting — all POPIA compliant.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
-          <Button
-            size="lg"
-            className="rounded-full bg-accent text-accent-foreground hover:bg-accent/90 px-8 py-3 text-base font-semibold"
-          >
-            Request a Demo
-          </Button>
-          <Button
-            size="lg"
-            variant="ghost"
-            className="rounded-full border border-white/30 text-primary-foreground hover:bg-white/10 px-8 py-3 text-base"
-          >
-            Learn More
-          </Button>
+          <Link href="/register">
+            <Button
+              size="lg"
+              className="rounded-full bg-accent text-accent-foreground hover:bg-accent/90 px-8 py-3 text-base font-semibold"
+            >
+              Request a Demo
+            </Button>
+          </Link>
+          <Link href="#how-it-works">
+            <Button
+              size="lg"
+              variant="ghost"
+              className="rounded-full border border-white/30 text-primary-foreground hover:bg-white/10 px-8 py-3 text-base"
+            >
+              Learn More
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
