@@ -13,7 +13,7 @@ export default function HydrationTracker() {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl border bg-white p-6 shadow-sm">
+      <div className="rounded-2xl border bg-card p-6 shadow-sm">
         <div className="flex flex-col items-center">
           <div className="relative mb-6" style={{ width: 80, height: 200 }}>
             <svg width="80" height="200" viewBox="0 0 80 200" className="drop-shadow-md">
@@ -85,7 +85,7 @@ export default function HydrationTracker() {
         )}
       </div>
 
-      <div className="rounded-2xl border bg-white shadow-sm">
+      <div className="rounded-2xl border bg-card shadow-sm">
         <button
           onClick={() => setShowInfo(!showInfo)}
           className="flex w-full items-center justify-between p-4 text-left"

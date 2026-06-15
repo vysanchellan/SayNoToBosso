@@ -44,6 +44,8 @@ html {
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -267,13 +269,13 @@ html {
 }
 
 .dark input, .dark textarea, .dark select {
-  background-color: hsl(160, 20%, 10%);
-  border-color: hsl(160, 18%, 20%);
-  color: hsl(145, 25%, 85%);
+  background-color: hsl(var(--surface));
+  border-color: hsl(var(--border));
+  color: hsl(var(--foreground));
 }
 
 .dark input::placeholder, .dark textarea::placeholder {
-  color: hsl(145, 12%, 40%);
+  color: hsl(var(--muted-foreground));
 }
 
 ::-webkit-scrollbar { width: 6px; height: 6px; }

@@ -55,7 +55,7 @@ export default function NutritionGuide() {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl border bg-white p-6 shadow-sm">
+      <div className="rounded-2xl border bg-card p-6 shadow-sm">
         <h3 className="text-base font-semibold text-foreground mb-3">Recovery Nutrition Principles</h3>
         <div className="space-y-1">
           {accordionItems.map((item, i) => (
@@ -77,7 +77,7 @@ export default function NutritionGuide() {
         </div>
       </div>
 
-      <div className="rounded-2xl border bg-white p-6 shadow-sm">
+      <div className="rounded-2xl border bg-card p-6 shadow-sm">
         <h3 className="text-base font-semibold text-foreground mb-4">Meal Log</h3>
         <div className="space-y-4">
           {(["breakfast", "lunch", "dinner"] as const).map((meal) => (
@@ -88,7 +88,7 @@ export default function NutritionGuide() {
                 value={meals[meal]}
                 onChange={(e) => { setMeals({ ...meals, [meal]: e.target.value }); setSavedMeals(false) }}
                 placeholder={`What did you eat for ${meal}?`}
-                className="w-full rounded-xl border border-muted-foreground/20 bg-white px-4 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 mb-2"
+                className="w-full rounded-xl border border-muted-foreground/20 bg-card px-4 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 mb-2"
               />
               <div className="flex gap-2">
                 {["😔", "😐", "😊"].map((emoji, ei) => (
@@ -139,7 +139,7 @@ export default function NutritionGuide() {
             <p className="text-sm text-foreground/80 leading-relaxed italic">
               &ldquo;{tips[tipIndex]}&rdquo;
             </p>
-            <span className="mt-2 inline-block rounded-full bg-white px-2 py-0.5 text-[10px] text-muted-foreground">
+            <span className="mt-2 inline-block rounded-full bg-card px-2 py-0.5 text-[10px] text-muted-foreground">
               Based on clinical nutritional research
             </span>
           </div>

@@ -54,7 +54,7 @@ export default function Testimonial() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.15, duration: 0.5 }}
             >
-              <Card className="h-full border border-secondary/20 bg-white">
+              <Card className="h-full border border-secondary/20 bg-card">
                 <CardContent className="p-6 sm:p-8 space-y-5">
                   <Quote className="size-8 text-primary/20" />
                   <p className="text-sm leading-relaxed text-muted-foreground">

@@ -47,7 +47,7 @@ export default function CommunityPage() {
             </div>
           </div>
 
-          <div className="rounded-2xl border bg-white p-4 text-center">
+          <div className="rounded-2xl border bg-card p-4 text-center">
             <Users className="size-6 text-primary mx-auto" />
             <p className="text-lg font-bold text-primary mt-2">23</p>
             <p className="text-xs text-muted-foreground">Active members this week</p>

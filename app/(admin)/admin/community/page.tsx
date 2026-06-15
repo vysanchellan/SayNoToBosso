@@ -94,7 +94,7 @@ export default function AdminCommunityPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-4">
-          <div className="flex gap-1 rounded-2xl border bg-white p-1 w-fit">
+          <div className="flex gap-1 rounded-2xl border bg-card p-1 w-fit">
             {[
               { key: "pending", label: `Pending (${pendingCount})` },
               { key: "approved", label: `Approved (${approvedCount})` },
@@ -114,7 +114,7 @@ export default function AdminCommunityPage() {
 
           <div className="space-y-3">
             {displayPosts.map((post) => (
-              <div key={post.id} className={`rounded-2xl border bg-white p-4 ${post.pinned ? "ring-1 ring-accent" : ""}`}>
+              <div key={post.id} className={`rounded-2xl border bg-card p-4 ${post.pinned ? "ring-1 ring-accent" : ""}`}>
                 <div className="flex items-start gap-3">
                   <div className="size-9 rounded-full bg-primary/15 flex items-center justify-center text-xs font-bold text-primary shrink-0">
                     {post.user.split("#")[1] || "U"}
@@ -154,7 +154,7 @@ export default function AdminCommunityPage() {
                             value={removalReason}
                             onChange={(e) => setRemovalReason(e.target.value)}
                             placeholder="Remove reason (optional)..."
-                            className="w-full rounded-lg border border-muted-foreground/20 bg-white px-3 py-1.5 text-xs text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+                            className="w-full rounded-lg border border-muted-foreground/20 bg-card px-3 py-1.5 text-xs text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
                           />
                         </div>
                       </>
@@ -184,7 +184,7 @@ export default function AdminCommunityPage() {
         </div>
 
         <aside className="space-y-4">
-          <div className="rounded-2xl border bg-white p-4">
+          <div className="rounded-2xl border bg-card p-4">
             <h3 className="text-xs font-semibold text-muted-foreground mb-2">CONTENT GUIDELINES</h3>
             <div className="space-y-2">
               {[
@@ -205,7 +205,7 @@ export default function AdminCommunityPage() {
         </aside>
       </div>
 
-      <div className="rounded-2xl border bg-white p-4">
+      <div className="rounded-2xl border bg-card p-4">
         <div className="flex items-center justify-between mb-3">
           <h3 className="text-xs font-semibold text-muted-foreground">MODERATION LOG</h3>
           <button className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground">

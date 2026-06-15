@@ -39,7 +39,7 @@ export default function PostComposer() {
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="What's on your mind? Remember to keep it anonymous and supportive."
-        className="w-full min-h-[100px] rounded-xl border border-muted-foreground/20 bg-white p-3 text-sm text-foreground resize-none focus:outline-none focus:ring-2 focus:ring-primary/30"
+        className="w-full min-h-[100px] rounded-xl border border-muted-foreground/20 bg-card p-3 text-sm text-foreground resize-none focus:outline-none focus:ring-2 focus:ring-primary/30"
         maxLength={500}
       />
       <div className="flex items-center justify-between text-xs text-muted-foreground mt-1 mb-3">

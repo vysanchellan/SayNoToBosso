@@ -113,7 +113,7 @@ export default function AdminFlagsPage() {
         </div>
       </div>
 
-      <div className="flex gap-1 rounded-2xl border bg-white p-1 w-fit">
+      <div className="flex gap-1 rounded-2xl border bg-card p-1 w-fit">
         {[
           { key: "All", label: `All (${alerts.length})` },
           { key: "HIGH", label: `HIGH (${highCount})` },
@@ -154,7 +154,7 @@ export default function AdminFlagsPage() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
-              <div className="rounded-xl border bg-white p-3">
+              <div className="rounded-xl border bg-card p-3">
                 <p className="text-xs font-semibold mb-2">Alert Details</p>
                 {Object.entries(alert.details).map(([key, val]) => (
                   <p key={key} className="text-xs text-muted-foreground flex items-start gap-1.5 mb-1">
@@ -163,7 +163,7 @@ export default function AdminFlagsPage() {
                   </p>
                 ))}
               </div>
-              <div className="rounded-xl border bg-white p-3">
+              <div className="rounded-xl border bg-card p-3">
                 <p className="text-xs font-semibold mb-2">Risk Factors</p>
                 {alert.riskFactors.map((rf, i) => (
                   <p key={i} className="text-xs text-muted-foreground flex items-start gap-1.5 mb-1">
@@ -172,7 +172,7 @@ export default function AdminFlagsPage() {
                   </p>
                 ))}
               </div>
-              <div className="rounded-xl border bg-white p-3">
+              <div className="rounded-xl border bg-card p-3">
                 <p className="text-xs font-semibold mb-2">Recommended Actions</p>
                 <ol className="list-decimal list-inside text-xs text-muted-foreground space-y-1">
                   {alert.recommendations.map((rec, i) => (
@@ -186,13 +186,13 @@ export default function AdminFlagsPage() {
               <Button className="rounded-full h-8 text-xs bg-primary text-primary-foreground hover:bg-primary/90">
                 <Calendar className="size-3.5 mr-1" /> Schedule Check-in
               </Button>
-              <Button className="rounded-full h-8 text-xs bg-white border border-muted-foreground/20 text-muted-foreground hover:bg-muted">
+              <Button className="rounded-full h-8 text-xs bg-card border border-muted-foreground/20 text-muted-foreground hover:bg-muted">
                 <FileText className="size-3.5 mr-1" /> Add Clinical Note
               </Button>
               <Button className="rounded-full h-8 text-xs bg-amber-600 text-white hover:bg-amber-700">
                 Escalate to Medical Team
               </Button>
-              <Button className="rounded-full h-8 text-xs bg-white border border-muted-foreground/20 text-muted-foreground hover:bg-muted ml-auto">
+              <Button className="rounded-full h-8 text-xs bg-card border border-muted-foreground/20 text-muted-foreground hover:bg-muted ml-auto">
                 Dismiss
               </Button>
             </div>
@@ -209,7 +209,7 @@ export default function AdminFlagsPage() {
           {showResolved ? <ChevronUp className="size-4" /> : <ChevronDown className="size-4" />}
         </button>
         {showResolved && (
-          <div className="rounded-2xl border bg-white overflow-hidden">
+          <div className="rounded-2xl border bg-card overflow-hidden">
             <table className="w-full text-xs">
               <thead>
                 <tr className="border-b bg-muted/30">
@@ -242,7 +242,7 @@ export default function AdminFlagsPage() {
         )}
       </div>
 
-      <div className="rounded-2xl border bg-white p-4">
+      <div className="rounded-2xl border bg-card p-4">
         <h3 className="text-xs font-semibold text-muted-foreground mb-3">Auto-Alert Rules</h3>
         <div className="space-y-2">
           {[

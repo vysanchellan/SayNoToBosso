@@ -16,7 +16,7 @@ interface UserFilterBarProps {
   total: number
 }
 
-const selectClass = "rounded-lg border border-muted-foreground/20 bg-white px-3 py-1.5 text-xs text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+const selectClass = "rounded-lg border border-muted-foreground/20 bg-card px-3 py-1.5 text-xs text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
 
 export default function UserFilterBar({ search, onSearch, status, onStatus, tier, onTier, week, onWeek, sort, onSort, total }: UserFilterBarProps) {
   const clearable = search || status !== "All" || tier !== "All" || week !== "All" || sort !== "Days in Program"
@@ -30,7 +30,7 @@ export default function UserFilterBar({ search, onSearch, status, onStatus, tier
             value={search}
             onChange={(e) => onSearch(e.target.value)}
             placeholder="Search by name, ID, or facility..."
-            className="w-full rounded-xl border border-muted-foreground/20 bg-white pl-9 pr-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+            className="w-full rounded-xl border border-muted-foreground/20 bg-card pl-9 pr-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
           />
         </div>
         <select value={status} onChange={(e) => onStatus(e.target.value)} className={selectClass}>

@@ -14,7 +14,7 @@ export default function AdminUsersPage() {
           <Button className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90">
             <Plus className="size-4 mr-1" /> Add User
           </Button>
-          <Button className="rounded-full bg-white border border-muted-foreground/20 text-muted-foreground hover:bg-muted">
+          <Button className="rounded-full bg-card border border-muted-foreground/20 text-muted-foreground hover:bg-muted">
             <Download className="size-4 mr-1" /> Export CSV
           </Button>
         </div>

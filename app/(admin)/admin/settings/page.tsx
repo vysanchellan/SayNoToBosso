@@ -23,7 +23,7 @@ export default function AdminSettingsPage() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {categories.map((cat) => (
-          <div key={cat.label} className="rounded-2xl border bg-white p-4 flex items-start gap-3 opacity-60 cursor-not-allowed">
+          <div key={cat.label} className="rounded-2xl border bg-card p-4 flex items-start gap-3 opacity-60 cursor-not-allowed">
             <div className="size-10 rounded-xl bg-muted flex items-center justify-center shrink-0">
               <cat.icon className="size-5 text-muted-foreground" />
             </div>

@@ -29,7 +29,7 @@ export default function ProfileOverview() {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl border bg-white p-6 flex flex-col sm:flex-row items-center gap-6">
+      <div className="rounded-2xl border bg-card p-6 flex flex-col sm:flex-row items-center gap-6">
         <div className="relative">
           <div className="size-20 rounded-full bg-primary flex items-center justify-center text-2xl text-white font-bold">
             <span>{avatars.find((a) => a.id === selectedAvatar)?.icon || "JM"}</span>
@@ -41,7 +41,7 @@ export default function ProfileOverview() {
                 const idx = ids.indexOf(selectedAvatar)
                 setSelectedAvatar(ids[(idx + 1) % ids.length])
               }}
-              className="absolute -bottom-1 -right-1 size-7 rounded-full bg-white border shadow-sm flex items-center justify-center hover:bg-muted transition-colors"
+              className="absolute -bottom-1 -right-1 size-7 rounded-full bg-card border shadow-sm flex items-center justify-center hover:bg-muted transition-colors"
               aria-label="Change avatar"
             >
               <Camera className="size-3.5 text-muted-foreground" />
@@ -63,14 +63,14 @@ export default function ProfileOverview() {
           { label: "Journal Entries", value: "7" },
           { label: "Badges Earned", value: "4" },
         ].map((stat) => (
-          <div key={stat.label} className="rounded-2xl border bg-white p-4 text-center">
+          <div key={stat.label} className="rounded-2xl border bg-card p-4 text-center">
             <p className="text-xl font-bold text-primary">{stat.value}</p>
             <p className="text-xs text-muted-foreground">{stat.label}</p>
           </div>
         ))}
       </div>
 
-      <div className="rounded-2xl border bg-white p-4">
+      <div className="rounded-2xl border bg-card p-4">
         <h3 className="text-sm font-semibold mb-3">Mood Trend (Last 14 Days)</h3>
         <div className="h-48">
           <ResponsiveContainer width="100%" height="100%">

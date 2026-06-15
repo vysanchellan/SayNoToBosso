@@ -17,7 +17,7 @@ const data = [
 
 export default function ProgramProgressTable() {
   return (
-    <div className="rounded-2xl border bg-white p-5">
+    <div className="rounded-2xl border bg-card p-5">
       <h3 className="text-sm font-semibold mb-4">Weekly Program Completion Rates</h3>
       <div className="h-64">
         <ResponsiveContainer width="100%" height="100%">

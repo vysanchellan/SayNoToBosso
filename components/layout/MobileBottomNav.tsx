@@ -34,7 +34,7 @@ export default function MobileBottomNav() {
   return (
     <>
       <nav
-        className="fixed bottom-0 left-0 right-0 z-40 flex h-16 items-center justify-around border-t bg-white dark:bg-[#1E2A3A] shadow-lg lg:hidden pb-safe"
+        className="fixed bottom-0 left-0 right-0 z-40 flex h-16 items-center justify-around border-t bg-card shadow-lg lg:hidden pb-safe"
         aria-label="Mobile navigation"
       >
         {mainTabs.map((tab) => {

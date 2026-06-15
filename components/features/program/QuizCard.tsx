@@ -111,7 +111,7 @@ export default function QuizCard({
         key={current}
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
-        className="rounded-2xl border bg-white p-6"
+        className="rounded-2xl border bg-card p-6"
       >
         <p className="text-sm font-semibold text-foreground mb-4">{q.question}</p>
 

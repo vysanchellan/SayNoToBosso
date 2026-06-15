@@ -26,7 +26,7 @@ export default function JournalPrompt({
         animate={{ opacity: 1, scale: 1 }}
         className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm"
       >
-        <div className="rounded-2xl border bg-white p-8 text-center max-w-sm mx-4">
+        <div className="rounded-2xl border bg-card p-8 text-center max-w-sm mx-4">
           <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-full bg-green-100">
             <PenLine className="size-6 text-green-600" />
           </div>
@@ -48,7 +48,7 @@ export default function JournalPrompt({
       transition={{ type: "spring", damping: 25, stiffness: 200 }}
       className="fixed inset-0 z-50 bg-background flex flex-col"
     >
-      <header className="flex items-center justify-between border-b bg-white px-6 py-4">
+      <header className="flex items-center justify-between border-b bg-card px-6 py-4">
         <div className="flex items-center gap-3">
           <PenLine className="size-5 text-accent" />
           <span className="text-sm font-medium text-foreground">Journal Reflection</span>
@@ -70,7 +70,7 @@ export default function JournalPrompt({
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Start writing your reflection here..."
-            className="w-full min-h-[200px] rounded-xl border border-muted-foreground/20 bg-white p-4 text-sm text-foreground resize-y focus:outline-none focus:ring-2 focus:ring-primary/30"
+            className="w-full min-h-[200px] rounded-xl border border-muted-foreground/20 bg-card p-4 text-sm text-foreground resize-y focus:outline-none focus:ring-2 focus:ring-primary/30"
             style={{ minHeight: "200px" }}
           />
 

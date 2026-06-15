@@ -63,7 +63,7 @@ export default function JournalSidebar({
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search entries..."
-            className="w-full rounded-xl border border-muted-foreground/20 bg-white py-2 pl-9 pr-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+            className="w-full rounded-xl border border-muted-foreground/20 bg-card py-2 pl-9 pr-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
           />
         </div>
       </div>

@@ -14,7 +14,7 @@ export default function ProgramWeekSkeleton() {
       <Skeleton className="h-3 w-full rounded-full" />
 
       {Array.from({ length: 3 }).map((_, i) => (
-        <div key={i} className="flex items-center gap-4 rounded-2xl border bg-white p-4">
+        <div key={i} className="flex items-center gap-4 rounded-2xl border bg-card p-4">
           <Skeleton className="size-10 rounded-xl shrink-0" />
           <div className="flex-1 space-y-2">
             <Skeleton className="h-4 w-24 rounded" />

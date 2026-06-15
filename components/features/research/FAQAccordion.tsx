@@ -54,7 +54,7 @@ export default function FAQAccordion() {
       <h2 className="text-xl font-semibold text-foreground mb-4">Common Questions About Cannabis Recovery</h2>
       <div className="space-y-2">
         {faqs.map((faq, i) => (
-          <div key={i} className="rounded-xl border bg-white overflow-hidden">
+          <div key={i} className="rounded-xl border bg-card overflow-hidden">
             <button
               onClick={() => setOpenIndex(openIndex === i ? null : i)}
               className="flex w-full items-center gap-3 px-4 py-3.5 text-left transition-colors hover:bg-muted/30"

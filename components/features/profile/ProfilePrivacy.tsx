@@ -21,7 +21,7 @@ export default function ProfilePrivacy() {
 
   return (
     <div className="space-y-6 max-w-xl">
-      <div className="rounded-2xl border bg-white p-4 space-y-4">
+      <div className="rounded-2xl border bg-card p-4 space-y-4">
         <h3 className="text-sm font-semibold">Who can see your data?</h3>
         {[
           { key: "careTeam", label: "Share progress data with care team", desc: "Your care team can view your check-ins, program progress, and journal entries." },
@@ -43,7 +43,7 @@ export default function ProfilePrivacy() {
         ))}
       </div>
 
-      <div className="rounded-2xl border bg-white p-4 space-y-4">
+      <div className="rounded-2xl border bg-card p-4 space-y-4">
         <h3 className="text-sm font-semibold">Your POPIA Rights</h3>
         <div className="space-y-3">
           <div className="flex items-center justify-between">

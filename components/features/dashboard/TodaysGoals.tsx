@@ -11,7 +11,7 @@ export function HydrationGoal() {
   const percent = (glasses / goal) * 100
 
   return (
-    <div className="rounded-xl border bg-white p-4 shadow-sm">
+    <div className="rounded-xl border bg-card p-4 shadow-sm">
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <div className="flex size-8 items-center justify-center rounded-full bg-blue-100">
@@ -53,7 +53,7 @@ export function BreathingGoal() {
   }
 
   return (
-    <div className="rounded-xl border bg-white p-4 shadow-sm">
+    <div className="rounded-xl border bg-card p-4 shadow-sm">
       <div className="flex items-center gap-2 mb-3">
         <div className="flex size-8 items-center justify-center rounded-full bg-green-100">
           <Wind className="size-4 text-green-500" />
@@ -74,7 +74,7 @@ export function BreathingGoal() {
 
 export function ProgramLesson() {
   return (
-    <div className="rounded-xl border bg-white p-4 shadow-sm">
+    <div className="rounded-xl border bg-card p-4 shadow-sm">
       <div className="flex items-center gap-2 mb-3">
         <div className="flex size-8 items-center justify-center rounded-full bg-amber-100">
           <BookOpen className="size-4 text-amber-500" />

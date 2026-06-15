@@ -74,15 +74,15 @@ export default function AchievementsGrid() {
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-3 gap-4">
-        <div className="rounded-2xl border bg-gradient-to-br from-accent/10 to-white p-4 text-center">
+        <div className="rounded-2xl border bg-gradient-to-br from-accent/10 to-card p-4 text-center">
           <p className="text-2xl font-bold text-accent">{stats.streak}</p>
           <p className="text-xs text-muted-foreground mt-1">Current Streak 🔥</p>
         </div>
-        <div className="rounded-2xl border bg-gradient-to-br from-primary/10 to-white p-4 text-center">
+        <div className="rounded-2xl border bg-gradient-to-br from-primary/10 to-card p-4 text-center">
           <p className="text-2xl font-bold text-primary">{stats.earned}</p>
           <p className="text-xs text-muted-foreground mt-1">Total Badges Earned</p>
         </div>
-        <div className="rounded-2xl border bg-gradient-to-br from-secondary/10 to-white p-4 text-center">
+        <div className="rounded-2xl border bg-gradient-to-br from-secondary/10 to-card p-4 text-center">
           <p className="text-2xl font-bold text-secondary">{stats.nextDaysAway}</p>
           <p className="text-xs text-muted-foreground mt-1">Days to Next Milestone</p>
         </div>

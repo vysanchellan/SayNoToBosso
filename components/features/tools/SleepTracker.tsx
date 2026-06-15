@@ -53,7 +53,7 @@ export default function SleepTracker() {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl border bg-white p-6 shadow-sm">
+      <div className="rounded-2xl border bg-card p-6 shadow-sm">
         <h3 className="text-base font-semibold text-foreground mb-4">Tonight&apos;s Sleep Plan</h3>
         <div className="grid gap-4 sm:grid-cols-2 mb-4">
           <div>
@@ -64,7 +64,7 @@ export default function SleepTracker() {
               type="time"
               value={bedTime}
               onChange={(e) => setBedTime(e.target.value)}
-              className="w-full rounded-xl border border-muted-foreground/20 bg-white px-4 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+              className="w-full rounded-xl border border-muted-foreground/20 bg-card px-4 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
             />
           </div>
           <div>
@@ -75,7 +75,7 @@ export default function SleepTracker() {
               type="time"
               value={wakeTime}
               onChange={(e) => setWakeTime(e.target.value)}
-              className="w-full rounded-xl border border-muted-foreground/20 bg-white px-4 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+              className="w-full rounded-xl border border-muted-foreground/20 bg-card px-4 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
             />
           </div>
         </div>
@@ -119,7 +119,7 @@ export default function SleepTracker() {
         </Button>
       </div>
 
-      <div className="rounded-2xl border bg-white p-6 shadow-sm">
+      <div className="rounded-2xl border bg-card p-6 shadow-sm">
         <h3 className="text-base font-semibold text-foreground mb-4">Last 7 Nights</h3>
         <div className="h-48">
           <ResponsiveContainer width="100%" height="100%">
@@ -145,7 +145,7 @@ export default function SleepTracker() {
         </p>
       </div>
 
-      <div className="relative rounded-2xl border bg-white p-6 shadow-sm">
+      <div className="relative rounded-2xl border bg-card p-6 shadow-sm">
         <h3 className="text-base font-semibold text-foreground mb-3">Sleep Tip</h3>
         <p className="text-sm text-foreground/80 leading-relaxed min-h-[60px]">{sleepTips[tipIndex]}</p>
         <div className="flex items-center justify-between mt-4">

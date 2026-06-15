@@ -10,7 +10,7 @@ const data = Array.from({ length: 30 }, (_, i) => ({
 
 export default function MoodTrendChart() {
   return (
-    <div className="rounded-2xl border bg-white p-5">
+    <div className="rounded-2xl border bg-card p-5">
       <h3 className="text-sm font-semibold mb-4">Facility Mood &amp; Craving Trends</h3>
       <div className="h-72">
         <ResponsiveContainer width="100%" height="100%">

@@ -4,7 +4,7 @@ export default function ArticleCardSkeleton({ cols = 3 }: { cols?: number }) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-pulse">
       {Array.from({ length: cols }).map((_, i) => (
-        <div key={i} className="rounded-2xl border bg-white overflow-hidden">
+        <div key={i} className="rounded-2xl border bg-card overflow-hidden">
           <Skeleton className="h-40 w-full rounded-none" />
           <div className="p-4 space-y-3">
             <Skeleton className="h-5 w-20 rounded-full" />

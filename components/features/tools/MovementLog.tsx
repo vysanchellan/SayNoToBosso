@@ -29,7 +29,7 @@ export default function MovementLog() {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl border bg-white p-6 shadow-sm">
+      <div className="rounded-2xl border bg-card p-6 shadow-sm">
         <h3 className="text-base font-semibold text-foreground mb-4">Log Activity</h3>
 
         <p className="text-xs font-medium text-muted-foreground mb-2">Activity Type</p>
@@ -98,7 +98,7 @@ export default function MovementLog() {
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
           placeholder="Notes (optional)"
-          className="w-full rounded-xl border border-muted-foreground/20 bg-white px-4 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 mb-4"
+          className="w-full rounded-xl border border-muted-foreground/20 bg-card px-4 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 mb-4"
         />
 
         <Button
@@ -110,7 +110,7 @@ export default function MovementLog() {
         </Button>
       </div>
 
-      <div className="rounded-2xl border bg-white p-6 shadow-sm">
+      <div className="rounded-2xl border bg-card p-6 shadow-sm">
         <h3 className="text-base font-semibold text-foreground mb-4">This Week&apos;s Movement</h3>
         <div className="h-48">
           <ResponsiveContainer width="100%" height="100%">

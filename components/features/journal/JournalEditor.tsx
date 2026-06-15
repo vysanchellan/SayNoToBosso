@@ -85,13 +85,13 @@ export default function JournalEditor({
 
   return (
     <div className="flex h-full flex-col">
-      <div className="flex items-center justify-between border-b bg-white px-6 py-3">
+      <div className="flex items-center justify-between border-b bg-card px-6 py-3">
         <div className="flex items-center gap-3">
           <input
             type="date"
             value={date}
             onChange={(e) => { setDate(e.target.value); persist({ date: e.target.value }) }}
-            className="rounded-lg border border-muted-foreground/20 bg-white px-2 py-1 text-xs text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+            className="rounded-lg border border-muted-foreground/20 bg-card px-2 py-1 text-xs text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
           />
           <button
             onClick={() => { setIsPrivate(!isPrivate); persist({ isPrivate: !isPrivate }) }}

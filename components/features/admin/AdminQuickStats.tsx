@@ -9,7 +9,7 @@ export default function AdminQuickStats() {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
       {stats.map((s) => (
-        <div key={s.label} className="rounded-xl border bg-white p-3 text-center">
+        <div key={s.label} className="rounded-xl border bg-card p-3 text-center">
           <p className="text-lg font-bold text-primary">{s.value}</p>
           <p className="text-[10px] text-muted-foreground mt-0.5">{s.label}</p>
         </div>

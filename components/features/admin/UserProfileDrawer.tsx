@@ -92,13 +92,13 @@ export default function UserProfileDrawer({ open, onOpenChange, user }: UserProf
                   { label: "Lessons Complete", value: "3" },
                   { label: "Badges Earned", value: "4" },
                 ].map((s) => (
-                  <div key={s.label} className="rounded-xl border bg-white p-3 text-center">
+                  <div key={s.label} className="rounded-xl border bg-card p-3 text-center">
                     <p className="text-lg font-bold text-primary">{s.value}</p>
                     <p className="text-[10px] text-muted-foreground">{s.label}</p>
                   </div>
                 ))}
               </div>
-              <div className="rounded-xl border bg-white p-3">
+              <div className="rounded-xl border bg-card p-3">
                 <p className="text-xs font-semibold mb-2">Mood Trend (Last 14 Days)</p>
                 <div className="h-32">
                   <ResponsiveContainer width="100%" height="100%">
@@ -111,12 +111,12 @@ export default function UserProfileDrawer({ open, onOpenChange, user }: UserProf
                   </ResponsiveContainer>
                 </div>
               </div>
-              <div className="rounded-xl border bg-white p-3 space-y-2">
+              <div className="rounded-xl border bg-card p-3 space-y-2">
                 <p className="text-xs font-semibold">Last Check-in</p>
                 <p className="text-xs text-muted-foreground">Mood: 7/10 · Cravings: 3/10</p>
                 <p className="text-xs italic text-muted-foreground/70">&ldquo;Feeling better today&rdquo;</p>
               </div>
-              <div className="rounded-xl border bg-white p-3 flex items-center gap-2">
+              <div className="rounded-xl border bg-card p-3 flex items-center gap-2">
                 <Mail className="size-3.5 text-muted-foreground" />
                 <span className="text-xs text-muted-foreground">j.*****@email.com</span>
               </div>
@@ -124,7 +124,7 @@ export default function UserProfileDrawer({ open, onOpenChange, user }: UserProf
           )}
 
           {tab === "checkins" && (
-            <div className="rounded-xl border bg-white overflow-hidden">
+            <div className="rounded-xl border bg-card overflow-hidden">
               <table className="w-full text-xs">
                 <thead>
                   <tr className="border-b bg-muted/30">
@@ -159,7 +159,7 @@ export default function UserProfileDrawer({ open, onOpenChange, user }: UserProf
 
           {tab === "program" && (
             <div className="space-y-3">
-              <div className="rounded-xl border bg-white p-3">
+              <div className="rounded-xl border bg-card p-3">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs font-semibold">Overall Progress</span>
                   <span className="text-xs text-muted-foreground">30%</span>
@@ -169,7 +169,7 @@ export default function UserProfileDrawer({ open, onOpenChange, user }: UserProf
                 </div>
               </div>
               {Array.from({ length: 10 }, (_, i) => (
-                <div key={i} className="flex items-center justify-between rounded-xl border bg-white px-3 py-2">
+                <div key={i} className="flex items-center justify-between rounded-xl border bg-card px-3 py-2">
                   <span className="text-xs font-medium">Week {i + 1}</span>
                   <span className={`text-[10px] ${i < 3 ? "text-green-600" : i === 3 ? "text-accent" : "text-muted-foreground/50"}`}>
                     {i < 3 ? "Complete" : i === 3 ? "In Progress" : "Locked"}
@@ -192,7 +192,7 @@ export default function UserProfileDrawer({ open, onOpenChange, user }: UserProf
                 value={note}
                 onChange={(e) => setNote(e.target.value)}
                 placeholder="Add a clinical note..."
-                className="w-full min-h-[80px] rounded-xl border border-muted-foreground/20 bg-white p-3 text-xs resize-none focus:outline-none focus:ring-2 focus:ring-primary/30"
+                className="w-full min-h-[80px] rounded-xl border border-muted-foreground/20 bg-card p-3 text-xs resize-none focus:outline-none focus:ring-2 focus:ring-primary/30"
               />
               <Button className="w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90 text-xs">
                 Add Clinical Note
@@ -205,7 +205,7 @@ export default function UserProfileDrawer({ open, onOpenChange, user }: UserProf
         <div className="border-t p-4 flex gap-2">
           <Button className="rounded-full h-8 text-xs bg-primary text-primary-foreground hover:bg-primary/90">Schedule Check-in</Button>
           <Button className="rounded-full h-8 text-xs bg-rose-500 text-white hover:bg-rose-600">Flag As At-Risk</Button>
-          <Button className="rounded-full h-8 text-xs bg-white border border-muted-foreground/20 text-muted-foreground hover:bg-muted">Suspend</Button>
+          <Button className="rounded-full h-8 text-xs bg-card border border-muted-foreground/20 text-muted-foreground hover:bg-muted">Suspend</Button>
         </div>
       </SheetContent>
     </Sheet>

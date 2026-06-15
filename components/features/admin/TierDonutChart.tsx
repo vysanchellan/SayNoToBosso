@@ -10,7 +10,7 @@ const data = [
 
 export default function TierDonutChart() {
   return (
-    <div className="rounded-2xl border bg-white p-5">
+    <div className="rounded-2xl border bg-card p-5">
       <h3 className="text-sm font-semibold mb-4">Users by Severity Tier</h3>
       <div className="flex flex-col items-center">
         <div className="h-48 w-full relative">

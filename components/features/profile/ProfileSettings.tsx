@@ -24,16 +24,16 @@ export default function ProfileSettings() {
 
   return (
     <div className="space-y-6 max-w-xl">
-      <div className="rounded-2xl border bg-white p-4 space-y-4">
+      <div className="rounded-2xl border bg-card p-4 space-y-4">
         <h3 className="text-sm font-semibold">Display Name</h3>
         <input
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="w-full rounded-xl border border-muted-foreground/20 bg-white p-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+          className="w-full rounded-xl border border-muted-foreground/20 bg-card p-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
         />
       </div>
 
-      <div className="rounded-2xl border bg-white p-4 space-y-4">
+      <div className="rounded-2xl border bg-card p-4 space-y-4">
         <h3 className="text-sm font-semibold">Notification Preferences</h3>
         {[
           { key: "daily", label: "Daily check-in reminder", time: true },
@@ -55,14 +55,14 @@ export default function ProfileSettings() {
               <input
                 type="time"
                 defaultValue="08:00"
-                className="rounded-lg border border-muted-foreground/20 bg-white p-1 text-xs text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+                className="rounded-lg border border-muted-foreground/20 bg-card p-1 text-xs text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
               />
             )}
           </div>
         ))}
       </div>
 
-      <div className="rounded-2xl border bg-white p-4 space-y-4">
+      <div className="rounded-2xl border bg-card p-4 space-y-4">
         <h3 className="text-sm font-semibold">Appearance</h3>
         <div className="flex gap-3">
           {(["light", "dark"] as const).map((t) => (
@@ -80,9 +80,9 @@ export default function ProfileSettings() {
         </div>
       </div>
 
-      <div className="rounded-2xl border bg-white p-4 space-y-4">
+      <div className="rounded-2xl border bg-card p-4 space-y-4">
         <h3 className="text-sm font-semibold">Language</h3>
-        <select className="w-full rounded-xl border border-muted-foreground/20 bg-white p-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30">
+        <select className="w-full rounded-xl border border-muted-foreground/20 bg-card p-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30">
           <option>English</option>
         </select>
       </div>

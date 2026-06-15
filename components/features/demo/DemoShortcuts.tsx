@@ -28,10 +28,8 @@ export default function DemoShortcuts() {
       {open && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4" onClick={() => setOpen(false)}>
           <div
-            className="relative w-full max-w-sm rounded-2xl p-6 shadow-2xl"
+            className="relative w-full max-w-sm rounded-2xl p-6 shadow-2xl bg-card border-border"
             style={{
-              background: 'linear-gradient(145deg, hsl(34,25%,96%) 0%, hsl(145,25%,95%) 100%)',
-              border: '1px solid hsl(145,20%,88%)',
               boxShadow: '0 24px 80px rgba(13,61,36,0.18)',
             }}
             onClick={(e) => e.stopPropagation()}
@@ -48,12 +46,12 @@ export default function DemoShortcuts() {
             </button>
 
             <div className="mb-1 flex items-center gap-2">
-              <div className="flex size-10 items-center justify-center rounded-full" style={{ background: 'hsl(42,90%,92%)' }}>
-                <Play className="size-5" style={{ color: 'hsl(38,85%,48%)' }} />
+              <div className="flex size-10 items-center justify-center rounded-full" style={{ background: 'hsl(var(--accent) / 0.15)' }}>
+                <Play className="size-5" style={{ color: 'hsl(var(--accent))' }} />
               </div>
-              <h2 className="text-lg font-display font-bold" style={{ color: 'hsl(155,55%,16%)' }}>Preview Demo</h2>
+              <h2 className="text-lg font-display font-bold text-foreground">Preview Demo</h2>
             </div>
-            <p className="text-xs" style={{ color: 'hsl(160,15%,38%)' }}>
+            <p className="text-xs text-muted-foreground">
               Explore CannaClear without creating an account. All data is simulated.
             </p>
 
