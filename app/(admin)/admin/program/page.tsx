@@ -18,7 +18,6 @@ const weeks = Array.from({ length: 10 }, (_, i) => ({
   activities: i + 1,
   completed: i < 3,
   theme: ["Building your recovery foundation", "Identifying personal triggers", "Developing emotional strength", "Managing feelings without substances", "Creating sustainable daily habits", "Navigating social situations", "Preparing for long-term success", "Deepening self-awareness", "Planning your new chapter", "Celebrating your journey"][i],
-  unlocked: i < 2 || (i === 2 && true),
 }))
 
 interface ActivityItem {
@@ -76,19 +75,34 @@ for (let i = 4; i <= 10; i++) {
   ]
 }
 
+const tierLabels: Record<string, string> = {
+  mild: "Mild (6 weeks) — educational & habit-building focus",
+  moderate: "Moderate (10 weeks) — structured therapeutic content",
+  heavy: "Heavy (16 weeks) — intensive clinical & emotional support",
+}
+
+const tierWeekCounts: Record<string, number> = { mild: 6, moderate: 10, heavy: 16 }
+
 export default function AdminProgramPage() {
   const [tier, setTier] = useState("moderate")
   const [selectedWeek, setSelectedWeek] = useState(1)
   const [previewQuiz, setPreviewQuiz] = useState<ActivityItem | null>(null)
   const [toggles, setToggles] = useState<Record<string, boolean>>({})
 
+  const maxWeeks = tierWeekCounts[tier] || 10
+  const tierWeeks = weeks.slice(0, maxWeeks)
   const currentActivities = weekActivities[selectedWeek] || []
+
+  // Clamp selectedWeek when switching tiers
+  if (selectedWeek > maxWeeks && maxWeeks > 0) {
+    // handled in render via safe access
+  }
 
   return (
     <div id="main-content" className="space-y-6">
       <div>
         <h1 className="text-xl font-bold">Program Manager</h1>
-        <p className="text-sm text-muted-foreground">Manage recovery program content across all three tiers</p>
+        <p className="text-sm text-muted-foreground">{tierLabels[tier]}</p>
       </div>
 
       <div className="flex gap-1 rounded-2xl border bg-card p-1 w-fit">
@@ -109,7 +123,7 @@ export default function AdminProgramPage() {
         <aside className="lg:col-span-3 space-y-1">
           <div className="rounded-2xl border bg-card p-3">
             <p className="text-xs font-semibold text-muted-foreground mb-2">WEEKS</p>
-            {weeks.map((w) => (
+            {tierWeeks.map((w) => (
               <button
                 key={w.num}
                 onClick={() => setSelectedWeek(w.num)}
@@ -135,8 +149,8 @@ export default function AdminProgramPage() {
             <div className="flex items-center gap-3 mb-4">
               <span className="inline-flex items-center rounded-full bg-primary px-3 py-1 text-xs font-bold text-primary-foreground">Week {selectedWeek}</span>
               <div>
-                <h2 className="text-base font-semibold">{weeks[selectedWeek - 1]?.title}</h2>
-                <p className="text-xs text-muted-foreground">{weeks[selectedWeek - 1]?.theme}</p>
+                <h2 className="text-base font-semibold">{tierWeeks[selectedWeek - 1]?.title || `Week ${selectedWeek}`}</h2>
+                <p className="text-xs text-muted-foreground">{tierWeeks[selectedWeek - 1]?.theme || ""}</p>
               </div>
               <span className={`ml-auto text-xs font-medium ${selectedWeek <= 2 ? "text-green-600" : "text-muted-foreground"}`}>
                 {selectedWeek <= 2 ? "Unlocked" : "Locked by default"}
@@ -195,14 +209,14 @@ export default function AdminProgramPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <div className="rounded-xl border bg-amber-50 border-amber-200 p-3">
-              <p className="text-[10px] text-amber-800"><strong>Week 3</strong> has the highest skip rate (27%). Consider reviewing the content difficulty.</p>
+            <div className="rounded-xl border p-3" style={{ background: 'hsl(var(--accent) / 0.08)', borderColor: 'hsl(var(--accent) / 0.2)' }}>
+              <p className="text-[10px]" style={{ color: 'hsl(var(--accent) / 0.9)' }}><strong>Week 3</strong> has the highest skip rate (27%). Consider reviewing the content difficulty.</p>
             </div>
-            <div className="rounded-xl border bg-green-50 border-green-200 p-3">
-              <p className="text-[10px] text-green-800"><strong>4-7-8 Breathing</strong> has a 94% completion rate — most popular tool.</p>
+            <div className="rounded-xl border p-3" style={{ background: 'hsl(var(--primary) / 0.08)', borderColor: 'hsl(var(--primary) / 0.2)' }}>
+              <p className="text-[10px]" style={{ color: 'hsl(var(--primary) / 0.9)' }}><strong>4-7-8 Breathing</strong> has a 94% completion rate — most popular tool.</p>
             </div>
-            <div className="rounded-xl border bg-blue-50 border-blue-200 p-3">
-              <p className="text-[10px] text-blue-800"><strong>Quiz scores</strong> average 78% across all users. Learning objectives appear to be met.</p>
+            <div className="rounded-xl border p-3" style={{ background: 'hsl(var(--secondary) / 0.08)', borderColor: 'hsl(var(--secondary) / 0.2)' }}>
+              <p className="text-[10px]" style={{ color: 'hsl(var(--secondary) / 0.9)' }}><strong>Quiz scores</strong> average 78% across all users. Learning objectives appear to be met.</p>
             </div>
           </div>
         </div>

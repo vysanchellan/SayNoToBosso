@@ -1,8 +1,8 @@
 "use client"
 
 import { useState, useMemo } from "react"
-import { AnimatePresence } from "framer-motion"
-import { BookOpen, Award, Calendar, X, Check } from "lucide-react"
+import Link from "next/link"
+import { BookOpen, Award, Calendar, X, Check, ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import programData from "@/data/programs.json"
 import WeekCard from "@/components/features/program/WeekCard"
@@ -75,6 +75,7 @@ export default function ProgramPage() {
   const [activeLesson, setActiveLesson] = useState<string | null>(null)
   const [activeQuiz, setActiveQuiz] = useState<Activity | null>(null)
   const [activeJournal, setActiveJournal] = useState<Activity | null>(null)
+  const [activeExercise, setActiveExercise] = useState<Activity | null>(null)
   const [quizScore, setQuizScore] = useState<{ score: number; total: number } | null>(null)
 
   const overallCompleted = useMemo(() => calcProgress(weeks), [weeks])
@@ -90,6 +91,8 @@ export default function ProgramPage() {
       setActiveQuiz(activity)
     } else if (activity.type === "journal") {
       setActiveJournal(activity)
+    } else if (activity.type === "exercise") {
+      setActiveExercise(activity)
     }
   }
 
@@ -188,6 +191,28 @@ export default function ProgramPage() {
               onSave={() => {}}
               onClose={() => setActiveJournal(null)}
             />
+          </div>
+        </div>
+      )}
+
+      {activeExercise && (
+        <div className="fixed inset-0 z-50 overflow-y-auto" style={{ background: 'hsl(var(--background) / 0.95)' }}>
+          <div className="min-h-full flex items-center justify-center p-4">
+            <div className="w-full max-w-md rounded-2xl border p-8 text-center shadow-2xl" style={{ background: 'hsl(var(--card))', borderColor: 'hsl(var(--border))' }}>
+              <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-full bg-secondary/15">
+                <ExternalLink className="size-6 text-secondary" />
+              </div>
+              <h3 className="text-lg font-semibold text-foreground mb-2">{activeExercise.title}</h3>
+              <p className="text-sm text-muted-foreground mb-6">This exercise is available in the Daily Tools section.</p>
+              <div className="flex gap-3 justify-center">
+                <Button onClick={() => setActiveExercise(null)} variant="outline" className="rounded-full">Cancel</Button>
+                <Link href="/tools" onClick={() => setActiveExercise(null)}>
+                  <Button className="rounded-full bg-secondary text-white hover:bg-secondary/90">
+                    Open Daily Tools
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       )}

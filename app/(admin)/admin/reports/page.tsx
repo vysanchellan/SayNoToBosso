@@ -64,6 +64,7 @@ function getToolColor(pct: number) {
 
 export default function AdminReportsPage() {
   const [range, setRange] = useState("30")
+  const rangeLabel = range === "7" ? "7-day" : range === "30" ? "30-day" : range === "90" ? "90-day" : "Custom"
   const [generating, setGenerating] = useState(false)
 
   const handleGeneratePDF = () => {
@@ -79,7 +80,7 @@ export default function AdminReportsPage() {
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
           <h1 className="text-xl font-bold">Clinical Progress Reports</h1>
-          <p className="text-sm text-muted-foreground">White River Manor Recovery Centre</p>
+          <p className="text-sm text-muted-foreground">White River Manor Recovery Centre &middot; {rangeLabel} view</p>
         </div>
         <div className="flex items-center gap-2">
           <div className="flex rounded-lg border overflow-hidden" style={{ borderColor: 'hsl(var(--border))', background: 'hsl(var(--card))' }}>
@@ -170,8 +171,8 @@ export default function AdminReportsPage() {
               </BarChart>
             </ResponsiveContainer>
           </div>
-          <div className="mt-3 rounded-xl bg-blue-50 border border-blue-200 p-3">
-            <p className="text-xs text-blue-800">
+          <div className="mt-3 rounded-xl p-3" style={{ background: 'hsl(var(--primary) / 0.08)', border: '1px solid hsl(var(--primary) / 0.2)' }}>
+            <p className="text-xs" style={{ color: 'hsl(var(--primary))' }}>
               <strong>Insight:</strong> Daily check-in has highest engagement (91%). Consider using it to prompt engagement with lower-performing tools.
             </p>
           </div>
@@ -196,8 +197,8 @@ export default function AdminReportsPage() {
               </BarChart>
             </ResponsiveContainer>
           </div>
-          <div className="mt-3 rounded-xl bg-amber-50 border border-amber-200 p-3">
-            <p className="text-xs text-amber-800">
+          <div className="mt-3 rounded-xl p-3" style={{ background: 'hsl(var(--accent) / 0.1)', border: '1px solid hsl(var(--accent) / 0.2)' }}>
+            <p className="text-xs" style={{ color: 'hsl(var(--accent) / 0.9)' }}>
               <strong>Drop-off point:</strong> Highest dropout occurs between Week 3 (73%) and Week 4 (60%). Clinical check-in recommended at this stage.
             </p>
           </div>

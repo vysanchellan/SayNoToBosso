@@ -74,7 +74,7 @@ export default function MindfulnessCentre() {
 
   if (scanComplete) {
     return (
-      <div className="rounded-2xl bg-gradient-to-br from-secondary/20 to-white p-8 text-center border">
+      <div className="rounded-2xl p-8 text-center border" style={{ background: 'linear-gradient(135deg, hsl(var(--secondary) / 0.2), hsl(var(--card)))' }}>
         <div className="flex justify-center mb-4">
           <div className="flex size-16 items-center justify-center rounded-full bg-secondary/20">
             <Sparkles className="size-8 text-secondary" />
@@ -95,7 +95,7 @@ export default function MindfulnessCentre() {
 
   if (scanning) {
     return (
-      <div className="rounded-2xl bg-gradient-to-br from-secondary/10 to-white p-6 border">
+      <div className="rounded-2xl p-6 border" style={{ background: 'linear-gradient(135deg, hsl(var(--secondary) / 0.1), hsl(var(--card)))' }}>
         <div className="flex items-center justify-between mb-4">
           <span className="text-xs text-muted-foreground">
             {scanStep + 1} of {bodyScanParts.length}
@@ -123,7 +123,7 @@ export default function MindfulnessCentre() {
 
   if (groundComplete) {
     return (
-      <div className="rounded-2xl bg-gradient-to-br from-accent/10 to-white p-8 text-center border">
+      <div className="rounded-2xl p-8 text-center border" style={{ background: 'linear-gradient(135deg, hsl(var(--accent) / 0.1), hsl(var(--card)))' }}>
         <h3 className="text-lg font-semibold text-foreground mb-2">Well done. You are present. You are safe.</h3>
         <Button
           onClick={() => { setGroundComplete(false); setGroundStep(0); setGroundInputs(["", "", "", "", ""]) }}
@@ -140,7 +140,7 @@ export default function MindfulnessCentre() {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl border bg-white p-6 shadow-sm">
+      <div className="rounded-2xl border p-6 shadow-sm" style={{ background: 'hsl(var(--card))' }}>
         <h3 className="text-base font-semibold text-foreground mb-3">Guided Body Scan (5 min)</h3>
         <p className="text-sm text-muted-foreground mb-4">
           A text-based meditation that guides your attention through each part of your body.
@@ -150,7 +150,7 @@ export default function MindfulnessCentre() {
         </Button>
       </div>
 
-      <div className="rounded-2xl border bg-white p-6 shadow-sm">
+      <div className="rounded-2xl border p-6 shadow-sm" style={{ background: 'hsl(var(--card))' }}>
         <h3 className="text-base font-semibold text-foreground mb-4">Grounding Exercise (5-4-3-2-1)</h3>
         <p className="text-sm text-muted-foreground mb-4">{groundPrompts[groundCurrent]}</p>
         <input
@@ -162,7 +162,7 @@ export default function MindfulnessCentre() {
             setGroundInputs(next)
           }}
           placeholder="Type your answer here..."
-          className="w-full rounded-xl border border-muted-foreground/20 bg-white px-4 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 mb-4"
+          className="w-full rounded-xl border px-4 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 mb-4" style={{ background: 'hsl(var(--card))', borderColor: 'hsl(var(--border))' }}
         />
         <div className="flex gap-2">
           <Button
@@ -192,7 +192,7 @@ export default function MindfulnessCentre() {
         </div>
       </div>
 
-      <div className="rounded-2xl border bg-white p-6 shadow-sm">
+      <div className="rounded-2xl border p-6 shadow-sm" style={{ background: 'hsl(var(--card))' }}>
         <h3 className="text-base font-semibold text-foreground mb-4">Affirmations</h3>
         <div className="rounded-xl bg-primary/5 p-8 text-center border border-primary/10">
           <p className="text-xl font-semibold text-foreground leading-relaxed">

@@ -43,13 +43,14 @@ export default function WeekCard({
 
   return (
     <div
-      className={`rounded-2xl border bg-white shadow-sm transition-all ${
+      className={`rounded-2xl border shadow-sm transition-all ${
         isComplete
           ? "border-green-300"
           : isUnlocked
             ? "hover:shadow-md"
             : "opacity-70"
       }`}
+      style={{ background: 'hsl(var(--card))' }}
     >
       <button
         onClick={() => isUnlocked && setExpanded(!expanded)}
@@ -138,7 +139,10 @@ export default function WeekCard({
                 Week Complete
               </div>
             ) : (
-              <Button className="w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90 text-sm">
+              <Button
+                onClick={() => setExpanded(true)}
+                className="w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90 text-sm"
+              >
                 {completedCount === 0 ? "Start Week" : "Continue Week"}
               </Button>
             )}
