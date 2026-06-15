@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Search, Plus, Lock, Tag } from "lucide-react"
+import { Search, Plus, Lock, Tag, AlertCircle } from "lucide-react"
 
 interface Entry {
   id: string
@@ -45,10 +45,10 @@ export default function JournalSidebar({
 
   return (
     <div className="flex h-full flex-col">
-      <div className="p-4">
+      <div className="p-4 pb-3">
         <button
           onClick={onNew}
-          className="flex w-full items-center justify-center gap-2 rounded-full bg-primary py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+          className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
         >
           <Plus className="size-4" />
           New Entry
@@ -63,7 +63,8 @@ export default function JournalSidebar({
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search entries..."
-            className="w-full rounded-xl border border-muted-foreground/20 bg-card py-2 pl-9 pr-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+            className="w-full rounded-lg border bg-card py-2 pl-9 pr-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+            style={{ borderColor: 'hsl(var(--border))' }}
           />
         </div>
       </div>
@@ -73,7 +74,7 @@ export default function JournalSidebar({
           <button
             key={f}
             onClick={() => setFilter(f)}
-            className={`shrink-0 rounded-full px-3 py-1 text-xs font-medium transition-colors ${
+            className={`shrink-0 rounded-lg px-3 py-1 text-xs font-medium transition-colors ${
               filter === f ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-muted/80"
             }`}
           >
@@ -91,21 +92,25 @@ export default function JournalSidebar({
               <button
                 key={entry.id}
                 onClick={() => onSelect(entry.id)}
-                className={`flex w-full flex-col gap-1 rounded-xl px-3 py-3 text-left transition-colors ${
-                  activeId === entry.id ? "border-l-3 border-primary bg-primary/5" : "hover:bg-muted/50"
+                className={`flex w-full flex-col gap-1 rounded-lg px-3 py-3 text-left transition-colors ${
+                  activeId === entry.id ? "bg-primary/8 border-l-2 border-primary" : "hover:bg-muted/50"
                 }`}
+                style={activeId === entry.id ? { background: 'hsl(var(--primary) / 0.06)' } : {}}
               >
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium text-foreground truncate flex-1">
                     {entry.title || "Untitled Entry"}
                   </span>
-                  {entry.isPrivate && <Lock className="size-3 text-muted-foreground/60 shrink-0 ml-1" />}
+                  <div className="flex items-center gap-1 shrink-0 ml-1">
+                    {entry.flagged && <AlertCircle className="size-3 text-destructive" />}
+                    {entry.isPrivate && <Lock className="size-3 text-muted-foreground/60" />}
+                  </div>
                 </div>
                 <p className="text-xs text-muted-foreground line-clamp-1">{entry.preview.slice(0, 80)}</p>
                 <div className="flex items-center gap-2 mt-0.5">
                   <span className="text-[10px] text-muted-foreground/60">{entry.relativeDate}</span>
                   {entry.tag && (
-                    <span className="inline-flex items-center gap-0.5 rounded-full bg-muted px-1.5 py-0.5 text-[9px] text-muted-foreground">
+                    <span className="tag-secondary text-[10px]">
                       <Tag className="size-2.5" />
                       {entry.tag}
                     </span>

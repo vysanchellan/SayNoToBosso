@@ -14,6 +14,7 @@ import {
   HeartPulse,
   Bell,
   ChevronDown,
+  Leaf,
 } from "lucide-react"
 import { useDemo } from "@/lib/demo-context"
 import CrisisModal from "@/components/features/dashboard/CrisisModal"
@@ -61,8 +62,9 @@ export default function UserLayout({ children }: { children: ReactNode }) {
   const { user } = useDemo()
   const displayName = user?.name || "User"
   const initials = getInitials(displayName)
-  const firstName = user?.firstName || "User"
-  const streak = user?.streak || 0
+  const daysEngaged = user?.streak || 14
+  const dayInProgram = user?.dayInProgram || 14
+  const currentWeek = user?.currentWeek || 2
 
   return (
     <SidebarProvider defaultOpen>
@@ -70,20 +72,15 @@ export default function UserLayout({ children }: { children: ReactNode }) {
         <Sidebar
           variant="inset"
           collapsible="icon"
+          className="border-r text-white"
           style={{
-            background: 'linear-gradient(180deg, #060E09 0%, #0A1A0E 60%, #071209 100%)',
-            borderRight: '1px solid rgba(255,255,255,0.06)',
+            background: 'hsl(var(--sidebar-background))',
+            borderColor: 'hsl(var(--sidebar-border))',
           }}
-          className="text-white"
         >
           <SidebarHeader>
             <Link href="/dashboard" className="flex items-center gap-2 px-2 py-1">
-              <svg width="24" height="24" viewBox="0 0 200 50" fill="none" aria-hidden="true" className="shrink-0">
-                <path d="M12 38c0-8 6-14 14-14s14 6 14 14" stroke="hsl(38,85%,55%)" strokeWidth="2" strokeLinecap="round"/>
-                <path d="M26 10c0 8-4 14-10 14s-10-6-10-14" stroke="hsl(145,28%,48%)" strokeWidth="2" strokeLinecap="round"/>
-                <path d="M26 10c0 8 4 14 10 14s10-6 10-14" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                <text x="48" y="28" fontFamily="Inter, sans-serif" fontWeight="600" fontSize="18" fill="white">CC</text>
-              </svg>
+              <Leaf className="size-5 text-amber-400 shrink-0" />
               <span className="text-sm font-semibold text-white group-data-[collapsible=icon]:hidden">
                 CannaClear
               </span>
@@ -102,10 +99,10 @@ export default function UserLayout({ children }: { children: ReactNode }) {
                           isActive={active}
                           tooltip={item.label}
                           render={<Link href={item.href} />}
-                          className={active ? "text-amber-400" : "text-[hsl(145,25%,62%)]"}
+                          className={active ? "text-amber-400 font-medium" : "text-sidebar-foreground hover:text-white"}
                           style={
                             active
-                              ? { background: 'rgba(217,146,10,0.15)', borderLeft: '2px solid hsl(38,85%,55%)' }
+                              ? { background: 'hsl(var(--sidebar-accent))', borderLeft: '2px solid hsl(var(--sidebar-primary))' }
                               : {}
                           }
                         >
@@ -150,9 +147,9 @@ export default function UserLayout({ children }: { children: ReactNode }) {
                   <div className="grid flex-1 text-left text-sm leading-tight group-data-[collapsible=icon]:hidden">
                     <span className="truncate font-semibold text-white">{displayName}</span>
                     <div className="flex items-center gap-1 mt-0.5">
-                      <span className="text-amber-400 text-xs">🔥</span>
-                      <span className="text-amber-400 text-xs font-semibold tabular-nums">{streak}</span>
-                      <span style={{ color: 'hsl(145,15%,45%)' }} className="text-xs">day streak</span>
+                      <span className="text-amber-400 text-xs">✦</span>
+                      <span className="text-amber-400 text-xs font-semibold tabular-nums">{daysEngaged}</span>
+                      <span className="text-sidebar-foreground text-xs">days engaged</span>
                     </div>
                   </div>
                 </SidebarMenuButton>
@@ -170,9 +167,11 @@ export default function UserLayout({ children }: { children: ReactNode }) {
                   {pathname === "/dashboard" ? "Dashboard" : ""}
                 </h1>
                 <div className="hidden sm:flex items-center">
-                  <span className="rounded-full px-3 py-1 text-xs font-medium" style={{ background: 'hsl(var(--secondary) / 0.2)', color: 'hsl(var(--secondary))' }}>
-                    Day {user?.dayInProgram || 14} of 70 &mdash; Week {user?.currentWeek || 2}: Brain Reset
-                  </span>
+                  <div className="flex items-center gap-2 rounded-lg bg-primary/10 px-3 py-1.5 border border-primary/20">
+                    <span className="text-xs font-semibold text-primary tabular-nums">Day {dayInProgram} of 70</span>
+                    <span className="text-primary/40">|</span>
+                    <span className="text-xs font-medium text-primary">Week {currentWeek}</span>
+                  </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <ThemeToggle />

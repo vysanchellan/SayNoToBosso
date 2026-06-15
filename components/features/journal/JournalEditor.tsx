@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { Lock, Eye, Tag, Trash2 } from "lucide-react"
+import { Lock, Eye, Tag, Trash2, AlertCircle } from "lucide-react"
 import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import {
@@ -16,7 +16,13 @@ import {
 
 const moodEmojis = ["😔", "😐", "😊", "🔥", "💪"]
 
-const tagOptions = ["Personal", "Program", "Milestone", "Gratitude", "Difficult Day"]
+const tagOptions = [
+  { label: "Personal", color: "var(--primary)" },
+  { label: "Program", color: "var(--amber)" },
+  { label: "Milestone", color: "var(--accent)" },
+  { label: "Gratitude", color: "var(--sage)" },
+  { label: "Difficult Day", color: "var(--destructive)" },
+] as const
 
 export default function JournalEditor({
   entry,
@@ -85,17 +91,18 @@ export default function JournalEditor({
 
   return (
     <div className="flex h-full flex-col">
-      <div className="flex items-center justify-between border-b bg-card px-6 py-3">
+      <div className="flex items-center justify-between border-b bg-card px-6 py-3" style={{ borderColor: 'hsl(var(--border))' }}>
         <div className="flex items-center gap-3">
           <input
             type="date"
             value={date}
             onChange={(e) => { setDate(e.target.value); persist({ date: e.target.value }) }}
-            className="rounded-lg border border-muted-foreground/20 bg-card px-2 py-1 text-xs text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+            className="rounded-lg border bg-card px-2 py-1 text-xs text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+            style={{ borderColor: 'hsl(var(--border))' }}
           />
           <button
             onClick={() => { setIsPrivate(!isPrivate); persist({ isPrivate: !isPrivate }) }}
-            className={`flex items-center gap-1 rounded-full px-2 py-1 text-xs transition-colors ${
+            className={`flex items-center gap-1 rounded-lg px-2.5 py-1 text-xs font-medium transition-colors ${
               isPrivate ? "bg-muted text-muted-foreground" : "bg-primary/10 text-primary"
             }`}
           >
@@ -104,12 +111,12 @@ export default function JournalEditor({
           </button>
         </div>
         <div className="flex items-center gap-2">
-          <span className={`text-xs ${saved ? "text-green-600" : "text-amber-600"}`}>
-            {saved ? "Saved ✓" : "Saving..."}
+          <span className={`text-xs font-medium ${saved ? "text-foreground/60" : "text-amber"}`}>
+            {saved ? "Saved" : "Saving..."}
           </span>
           {entry.id && (
             <Dialog open={showDelete} onOpenChange={setShowDelete}>
-              <DialogTrigger render={<button className="flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium text-muted-foreground hover:text-destructive hover:border-destructive/30 hover:bg-destructive/5 transition-all" aria-label="Delete entry" style={{ borderColor: 'hsl(var(--border))' }} />}>
+              <DialogTrigger render={<button className="flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-medium text-muted-foreground hover:text-destructive hover:border-destructive/30 hover:bg-destructive/5 transition-all" aria-label="Delete entry" style={{ borderColor: 'hsl(var(--border))' }} />}>
                 <Trash2 className="size-3.5" />
                 Delete
               </DialogTrigger>
@@ -119,7 +126,7 @@ export default function JournalEditor({
                   <DialogDescription>This action cannot be undone. Are you sure you want to delete this entry?</DialogDescription>
                 </DialogHeader>
                 <DialogFooter showCloseButton>
-                  <Button variant="destructive" onClick={() => { onDelete(entry.id); setShowDelete(false) }} className="rounded-full">
+                  <Button variant="destructive" onClick={() => { onDelete(entry.id); setShowDelete(false) }} className="rounded-lg">
                     Delete Permanently
                   </Button>
                 </DialogFooter>
@@ -132,9 +139,9 @@ export default function JournalEditor({
       <div className="flex-1 overflow-y-auto">
         <div className="mx-auto max-w-2xl px-6 py-6">
           {programPrompt && (
-            <div className="mb-6 rounded-xl border border-secondary/30 bg-secondary/5 p-4">
+            <div className="mb-6 rounded-lg border p-4" style={{ borderColor: 'hsl(var(--accent) / 0.25)', background: 'hsl(var(--accent) / 0.06)' }}>
               <div className="flex items-start gap-3">
-                <Tag className="size-4 text-secondary shrink-0 mt-0.5" />
+                <Tag className="size-4 shrink-0 mt-0.5" style={{ color: 'hsl(var(--accent))' }} />
                 <p className="text-sm italic text-foreground/80">{programPrompt}</p>
               </div>
             </div>
@@ -149,17 +156,23 @@ export default function JournalEditor({
           />
 
           <div className="flex gap-1.5 mb-4 flex-wrap">
-            {tagOptions.map((t) => (
-              <button
-                key={t}
-                onClick={() => { setTag(t); persist({ tag: t }) }}
-                className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
-                  tag === t ? "bg-accent/15 text-accent" : "bg-muted text-muted-foreground hover:bg-muted/80"
-                }`}
-              >
-                {t}
-              </button>
-            ))}
+            {tagOptions.map((t) => {
+              const isSelected = tag === t.label
+              return (
+                <button
+                  key={t.label}
+                  onClick={() => { setTag(t.label); persist({ tag: t.label }) }}
+                  className={`rounded-lg px-3 py-1 text-xs font-medium transition-colors ${
+                    isSelected
+                      ? "text-white"
+                      : "bg-muted text-muted-foreground hover:bg-muted/80"
+                  }`}
+                  style={isSelected ? { background: `hsl(${t.color})` } : {}}
+                >
+                  {t.label}
+                </button>
+              )
+            })}
           </div>
 
           <textarea
@@ -173,15 +186,15 @@ export default function JournalEditor({
           <div className="flex items-center justify-between mt-4">
             <span
               className={`text-xs font-medium ${
-                wordCount >= 200 ? "text-green-600" : wordCount >= 100 ? "text-accent" : "text-muted-foreground"
+                wordCount >= 200 ? "text-primary" : wordCount >= 100 ? "text-accent" : "text-muted-foreground"
               }`}
             >
               {wordCount} words
-              {wordCount >= 200 ? " — Great depth!" : wordCount >= 100 ? " — Keep going!" : ""}
+              {wordCount >= 200 ? " — Great depth" : wordCount >= 100 ? " — Keep going" : ""}
             </span>
           </div>
 
-          <div className="mt-8 border-t pt-6">
+          <div className="mt-8 border-t pt-6" style={{ borderColor: 'hsl(var(--border))' }}>
             <p className="text-sm font-medium text-foreground mb-3">How are you feeling right now?</p>
             <div className="flex gap-2">
               {moodEmojis.map((emoji) => {
@@ -190,7 +203,7 @@ export default function JournalEditor({
                   <button
                     key={emoji}
                     onClick={() => { setMood(emoji); persist({ mood: emoji }) }}
-                    className="rounded-xl px-4 py-2.5 text-xl transition-all duration-150"
+                    className="rounded-lg px-4 py-2.5 text-xl transition-all duration-150"
                     style={{
                       border: isSelected ? '2px solid hsl(var(--primary))' : '2px solid hsl(var(--border))',
                       background: isSelected ? 'hsl(var(--primary) / 0.08)' : 'transparent',

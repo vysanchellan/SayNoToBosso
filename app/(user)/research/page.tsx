@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { AnimatePresence } from "framer-motion"
-import { Search } from "lucide-react"
+import { Search, BookOpen, ArrowRight } from "lucide-react"
 import ArticleCard from "@/components/features/research/ArticleCard"
 import ArticleReader from "@/components/features/research/ArticleReader"
 import FAQAccordion from "@/components/features/research/FAQAccordion"
@@ -53,7 +53,8 @@ export default function ResearchPage() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search articles..."
-          className="w-full rounded-2xl border border-muted-foreground/20 bg-card py-3 pl-11 pr-4 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+          className="w-full rounded-lg border bg-card py-3 pl-11 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+          style={{ borderColor: 'hsl(var(--border))' }}
         />
       </div>
 
@@ -62,7 +63,7 @@ export default function ResearchPage() {
           <button
             key={f}
             onClick={() => setFilter(f)}
-            className={`shrink-0 rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
+            className={`shrink-0 rounded-lg px-4 py-1.5 text-sm font-medium transition-colors ${
               filter === f ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-muted/80"
             }`}
           >
@@ -73,15 +74,15 @@ export default function ResearchPage() {
 
       <button
         onClick={() => setActiveArticle(featured.id)}
-        className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-primary to-green-800 p-6 sm:p-8 text-left text-white"
+        className="relative w-full overflow-hidden rounded-xl bg-gradient-to-br from-primary to-primary/80 p-6 sm:p-8 text-left text-white shadow-md"
       >
-        <span className="inline-block rounded-full bg-accent/80 px-3 py-1 text-[10px] font-medium text-white mb-3">
+        <span className="tag-accent text-white mb-3 inline-block bg-accent/90 text-[10px]">
           This Week&apos;s Focus
         </span>
-        <h2 className="text-xl font-bold sm:text-2xl mb-2">{featured.title}</h2>
-        <p className="text-sm text-white/80 line-clamp-3 max-w-xl">{featured.summary}</p>
+        <h2 className="text-xl font-bold sm:text-2xl mb-2 text-white">{featured.title}</h2>
+        <p className="text-sm text-white/85 line-clamp-3 max-w-xl">{featured.summary}</p>
         <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-white/90 hover:text-white">
-          Read Article →
+          Read Article <ArrowRight className="size-3.5" />
         </span>
       </button>
 

@@ -35,6 +35,7 @@ export default function MobileBottomNav() {
     <>
       <nav
         className="fixed bottom-0 left-0 right-0 z-40 flex h-16 items-center justify-around border-t bg-card shadow-lg lg:hidden pb-safe"
+        style={{ borderColor: 'hsl(var(--border))' }}
         aria-label="Mobile navigation"
       >
         {mainTabs.map((tab) => {
@@ -54,9 +55,9 @@ export default function MobileBottomNav() {
                   </div>
                   <span className="text-[10px] text-muted-foreground">More</span>
                 </SheetTrigger>
-                <SheetContent side="bottom" className="rounded-t-2xl pb-8">
+                <SheetContent side="bottom" className="rounded-t-2xl pb-8 bg-card border-t" style={{ borderColor: 'hsl(var(--border))' }}>
                   <SheetHeader>
-                    <SheetTitle className="text-center text-sm">More Options</SheetTitle>
+                    <SheetTitle className="text-center text-sm text-foreground">More Options</SheetTitle>
                   </SheetHeader>
                   <div className="grid grid-cols-2 gap-3 pt-4">
                     {moreItems.map((item) => (
@@ -68,7 +69,7 @@ export default function MobileBottomNav() {
                             setMoreOpen(false)
                           }
                         }}
-                        className={`flex flex-col items-center gap-2 rounded-2xl p-4 min-h-[44px] min-w-[44px] transition-colors ${
+                        className={`flex flex-col items-center gap-2 rounded-xl p-4 min-h-[44px] min-w-[44px] transition-colors ${
                           item.crisis ? "text-destructive hover:bg-destructive/5" : "text-muted-foreground hover:bg-muted"
                         }`}
                       >
@@ -89,7 +90,7 @@ export default function MobileBottomNav() {
               className="flex flex-col items-center justify-center gap-0.5 min-h-[44px] min-w-[44px]"
             >
               <tab.icon className={`size-5 ${active ? "text-primary" : "text-muted-foreground"}`} />
-              {active && <span className="size-1 rounded-full bg-accent" />}
+              {active && <span className="size-1 rounded-full bg-primary" />}
               <span className={`text-[10px] ${active ? "text-primary font-medium" : "text-muted-foreground"}`}>
                 {tab.label}
               </span>

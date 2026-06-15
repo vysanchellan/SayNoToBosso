@@ -141,61 +141,60 @@ export default function ArticleReader({
         <motion.div
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="relative w-full max-w-2xl rounded-2xl border bg-card p-6 sm:p-8 shadow-2xl" style={{ borderColor: 'hsl(var(--border))' }}
+          className="relative w-full max-w-2xl rounded-xl border bg-card p-6 sm:p-8 shadow-xl"
+          style={{ borderColor: 'hsl(var(--border))' }}
         >
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-3">
-          <BookOpen className="size-5" style={{ color: 'hsl(var(--primary))' }} />
-          <div className="flex items-center gap-2">
-            <span className="rounded-full px-2 py-0.5 text-[10px] font-medium" style={{ background: 'hsl(210,40%,92%)', color: 'hsl(210,65%,35%)' }}>
-              {article.category}
-            </span>
-            <span className="text-xs text-muted-foreground">{article.readTime}</span>
-          </div>
-        </div>
-        <button onClick={onClose} className="p-1 text-muted-foreground hover:text-foreground" aria-label="Close article">
-          <X className="size-5" />
-        </button>
-      </div>
-
-      <div className="flex-1 overflow-y-auto">
-        <article className="mx-auto max-w-2xl px-6 py-8">
-          <h1 className="text-2xl font-bold text-foreground sm:text-3xl mb-3">{article.title}</h1>
-          <p className="text-base text-muted-foreground mb-2">{article.author} · {article.date}</p>
-          <p className="text-lg italic text-foreground/70 border-l-4 border-primary pl-4 my-6">
-            {article.intro}
-          </p>
-
-          <div className="space-y-8">
-            {article.sections.map((section, i) => (
-              <section key={i}>
-                <h2 className="text-xl font-semibold text-foreground mb-3">{section.heading}</h2>
-                <div className="text-sm text-foreground/80 leading-relaxed whitespace-pre-line">
-                  {section.body}
-                </div>
-                {section.heading.includes("Finding") || section.heading.includes("Key Finding") ? (
-                  <div className="mt-4 rounded-xl border border-accent/30 bg-accent/10 p-4">
-                    <p className="text-sm font-medium text-accent mb-1">Key Finding</p>
-                    <p className="text-sm text-foreground/80">{section.body.split("\n\n").pop()}</p>
-                  </div>
-                ) : null}
-              </section>
-            ))}
-          </div>
-
-          <div className="mt-10 border-t pt-6">
-            <p className="text-sm font-medium text-foreground mb-3">Was this helpful?</p>
-            <div className="flex gap-3">
-              <button className="flex items-center gap-2 rounded-full border px-4 py-2 text-sm text-muted-foreground hover:border-primary hover:text-primary transition-colors" aria-label="Thumbs up">
-                <ThumbsUp className="size-4" /> Yes
-              </button>
-              <button className="flex items-center gap-2 rounded-full border px-4 py-2 text-sm text-muted-foreground hover:border-primary hover:text-primary transition-colors" aria-label="Thumbs down">
-                <ThumbsDown className="size-4" /> No
-              </button>
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-3">
+              <BookOpen className="size-5 text-primary" />
+              <div className="flex items-center gap-2">
+                <span className="tag-primary text-[10px]">{article.category}</span>
+                <span className="text-xs text-muted-foreground">{article.readTime}</span>
+              </div>
             </div>
+            <button onClick={onClose} className="p-1 text-muted-foreground hover:text-foreground min-h-[44px] min-w-[44px] flex items-center justify-center" aria-label="Close article">
+              <X className="size-5" />
+            </button>
           </div>
-        </article>
-      </div>
+
+          <div className="flex-1 overflow-y-auto">
+            <article className="mx-auto max-w-2xl px-2 py-6">
+              <h1 className="text-2xl font-bold text-foreground sm:text-3xl mb-3">{article.title}</h1>
+              <p className="text-base text-muted-foreground mb-2">{article.author} · {article.date}</p>
+              <p className="text-lg italic text-foreground/80 border-l-4 border-primary pl-4 my-6">
+                {article.intro}
+              </p>
+
+              <div className="space-y-8">
+                {article.sections.map((section, i) => (
+                  <section key={i}>
+                    <h2 className="text-xl font-semibold text-foreground mb-3">{section.heading}</h2>
+                    <div className="text-sm text-foreground/85 leading-relaxed whitespace-pre-line">
+                      {section.body}
+                    </div>
+                    {section.heading.includes("Finding") || section.heading.includes("Key Finding") ? (
+                      <div className="mt-4 rounded-lg border p-4" style={{ borderColor: 'hsl(var(--accent) / 0.3)', background: 'hsl(var(--accent) / 0.08)' }}>
+                        <p className="text-sm font-medium mb-1" style={{ color: 'hsl(var(--accent))' }}>Key Finding</p>
+                        <p className="text-sm text-foreground/80">{section.body.split("\n\n").pop()}</p>
+                      </div>
+                    ) : null}
+                  </section>
+                ))}
+              </div>
+
+              <div className="mt-10 border-t pt-6" style={{ borderColor: 'hsl(var(--border))' }}>
+                <p className="text-sm font-medium text-foreground mb-3">Was this helpful?</p>
+                <div className="flex gap-3">
+                  <button className="flex items-center gap-2 rounded-lg border px-4 py-2 text-sm text-muted-foreground hover:border-primary hover:text-primary transition-colors" aria-label="Thumbs up" style={{ borderColor: 'hsl(var(--border))' }}>
+                    <ThumbsUp className="size-4" /> Yes
+                  </button>
+                  <button className="flex items-center gap-2 rounded-lg border px-4 py-2 text-sm text-muted-foreground hover:border-primary hover:text-primary transition-colors" aria-label="Thumbs down" style={{ borderColor: 'hsl(var(--border))' }}>
+                    <ThumbsDown className="size-4" /> No
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
         </motion.div>
       </div>
     </motion.div>
