@@ -3,7 +3,6 @@ import "./globals.css"
 import { Toaster } from "sonner"
 import { ThemeProvider } from "next-themes"
 import { DemoProvider } from "@/lib/demo-context"
-import DemoBanner from "@/components/features/demo/DemoBanner"
 import PageTransition from "@/components/ui/PageTransition"
 
 export const metadata: Metadata = {
@@ -25,13 +24,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full scroll-smooth antialiased" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            (function() {
+              try {
+                var theme = localStorage.getItem('theme');
+                if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  document.documentElement.classList.add('dark');
+                }
+              } catch(e) {}
+            })();
+          `
+        }} />
+      </head>
       <body className="min-h-full flex flex-col">
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-4 focus:left-4 bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium">
           Skip to main content
         </a>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <DemoProvider>
-            <DemoBanner />
             <PageTransition>{children}</PageTransition>
           </DemoProvider>
         </ThemeProvider>

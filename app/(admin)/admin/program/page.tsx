@@ -88,6 +88,9 @@ export default function AdminProgramPage() {
   const [selectedWeek, setSelectedWeek] = useState(1)
   const [previewQuiz, setPreviewQuiz] = useState<ActivityItem | null>(null)
   const [toggles, setToggles] = useState<Record<string, boolean>>({})
+  const [editingContent, setEditingContent] = useState<string | null>(null)
+  const [editValue, setEditValue] = useState("")
+  const [descriptions, setDescriptions] = useState<Record<string, string>>({})
 
   const maxWeeks = tierWeekCounts[tier] || 10
   const tierWeeks = weeks.slice(0, maxWeeks)
@@ -175,17 +178,50 @@ export default function AdminProgramPage() {
                           {act.type === "Quiz" && <span className="text-[10px] text-muted-foreground bg-muted rounded-full px-2 py-0.5">{act.questions} questions</span>}
                         </div>
                         <p className="text-sm font-medium mt-1">{act.title}</p>
-                        <p className="text-xs text-muted-foreground mt-0.5">{act.desc}{act.preview ? "…" : ""}</p>
+                        <p className="text-xs text-muted-foreground mt-0.5">{(descriptions[`${selectedWeek}-${i}`] || act.desc)}{act.preview ? "…" : ""}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2 mt-3 border-t pt-3">
-                      <Button
-                        onClick={() => toast.success("Content editing opened. In production this would load the content editor.")}
-                        className="rounded-full h-7 text-[10px] border bg-card text-muted-foreground hover:bg-muted"
-                        style={{ borderColor: 'hsl(var(--border))' }}
-                      >
-                        Edit Content
-                      </Button>
+                      {editingContent === `${selectedWeek}-${i}` ? (
+                        <div className="flex items-center gap-2 w-full">
+                          <input
+                            type="text"
+                            value={editValue}
+                            onChange={(e) => setEditValue(e.target.value)}
+                            className="flex-1 rounded-lg border px-3 py-1.5 text-xs bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+                            style={{ borderColor: 'hsl(var(--border))' }}
+                            autoFocus
+                          />
+                          <Button
+                            onClick={() => {
+                              setDescriptions((p) => ({ ...p, [`${selectedWeek}-${i}`]: editValue }))
+                              setEditingContent(null)
+                              toast.success("Content updated")
+                            }}
+                            className="rounded-full h-7 text-[10px] bg-primary text-primary-foreground"
+                          >
+                            Save
+                          </Button>
+                          <Button
+                            onClick={() => setEditingContent(null)}
+                            variant="ghost"
+                            className="rounded-full h-7 text-[10px]"
+                          >
+                            Cancel
+                          </Button>
+                        </div>
+                      ) : (
+                        <Button
+                          onClick={() => {
+                            setEditingContent(`${selectedWeek}-${i}`)
+                            setEditValue(descriptions[`${selectedWeek}-${i}`] || act.desc)
+                          }}
+                          className="rounded-full h-7 text-[10px] border bg-card text-muted-foreground hover:bg-muted"
+                          style={{ borderColor: 'hsl(var(--border))' }}
+                        >
+                          Edit Content
+                        </Button>
+                      )}
                       {act.type === "Quiz" && (
                         <Button
                           onClick={() => setPreviewQuiz(act)}

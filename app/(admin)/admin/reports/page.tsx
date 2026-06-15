@@ -65,6 +65,13 @@ function getToolColor(pct: number) {
 export default function AdminReportsPage() {
   const [range, setRange] = useState("30")
   const rangeLabel = range === "7" ? "7-day" : range === "30" ? "30-day" : range === "90" ? "90-day" : "Custom"
+  const maxWeek = range === "7" ? 1 : range === "30" ? 4 : range === "90" ? 10 : 10
+  const limitedMoodData = moodData.slice(0, maxWeek)
+  const limitedFunnelData = funnelData.slice(0, maxWeek + 1)
+  const limitedSummaryRows = summaryRows.filter((r) => {
+    const weekNum = parseInt(r.week.replace("Week ", ""), 10)
+    return weekNum <= maxWeek
+  })
   const [generating, setGenerating] = useState(false)
 
   const handleGeneratePDF = () => {
@@ -133,7 +140,7 @@ export default function AdminReportsPage() {
         <div className="rounded-2xl border bg-card p-5">
           <div className="h-72">
             <ResponsiveContainer width="100%" height="100%">
-              <ComposedChart data={moodData}>
+              <ComposedChart data={limitedMoodData}>
                 <defs>
                   <linearGradient id="reportMoodFill" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%" stopColor="hsl(142, 30%, 36%)" stopOpacity={0.2} />
@@ -184,7 +191,7 @@ export default function AdminReportsPage() {
         <div className="rounded-2xl border bg-card p-5">
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={funnelData}>
+              <BarChart data={limitedFunnelData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="hsl(40, 10%, 90%)" vertical={false} />
                 <XAxis dataKey="week" tick={{ fontSize: 10, fill: "hsl(40, 20%, 50%)" }} tickLine={false} axisLine={false} />
                 <YAxis domain={[0, 100]} tick={{ fontSize: 10, fill: "hsl(40, 20%, 50%)" }} tickLine={false} axisLine={false} unit="%" />
@@ -206,7 +213,7 @@ export default function AdminReportsPage() {
       </section>
 
       <section>
-        <h2 className="text-sm font-semibold mb-3">Weekly Summary Table</h2>
+        <h2 className="text-sm font-semibold mb-3">Weekly Summary Table ({rangeLabel})</h2>
         <div className="rounded-2xl border bg-card overflow-hidden">
           <table className="w-full text-xs">
             <thead>
@@ -221,7 +228,7 @@ export default function AdminReportsPage() {
               </tr>
             </thead>
             <tbody>
-              {summaryRows.map((row, i) => (
+              {limitedSummaryRows.map((row, i) => (
                 <tr key={i} className={`border-b last:border-0 ${i % 2 === 0 ? "bg-card" : "bg-muted/10"}`}>
                   <td className="p-3 font-medium">{row.week}</td>
                   <td className="p-3">{row.enrolled}</td>

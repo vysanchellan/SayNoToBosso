@@ -151,16 +151,12 @@ export default function ProgramPage() {
       )}
 
       {activeLesson && (
-        <div className="fixed inset-0 z-50 overflow-y-auto bg-background" onClick={(e) => { if (e.target === e.currentTarget) setActiveLesson(null) }}>
-          <div className="min-h-full">
-            <LessonViewer
-              key="lesson"
-              lessonId={activeLesson}
-              onClose={() => setActiveLesson(null)}
-              onComplete={() => setActiveLesson(null)}
-            />
-          </div>
-        </div>
+        <LessonViewer
+          key="lesson"
+          lessonId={activeLesson}
+          onClose={() => setActiveLesson(null)}
+          onComplete={() => setActiveLesson(null)}
+        />
       )}
 
       {activeQuiz && activeQuiz.questions && (

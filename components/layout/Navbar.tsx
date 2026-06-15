@@ -30,11 +30,11 @@ export default function Navbar() {
       }`}
       style={{
         background: scrolled
-          ? 'hsla(34, 25%, 96%, 0.82)'
+          ? 'hsl(var(--background) / 0.82)'
           : 'transparent',
         backdropFilter: scrolled ? 'blur(12px)' : 'none',
         WebkitBackdropFilter: scrolled ? 'blur(12px)' : 'none',
-        borderBottom: scrolled ? '1px solid hsl(145,20%,88%)' : '1px solid transparent',
+        borderBottom: scrolled ? '1px solid hsl(var(--border))' : '1px solid transparent',
       }}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
@@ -53,7 +53,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               className="text-sm font-medium transition-colors"
-              style={{ color: scrolled ? 'hsl(160,30%,10%)' : 'hsla(0,0%,100%,0.85)' }}
+              style={{ color: scrolled ? 'hsl(var(--text-primary))' : 'hsla(0,0%,100%,0.85)' }}
             >
               {link.label}
             </Link>
@@ -63,7 +63,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-3">
           <ThemeToggle />
           <Link href="/login">
-            <Button variant="ghost" style={{ color: scrolled ? 'hsl(160,30%,10%)' : 'hsla(0,0%,100%,0.85)' }}>Sign In</Button>
+            <Button variant="ghost" style={{ color: scrolled ? 'hsl(var(--text-primary))' : 'hsla(0,0%,100%,0.85)' }}>Sign In</Button>
           </Link>
           <Link href="/register">
             <Button
@@ -83,27 +83,27 @@ export default function Navbar() {
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
-          style={{ color: scrolled ? 'hsl(160,30%,10%)' : 'white' }}
+          style={{ color: scrolled ? 'hsl(var(--text-primary))' : 'white' }}
         >
           {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
         </button>
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden border-t" style={{ borderColor: 'hsl(145,20%,88%)', background: 'hsla(34, 25%, 96%, 0.98)' }}>
+        <div className="md:hidden border-t" style={{ borderColor: 'hsl(var(--border))', background: 'hsl(var(--background) / 0.98)' }}>
           <nav className="flex flex-col px-4 py-4 gap-3" aria-label="Mobile navigation">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className="text-sm font-medium py-2"
-                style={{ color: 'hsl(160,30%,10%)' }}
+                style={{ color: 'hsl(var(--text-primary))' }}
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}
               </Link>
             ))}
-            <div className="flex flex-col gap-2 pt-2 border-t" style={{ borderColor: 'hsl(145,20%,88%)' }}>
+            <div className="flex flex-col gap-2 pt-2 border-t" style={{ borderColor: 'hsl(var(--border))' }}>
               <Link href="/login">
                 <Button variant="ghost" className="w-full justify-center">Sign In</Button>
               </Link>

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef, useCallback } from "react"
 import { motion } from "framer-motion"
 import { Check, Lock, ChevronDown, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -33,6 +33,14 @@ export default function WeekCard({
   onStartActivity: (activity: Activity) => void
 }) {
   const [expanded, setExpanded] = useState(week.weekNumber <= 2)
+  const activitiesRef = useRef<HTMLDivElement>(null)
+
+  const handleContinueWeek = useCallback(() => {
+    setExpanded(true)
+    setTimeout(() => {
+      activitiesRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
+    }, 100)
+  }, [])
 
   const completedCount = week.activities.filter((a) => a.completed).length
   const totalActivities = week.activities.length
@@ -118,7 +126,7 @@ export default function WeekCard({
           transition={{ duration: 0.25 }}
           className="overflow-hidden"
         >
-          <div className="border-t px-5 py-3 space-y-1">
+          <div ref={activitiesRef} className="border-t px-5 py-3 space-y-1">
             {week.activities.map((activity) =>
               week.unlocked ? (
                 <ActivityRow
@@ -140,7 +148,7 @@ export default function WeekCard({
               </div>
             ) : (
               <Button
-                onClick={() => setExpanded(true)}
+                onClick={handleContinueWeek}
                 className="w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90 text-sm"
               >
                 {completedCount === 0 ? "Start Week" : "Continue Week"}

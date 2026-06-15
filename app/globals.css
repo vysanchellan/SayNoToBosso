@@ -136,6 +136,19 @@ html {
   --chart-3: 8 65% 62%;
   --chart-4: 200 50% 50%;
   --chart-5: 300 40% 55%;
+  --forest: 140 42% 55%;
+  --forest-mid: 155 40% 30%;
+  --sage: 145 25% 40%;
+  --sage-light: 160 22% 18%;
+  --sage-mist: 160 20% 14%;
+  --amber: 38 80% 58%;
+  --amber-light: 38 60% 20%;
+  --coral: 8 65% 62%;
+  --coral-light: 8 50% 18%;
+  --text-primary: 145 25% 88%;
+  --text-secondary: 145 15% 55%;
+  --text-muted: 145 10% 40%;
+  --text-inverse: 160 45% 6%;
 }
 
 @layer base {
