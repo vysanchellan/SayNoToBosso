@@ -13,22 +13,18 @@ const tabs = [
 
 export default function TabBar({ active, onChange }: { active: string; onChange: (t: string) => void }) {
   return (
-    <div
-      className="inline-flex items-center gap-1 rounded-2xl p-1"
-      style={{ background: 'hsl(var(--sage-light))', border: '1px solid hsl(var(--border))' }}
-    >
+    <div className="flex gap-2 flex-wrap">
       {tabs.map((tab) => {
         const isActive = active === tab.label
         return (
           <button
             key={tab.label}
             onClick={() => onChange(tab.label)}
-            className={`flex items-center gap-1.5 rounded-xl px-3 py-2 text-xs font-medium transition-all duration-150 ${
+            className={`flex items-center gap-1.5 rounded-xl px-4 py-1.5 text-sm transition-colors duration-150 ${
               isActive
-                ? "text-white shadow-sm"
-                : "text-muted-foreground hover:text-foreground"
+                ? "bg-primary text-primary-foreground shadow-sm font-semibold"
+                : "bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
             }`}
-            style={isActive ? { background: 'hsl(var(--primary))' } : {}}
           >
             <tab.icon className="size-3.5" />
             <span className="hidden sm:inline">{tab.label}</span>

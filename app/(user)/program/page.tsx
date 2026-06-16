@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react"
 import Link from "next/link"
-import { BookOpen, Award, Calendar, X, Check, ExternalLink } from "lucide-react"
+import { BookOpen, Award, Calendar, Flame, LayoutList, X, Check, ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import programData from "@/data/programs.json"
 import WeekCard from "@/components/features/program/WeekCard"
@@ -105,20 +105,17 @@ export default function ProgramPage() {
     <div id="main-content" className="space-y-6 max-w-4xl mx-auto">
       <div>
         <h1 className="text-2xl font-bold text-foreground sm:text-3xl">My Recovery Program</h1>
-        <div className="mt-2 flex flex-wrap items-center gap-2">
-          <span className="inline-flex items-center rounded-full bg-accent/15 px-3 py-1 text-xs font-medium text-accent">
-            Moderate Use — 10 Week Program
-          </span>
-          <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-muted border border-border px-3 py-1 text-xs font-medium text-foreground">
             <Calendar className="size-3" />
             Week {currentWeekCompleted.week} of 10
           </span>
-          <span className="inline-flex items-center gap-1 rounded-full bg-secondary/15 px-3 py-1 text-xs font-medium text-secondary">
-            <BookOpen className="size-3" />
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-muted border border-border px-3 py-1 text-xs font-medium text-foreground">
+            <LayoutList className="size-3" />
             {currentWeekCompleted.done} of {currentWeekCompleted.total} this week
           </span>
-          <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-700">
-            <Award className="size-3" />
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20 px-3 py-1 text-xs font-medium">
+            <Flame className="size-3" />
             {overallCompleted.done} Activities Complete
           </span>
         </div>
@@ -138,12 +135,12 @@ export default function ProgramPage() {
       </div>
 
       {quizScore && (
-        <div className="rounded-2xl border bg-card p-6 text-center" style={{ borderColor: 'hsl(var(--border))' }}>
-          <div className="mx-auto mb-3 flex size-14 items-center justify-center rounded-full" style={{ background: quizScore.score === quizScore.total ? 'hsl(var(--accent) / 0.15)' : 'hsl(var(--primary) / 0.1)' }}>
-            {quizScore.score === quizScore.total ? <Award className="size-7" style={{ color: 'hsl(var(--accent))' }} /> : <Check className="size-7" style={{ color: 'hsl(var(--primary))' }} />}
+        <div className="rounded-2xl border border-border bg-card p-6 text-center">
+          <div className="mx-auto mb-3 flex size-14 items-center justify-center rounded-full bg-accent/15">
+            {quizScore.score === quizScore.total ? <Award className="size-7 text-accent" /> : <Check className="size-7 text-primary" />}
           </div>
-          <h3 className="text-xl font-semibold" style={{ color: 'hsl(var(--forest))' }}>{quizScore.score}/{quizScore.total} Correct</h3>
-          <p className="text-sm mt-1" style={{ color: 'hsl(var(--text-secondary))' }}>
+          <h3 className="text-xl font-semibold text-foreground">{quizScore.score}/{quizScore.total} Correct</h3>
+          <p className="text-sm mt-1 text-muted-foreground">
             {quizScore.score === quizScore.total ? "Perfect score!" : quizScore.score >= quizScore.total * 0.8 ? "Great work!" : "Keep going!"}
           </p>
           <Button onClick={() => setQuizScore(null)} className="mt-4 rounded-full" variant="outline">Dismiss</Button>
@@ -160,7 +157,7 @@ export default function ProgramPage() {
       )}
 
       {activeQuiz && activeQuiz.questions && (
-        <div className="fixed inset-0 z-50 overflow-y-auto" style={{ background: 'hsl(var(--background) / 0.95)' }}>
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-background/95">
           <div className="min-h-full flex items-center justify-center p-4">
             <div className="w-full max-w-lg">
               <div className="flex justify-end mb-2">
@@ -192,9 +189,9 @@ export default function ProgramPage() {
       )}
 
       {activeExercise && (
-        <div className="fixed inset-0 z-50 overflow-y-auto" style={{ background: 'hsl(var(--background) / 0.95)' }}>
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-background/95">
           <div className="min-h-full flex items-center justify-center p-4">
-            <div className="w-full max-w-md rounded-2xl border p-8 text-center shadow-2xl" style={{ background: 'hsl(var(--card))', borderColor: 'hsl(var(--border))' }}>
+            <div className="w-full max-w-md rounded-2xl border border-border bg-card p-8 text-center shadow-2xl">
               <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-full bg-secondary/15">
                 <ExternalLink className="size-6 text-secondary" />
               </div>

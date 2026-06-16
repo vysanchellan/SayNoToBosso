@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { toast } from "sonner"
-import { HeartPulse, Phone, MessageCircle, Wind } from "lucide-react"
+import { HeartPulse, Phone, MessageCircle, Wind, X } from "lucide-react"
 import {
   Dialog,
   DialogContent,
@@ -34,51 +34,55 @@ export default function CrisisModal() {
       <DialogTrigger
         render={<button className="hidden" aria-label="Open crisis support" />}
       />
-      <DialogContent className="sm:max-w-md">
-        <DialogHeader>
-          <div className="flex items-center gap-3 mb-2">
-            <div className="flex size-10 items-center justify-center rounded-full bg-destructive/20">
-              <HeartPulse className="size-5 text-destructive" />
-            </div>
-            <div>
-              <DialogTitle className="text-destructive text-lg">I Need Support Right Now</DialogTitle>
-            </div>
+      <DialogContent className="sm:max-w-sm gap-0 p-0 overflow-hidden rounded-2xl border-destructive/30">
+        <div className="relative p-6">
+          <button
+            onClick={() => setOpen(false)}
+            className="absolute top-3 right-3 size-7 rounded-lg hover:bg-muted flex items-center justify-center text-muted-foreground"
+            aria-label="Close"
+          >
+            <X className="size-4" />
+          </button>
+
+          <div className="flex items-center gap-3 mb-1">
+            <HeartPulse className="size-5 text-destructive" />
+            <DialogTitle className="text-base font-bold text-foreground">I Need Support Right Now</DialogTitle>
           </div>
-          <DialogDescription className="text-sm text-muted-foreground">
+          <DialogDescription className="text-sm text-muted-foreground mt-1">
             You are not alone. What you&apos;re feeling will pass. Choose an option below.
           </DialogDescription>
-        </DialogHeader>
+        </div>
 
-        <div className="space-y-3">
+        <div className="px-6 pb-6 space-y-3">
           <a
             href="tel:0800456789"
-            className="flex items-center gap-4 rounded-xl border border-destructive/20 bg-destructive/5 p-4 hover:bg-destructive/10 transition-colors"
+            className="flex w-full items-center gap-3 rounded-xl bg-destructive text-destructive-foreground p-4 hover:bg-destructive/90 transition-colors"
           >
-            <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-destructive/20">
-              <Phone className="size-5 text-destructive" />
+            <div className="size-9 rounded-xl bg-white/20 flex items-center justify-center shrink-0">
+              <Phone className="size-5" />
             </div>
-            <div>
-              <p className="text-sm font-semibold text-foreground">Call SADAG Crisis Line</p>
-              <p className="text-xs text-muted-foreground">0800 456 789 &mdash; Free, 24/7</p>
+            <div className="text-left">
+              <p className="text-sm font-bold">Call SADAG Crisis Line</p>
+              <p className="text-xs opacity-80">0800 456 789 &mdash; Free, 24/7</p>
             </div>
           </a>
 
-          <button className="flex w-full items-center gap-4 rounded-xl border border-primary/20 bg-primary/5 p-4 hover:bg-primary/10 transition-colors text-left">
-            <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/20">
-              <Wind className="size-5 text-primary" />
+          <button className="flex w-full items-center gap-3 rounded-xl bg-primary text-primary-foreground p-4 hover:bg-primary/90 transition-colors text-left">
+            <div className="size-9 rounded-xl bg-white/20 flex items-center justify-center shrink-0">
+              <Wind className="size-5" />
             </div>
             <div>
-              <p className="text-sm font-semibold text-foreground">Start Emergency Breathing Exercise</p>
-              <p className="text-xs text-muted-foreground">Calm your nervous system in 2 minutes</p>
+              <p className="text-sm font-bold">Start Emergency Breathing Exercise</p>
+              <p className="text-xs opacity-80">Calm your nervous system in 2 minutes</p>
             </div>
           </button>
 
-          <button className="flex w-full items-center gap-4 rounded-xl border border-accent/20 bg-accent/5 p-4 hover:bg-accent/10 transition-colors text-left">
-            <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-accent/20">
-              <MessageCircle className="size-5 text-accent" />
+          <button className="flex w-full items-center gap-3 rounded-xl bg-muted border border-border text-foreground p-4 hover:bg-muted/60 transition-colors text-left">
+            <div className="size-9 rounded-xl bg-muted border border-border flex items-center justify-center shrink-0">
+              <MessageCircle className="size-5" />
             </div>
             <div>
-              <p className="text-sm font-semibold text-foreground">Message My Care Team</p>
+              <p className="text-sm font-bold">Message My Care Team</p>
               <p className="text-xs text-muted-foreground">They&apos;ll respond as soon as possible</p>
             </div>
           </button>

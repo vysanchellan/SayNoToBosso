@@ -53,8 +53,7 @@ export default function ResearchPage() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search articles..."
-          className="w-full rounded-lg border bg-card py-3 pl-11 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
-          style={{ borderColor: 'hsl(var(--border))' }}
+          className="w-full rounded-xl border border-border bg-card py-3 pl-11 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
         />
       </div>
 
@@ -63,8 +62,8 @@ export default function ResearchPage() {
           <button
             key={f}
             onClick={() => setFilter(f)}
-            className={`shrink-0 rounded-lg px-4 py-1.5 text-sm font-medium transition-colors ${
-              filter === f ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-muted/80"
+            className={`shrink-0 rounded-xl px-4 py-1.5 text-sm font-medium transition-colors ${
+              filter === f ? "bg-primary text-primary-foreground shadow-sm" : "bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
             }`}
           >
             {f}
@@ -74,14 +73,14 @@ export default function ResearchPage() {
 
       <button
         onClick={() => setActiveArticle(featured.id)}
-        className="relative w-full overflow-hidden rounded-xl bg-gradient-to-br from-primary to-primary/80 p-6 sm:p-8 text-left text-white shadow-md"
+        className="relative w-full overflow-hidden rounded-xl bg-gradient-to-br from-primary to-primary/80 p-6 sm:p-8 text-left shadow-md"
       >
-        <span className="tag-accent text-white mb-3 inline-block bg-accent/90 text-[10px]">
+        <span className="inline-block text-xs font-semibold uppercase tracking-widest text-green-100 opacity-80 mb-3">
           This Week&apos;s Focus
         </span>
-        <h2 className="text-xl font-bold sm:text-2xl mb-2 text-white">{featured.title}</h2>
-        <p className="text-sm text-white/85 line-clamp-3 max-w-xl">{featured.summary}</p>
-        <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-white/90 hover:text-white">
+        <h2 className="text-2xl font-bold text-white mb-2">{featured.title}</h2>
+        <p className="text-sm text-white/80 line-clamp-3 max-w-xl">{featured.summary}</p>
+        <span className="mt-4 inline-flex items-center gap-1.5 rounded-xl bg-white/20 text-white border border-white/30 px-4 py-1.5 text-sm font-medium hover:bg-white/30 transition-colors">
           Read Article <ArrowRight className="size-3.5" />
         </span>
       </button>

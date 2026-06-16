@@ -4,7 +4,7 @@ import { useState } from "react"
 import {
   AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer,
 } from "recharts"
-import { Camera } from "lucide-react"
+import { Camera, Flame, BookOpen, PenLine, Trophy } from "lucide-react"
 
 const moods = [
   { day: "D1", mood: 3 }, { day: "D2", mood: 4 }, { day: "D3", mood: 2 }, { day: "D4", mood: 3 },
@@ -24,54 +24,59 @@ const avatars = [
   { id: "a8", color: "bg-rose-700", icon: "🌸" },
 ]
 
+const statIcons = [Flame, BookOpen, PenLine, Trophy]
+
 export default function ProfileOverview() {
   const [selectedAvatar, setSelectedAvatar] = useState("a1")
 
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl border bg-card p-6 flex flex-col sm:flex-row items-center gap-6">
-        <div className="relative">
-          <div className="size-20 rounded-full bg-primary flex items-center justify-center text-2xl text-white font-bold">
-            <span>{avatars.find((a) => a.id === selectedAvatar)?.icon || "JM"}</span>
-          </div>
+      <div className="rounded-2xl bg-card border border-border p-5 border-l-4 border-l-primary">
+        <div className="flex flex-col sm:flex-row items-center gap-5">
           <div className="relative">
+            <div className="size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-2xl font-bold text-primary">
+              <span>{avatars.find((a) => a.id === selectedAvatar)?.icon || "JM"}</span>
+            </div>
             <button
               onClick={() => {
                 const ids = avatars.map((a) => a.id)
                 const idx = ids.indexOf(selectedAvatar)
                 setSelectedAvatar(ids[(idx + 1) % ids.length])
               }}
-              className="absolute -bottom-1 -right-1 size-7 rounded-full bg-card border shadow-sm flex items-center justify-center hover:bg-muted transition-colors"
+              className="absolute -bottom-1 -right-1 size-7 rounded-full bg-card border border-border shadow-sm flex items-center justify-center hover:bg-muted transition-colors"
               aria-label="Change avatar"
             >
               <Camera className="size-3.5 text-muted-foreground" />
             </button>
           </div>
-        </div>
-        <div className="text-center sm:text-left">
-          <h2 className="text-lg font-semibold">Jordan M.</h2>
-          <p className="text-sm text-accent font-medium">Day 14 of Recovery</p>
-          <p className="text-xs text-muted-foreground">Moderate Use Program</p>
-          <p className="text-xs text-muted-foreground/60">Member since May 2026</p>
+          <div className="text-center sm:text-left">
+            <h2 className="text-xl font-bold text-foreground">Jordan M.</h2>
+            <p className="text-sm text-muted-foreground">Day 14 of Recovery &middot; Moderate Use Program</p>
+            <p className="text-xs text-muted-foreground">Member since May 2026</p>
+          </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         {[
           { label: "Days in Program", value: "14" },
           { label: "Lessons Complete", value: "3" },
           { label: "Journal Entries", value: "7" },
           { label: "Badges Earned", value: "4" },
-        ].map((stat) => (
-          <div key={stat.label} className="rounded-2xl border bg-card p-4 text-center">
-            <p className="text-xl font-bold text-primary">{stat.value}</p>
-            <p className="text-xs text-muted-foreground">{stat.label}</p>
-          </div>
-        ))}
+        ].map((stat, i) => {
+          const Icon = statIcons[i]
+          return (
+            <div key={stat.label} className="rounded-2xl bg-muted/50 dark:bg-sidebar-accent/40 border border-border p-4 flex flex-col items-center gap-1">
+              <Icon className="size-5 text-primary" />
+              <p className="text-3xl font-bold text-foreground">{stat.value}</p>
+              <p className="text-xs text-muted-foreground uppercase tracking-wide">{stat.label}</p>
+            </div>
+          )
+        })}
       </div>
 
-      <div className="rounded-2xl border bg-card p-4">
-        <h3 className="text-sm font-semibold mb-3">Mood Trend (Last 14 Days)</h3>
+      <div className="rounded-2xl border border-border bg-card p-4">
+        <h3 className="text-sm font-semibold text-foreground mb-3">Mood Trend (Last 14 Days)</h3>
         <div className="h-48">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={moods}>

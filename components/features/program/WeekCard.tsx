@@ -51,58 +51,50 @@ export default function WeekCard({
 
   return (
     <div
-      className={`rounded-2xl border shadow-sm transition-all ${
+      className={`rounded-2xl border bg-card transition-all ${
         isComplete
-          ? "border-green-300"
-          : isUnlocked
-            ? "hover:shadow-md"
-            : "opacity-70"
+          ? "border-green-300 dark:border-green-700"
+          : isUnlocked && expanded
+            ? "border-primary/40"
+            : isUnlocked
+              ? "border-border hover:shadow-md"
+              : "border-border opacity-70"
       }`}
-      style={{ background: 'hsl(var(--card))' }}
     >
       <button
         onClick={() => isUnlocked && setExpanded(!expanded)}
-        className="flex w-full items-center gap-4 p-5 text-left"
+        className="flex w-full items-center gap-4 p-4 text-left"
         aria-expanded={expanded}
         aria-label={`Week ${week.weekNumber}: ${week.title}`}
       >
         <div
-          className={`relative flex size-12 shrink-0 items-center justify-center rounded-full border-2 transition-colors ${
+          className={`size-10 rounded-full flex items-center justify-center shrink-0 text-sm font-bold ${
             isComplete
-              ? "border-green-500 bg-green-500"
+              ? "bg-green-600 text-white"
               : isUnlocked
-                ? "border-primary bg-primary/10"
-                : "border-muted-foreground/30 bg-muted/20"
+                ? "bg-primary text-primary-foreground"
+                : "bg-muted text-muted-foreground"
           }`}
         >
           {isComplete ? (
-            <Check className="size-5 text-white" />
+            <Check className="size-4" />
           ) : isUnlocked ? (
-            <span className="text-sm font-bold text-primary">{week.weekNumber}</span>
+            <span>{week.weekNumber}</span>
           ) : (
-            <Lock className="size-4 text-muted-foreground/50" />
+            <Lock className="size-4" />
           )}
         </div>
 
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2">
-            <h3 className={`text-base font-semibold ${isUnlocked ? "text-foreground" : "text-muted-foreground"}`}>
-              Week {week.weekNumber}: {week.title}
-            </h3>
-            {isComplete && (
-              <span className="rounded-full bg-green-100 px-2 py-0.5 text-[10px] font-medium text-green-700">
-                Complete
-              </span>
-            )}
-          </div>
-          {isUnlocked && <p className="mt-0.5 text-xs text-muted-foreground line-clamp-1">{week.theme}</p>}
+          <h3 className={`text-base font-semibold ${isUnlocked ? "text-foreground" : "text-muted-foreground"}`}>
+            Week {week.weekNumber}: {week.title}
+          </h3>
+          {isUnlocked && <p className="mt-0.5 text-sm text-muted-foreground line-clamp-1">{week.theme}</p>}
         </div>
 
         {isUnlocked && (
-          <div className="flex flex-col items-end gap-1">
-            <span className="text-xs font-medium text-muted-foreground">
-              {completedCount}/{totalActivities}
-            </span>
+          <div className="flex flex-col items-end gap-1 shrink-0">
+            <span className="text-sm font-semibold text-primary">{completedCount}/{totalActivities}</span>
             <div className="w-16 h-1.5 rounded-full bg-muted overflow-hidden">
               <div
                 className={`h-full rounded-full transition-all ${isComplete ? "bg-green-500" : "bg-primary"}`}
@@ -126,7 +118,7 @@ export default function WeekCard({
           transition={{ duration: 0.25 }}
           className="overflow-hidden"
         >
-          <div ref={activitiesRef} className="border-t px-5 py-3 space-y-1">
+          <div ref={activitiesRef} className="border-t border-border px-4 py-3 space-y-1">
             {week.activities.map((activity) =>
               week.unlocked ? (
                 <ActivityRow
@@ -140,9 +132,9 @@ export default function WeekCard({
             )}
           </div>
 
-          <div className="border-t px-5 py-3">
+          <div className="border-t border-border px-4 py-3">
             {isComplete ? (
-              <div className="flex items-center gap-2 text-sm text-green-600 font-medium">
+              <div className="flex items-center gap-2 text-sm text-green-600 dark:text-green-400 font-medium">
                 <Check className="size-4" />
                 Week Complete
               </div>
@@ -159,7 +151,7 @@ export default function WeekCard({
       )}
 
       {!isUnlocked && (
-        <div className="border-t px-5 py-3">
+        <div className="border-t border-border px-4 py-3">
           <p className="text-xs text-muted-foreground text-center">
             Complete Week {week.weekNumber - 1} to unlock
           </p>

@@ -18,15 +18,17 @@ export default function ProfilePage() {
 
   return (
     <div id="main-content" className="max-w-4xl mx-auto space-y-6">
-      <h1 className="text-2xl font-bold">Your Profile</h1>
+      <h1 className="text-2xl font-bold text-foreground">Your Profile</h1>
 
-      <div className="flex gap-1 rounded-2xl border p-1 overflow-x-auto" style={{ scrollbarWidth: "none", background: 'hsl(var(--card))', borderColor: 'hsl(var(--border))' }}>
+      <div className="flex border-b border-border gap-0">
         {tabs.map((t) => (
           <button
             key={t.key}
             onClick={() => setTab(t.key)}
-            className={`shrink-0 rounded-xl px-4 py-2 text-sm font-medium transition-colors ${
-              tab === t.key ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"
+            className={`px-4 py-2.5 text-sm font-medium transition-colors border-b-2 ${
+              tab === t.key
+                ? "text-primary border-b-2 border-primary"
+                : "text-muted-foreground hover:text-foreground border-transparent hover:border-primary/40"
             }`}
           >
             {t.label}

@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import {
   LayoutDashboard,
   BookOpen,
@@ -15,6 +15,10 @@ import {
   Bell,
   ChevronDown,
   Leaf,
+  Flame,
+  LogOut,
+  Settings,
+  User,
 } from "lucide-react"
 import { useDemo } from "@/lib/demo-context"
 import CrisisModal from "@/components/features/dashboard/CrisisModal"
@@ -40,6 +44,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
@@ -59,6 +64,7 @@ function getInitials(name: string) {
 
 export default function UserLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname()
+  const router = useRouter()
   const { user } = useDemo()
   const displayName = user?.name || "User"
   const initials = getInitials(displayName)
@@ -160,24 +166,29 @@ export default function UserLayout({ children }: { children: ReactNode }) {
 
         <SidebarInset>
           <div className="flex flex-1 flex-col">
-            <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-card px-4 sm:px-6" style={{ borderColor: 'hsl(var(--border))' }}>
+            <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-card px-4 sm:px-6 border-border">
               <SidebarTrigger />
               <div className="flex flex-1 items-center justify-between gap-4">
                 <h1 className="text-lg font-semibold text-foreground">
                   {pathname === "/dashboard" ? "Dashboard" : ""}
                 </h1>
                 <div className="hidden sm:flex items-center">
-                  <div className="flex items-center gap-2 rounded-lg bg-primary/10 px-3 py-1.5 border border-primary/20">
-                    <span className="text-xs font-semibold text-primary tabular-nums">Day {dayInProgram} of 70</span>
-                    <span className="text-primary/40">|</span>
-                    <span className="text-xs font-medium text-primary">Week {currentWeek}</span>
+                  <div className="flex items-center gap-2 min-w-fit rounded-full bg-primary/12 dark:bg-primary/20 px-3 py-1 border border-primary/25 dark:border-primary/40">
+                    <Leaf className="size-3.5 text-primary dark:text-[hsl(155,60%,70%)]" />
+                    <span className="text-xs font-semibold text-primary dark:text-[hsl(155,60%,70%)] tabular-nums">Day {dayInProgram} of 70</span>
+                    <span className="text-primary/40 dark:text-[hsl(155,60%,70%)/40]">|</span>
+                    <span className="text-xs font-medium text-primary dark:text-[hsl(155,60%,70%)]">Week {currentWeek}</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <ThemeToggle />
-                  <button className="relative p-1 text-muted-foreground hover:text-foreground min-h-[44px] min-w-[44px] flex items-center justify-center" aria-label="Notifications">
-                    <Bell className="size-5" />
-                    <span className="absolute -top-0.5 -right-0.5 flex size-4 items-center justify-center rounded-full text-[10px] font-bold" style={{ background: 'hsl(var(--destructive))', color: 'hsl(var(--destructive-foreground))' }}>
+                  <button
+                    onClick={() => router.push("/notifications")}
+                    className="relative size-9 rounded-xl flex items-center justify-center bg-muted dark:bg-sidebar-accent hover:bg-muted/80 dark:hover:bg-sidebar-accent/80 border border-border dark:border-sidebar-border transition-colors"
+                    aria-label="Notifications"
+                  >
+                    <Bell className="size-4 text-muted-foreground" />
+                    <span className="absolute -top-1 -right-1 min-w-4 h-4 bg-destructive text-destructive-foreground text-[10px] font-bold rounded-full flex items-center justify-center px-1">
                       3
                     </span>
                   </button>
@@ -189,16 +200,58 @@ export default function UserLayout({ children }: { children: ReactNode }) {
                       </Avatar>
                       <ChevronDown className="size-4 text-muted-foreground hidden sm:block" />
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                      <DropdownMenuItem>
-                        <Link href="/profile" className="w-full">Profile</Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem>
-                        <Link href="/settings" className="w-full">Settings</Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem>
-                        <Link href="/" className="w-full">Sign Out</Link>
-                      </DropdownMenuItem>
+                    <DropdownMenuContent align="end" className="w-64 rounded-2xl border bg-popover shadow-xl p-0 overflow-hidden">
+                      <div className="bg-muted/50 px-4 py-3 border-b border-border">
+                        <div className="flex items-center gap-3 mb-2">
+                          <Avatar className="size-10 rounded-full">
+                            <AvatarImage src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" />
+                            <AvatarFallback>{initials}</AvatarFallback>
+                          </Avatar>
+                          <div>
+                            <p className="text-sm font-semibold text-foreground">{displayName}</p>
+                            <p className="text-xs text-muted-foreground">Moderate Use Program</p>
+                          </div>
+                        </div>
+                        <div className="flex gap-2">
+                          <span className="bg-primary/10 text-primary text-xs rounded-full px-2 py-0.5 font-medium">Day {dayInProgram}</span>
+                          <span className="bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs rounded-full px-2 py-0.5 font-medium">
+                            <Flame className="size-3 inline mr-0.5" />{daysEngaged} streak
+                          </span>
+                        </div>
+                      </div>
+                      <div className="py-1">
+                        <DropdownMenuItem onSelect={() => router.push("/profile")}>
+                          <User className="size-4 mr-2.5" />
+                          <span>View Profile</span>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem onSelect={() => router.push("/program")}>
+                          <BookOpen className="size-4 mr-2.5" />
+                          <span>My Program</span>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem onSelect={() => router.push("/journal")}>
+                          <PenLine className="size-4 mr-2.5" />
+                          <span>Journal</span>
+                        </DropdownMenuItem>
+                      </div>
+                      <DropdownMenuSeparator />
+                      <div className="py-1">
+                        <DropdownMenuItem onSelect={() => router.push("/notifications")}>
+                          <Bell className="size-4 mr-2.5" />
+                          <span>Notifications</span>
+                          <span className="ml-auto min-w-4 h-4 bg-destructive text-destructive-foreground text-[10px] font-bold rounded-full flex items-center justify-center px-1">3</span>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem onSelect={() => router.push("/settings")}>
+                          <Settings className="size-4 mr-2.5" />
+                          <span>Settings</span>
+                        </DropdownMenuItem>
+                      </div>
+                      <DropdownMenuSeparator />
+                      <div className="py-1">
+                        <DropdownMenuItem onSelect={() => router.push("/")} className="text-destructive hover:bg-destructive/10 focus:bg-destructive/10">
+                          <LogOut className="size-4 mr-2.5" />
+                          <span>Sign Out</span>
+                        </DropdownMenuItem>
+                      </div>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>

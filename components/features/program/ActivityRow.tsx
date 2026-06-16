@@ -29,9 +29,11 @@ export default function ActivityRow({
   const Icon = meta.icon
 
   return (
-    <div className={`flex items-center gap-4 rounded-xl p-3 transition-colors ${activity.completed ? "opacity-60" : "hover:bg-muted/50"}`}>
-      <div className={`flex size-10 shrink-0 items-center justify-center rounded-full ${meta.bg}`}>
-        <Icon className={`size-5 ${meta.color}`} />
+    <div className={`flex items-center gap-4 rounded-xl p-3 transition-colors ${activity.completed ? "bg-muted/40 opacity-70" : "bg-card hover:bg-muted/30 cursor-pointer"}`}
+      onClick={activity.completed ? undefined : () => onStart(activity)}
+    >
+      <div className={`size-8 rounded-lg ${meta.bg} flex items-center justify-center shrink-0`}>
+        <Icon className={`size-4 ${meta.color}`} />
       </div>
       <div className="flex-1 min-w-0">
         <p className={`text-sm font-medium truncate ${activity.completed ? "text-muted-foreground line-through" : "text-foreground"}`}>
@@ -40,15 +42,11 @@ export default function ActivityRow({
         <span className="text-xs text-muted-foreground">{activity.duration}</span>
       </div>
       {activity.completed ? (
-        <CheckCircle2 className="size-5 text-green-500 shrink-0" />
+        <CheckCircle2 className="size-5 text-green-600 shrink-0" />
       ) : (
-        <button
-          onClick={() => onStart(activity)}
-          className="flex items-center gap-1 rounded-full bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary hover:bg-primary/20 transition-colors shrink-0"
-          aria-label={`Start ${activity.title}`}
-        >
-          Start <ArrowRight className="size-3" />
-        </button>
+        <span className="flex items-center gap-1 text-sm font-medium text-primary shrink-0">
+          Start <ArrowRight className="size-3.5" />
+        </span>
       )}
     </div>
   )
@@ -63,9 +61,9 @@ export function ActivityRowLocked({
   const Icon = meta.icon
 
   return (
-    <div className="flex items-center gap-4 rounded-xl p-3 opacity-40">
-      <div className={`flex size-10 shrink-0 items-center justify-center rounded-full ${meta.bg}`}>
-        <Icon className={`size-5 ${meta.color}`} />
+    <div className="flex items-center gap-4 rounded-xl p-3 opacity-50 cursor-not-allowed">
+      <div className={`size-8 rounded-lg ${meta.bg} flex items-center justify-center shrink-0`}>
+        <Icon className={`size-4 ${meta.color}`} />
       </div>
       <div className="flex-1 min-w-0">
         <p className="text-sm font-medium text-muted-foreground truncate">{activity.title}</p>

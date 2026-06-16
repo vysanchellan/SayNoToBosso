@@ -2,8 +2,7 @@
 
 import { useState } from "react"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Flame, ArrowUp, ArrowDown, ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
+import { ArrowUp, ArrowDown, ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -44,28 +43,22 @@ const mockUsers: UserRow[] = [
   { id: "U015", name: "C. de Villiers", tier: "Heavy", day: 32, week: 5, lastActive: "1 day ago", mood: 4.9, streak: 32, status: "Active" },
 ]
 
-function getMoodColor(mood: number) {
-  if (mood < 4) return "text-rose-600 bg-rose-100"
-  if (mood < 7) return "text-amber-600 bg-amber-100"
-  return "text-green-600 bg-green-100"
+const tierBadgeClass: Record<string, string> = {
+  Mild: "bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-500/20",
+  Moderate: "bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20",
+  Heavy: "bg-destructive/10 text-destructive border border-destructive/20",
 }
 
-function getTierColor(tier: string) {
-  switch (tier) {
-    case "Mild": return "bg-sage-100 text-sage-700"
-    case "Moderate": return "bg-amber-100 text-amber-700"
-    case "Heavy": return "bg-rose-100 text-rose-700"
-    default: return "bg-muted text-muted-foreground"
-  }
+const statusBadgeClass: Record<string, string> = {
+  Active: "bg-primary/10 text-primary border border-primary/20",
+  Completed: "bg-green-500/10 text-green-700 dark:text-green-400 border border-green-500/20",
+  "At-Risk": "bg-destructive/10 text-destructive border border-destructive/20",
 }
 
-function getStatusColor(status: string) {
-  switch (status) {
-    case "Active": return "bg-green-100 text-green-700"
-    case "At-Risk": return "bg-rose-100 text-rose-700"
-    case "Completed": return "bg-blue-100 text-blue-700"
-    default: return "bg-muted text-muted-foreground"
-  }
+function getMoodClass(mood: number) {
+  if (mood >= 8) return "text-green-600 dark:text-green-400 font-semibold"
+  if (mood >= 6) return "text-amber-600 dark:text-amber-400 font-semibold"
+  return "text-destructive font-semibold"
 }
 
 export default function UserTable() {
@@ -133,11 +126,11 @@ export default function UserTable() {
 
       <BulkActionsBar count={selected.length} onClear={() => setSelected([])} />
 
-      <div className="rounded-2xl border bg-card overflow-hidden">
+      <div className="rounded-2xl overflow-hidden border border-border shadow-sm">
         <Table>
           <TableHeader>
-            <TableRow>
-              <TableHead className="w-10">
+            <TableRow className="bg-muted">
+              <TableHead className="w-10 px-4 py-3">
                 <input
                   type="checkbox"
                   checked={selected.length === pageUsers.length && pageUsers.length > 0}
@@ -148,25 +141,35 @@ export default function UserTable() {
                   className="rounded border-muted-foreground/30"
                 />
               </TableHead>
-              <TableHead className="cursor-pointer" onClick={() => toggleSort("name")}>User{sortKey === "name" ? (sortDir === "asc" ? <ArrowUp className="size-3 inline ml-1" /> : <ArrowDown className="size-3 inline ml-1" />) : null}</TableHead>
-              <TableHead>Tier</TableHead>
-              <TableHead className="cursor-pointer" onClick={() => toggleSort("day")}>Day{sortKey === "day" ? (sortDir === "asc" ? <ArrowUp className="size-3 inline ml-1" /> : <ArrowDown className="size-3 inline ml-1" />) : null}</TableHead>
-              <TableHead>Week</TableHead>
-              <TableHead>Last Active</TableHead>
-              <TableHead className="cursor-pointer" onClick={() => toggleSort("mood")}>Mood{sortKey === "mood" ? (sortDir === "asc" ? <ArrowUp className="size-3 inline ml-1" /> : <ArrowDown className="size-3 inline ml-1" />) : null}</TableHead>
-              <TableHead className="cursor-pointer" onClick={() => toggleSort("streak")}>Streak{sortKey === "streak" ? (sortDir === "asc" ? <ArrowUp className="size-3 inline ml-1" /> : <ArrowDown className="size-3 inline ml-1" />) : null}</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead className="w-12" />
+              <TableHead className="px-4 py-3 text-xs font-semibold text-muted-foreground uppercase tracking-wide cursor-pointer" onClick={() => toggleSort("name")}>
+                User{sortKey === "name" ? (sortDir === "asc" ? <ArrowUp className="size-3 inline ml-1" /> : <ArrowDown className="size-3 inline ml-1" />) : null}
+              </TableHead>
+              <TableHead className="px-4 py-3 text-xs font-semibold text-muted-foreground uppercase tracking-wide">Tier</TableHead>
+              <TableHead className="px-4 py-3 text-xs font-semibold text-muted-foreground uppercase tracking-wide cursor-pointer" onClick={() => toggleSort("day")}>
+                Day{sortKey === "day" ? (sortDir === "asc" ? <ArrowUp className="size-3 inline ml-1" /> : <ArrowDown className="size-3 inline ml-1" />) : null}
+              </TableHead>
+              <TableHead className="px-4 py-3 text-xs font-semibold text-muted-foreground uppercase tracking-wide">Week</TableHead>
+              <TableHead className="px-4 py-3 text-xs font-semibold text-muted-foreground uppercase tracking-wide">Last Active</TableHead>
+              <TableHead className="px-4 py-3 text-xs font-semibold text-muted-foreground uppercase tracking-wide cursor-pointer" onClick={() => toggleSort("mood")}>
+                Mood{sortKey === "mood" ? (sortDir === "asc" ? <ArrowUp className="size-3 inline ml-1" /> : <ArrowDown className="size-3 inline ml-1" />) : null}
+              </TableHead>
+              <TableHead className="px-4 py-3 text-xs font-semibold text-muted-foreground uppercase tracking-wide cursor-pointer" onClick={() => toggleSort("streak")}>
+                Streak{sortKey === "streak" ? (sortDir === "asc" ? <ArrowUp className="size-3 inline ml-1" /> : <ArrowDown className="size-3 inline ml-1" />) : null}
+              </TableHead>
+              <TableHead className="px-4 py-3 text-xs font-semibold text-muted-foreground uppercase tracking-wide">Status</TableHead>
+              <TableHead className="w-12 px-4 py-3" />
             </TableRow>
           </TableHeader>
           <TableBody>
             {pageUsers.map((user) => (
               <TableRow
                 key={user.id}
-                className={`cursor-pointer ${user.status === "At-Risk" ? "border-l-2 border-l-rose-400" : ""} ${user.status === "Completed" ? "opacity-70" : ""}`}
+                className={`bg-card hover:bg-muted/40 transition-colors border-b border-border last:border-0 cursor-pointer ${
+                  user.status === "At-Risk" ? "bg-destructive/5 hover:bg-destructive/10 border-l-4 border-l-destructive" : ""
+                } ${user.status === "Completed" ? "opacity-70" : ""}`}
                 onClick={() => { setDrawerUser(user); setDrawerOpen(true) }}
               >
-                <TableCell onClick={(e) => e.stopPropagation()}>
+                <TableCell className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
                   <input
                     type="checkbox"
                     checked={selected.includes(user.id)}
@@ -174,41 +177,42 @@ export default function UserTable() {
                     className="rounded border-muted-foreground/30"
                   />
                 </TableCell>
-                <TableCell>
+                <TableCell className="px-4 py-3">
                   <div className="flex items-center gap-2">
-                    <div className="size-8 rounded-full bg-primary/15 flex items-center justify-center text-[10px] font-bold text-primary">{user.name.split(" ").map((s) => s[0]).join("")}</div>
+                    <div className="size-8 rounded-full bg-primary/10 flex items-center justify-center text-[10px] font-bold text-primary shrink-0">
+                      {user.name.split(" ").map((s) => s[0]).join("")}
+                    </div>
                     <div>
-                      <p className="text-sm font-medium">{user.name}</p>
-                      <p className="text-[10px] text-muted-foreground">{user.id}</p>
+                      <p className="text-sm font-medium text-foreground">{user.name}</p>
+                      <p className="text-xs text-muted-foreground">{user.id}</p>
                     </div>
                   </div>
                 </TableCell>
-                <TableCell>
-                  <Badge className={`${getTierColor(user.tier)} font-medium text-[10px] border-0`}>{user.tier}</Badge>
-                </TableCell>
-                <TableCell className="text-sm font-medium">{user.day}</TableCell>
-                <TableCell className="text-sm text-muted-foreground">Week {user.week}</TableCell>
-                <TableCell className="text-sm text-muted-foreground">{user.lastActive}</TableCell>
-                <TableCell>
-                  <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${getMoodColor(user.mood)}`}>
-                    {user.mood}
+                <TableCell className="px-4 py-3">
+                  <span className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-semibold ${tierBadgeClass[user.tier] || "bg-muted text-muted-foreground"}`}>
+                    {user.tier}
                   </span>
                 </TableCell>
-                <TableCell>
-                  <span className="flex items-center gap-1 text-sm font-medium">
-                    <Flame className="size-3.5 text-accent" />
-                    {user.streak}
+                <TableCell className="px-4 py-3 text-sm text-foreground font-medium">{user.day}</TableCell>
+                <TableCell className="px-4 py-3 text-sm text-muted-foreground">Week {user.week}</TableCell>
+                <TableCell className="px-4 py-3 text-sm text-muted-foreground">{user.lastActive}</TableCell>
+                <TableCell className="px-4 py-3">
+                  <span className={getMoodClass(user.mood)}>{user.mood}</span>
+                </TableCell>
+                <TableCell className="px-4 py-3">
+                  <span className="text-sm font-medium text-foreground">
+                    🔥 {user.streak}
                   </span>
                 </TableCell>
-                <TableCell>
-                  <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium ${getStatusColor(user.status)}`}>
+                <TableCell className="px-4 py-3">
+                  <span className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-semibold ${statusBadgeClass[user.status] || "bg-muted text-muted-foreground"}`}>
                     {user.status}
                   </span>
                 </TableCell>
-                <TableCell onClick={(e) => e.stopPropagation()}>
+                <TableCell className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
                   <DropdownMenu>
                     <DropdownMenuTrigger render={
-                      <button className="size-8 rounded-lg flex items-center justify-center hover:bg-muted transition-colors" aria-label="Actions">
+                      <button className="size-8 rounded-lg flex items-center justify-center bg-transparent hover:bg-muted transition-colors" aria-label="Actions">
                         <MoreHorizontal className="size-4 text-muted-foreground" />
                       </button>
                     } />
@@ -225,13 +229,13 @@ export default function UserTable() {
           </TableBody>
         </Table>
 
-        <div className="flex items-center justify-between border-t px-4 py-3">
-          <p className="text-xs text-muted-foreground">Page {page + 1} of {totalPages} · {filtered.length} results</p>
+        <div className="flex items-center justify-between border-t border-border px-4 py-3">
+          <p className="text-xs text-muted-foreground">Page {page + 1} of {totalPages} &middot; {filtered.length} results</p>
           <div className="flex items-center gap-2">
             <button
               onClick={() => setPage((p) => Math.max(0, p - 1))}
               disabled={page === 0}
-              className="size-8 rounded-lg border border-muted-foreground/20 flex items-center justify-center disabled:opacity-30 hover:bg-muted transition-colors"
+              className="size-8 rounded-lg border border-border flex items-center justify-center disabled:opacity-30 hover:bg-muted transition-colors"
               aria-label="Previous page"
             >
               <ChevronLeft className="size-4" />
@@ -241,7 +245,7 @@ export default function UserTable() {
                 key={i}
                 onClick={() => setPage(i)}
                 className={`size-8 rounded-lg text-xs font-medium transition-colors ${
-                  page === i ? "bg-primary text-primary-foreground" : "border border-muted-foreground/20 text-muted-foreground hover:bg-muted"
+                  page === i ? "bg-primary text-primary-foreground" : "border border-border text-muted-foreground hover:bg-muted"
                 }`}
               >
                 {i + 1}
@@ -250,7 +254,7 @@ export default function UserTable() {
             <button
               onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
               disabled={page === totalPages - 1}
-              className="size-8 rounded-lg border border-muted-foreground/20 flex items-center justify-center disabled:opacity-30 hover:bg-muted transition-colors"
+              className="size-8 rounded-lg border border-border flex items-center justify-center disabled:opacity-30 hover:bg-muted transition-colors"
               aria-label="Next page"
             >
               <ChevronRight className="size-4" />

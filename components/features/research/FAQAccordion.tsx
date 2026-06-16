@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { ChevronDown, HelpCircle } from "lucide-react"
+import { ChevronDown, Leaf } from "lucide-react"
 
 const faqs = [
   {
@@ -54,12 +54,17 @@ export default function FAQAccordion() {
       <h2 className="text-xl font-semibold text-foreground mb-4">Common Questions About Cannabis Recovery</h2>
       <div className="space-y-2">
         {faqs.map((faq, i) => (
-          <div key={i} className="rounded-xl border bg-card overflow-hidden" style={{ borderColor: 'hsl(var(--border))' }}>
+          <div
+            key={i}
+            className={`rounded-xl border bg-card px-4 py-3 transition-colors ${
+              openIndex === i ? "border-primary/40 bg-primary/5" : "border-border"
+            }`}
+          >
             <button
               onClick={() => setOpenIndex(openIndex === i ? null : i)}
-              className="flex w-full items-center gap-3 px-4 py-3.5 text-left transition-colors hover:bg-muted/50"
+              className="flex w-full items-center gap-3 text-left"
             >
-              <HelpCircle className="size-4 shrink-0 text-primary" />
+              <Leaf className="size-4 shrink-0 text-primary/60" />
               <span className="flex-1 text-sm font-medium text-foreground">{faq.q}</span>
               <ChevronDown
                 className={`size-4 shrink-0 text-muted-foreground transition-transform ${
@@ -68,7 +73,7 @@ export default function FAQAccordion() {
               />
             </button>
             {openIndex === i && (
-              <div className="border-t px-4 py-3" style={{ borderColor: 'hsl(var(--border))' }}>
+              <div className="mt-3 border-t border-border pt-3">
                 <p className="text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
               </div>
             )}
