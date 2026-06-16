@@ -108,16 +108,16 @@ html {
   --surface: 160 20% 10%;
   --surface-raised: 160 18% 13%;
   --foreground: 145 20% 85%;
-  --card: 160 20% 10%;
+  --card: 160 22% 10%;
   --card-foreground: 145 20% 85%;
-  --popover: 160 20% 10%;
+  --popover: 160 22% 10%;
   --popover-foreground: 145 20% 85%;
   --primary: 140 40% 48%;
   --primary-foreground: 160 25% 7%;
   --secondary: 38 60% 50%;
   --secondary-foreground: 160 25% 7%;
   --muted: 160 18% 14%;
-  --muted-foreground: 145 12% 55%;
+  --muted-foreground: 145 14% 52%;
   --accent: 38 75% 55%;
   --accent-foreground: 160 25% 7%;
   --destructive: 8 65% 58%;
@@ -190,8 +190,8 @@ html {
 @layer components {
   .card-base {
     background: hsl(var(--card));
-    border: 1px solid hsl(var(--border));
-    border-radius: var(--radius-lg);
+    box-shadow: 0 0 0 1px hsl(var(--border) / 0.4);
+    border-radius: var(--radius-xl);
   }
 
   .card-hover {
@@ -218,8 +218,8 @@ html {
     border-radius: 999px;
     font-size: 0.6875rem;
     font-weight: 600;
-    background: hsl(var(--primary) / 0.12);
-    color: hsl(var(--primary));
+    background: hsl(var(--primary) / 0.15);
+    color: hsl(140 40% 65%);
   }
 
   .tag-secondary {
@@ -252,6 +252,10 @@ html {
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: hsl(var(--muted-foreground));
+  }
+
+  .surface-glow {
+    box-shadow: 0 0 40px hsl(155 50% 20% / 0.08), 0 4px 24px hsl(160 28% 4% / 0.4);
   }
 }
 

@@ -8,7 +8,6 @@ import {
   AlertTriangle, ChevronDown, Menu, Download, LogOut, Leaf,
 } from "lucide-react"
 import { useDemo } from "@/lib/demo-context"
-import ThemeToggle from "@/components/ui/ThemeToggle"
 
 function getInitials(name: string) {
   return name.split(" ").map((n) => n[0]).join("").toUpperCase().slice(0, 2)
@@ -95,7 +94,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           </Link>
         </nav>
 
-        <div className="mx-2 mb-3 p-3 rounded-xl" style={{ background: 'hsl(var(--sidebar-accent))', border: '1px solid hsl(var(--sidebar-border))' }}>
+        <div className="mx-2 mb-3 p-3 rounded-xl" style={{ background: 'hsl(var(--sidebar-accent))', boxShadow: '0 0 0 1px hsl(var(--sidebar-border))' }}>
           <div className="flex items-center gap-3">
             <div className="size-9 rounded-full flex items-center justify-center text-sm font-bold" style={{ background: 'linear-gradient(135deg, hsl(155,50%,20%), hsl(155,45%,28%))', color: 'white' }}>
               {adminInitials}
@@ -116,27 +115,42 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       )}
 
       <div className="flex flex-1 flex-col min-w-0">
-        <header className="sticky top-0 z-30 flex items-center justify-between border-b px-4 lg:px-6 py-3 bg-card" style={{ borderColor: 'hsl(var(--border))' }}>
+        <header
+          className="sticky top-0 z-30 flex items-center justify-between px-4 lg:px-6 py-3"
+          style={{ background: 'hsl(160 25% 9%)', boxShadow: '0 1px 0 0 hsl(var(--sidebar-border))' }}
+        >
           <div className="flex items-center gap-3">
             <button onClick={() => setSidebarOpen(true)} className="lg:hidden" aria-label="Open sidebar">
-              <Menu className="size-5 text-muted-foreground" />
+              <Menu className="size-5" style={{ color: 'hsl(var(--sidebar-foreground))' }} />
             </button>
-            <div className="text-sm text-muted-foreground">
-              <span className="text-foreground font-medium">CannaClear Admin</span>
-              <span className="mx-1.5 text-muted-foreground/40">/</span>
+            <div className="text-sm" style={{ color: 'hsl(var(--sidebar-foreground))' }}>
+              <span className="font-medium text-white">CannaClear Admin</span>
+              <span className="mx-1.5" style={{ color: 'hsl(var(--sidebar-foreground) / 0.4)' }}>/</span>
               <span>Facility Overview</span>
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <ThemeToggle />
-            <input type="text" placeholder="Jun 2026" className="w-28 rounded-lg border bg-card px-2.5 py-1.5 text-xs text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30" style={{ borderColor: 'hsl(var(--input))' }} />
-            <button className="flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs text-muted-foreground hover:bg-muted transition-colors" style={{ borderColor: 'hsl(var(--border))' }}>
+            <div
+              className="w-28 rounded-lg px-2.5 py-1.5 text-xs text-center font-medium"
+              style={{ background: 'hsl(var(--sidebar-accent))', color: 'hsl(var(--sidebar-foreground))' }}
+            >
+              Jun 2026
+            </div>
+            <button
+              className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors"
+              style={{ background: 'hsl(var(--primary) / 0.2)', color: 'hsl(var(--primary))' }}
+            >
               <Download className="size-3.5" />
               Export CSV
             </button>
             <div className="flex items-center gap-2">
-              <div className="size-7 rounded-full flex items-center justify-center text-[10px] font-bold" style={{ background: 'hsl(var(--primary) / 0.2)', color: 'hsl(var(--primary))' }}>NS</div>
-              <ChevronDown className="size-3 text-muted-foreground" />
+              <div
+                className="size-7 rounded-full flex items-center justify-center text-[10px] font-bold"
+                style={{ background: 'linear-gradient(135deg, hsl(155,50%,20%), hsl(155,45%,28%))', color: 'white' }}
+              >
+                {adminInitials}
+              </div>
+              <ChevronDown className="size-3" style={{ color: 'hsl(var(--sidebar-foreground))' }} />
             </div>
           </div>
         </header>

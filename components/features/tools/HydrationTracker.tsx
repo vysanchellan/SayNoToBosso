@@ -14,7 +14,7 @@ export default function HydrationTracker() {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl bg-card border border-border shadow-sm p-6">
+      <div className="rounded-2xl bg-card p-6" style={{ boxShadow: '0 0 0 1px hsl(var(--border) / 0.4), 0 1px 3px hsl(160 28% 4% / 0.1)' }}>
         <div className="flex flex-col items-center">
           <div className="relative mb-6" style={{ width: 80, height: 200 }}>
             <svg width="80" height="200" viewBox="0 0 80 200" className="drop-shadow-md">
@@ -91,7 +91,7 @@ export default function HydrationTracker() {
         )}
       </div>
 
-      <div className="rounded-2xl border border-border bg-card shadow-sm">
+      <div className="rounded-2xl bg-card" style={{ boxShadow: '0 0 0 1px hsl(var(--border) / 0.4), 0 1px 3px hsl(160 28% 4% / 0.1)' }}>
         <button
           onClick={() => setShowInfo(!showInfo)}
           className="flex w-full items-center justify-between p-4 text-left"

@@ -51,15 +51,15 @@ export default function WeekCard({
 
   return (
     <div
-      className={`rounded-2xl border bg-card transition-all ${
-        isComplete
-          ? "border-green-300 dark:border-green-700"
+      className="rounded-2xl transition-all"
+      style={{
+        background: 'hsl(var(--card))',
+        boxShadow: isComplete
+          ? '0 0 0 1px hsl(var(--primary) / 0.3), 0 0 0 1px hsl(var(--primary) / 0.2)'
           : isUnlocked && expanded
-            ? "border-primary/40"
-            : isUnlocked
-              ? "border-border hover:shadow-md"
-              : "border-border opacity-70"
-      }`}
+            ? '0 0 0 1px hsl(var(--primary) / 0.4)'
+            : '0 0 0 1px hsl(var(--border) / 0.4)',
+      }}
     >
       <button
         onClick={() => isUnlocked && setExpanded(!expanded)}
@@ -70,11 +70,18 @@ export default function WeekCard({
         <div
           className={`size-10 rounded-full flex items-center justify-center shrink-0 text-sm font-bold ${
             isComplete
-              ? "bg-green-600 text-white"
+              ? "text-white"
               : isUnlocked
-                ? "bg-primary text-primary-foreground"
-                : "bg-muted text-muted-foreground"
+                ? "text-primary-foreground"
+                : "text-muted-foreground"
           }`}
+          style={{
+            background: isComplete
+              ? 'hsl(var(--primary))'
+              : isUnlocked
+                ? 'hsl(var(--primary))'
+                : 'hsl(var(--muted))',
+          }}
         >
           {isComplete ? (
             <Check className="size-4" />
@@ -94,11 +101,11 @@ export default function WeekCard({
 
         {isUnlocked && (
           <div className="flex flex-col items-end gap-1 shrink-0">
-            <span className="text-sm font-semibold text-primary">{completedCount}/{totalActivities}</span>
+            <span className="text-sm font-semibold" style={{ color: 'hsl(var(--primary))' }}>{completedCount}/{totalActivities}</span>
             <div className="w-16 h-1.5 rounded-full bg-muted overflow-hidden">
               <div
-                className={`h-full rounded-full transition-all ${isComplete ? "bg-green-500" : "bg-primary"}`}
-                style={{ width: `${progressPercent}%` }}
+                className="h-full rounded-full transition-all"
+                style={{ width: `${progressPercent}%`, background: isComplete ? 'hsl(var(--primary))' : 'hsl(var(--primary))' }}
               />
             </div>
           </div>
@@ -118,7 +125,7 @@ export default function WeekCard({
           transition={{ duration: 0.25 }}
           className="overflow-hidden"
         >
-          <div ref={activitiesRef} className="border-t border-border px-4 py-3 space-y-1">
+          <div className="px-4 py-3 space-y-1" style={{ borderTop: '1px solid hsl(var(--border) / 0.4)' }}>
             {week.activities.map((activity) =>
               week.unlocked ? (
                 <ActivityRow
@@ -132,16 +139,17 @@ export default function WeekCard({
             )}
           </div>
 
-          <div className="border-t border-border px-4 py-3">
+          <div className="px-4 py-3" style={{ borderTop: '1px solid hsl(var(--border) / 0.4)' }}>
             {isComplete ? (
-              <div className="flex items-center gap-2 text-sm text-green-600 dark:text-green-400 font-medium">
+              <div className="flex items-center gap-2 text-sm font-medium" style={{ color: 'hsl(var(--primary))' }}>
                 <Check className="size-4" />
                 Week Complete
               </div>
             ) : (
               <Button
                 onClick={handleContinueWeek}
-                className="w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90 text-sm"
+                className="w-full rounded-full text-sm text-white"
+                style={{ background: 'hsl(var(--primary))' }}
               >
                 {completedCount === 0 ? "Start Week" : "Continue Week"}
               </Button>
@@ -151,7 +159,7 @@ export default function WeekCard({
       )}
 
       {!isUnlocked && (
-        <div className="border-t border-border px-4 py-3">
+        <div className="px-4 py-3" style={{ borderTop: '1px solid hsl(var(--border) / 0.4)' }}>
           <p className="text-xs text-muted-foreground text-center">
             Complete Week {week.weekNumber - 1} to unlock
           </p>

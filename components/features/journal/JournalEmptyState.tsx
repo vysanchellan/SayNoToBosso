@@ -3,16 +3,17 @@ import { PenLine } from "lucide-react"
 export default function JournalEmptyState({ onNewEntry }: { onNewEntry: () => void }) {
   return (
     <div className="flex flex-col items-center justify-center py-20 text-center">
-      <div className="mb-6 flex size-16 items-center justify-center rounded-full bg-muted">
-        <PenLine className="size-7 text-muted-foreground" />
+      <div className="mb-6 flex size-16 items-center justify-center rounded-full" style={{ background: 'hsl(var(--muted))' }}>
+        <PenLine className="size-7" style={{ color: 'hsl(var(--muted-foreground))' }} />
       </div>
-      <h3 className="text-lg font-semibold text-foreground mb-2">No entries yet</h3>
-      <p className="text-sm text-muted-foreground max-w-xs mb-6">
+      <h3 className="text-lg font-semibold mb-2" style={{ color: 'hsl(var(--foreground))' }}>No entries yet</h3>
+      <p className="text-sm max-w-xs mb-6" style={{ color: 'hsl(var(--muted-foreground))' }}>
         Your journal is a private, POPIA-protected space to process your recovery journey.
       </p>
       <button
         onClick={onNewEntry}
-        className="rounded-lg bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+        className="rounded-xl px-6 py-2.5 text-sm font-medium text-white transition-colors"
+        style={{ background: 'hsl(var(--primary))' }}
       >
         Write First Entry
       </button>

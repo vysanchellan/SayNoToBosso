@@ -126,7 +126,7 @@ export default function UserTable() {
 
       <BulkActionsBar count={selected.length} onClear={() => setSelected([])} />
 
-      <div className="rounded-2xl overflow-hidden border border-border shadow-sm">
+      <div className="rounded-2xl overflow-hidden" style={{ boxShadow: '0 0 0 1px hsl(var(--border) / 0.4), 0 1px 3px hsl(160 28% 4% / 0.1)' }}>
         <Table>
           <TableHeader>
             <TableRow className="bg-muted">

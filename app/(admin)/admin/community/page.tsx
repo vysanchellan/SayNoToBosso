@@ -118,7 +118,7 @@ export default function AdminCommunityPage() {
 
           <div className="space-y-3">
             {displayPosts.map((post) => (
-              <div key={post.id} className={`rounded-2xl border bg-card p-4 mb-3 ${post.pinned ? "ring-1 ring-accent" : "border-border"}`}>
+              <div key={post.id} className={`rounded-2xl bg-card p-4 mb-3 ${post.pinned ? "ring-1 ring-accent" : ""}`} style={post.pinned ? {} : { boxShadow: '0 0 0 1px hsl(var(--border) / 0.4)' }}>
                 <div className="flex items-start gap-3">
                   <div className="size-9 rounded-full bg-primary/15 flex items-center justify-center text-xs font-bold text-primary shrink-0">
                     {post.user.split("#")[1] || "U"}
@@ -188,7 +188,7 @@ export default function AdminCommunityPage() {
         </div>
 
         <aside className="space-y-4">
-          <div className="rounded-2xl border border-border bg-card p-4">
+          <div className="rounded-2xl bg-card p-4" style={{ boxShadow: '0 0 0 1px hsl(var(--border) / 0.4)' }}>
             <h3 className="eyebrow mb-3">Content Guidelines</h3>
             <div className="space-y-3">
               <div>
@@ -220,7 +220,7 @@ export default function AdminCommunityPage() {
         </aside>
       </div>
 
-      <div className="rounded-2xl border border-border bg-card p-4">
+      <div className="rounded-2xl bg-card p-4" style={{ boxShadow: '0 0 0 1px hsl(var(--border) / 0.4)' }}>
         <div className="flex items-center justify-between mb-3">
           <h3 className="eyebrow">Moderation Log</h3>
           <button className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground">

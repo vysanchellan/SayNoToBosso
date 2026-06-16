@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Search, Plus, Lock, Tag, AlertCircle } from "lucide-react"
+import { Search, Plus, Tag, AlertCircle, Lock } from "lucide-react"
 
 interface Entry {
   id: string
@@ -13,6 +13,22 @@ interface Entry {
   mood?: string
   flagged?: boolean
   isPrivate?: boolean
+}
+
+const tagColours: Record<string, { bg: string; text: string }> = {
+  "Milestone": { bg: "hsl(38 75% 55% / 0.15)", text: "hsl(var(--accent))" },
+  "Difficult Day": { bg: "hsl(8 65% 58% / 0.15)", text: "hsl(var(--destructive))" },
+  "Gratitude": { bg: "hsl(140 40% 48% / 0.15)", text: "hsl(140 40% 65%)" },
+  "Week 1": { bg: "hsl(var(--muted))", text: "hsl(var(--muted-foreground))" },
+  "Week 2": { bg: "hsl(var(--muted))", text: "hsl(var(--muted-foreground))" },
+  "Week 3": { bg: "hsl(var(--muted))", text: "hsl(var(--muted-foreground))" },
+  "Week 4": { bg: "hsl(var(--muted))", text: "hsl(var(--muted-foreground))" },
+  "Week 5": { bg: "hsl(var(--muted))", text: "hsl(var(--muted-foreground))" },
+  "Week 6": { bg: "hsl(var(--muted))", text: "hsl(var(--muted-foreground))" },
+  "Week 7": { bg: "hsl(var(--muted))", text: "hsl(var(--muted-foreground))" },
+  "Week 8": { bg: "hsl(var(--muted))", text: "hsl(var(--muted-foreground))" },
+  "Week 9": { bg: "hsl(var(--muted))", text: "hsl(var(--muted-foreground))" },
+  "Week 10": { bg: "hsl(var(--muted))", text: "hsl(var(--muted-foreground))" },
 }
 
 export default function JournalSidebar({
@@ -44,11 +60,12 @@ export default function JournalSidebar({
   })
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="flex h-full flex-col" style={{ background: 'hsl(160 25% 9%)' }}>
       <div className="p-4 pb-3">
         <button
           onClick={onNew}
-          className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+          className="flex w-full items-center justify-center gap-2 rounded-xl py-2.5 text-sm font-medium text-white transition-colors"
+          style={{ background: 'hsl(var(--primary))' }}
         >
           <Plus className="size-4" />
           New Entry
@@ -57,67 +74,85 @@ export default function JournalSidebar({
 
       <div className="px-4 pb-2">
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4" style={{ color: 'hsl(var(--sidebar-foreground))' }} />
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search entries..."
-            className="w-full rounded-lg border bg-card py-2 pl-9 pr-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
-            style={{ borderColor: 'hsl(var(--border))' }}
+            className="w-full rounded-xl py-2 pl-9 pr-3 text-sm outline-none"
+            style={{ background: 'hsl(var(--sidebar-accent))', color: 'hsl(var(--sidebar-foreground))' }}
           />
         </div>
       </div>
 
       <div className="flex gap-1.5 overflow-x-auto px-4 pb-3" style={{ scrollbarWidth: "none" }}>
-        {filters.map((f) => (
-          <button
-            key={f}
-            onClick={() => setFilter(f)}
-            className={`shrink-0 rounded-lg px-3 py-1 text-xs font-medium transition-colors ${
-              filter === f ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-muted/80"
-            }`}
-          >
-            {f}
-          </button>
-        ))}
+        {filters.map((f) => {
+          const active = filter === f
+          return (
+            <button
+              key={f}
+              onClick={() => setFilter(f)}
+              className="shrink-0 rounded-lg px-3 py-1 text-xs font-medium transition-colors"
+              style={{
+                background: active ? 'hsl(var(--primary) / 0.25)' : 'hsl(var(--sidebar-accent))',
+                color: active ? 'hsl(140 40% 65%)' : 'hsl(var(--sidebar-foreground))',
+              }}
+            >
+              {f}
+            </button>
+          )
+        })}
       </div>
 
       <div className="flex-1 overflow-y-auto px-4 pb-4">
         {filtered.length === 0 ? (
-          <p className="pt-8 text-center text-xs text-muted-foreground">No entries found</p>
+          <p className="pt-8 text-center text-xs" style={{ color: 'hsl(var(--sidebar-foreground))' }}>No entries found</p>
         ) : (
           <div className="space-y-1">
-            {filtered.map((entry) => (
-              <button
-                key={entry.id}
-                onClick={() => onSelect(entry.id)}
-                className={`flex w-full flex-col gap-1 rounded-lg px-3 py-3 text-left transition-colors ${
-                  activeId === entry.id ? "bg-primary/8 border-l-2 border-primary" : "hover:bg-muted/50"
-                }`}
-                style={activeId === entry.id ? { background: 'hsl(var(--primary) / 0.06)' } : {}}
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-foreground truncate flex-1">
-                    {entry.title || "Untitled Entry"}
-                  </span>
-                  <div className="flex items-center gap-1 shrink-0 ml-1">
-                    {entry.flagged && <AlertCircle className="size-3 text-destructive" />}
-                    {entry.isPrivate && <Lock className="size-3 text-muted-foreground/60" />}
-                  </div>
-                </div>
-                <p className="text-xs text-muted-foreground line-clamp-1">{entry.preview.slice(0, 80)}</p>
-                <div className="flex items-center gap-2 mt-0.5">
-                  <span className="text-[10px] text-muted-foreground/60">{entry.relativeDate}</span>
-                  {entry.tag && (
-                    <span className="tag-secondary text-[10px]">
-                      <Tag className="size-2.5" />
-                      {entry.tag}
+            {filtered.map((entry) => {
+              const tagColour = tagColours[entry.tag || ""]
+              return (
+                <button
+                  key={entry.id}
+                  onClick={() => onSelect(entry.id)}
+                  className="flex w-full flex-col gap-1 rounded-xl px-3 py-3 text-left transition-colors"
+                  style={{
+                    background: activeId === entry.id ? 'hsl(var(--sidebar-accent))' : 'transparent',
+                    borderLeft: activeId === entry.id ? '2px solid hsl(var(--primary))' : '2px solid transparent',
+                  }}
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-medium truncate flex-1" style={{ color: 'hsl(var(--sidebar-foreground))' }}>
+                      {entry.title || "Untitled Entry"}
                     </span>
-                  )}
-                </div>
-              </button>
-            ))}
+                    <div className="flex items-center gap-1 shrink-0 ml-1">
+                      {entry.flagged && <AlertCircle className="size-3" style={{ color: 'hsl(var(--destructive))' }} />}
+                      {entry.isPrivate && <Lock className="size-3" style={{ color: 'hsl(var(--sidebar-foreground) / 0.4)' }} />}
+                    </div>
+                  </div>
+                  <p className="text-xs line-clamp-1" style={{ color: 'hsl(var(--sidebar-foreground) / 0.7)' }}>{entry.preview.slice(0, 80)}</p>
+                  <div className="flex items-center gap-2 mt-0.5">
+                    <span className="text-[10px]" style={{ color: 'hsl(var(--sidebar-foreground) / 0.4)' }}>{entry.relativeDate}</span>
+                    {entry.tag && tagColour && (
+                      <span
+                        className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium"
+                        style={{ background: tagColour.bg, color: tagColour.text }}
+                      >
+                        <Tag className="size-2.5" />
+                        {entry.tag}
+                      </span>
+                    )}
+                    {entry.tag && !tagColour && (
+                      <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium" style={{ background: 'hsl(var(--muted))', color: 'hsl(var(--muted-foreground))' }}>
+                        <Tag className="size-2.5" />
+                        {entry.tag}
+                      </span>
+                    )}
+                  </div>
+                </button>
+              )
+            })}
           </div>
         )}
       </div>

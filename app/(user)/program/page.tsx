@@ -106,15 +106,32 @@ export default function ProgramPage() {
       <div>
         <h1 className="text-2xl font-bold text-foreground sm:text-3xl">My Recovery Program</h1>
         <div className="mt-3 flex flex-wrap items-center gap-2">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-muted border border-border px-3 py-1 text-xs font-medium text-foreground">
+          <span
+            className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium"
+            style={{
+              background: 'hsl(var(--muted))',
+              boxShadow: '0 0 0 1px hsl(var(--border) / 0.4)',
+              color: 'hsl(var(--foreground))',
+            }}
+          >
             <Calendar className="size-3" />
             Week {currentWeekCompleted.week} of 10
           </span>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-muted border border-border px-3 py-1 text-xs font-medium text-foreground">
+          <span
+            className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium"
+            style={{
+              background: 'hsl(var(--muted))',
+              boxShadow: '0 0 0 1px hsl(var(--border) / 0.4)',
+              color: 'hsl(var(--foreground))',
+            }}
+          >
             <LayoutList className="size-3" />
             {currentWeekCompleted.done} of {currentWeekCompleted.total} this week
           </span>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20 px-3 py-1 text-xs font-medium">
+          <span
+            className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium"
+            style={{ background: 'hsl(var(--accent) / 0.15)', color: 'hsl(var(--accent))', boxShadow: '0 0 0 1px hsl(var(--accent) / 0.2)' }}
+          >
             <Flame className="size-3" />
             {overallCompleted.done} Activities Complete
           </span>
@@ -123,8 +140,8 @@ export default function ProgramPage() {
 
       <div className="h-2 rounded-full bg-muted overflow-hidden">
         <div
-          className="h-full rounded-full bg-primary transition-all duration-700"
-          style={{ width: `${progressPercent}%` }}
+          className="h-full rounded-full transition-all duration-700"
+          style={{ width: `${progressPercent}%`, background: 'hsl(var(--primary))' }}
         />
       </div>
 
@@ -135,9 +152,15 @@ export default function ProgramPage() {
       </div>
 
       {quizScore && (
-        <div className="rounded-2xl border border-border bg-card p-6 text-center">
-          <div className="mx-auto mb-3 flex size-14 items-center justify-center rounded-full bg-accent/15">
-            {quizScore.score === quizScore.total ? <Award className="size-7 text-accent" /> : <Check className="size-7 text-primary" />}
+        <div
+          className="rounded-2xl p-6 text-center"
+          style={{
+            background: 'hsl(var(--card))',
+            boxShadow: '0 0 0 1px hsl(var(--border) / 0.4)',
+          }}
+        >
+          <div className="mx-auto mb-3 flex size-14 items-center justify-center rounded-full" style={{ background: 'hsl(var(--accent) / 0.15)' }}>
+            {quizScore.score === quizScore.total ? <Award className="size-7" style={{ color: 'hsl(var(--accent))' }} /> : <Check className="size-7" style={{ color: 'hsl(var(--primary))' }} />}
           </div>
           <h3 className="text-xl font-semibold text-foreground">{quizScore.score}/{quizScore.total} Correct</h3>
           <p className="text-sm mt-1 text-muted-foreground">
@@ -191,16 +214,22 @@ export default function ProgramPage() {
       {activeExercise && (
         <div className="fixed inset-0 z-50 overflow-y-auto bg-background/95">
           <div className="min-h-full flex items-center justify-center p-4">
-            <div className="w-full max-w-md rounded-2xl border border-border bg-card p-8 text-center shadow-2xl">
-              <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-full bg-secondary/15">
-                <ExternalLink className="size-6 text-secondary" />
+            <div
+              className="w-full max-w-md rounded-2xl p-8 text-center"
+              style={{
+                background: 'hsl(var(--card))',
+                boxShadow: '0 0 0 1px hsl(var(--border) / 0.4), 0 8px 32px hsl(160 28% 4% / 0.4)',
+              }}
+            >
+              <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-full" style={{ background: 'hsl(var(--secondary) / 0.15)' }}>
+                <ExternalLink className="size-6" style={{ color: 'hsl(var(--secondary))' }} />
               </div>
               <h3 className="text-lg font-semibold text-foreground mb-2">{activeExercise.title}</h3>
               <p className="text-sm text-muted-foreground mb-6">This exercise is available in the Daily Tools section.</p>
               <div className="flex gap-3 justify-center">
                 <Button onClick={() => setActiveExercise(null)} variant="outline" className="rounded-full">Cancel</Button>
                 <Link href="/tools" onClick={() => setActiveExercise(null)}>
-                  <Button className="rounded-full bg-secondary text-white hover:bg-secondary/90">
+                  <Button className="rounded-full text-white" style={{ background: 'hsl(var(--secondary))' }}>
                     Open Daily Tools
                   </Button>
                 </Link>

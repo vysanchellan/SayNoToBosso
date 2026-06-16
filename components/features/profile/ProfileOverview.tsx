@@ -31,7 +31,7 @@ export default function ProfileOverview() {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl bg-card border border-border p-5 border-l-4 border-l-primary">
+      <div className="rounded-2xl bg-card p-5 border-l-4 border-l-primary" style={{ boxShadow: '0 0 0 1px hsl(var(--border) / 0.4)' }}>
         <div className="flex flex-col sm:flex-row items-center gap-5">
           <div className="relative">
             <div className="size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-2xl font-bold text-primary">
@@ -66,7 +66,7 @@ export default function ProfileOverview() {
         ].map((stat, i) => {
           const Icon = statIcons[i]
           return (
-            <div key={stat.label} className="rounded-2xl bg-muted/50 dark:bg-sidebar-accent/40 border border-border p-4 flex flex-col items-center gap-1">
+            <div key={stat.label} className="rounded-2xl bg-muted/50 p-4 flex flex-col items-center gap-1" style={{ boxShadow: '0 0 0 1px hsl(var(--border) / 0.4)' }}>
               <Icon className="size-5 text-primary" />
               <p className="text-3xl font-bold text-foreground">{stat.value}</p>
               <p className="text-xs text-muted-foreground uppercase tracking-wide">{stat.label}</p>
@@ -75,7 +75,7 @@ export default function ProfileOverview() {
         })}
       </div>
 
-      <div className="rounded-2xl border border-border bg-card p-4">
+      <div className="rounded-2xl bg-card p-4" style={{ boxShadow: '0 0 0 1px hsl(var(--border) / 0.4)' }}>
         <h3 className="text-sm font-semibold text-foreground mb-3">Mood Trend (Last 14 Days)</h3>
         <div className="h-48">
           <ResponsiveContainer width="100%" height="100%">

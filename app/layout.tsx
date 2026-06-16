@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import "./globals.css"
 import { Toaster } from "sonner"
-import { ThemeProvider } from "next-themes"
 import { DemoProvider } from "@/lib/demo-context"
 import PageTransition from "@/components/ui/PageTransition"
 
@@ -23,30 +22,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="h-full scroll-smooth antialiased" suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{
-          __html: `
-            (function() {
-              try {
-                var theme = localStorage.getItem('theme');
-                if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                  document.documentElement.classList.add('dark');
-                }
-              } catch(e) {}
-            })();
-          `
-        }} />
-      </head>
+    <html lang="en" className="dark h-full scroll-smooth antialiased">
       <body className="min-h-full flex flex-col">
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-4 focus:left-4 bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium">
           Skip to main content
         </a>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-          <DemoProvider>
-            <PageTransition>{children}</PageTransition>
-          </DemoProvider>
-        </ThemeProvider>
+        <DemoProvider>
+          <PageTransition>{children}</PageTransition>
+        </DemoProvider>
         <Toaster
           position="top-right"
           toastOptions={{

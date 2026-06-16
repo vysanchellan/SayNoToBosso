@@ -22,7 +22,6 @@ import {
 } from "lucide-react"
 import { useDemo } from "@/lib/demo-context"
 import CrisisModal from "@/components/features/dashboard/CrisisModal"
-import ThemeToggle from "@/components/ui/ThemeToggle"
 import MobileBottomNav from "@/components/layout/MobileBottomNav"
 import {
   SidebarProvider,
@@ -108,11 +107,17 @@ export default function UserLayout({ children }: { children: ReactNode }) {
                           className={active ? "text-amber-400 font-medium" : "text-sidebar-foreground hover:text-white"}
                           style={
                             active
-                              ? { background: 'hsl(var(--sidebar-accent))', borderLeft: '2px solid hsl(var(--sidebar-primary))' }
+                              ? {
+                                  background: 'hsl(var(--primary) / 0.12)',
+                                  borderLeft: '2px solid hsl(var(--primary))',
+                                  boxShadow: 'inset 0 0 20px hsl(var(--primary) / 0.05)',
+                                }
                               : {}
                           }
                         >
-                          <item.icon className="size-4" />
+                          <span className={`flex size-7 items-center justify-center rounded-lg ${active ? 'bg-primary/15' : ''}`}>
+                            <item.icon className="size-4" />
+                          </span>
                           <span>{item.label}</span>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
@@ -133,7 +138,9 @@ export default function UserLayout({ children }: { children: ReactNode }) {
                       className="text-red-400 hover:bg-red-400/10 hover:text-red-300 data-active:bg-red-400/10 data-active:text-red-300"
                       onClick={() => window.__openCrisisModal?.()}
                     >
-                      <HeartPulse />
+                      <span className="flex size-7 items-center justify-center rounded-lg bg-red-400/10">
+                        <HeartPulse className="size-4" />
+                      </span>
                       <span>Crisis Support</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -166,28 +173,34 @@ export default function UserLayout({ children }: { children: ReactNode }) {
 
         <SidebarInset>
           <div className="flex flex-1 flex-col">
-            <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-card px-4 sm:px-6 border-border">
+            <header
+              className="sticky top-0 z-30 flex h-14 items-center gap-4 px-4 sm:px-6"
+              style={{
+                background: 'hsl(var(--sidebar-background))',
+                boxShadow: '0 1px 0 0 hsl(var(--sidebar-border))',
+              }}
+            >
               <SidebarTrigger />
               <div className="flex flex-1 items-center justify-between gap-4">
-                <h1 className="text-lg font-semibold text-foreground">
+                <h1 className="text-lg font-semibold" style={{ color: 'hsl(var(--sidebar-foreground))' }}>
                   {pathname === "/dashboard" ? "Dashboard" : ""}
                 </h1>
                 <div className="hidden sm:flex items-center">
-                  <div className="flex items-center gap-2 min-w-fit rounded-full bg-primary/12 dark:bg-primary/20 px-3 py-1 border border-primary/25 dark:border-primary/40">
-                    <Leaf className="size-3.5 text-primary dark:text-[hsl(155,60%,70%)]" />
-                    <span className="text-xs font-semibold text-primary dark:text-[hsl(155,60%,70%)] tabular-nums">Day {dayInProgram} of 70</span>
-                    <span className="text-primary/40 dark:text-[hsl(155,60%,70%)/40]">|</span>
-                    <span className="text-xs font-medium text-primary dark:text-[hsl(155,60%,70%)]">Week {currentWeek}</span>
+                  <div className="flex items-center gap-2 min-w-fit rounded-full px-3 py-1 border" style={{ background: 'hsl(var(--primary) / 0.15)', borderColor: 'hsl(var(--primary) / 0.3)' }}>
+                    <Leaf className="size-3.5" style={{ color: 'hsl(var(--primary))' }} />
+                    <span className="text-xs font-semibold tabular-nums" style={{ color: 'hsl(var(--primary))' }}>Day {dayInProgram} of 70</span>
+                    <span style={{ color: 'hsl(var(--primary) / 0.4)' }}>|</span>
+                    <span className="text-xs font-medium" style={{ color: 'hsl(140 40% 65%)' }}>Week {currentWeek}</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <ThemeToggle />
                   <button
                     onClick={() => router.push("/notifications")}
-                    className="relative size-9 rounded-xl flex items-center justify-center bg-muted dark:bg-sidebar-accent hover:bg-muted/80 dark:hover:bg-sidebar-accent/80 border border-border dark:border-sidebar-border transition-colors"
+                    className="relative size-9 rounded-xl flex items-center justify-center transition-colors"
+                    style={{ background: 'hsl(var(--sidebar-accent))' }}
                     aria-label="Notifications"
                   >
-                    <Bell className="size-4 text-muted-foreground" />
+                    <Bell className="size-4" style={{ color: 'hsl(var(--sidebar-foreground))' }} />
                     <span className="absolute -top-1 -right-1 min-w-4 h-4 bg-destructive text-destructive-foreground text-[10px] font-bold rounded-full flex items-center justify-center px-1">
                       3
                     </span>
@@ -198,57 +211,78 @@ export default function UserLayout({ children }: { children: ReactNode }) {
                         <AvatarImage src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" />
                         <AvatarFallback>{initials}</AvatarFallback>
                       </Avatar>
-                      <ChevronDown className="size-4 text-muted-foreground hidden sm:block" />
+                      <ChevronDown className="size-4 hidden sm:block" style={{ color: 'hsl(var(--sidebar-foreground))' }} />
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end" className="w-64 rounded-2xl border bg-popover shadow-xl p-0 overflow-hidden">
-                      <div className="bg-muted/50 px-4 py-3 border-b border-border">
+                    <DropdownMenuContent
+                      align="end"
+                      className="w-64 rounded-2xl border-0 p-0 overflow-hidden"
+                      style={{ background: 'hsl(var(--sidebar-background))', boxShadow: '0 0 0 1px hsl(var(--sidebar-border)), 0 8px 32px hsl(160 28% 4% / 0.6)' }}
+                    >
+                      <div className="px-4 py-3" style={{ background: 'hsl(var(--sidebar-accent))' }}>
                         <div className="flex items-center gap-3 mb-2">
                           <Avatar className="size-10 rounded-full">
                             <AvatarImage src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" />
                             <AvatarFallback>{initials}</AvatarFallback>
                           </Avatar>
                           <div>
-                            <p className="text-sm font-semibold text-foreground">{displayName}</p>
-                            <p className="text-xs text-muted-foreground">Moderate Use Program</p>
+                            <p className="text-sm font-semibold text-white">{displayName}</p>
+                            <p className="text-xs" style={{ color: 'hsl(var(--sidebar-foreground))' }}>Moderate Use Program</p>
                           </div>
                         </div>
                         <div className="flex gap-2">
-                          <span className="bg-primary/10 text-primary text-xs rounded-full px-2 py-0.5 font-medium">Day {dayInProgram}</span>
-                          <span className="bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs rounded-full px-2 py-0.5 font-medium">
+                          <span className="rounded-full px-2 py-0.5 text-xs font-medium" style={{ background: 'hsl(var(--primary) / 0.15)', color: 'hsl(140 40% 65%)' }}>
+                            Day {dayInProgram}
+                          </span>
+                          <span className="rounded-full px-2 py-0.5 text-xs font-medium" style={{ background: 'hsl(var(--accent) / 0.15)', color: 'hsl(var(--accent))' }}>
                             <Flame className="size-3 inline mr-0.5" />{daysEngaged} streak
                           </span>
                         </div>
                       </div>
-                      <div className="py-1">
-                        <DropdownMenuItem onSelect={() => router.push("/profile")}>
-                          <User className="size-4 mr-2.5" />
+                      <div className="py-1" style={{ background: 'hsl(var(--sidebar-background))' }}>
+                        <DropdownMenuItem onSelect={() => router.push("/profile")} className="text-sm" style={{ color: 'hsl(var(--sidebar-foreground))' }}>
+                          <span className="flex size-6 items-center justify-center rounded-lg" style={{ background: 'hsl(var(--sidebar-accent))' }}>
+                            <User className="size-3.5" />
+                          </span>
                           <span>View Profile</span>
                         </DropdownMenuItem>
-                        <DropdownMenuItem onSelect={() => router.push("/program")}>
-                          <BookOpen className="size-4 mr-2.5" />
+                        <DropdownMenuItem onSelect={() => router.push("/program")} className="text-sm" style={{ color: 'hsl(var(--sidebar-foreground))' }}>
+                          <span className="flex size-6 items-center justify-center rounded-lg" style={{ background: 'hsl(var(--sidebar-accent))' }}>
+                            <BookOpen className="size-3.5" />
+                          </span>
                           <span>My Program</span>
                         </DropdownMenuItem>
-                        <DropdownMenuItem onSelect={() => router.push("/journal")}>
-                          <PenLine className="size-4 mr-2.5" />
+                        <DropdownMenuItem onSelect={() => router.push("/journal")} className="text-sm" style={{ color: 'hsl(var(--sidebar-foreground))' }}>
+                          <span className="flex size-6 items-center justify-center rounded-lg" style={{ background: 'hsl(var(--sidebar-accent))' }}>
+                            <PenLine className="size-3.5" />
+                          </span>
                           <span>Journal</span>
                         </DropdownMenuItem>
                       </div>
-                      <DropdownMenuSeparator />
-                      <div className="py-1">
-                        <DropdownMenuItem onSelect={() => router.push("/notifications")}>
-                          <Bell className="size-4 mr-2.5" />
+                      <DropdownMenuSeparator style={{ background: 'hsl(var(--sidebar-border))' }} />
+                      <div className="py-1" style={{ background: 'hsl(var(--sidebar-background))' }}>
+                        <DropdownMenuItem onSelect={() => router.push("/notifications")} className="text-sm" style={{ color: 'hsl(var(--sidebar-foreground))' }}>
+                          <span className="flex size-6 items-center justify-center rounded-lg" style={{ background: 'hsl(var(--sidebar-accent))' }}>
+                            <Bell className="size-3.5" />
+                          </span>
                           <span>Notifications</span>
                           <span className="ml-auto min-w-4 h-4 bg-destructive text-destructive-foreground text-[10px] font-bold rounded-full flex items-center justify-center px-1">3</span>
                         </DropdownMenuItem>
-                        <DropdownMenuItem onSelect={() => router.push("/settings")}>
-                          <Settings className="size-4 mr-2.5" />
+                        <DropdownMenuItem onSelect={() => router.push("/settings")} className="text-sm" style={{ color: 'hsl(var(--sidebar-foreground))' }}>
+                          <span className="flex size-6 items-center justify-center rounded-lg" style={{ background: 'hsl(var(--sidebar-accent))' }}>
+                            <Settings className="size-3.5" />
+                          </span>
                           <span>Settings</span>
                         </DropdownMenuItem>
                       </div>
-                      <DropdownMenuSeparator />
-                      <div className="py-1">
-                        <DropdownMenuItem onSelect={() => router.push("/")} className="text-destructive hover:bg-destructive/10 focus:bg-destructive/10">
-                          <LogOut className="size-4 mr-2.5" />
+                      <DropdownMenuSeparator style={{ background: 'hsl(var(--sidebar-border))' }} />
+                      <div className="py-1" style={{ background: 'hsl(var(--sidebar-background))' }}>
+                        <DropdownMenuItem
+                          onSelect={() => router.push("/")}
+                          className="text-sm text-destructive hover:bg-destructive/10 focus:bg-destructive/10"
+                        >
+                          <span className="flex size-6 items-center justify-center rounded-lg" style={{ background: 'hsl(8 65% 58% / 0.15)' }}>
+                            <LogOut className="size-3.5" style={{ color: 'hsl(var(--destructive))' }} />
+                          </span>
                           <span>Sign Out</span>
                         </DropdownMenuItem>
                       </div>
