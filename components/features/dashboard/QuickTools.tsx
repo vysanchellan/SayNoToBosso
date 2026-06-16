@@ -2,12 +2,12 @@ import { Wind, Moon, Apple, PenLine, BookOpen, HeartPulse } from "lucide-react"
 import Link from "next/link"
 
 const tools = [
-  { icon: Wind, label: "Breathing", href: "/tools#breathing", iconBg: "hsl(var(--sage-light))", iconColor: "hsl(var(--forest))" },
-  { icon: Moon, label: "Sleep Log", href: "/tools#sleep", iconBg: "hsl(var(--sage-light))", iconColor: "hsl(var(--forest))" },
-  { icon: Apple, label: "Nutrition", href: "/tools#nutrition", iconBg: "hsl(var(--sage-light))", iconColor: "hsl(var(--forest))" },
-  { icon: PenLine, label: "Journal", href: "/journal", iconBg: "hsl(var(--sage-light))", iconColor: "hsl(var(--forest))" },
-  { icon: BookOpen, label: "Research", href: "/research", iconBg: "hsl(var(--sage-light))", iconColor: "hsl(var(--forest))" },
-  { icon: HeartPulse, label: "Crisis Help", href: "#crisis", iconBg: "hsl(var(--coral-light))", iconColor: "hsl(var(--coral))" },
+  { icon: Wind, label: "Breathing", href: "/tools#breathing", bg: "hsl(155 50% 32%/0.2)", color: "hsl(155 50% 60%)" },
+  { icon: Moon, label: "Sleep Log", href: "/tools#sleep", bg: "hsl(250 40% 48%/0.2)", color: "hsl(250 40% 70%)" },
+  { icon: Apple, label: "Nutrition", href: "/tools#nutrition", bg: "hsl(38 75% 48%/0.2)", color: "hsl(38 75% 65%)" },
+  { icon: PenLine, label: "Journal", href: "/journal", bg: "hsl(var(--primary)/0.15)", color: "hsl(140 40% 60%)" },
+  { icon: BookOpen, label: "Research", href: "/research", bg: "hsl(200 55% 48%/0.2)", color: "hsl(200 55% 65%)" },
+  { icon: HeartPulse, label: "Crisis Help", href: "#crisis", bg: "hsl(8 65% 58%/0.15)", color: "hsl(8 65% 68%)" },
 ]
 
 export default function QuickTools() {
@@ -17,19 +17,16 @@ export default function QuickTools() {
         <Link
           key={tool.label}
           href={tool.href}
-          className="flex flex-col items-center gap-2 p-4 rounded-2xl cursor-pointer transition-all duration-200 hover:-translate-y-0.5"
-          style={{
-            background: `linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--sage-mist)) 100%)`,
-            border: '1px solid hsl(var(--border))',
-            boxShadow: 'var(--shadow-sm, 0 1px 3px rgba(13,61,36,0.08))',
-          }}
+          className="flex flex-col items-center gap-3 p-4 rounded-2xl cursor-pointer transition-all duration-200 active:scale-95"
+          style={{ background: 'hsl(var(--card))', boxShadow: '0 0 0 1px hsl(var(--border)/0.4)' }}
         >
-          <div className="icon-circle flex size-10 items-center justify-center rounded-full transition-transform duration-200"
-            style={{ background: tool.iconBg }}
+          <div
+            className="flex size-12 items-center justify-center rounded-2xl"
+            style={{ background: tool.bg }}
           >
-            <tool.icon className="size-5" style={{ color: tool.iconColor }} />
+            <tool.icon className="size-6" style={{ color: tool.color }} />
           </div>
-          <span className="text-xs font-medium text-foreground">{tool.label}</span>
+          <span className="text-xs font-semibold text-foreground text-center">{tool.label}</span>
         </Link>
       ))}
     </div>

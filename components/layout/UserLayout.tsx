@@ -181,19 +181,17 @@ export default function UserLayout({ children }: { children: ReactNode }) {
               }}
             >
               <SidebarTrigger />
-              <div className="flex flex-1 items-center justify-between gap-4">
-                <h1 className="text-lg font-semibold" style={{ color: 'hsl(var(--sidebar-foreground))' }}>
-                  {pathname === "/dashboard" ? "Dashboard" : ""}
-                </h1>
+              <div className="flex flex-1 items-center justify-center gap-4">
                 <div className="hidden sm:flex items-center">
-                  <div className="flex items-center gap-2 min-w-fit rounded-full px-3 py-1 border" style={{ background: 'hsl(var(--primary) / 0.15)', borderColor: 'hsl(var(--primary) / 0.3)' }}>
+                  <div className="flex items-center gap-2 min-w-fit rounded-full px-3 py-1" style={{ background: 'hsl(var(--primary) / 0.15)', boxShadow: '0 0 0 1px hsl(var(--primary) / 0.3)' }}>
                     <Leaf className="size-3.5" style={{ color: 'hsl(var(--primary))' }} />
                     <span className="text-xs font-semibold tabular-nums" style={{ color: 'hsl(var(--primary))' }}>Day {dayInProgram} of 70</span>
                     <span style={{ color: 'hsl(var(--primary) / 0.4)' }}>|</span>
                     <span className="text-xs font-medium" style={{ color: 'hsl(140 40% 65%)' }}>Week {currentWeek}</span>
                   </div>
                 </div>
-                <div className="flex items-center gap-3">
+              </div>
+              <div className="flex items-center gap-3">
                   <button
                     onClick={() => router.push("/notifications")}
                     className="relative size-9 rounded-xl flex items-center justify-center transition-colors"
@@ -289,7 +287,6 @@ export default function UserLayout({ children }: { children: ReactNode }) {
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
-              </div>
             </header>
             <main className="flex-1 p-4 sm:p-6 lg:p-8 pb-20 lg:pb-8 bg-background text-foreground">
               {children}

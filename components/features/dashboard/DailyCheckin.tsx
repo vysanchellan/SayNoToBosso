@@ -25,14 +25,14 @@ export default function DailyCheckin() {
 
   if (submitted) {
     return (
-      <div className="rounded-2xl border border-green-200 bg-green-50 p-6">
+      <div className="rounded-2xl p-6" style={{ background: 'hsl(var(--primary)/0.1)', boxShadow: '0 0 0 1px hsl(var(--primary)/0.2)' }}>
         <div className="flex items-center gap-3 mb-4">
-          <div className="flex size-10 items-center justify-center rounded-full bg-green-100">
-            <CheckCircle2 className="size-5 text-green-600" />
+          <div className="flex size-10 items-center justify-center rounded-full" style={{ background: 'hsl(var(--primary)/0.2)' }}>
+            <CheckCircle2 className="size-5" style={{ color: 'hsl(140 40% 55%)' }} />
           </div>
           <div>
-            <h3 className="font-semibold text-green-800">Check-in complete</h3>
-            <p className="text-sm text-green-600">
+            <h3 className="font-semibold text-foreground">Check-in complete</h3>
+            <p className="text-sm" style={{ color: 'hsl(140 40% 55%)' }}>
               Mood: {mood ? moods.find((m) => m.value === mood)?.label : "-"} &middot; Craving: {craving}/10 &middot; Sleep: {sleep}/5 stars
             </p>
           </div>
@@ -42,10 +42,10 @@ export default function DailyCheckin() {
   }
 
   return (
-    <div className="rounded-2xl bg-card p-6 border" style={{ borderTop: '2px solid hsl(var(--primary))', borderColor: 'hsl(var(--border))' }}>
-      <p className="eyebrow mb-5">Morning Check-In</p>
+    <div className="rounded-2xl bg-card p-6" style={{ borderTop: '2px solid hsl(var(--primary))', boxShadow: '0 0 0 1px hsl(var(--border)/0.4)' }}>
+      <p className="eyebrow mb-5" style={{ color: 'hsl(140 40% 55%)' }}>Morning Check-In</p>
 
-      <h3 className="text-lg font-semibold text-foreground mb-1">Today&apos;s Check-In</h3>
+      <h3 className="text-lg font-bold text-foreground mb-1">Today&apos;s Check-In</h3>
       <p className="text-sm text-muted-foreground mb-6">How are you feeling this morning?</p>
 
       <div className="space-y-6">
@@ -56,11 +56,12 @@ export default function DailyCheckin() {
               <button
                 key={m.value}
                 onClick={() => setMood(m.value)}
-                className={`flex flex-col items-center gap-1 rounded-xl p-3 transition-all ${
-                  mood === m.value
-                    ? "scale-125 ring-2 ring-accent shadow-lg"
-                    : "hover:bg-muted/50"
-                }`}
+                className="flex flex-col items-center gap-1 rounded-xl p-3 transition-all"
+                style={{
+                  background: mood === m.value ? 'hsl(var(--primary)/0.15)' : 'hsl(var(--muted))',
+                  boxShadow: mood === m.value ? '0 0 0 2px hsl(var(--primary)/0.5)' : 'none',
+                  transform: mood === m.value ? 'scale(1.15)' : 'scale(1)',
+                }}
                 aria-label={`Mood: ${m.label}`}
               >
                 <span className="text-2xl">{m.emoji}</span>
@@ -68,7 +69,8 @@ export default function DailyCheckin() {
                   <motion.span
                     initial={{ opacity: 0, y: -5 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-[10px] font-medium text-accent"
+                    className="text-[10px] font-medium"
+                    style={{ color: 'hsl(140 40% 65%)' }}
                   >
                     {m.label}
                   </motion.span>
@@ -92,7 +94,7 @@ export default function DailyCheckin() {
               onChange={(e) => setCraving(Number(e.target.value))}
               className="flex-1 h-2 rounded-full appearance-none cursor-pointer"
               style={{
-                background: `linear-gradient(to right, hsl(38, 85%, 48%), hsl(155, 55%, 30%) ${craving * 10}%, hsl(var(--muted)) ${craving * 10}%)`,
+                background: `linear-gradient(to right, hsl(38 85% 48%), hsl(155 55% 30%) ${craving * 10}%, hsl(var(--muted)) ${craving * 10}%)`,
               }}
               aria-label="Craving intensity"
             />

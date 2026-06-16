@@ -1,3 +1,4 @@
+import { CheckCircle2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
@@ -15,76 +16,56 @@ export default function WeeklyProgramCard() {
 
   return (
     <div
-      className="relative overflow-hidden rounded-2xl border bg-card p-5"
-      style={{ borderLeft: '3px solid hsl(var(--accent))', borderColor: 'hsl(var(--border))' }}
+      className="relative overflow-hidden rounded-2xl bg-card p-5"
+      style={{ borderLeft: '3px solid hsl(var(--accent))', boxShadow: '0 0 0 1px hsl(var(--border)/0.4)' }}
     >
       <div className="flex items-center justify-between mb-4">
         <span
-          className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold"
-          style={{
-            background: 'linear-gradient(135deg, hsl(var(--accent) / 0.15), hsl(var(--accent) / 0.05))',
-            color: 'hsl(var(--accent))',
-            border: '1px solid hsl(var(--accent) / 0.2)',
-          }}
+          className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold"
+          style={{ background: 'hsl(38 75% 48%/0.15)', color: 'hsl(38 75% 65%)' }}
         >
-          <span className="size-1.5 rounded-full" style={{ background: 'hsl(var(--accent))' }} />
+          <span className="size-1.5 rounded-full bg-current" />
           Week 2
         </span>
         <span className="text-xs text-muted-foreground">{completed} of {total} activities complete</span>
       </div>
 
-      <h3 className="text-lg font-display font-semibold" style={{ color: 'hsl(var(--forest))' }}>Brain Reset</h3>
+      <h3 className="text-xl font-bold mt-2" style={{ color: 'hsl(140 40% 65%)' }}>Brain Reset</h3>
 
       <div className="relative h-2 rounded-full overflow-hidden mt-3 mb-4" style={{ background: 'hsl(var(--muted))' }}>
         <div
           className="h-full rounded-full transition-all duration-500"
           style={{
             width: `${(completed / total) * 100}%`,
-            background: 'linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)))',
+            background: 'linear-gradient(90deg, hsl(155 50% 32%), hsl(38 75% 48%))',
           }}
         />
       </div>
 
       <ul className="space-y-2 mb-4">
         {activities.map((a) => (
-          <li key={a.label} className="flex items-center gap-3">
-            <div
-              className="flex size-5 shrink-0 items-center justify-center rounded-full"
-              style={{
-                border: `1.5px solid ${
-                  a.done
-                    ? 'hsl(var(--sage))'
-                    : a.inProgress
-                      ? 'hsl(var(--accent))'
-                      : 'hsl(var(--muted-foreground) / 0.3)'
-                }`,
-                background: a.done ? 'hsl(var(--sage-light))' : a.inProgress ? 'hsl(var(--accent) / 0.1)' : 'transparent',
-              }}
-            >
-              {a.done ? (
-                <span className="text-[10px] font-bold" style={{ color: 'hsl(var(--sage))' }}>&#10003;</span>
-              ) : a.inProgress ? (
-                <span className="size-2 rounded-full" style={{ background: 'hsl(var(--accent))' }} />
-              ) : null}
-            </div>
+          <li key={a.label} className="flex items-center gap-3 py-2 text-sm">
+            {a.done ? (
+              <CheckCircle2 className="size-4 shrink-0" style={{ color: 'hsl(140 40% 55%)' }} />
+            ) : a.inProgress ? (
+              <div className="size-4 shrink-0 rounded-full flex items-center justify-center" style={{ background: 'hsl(38 75% 48%)' }}>
+                <span className="size-1.5 rounded-full bg-white" />
+              </div>
+            ) : (
+              <div className="size-4 shrink-0 rounded-full" style={{ border: '2px solid hsl(var(--border))' }} />
+            )}
             <span
-              className="text-sm flex-1"
+              className="flex-1"
               style={{
-                color: a.done ? 'hsl(var(--muted-foreground))' : a.inProgress ? 'hsl(var(--accent))' : 'hsl(var(--foreground))',
+                color: a.done ? 'hsl(var(--muted-foreground))' : a.inProgress ? 'hsl(var(--foreground))' : 'hsl(var(--muted-foreground))',
                 textDecoration: a.done ? 'line-through' : 'none',
-                fontWeight: a.inProgress ? 500 : 400,
+                fontWeight: a.inProgress ? 600 : 400,
               }}
             >
               {a.label}
             </span>
             {a.isToday && (
-              <span
-                className="rounded-full px-2 py-0.5 text-[10px] font-semibold"
-                style={{
-                  background: 'hsl(var(--primary) / 0.1)',
-                  color: 'hsl(var(--primary))',
-                }}
-              >
+              <span className="rounded-full px-2 py-0.5 text-[10px] font-semibold" style={{ background: 'hsl(var(--primary)/0.15)', color: 'hsl(140 40% 65%)' }}>
                 Today
               </span>
             )}
@@ -94,11 +75,8 @@ export default function WeeklyProgramCard() {
 
       <Link href="/program">
         <Button
-          className="w-full rounded-full font-semibold"
-          style={{
-            background: 'linear-gradient(135deg, hsl(var(--primary)), hsl(var(--forest-mid)))',
-            color: 'hsl(var(--primary-foreground))',
-          }}
+          className="w-full py-3 rounded-xl text-sm font-bold transition-all active:scale-[0.99]"
+          style={{ background: 'hsl(var(--primary))', color: 'white' }}
         >
           Continue Program
         </Button>

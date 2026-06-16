@@ -40,7 +40,7 @@ function Ring({ label, value, percent, color, sublabel }: RingProps) {
 
 export default function ProgressRings() {
   return (
-    <div className="rounded-2xl bg-card p-5 border" style={{ borderColor: 'hsl(var(--border))', boxShadow: 'inset 0 1px 3px rgba(13,61,36,0.04)' }}>
+    <div className="rounded-2xl bg-card p-5" style={{ boxShadow: '0 0 0 1px hsl(var(--border)/0.4)' }}>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         <Ring label="Sleep" value="6.5" percent={81} color="hsl(145, 40%, 48%)" sublabel="Sleep" />
         <Ring label="Hydration" value="50%" percent={50} color="hsl(200, 65%, 48%)" sublabel="Hydration" />
