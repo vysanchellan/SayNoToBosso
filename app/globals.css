@@ -6,6 +6,7 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #07100B;
 }
 
 @custom-variant dark (&:is(.dark *));

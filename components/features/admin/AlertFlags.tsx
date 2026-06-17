@@ -1,3 +1,6 @@
+"use client"
+
+import { useRouter } from "next/navigation"
 import { AlertTriangle, AlertCircle, Info } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -38,6 +41,7 @@ const alerts = [
 ]
 
 export default function AlertFlags() {
+  const router = useRouter()
   return (
     <div className="rounded-2xl p-5" style={{ backgroundColor: '#0E1A12', border: '1px solid #1F3326' }}>
       <div className="flex items-center justify-between mb-4">
@@ -68,7 +72,7 @@ export default function AlertFlags() {
             </div>
             <p className="text-sm mb-2" style={{ color: '#B9D0BE' }}>{alert.reason}</p>
             <div className="flex gap-1.5">
-              <Button className="rounded-full h-7 text-[10px]" style={{ backgroundColor: '#4ADE80', color: '#07100B' }}>View Profile</Button>
+              <Button className="rounded-full h-7 text-[10px]" style={{ backgroundColor: '#4ADE80', color: '#07100B' }} onClick={() => router.push("/admin/users")}>View Profile</Button>
               <Button className="rounded-full h-7 text-[10px]" style={{ backgroundColor: 'transparent', border: '1px solid #1F3326', color: '#74917B' }}>
                 {i === 1 ? "Send Prompt" : i === 2 ? "Note Added" : "Schedule Check-in"}
               </Button>

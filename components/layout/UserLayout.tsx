@@ -205,7 +205,7 @@ export default function UserLayout({ children }: { children: ReactNode }) {
                     </span>
                   </button>
                   <DropdownMenu>
-                    <DropdownMenuTrigger render={<button className="flex items-center gap-2" aria-label="User menu" />}>
+                    <DropdownMenuTrigger render={(props) => <button {...props} className="flex items-center gap-2" aria-label="User menu" />}>
                       <Avatar className="size-8">
                         <AvatarImage src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" />
                         <AvatarFallback>{initials}</AvatarFallback>

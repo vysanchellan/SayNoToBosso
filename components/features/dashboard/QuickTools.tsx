@@ -1,3 +1,5 @@
+"use client"
+
 import { Wind, Moon, Apple, PenLine, BookOpen, HeartPulse } from "lucide-react"
 import Link from "next/link"
 
@@ -11,24 +13,45 @@ const tools = [
 ]
 
 export default function QuickTools() {
+  const handleCrisis = () => {
+    window.__openCrisisModal?.()
+  }
+
   return (
     <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
-      {tools.map((tool) => (
-        <Link
-          key={tool.label}
-          href={tool.href}
-          className="flex flex-col items-center gap-3 p-5 rounded-2xl cursor-pointer transition-all duration-200 hover:-translate-y-0.5"
-          style={{ backgroundColor: '#0E1A12', border: '1px solid #1F3326' }}
-        >
-          <div
-            className="flex size-12 items-center justify-center rounded-full"
-            style={{ backgroundColor: tool.bg }}
+      {tools.map((tool) =>
+        tool.label === "Crisis Help" ? (
+          <button
+            key={tool.label}
+            onClick={handleCrisis}
+            className="flex flex-col items-center gap-3 p-5 rounded-2xl cursor-pointer transition-all duration-200 hover:-translate-y-0.5"
+            style={{ backgroundColor: '#0E1A12', border: '1px solid #1F3326' }}
           >
-            <tool.icon className="size-6" style={{ color: tool.color }} />
-          </div>
-          <span className="text-xs font-semibold text-center" style={{ color: '#B9D0BE' }}>{tool.label}</span>
-        </Link>
-      ))}
+            <div
+              className="flex size-12 items-center justify-center rounded-full"
+              style={{ backgroundColor: tool.bg }}
+            >
+              <tool.icon className="size-6" style={{ color: tool.color }} />
+            </div>
+            <span className="text-xs font-semibold text-center" style={{ color: '#B9D0BE' }}>{tool.label}</span>
+          </button>
+        ) : (
+          <Link
+            key={tool.label}
+            href={tool.href}
+            className="flex flex-col items-center gap-3 p-5 rounded-2xl cursor-pointer transition-all duration-200 hover:-translate-y-0.5"
+            style={{ backgroundColor: '#0E1A12', border: '1px solid #1F3326' }}
+          >
+            <div
+              className="flex size-12 items-center justify-center rounded-full"
+              style={{ backgroundColor: tool.bg }}
+            >
+              <tool.icon className="size-6" style={{ color: tool.color }} />
+            </div>
+            <span className="text-xs font-semibold text-center" style={{ color: '#B9D0BE' }}>{tool.label}</span>
+          </Link>
+        )
+      )}
     </div>
   )
 }
