@@ -67,7 +67,7 @@ export default function UserProfileDrawer({ open, onOpenChange, user }: UserProf
           })()}
           <span className="text-[10px] text-muted-foreground">Day {user.day} · Week {user.week}</span>
           {user.status === "At-Risk" && (
-            <span className="flex items-center gap-1 text-[10px] text-rose-600 font-medium">
+            <span className="flex items-center gap-1 text-[10px] font-medium" style={{ color: 'hsl(8 65% 68%)' }}>
               <AlertTriangle className="size-3" /> At-Risk
             </span>
           )}
@@ -144,7 +144,7 @@ export default function UserProfileDrawer({ open, onOpenChange, user }: UserProf
                   {checkins.map((c, i) => (
                     <tr key={i} className="border-b last:border-0">
                       <td className="p-2">{c.date}</td>
-                      <td className={`p-2 font-medium ${c.mood < 4 ? "text-rose-600" : c.mood < 7 ? "text-amber-600" : "text-green-600"}`}>{c.mood}</td>
+                      <td className="p-2 font-medium" style={{ color: c.mood < 4 ? 'hsl(8 65% 68%)' : c.mood < 7 ? 'hsl(38 75% 65%)' : 'hsl(140 40% 65%)' }}>{c.mood}</td>
                       <td className="p-2 text-muted-foreground">{c.craving}</td>
                       <td className="p-2 text-muted-foreground">{c.sleep}</td>
                       <td className="p-2 text-muted-foreground italic">{c.note}</td>
@@ -176,7 +176,7 @@ export default function UserProfileDrawer({ open, onOpenChange, user }: UserProf
               {Array.from({ length: 10 }, (_, i) => (
                 <div key={i} className="flex items-center justify-between rounded-xl border bg-card px-3 py-2">
                   <span className="text-xs font-medium">Week {i + 1}</span>
-                  <span className={`text-[10px] ${i < 3 ? "text-green-600" : i === 3 ? "text-accent" : "text-muted-foreground/50"}`}>
+                  <span className="text-[10px]" style={{ color: i < 3 ? 'hsl(140 40% 65%)' : i === 3 ? 'hsl(var(--accent))' : 'hsl(var(--muted-foreground) / 0.5)' }}>
                     {i < 3 ? "Complete" : i === 3 ? "In Progress" : "Locked"}
                   </span>
                 </div>

@@ -129,14 +129,22 @@ export default function QuizCard({
                 onClick={() => handleSelect(i)}
                 className={`flex w-full items-center gap-3 rounded-xl border p-3 text-left text-sm transition-all cursor-pointer ${
                   state === "correct"
-                    ? "border-green-500 bg-green-50 text-green-800 ring-2 ring-green-300"
+                    ? "border-green-500 ring-2 ring-green-500/30"
                     : state === "wrong"
-                      ? "border-red-400 bg-red-50 text-red-800 ring-2 ring-red-200"
+                      ? "border-red-400 ring-2 ring-red-500/30"
                       : isSelected
                         ? "ring-2 ring-primary/40 text-foreground font-medium"
                         : "border-muted-foreground/20 bg-card text-foreground hover:border-primary/50"
                 }`}
-                style={isSelected ? { borderColor: 'hsl(var(--primary))', background: 'hsl(var(--primary) / 0.06)' } : {}}
+                style={
+                  state === "correct"
+                    ? { borderColor: 'hsl(142 55% 40%)', background: 'hsl(142 55% 52% / 0.1)', boxShadow: '0 0 0 2px hsl(142 55% 52% / 0.3)' }
+                    : state === "wrong"
+                      ? { borderColor: 'hsl(8 65% 50%)', background: 'hsl(8 65% 58% / 0.1)', boxShadow: '0 0 0 2px hsl(8 65% 58% / 0.25)' }
+                      : isSelected
+                        ? { borderColor: 'hsl(var(--primary))', background: 'hsl(var(--primary) / 0.06)' }
+                        : {}
+                }
               >
                 <div
                   className={`flex size-7 shrink-0 items-center justify-center rounded-full text-sm font-bold ${
@@ -162,11 +170,13 @@ export default function QuizCard({
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            className={`mt-4 rounded-xl p-3 text-sm ${
-              selected === q.correct ? "bg-green-50 text-green-800" : "bg-amber-50 text-amber-800"
-            }`}
+            className="mt-4 rounded-xl p-3 text-sm"
+            style={{
+              background: selected === q.correct ? 'hsl(var(--primary)/0.1)' : 'hsl(38 75% 48% / 0.1)',
+              boxShadow: selected === q.correct ? '0 0 0 1px hsl(var(--primary)/0.2)' : '0 0 0 1px hsl(38 75% 48% / 0.25)',
+            }}
           >
-            {q.explanation}
+            <span style={{ color: selected === q.correct ? 'hsl(140 40% 65%)' : 'hsl(38 75% 65%)' }}>{q.explanation}</span>
           </motion.div>
         )}
 

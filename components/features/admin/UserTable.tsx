@@ -51,14 +51,14 @@ const tierBadgeClass: Record<string, string> = {
 
 const statusBadgeClass: Record<string, string> = {
   Active: "bg-primary/10 text-primary border border-primary/20",
-  Completed: "bg-green-500/10 text-green-700 dark:text-green-400 border border-green-500/20",
+  Completed: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20",
   "At-Risk": "bg-destructive/10 text-destructive border border-destructive/20",
 }
 
 function getMoodClass(mood: number) {
-  if (mood >= 8) return "text-green-600 dark:text-green-400 font-semibold"
-  if (mood >= 6) return "text-amber-600 dark:text-amber-400 font-semibold"
-  return "text-destructive font-semibold"
+  if (mood >= 8) return "font-semibold"
+  if (mood >= 6) return "font-semibold"
+  return "font-semibold"
 }
 
 export default function UserTable() {
@@ -197,7 +197,7 @@ export default function UserTable() {
                 <TableCell className="px-4 py-3 text-sm text-muted-foreground">Week {user.week}</TableCell>
                 <TableCell className="px-4 py-3 text-sm text-muted-foreground">{user.lastActive}</TableCell>
                 <TableCell className="px-4 py-3">
-                  <span className={getMoodClass(user.mood)}>{user.mood}</span>
+                  <span className={getMoodClass(user.mood)} style={{ color: user.mood >= 8 ? 'hsl(140 40% 65%)' : user.mood >= 6 ? 'hsl(38 75% 65%)' : 'hsl(8 65% 68%)' }}>{user.mood}</span>
                 </TableCell>
                 <TableCell className="px-4 py-3">
                   <span className="text-sm font-medium text-foreground">
@@ -220,7 +220,7 @@ export default function UserTable() {
                       <DropdownMenuItem onSelect={() => { setDrawerUser(user); setDrawerOpen(true) }}>View Profile</DropdownMenuItem>
                       <DropdownMenuItem>Schedule Check-in</DropdownMenuItem>
                       <DropdownMenuItem>Send Alert</DropdownMenuItem>
-                      <DropdownMenuItem className="text-rose-600">Suspend</DropdownMenuItem>
+                      <DropdownMenuItem style={{ color: 'hsl(8 65% 68%)' }}>Suspend</DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </TableCell>

@@ -20,8 +20,8 @@ export default function DashboardError({
 
   return (
     <div id="main-content" className="flex flex-col items-center justify-center p-8 text-center min-h-[60vh]">
-      <div className="mx-auto flex size-16 items-center justify-center rounded-full bg-red-100">
-        <AlertTriangle className="size-8 text-red-500" />
+      <div className="mx-auto flex size-16 items-center justify-center rounded-full" style={{ background: 'hsl(var(--destructive)/0.15)' }}>
+        <AlertTriangle className="size-8" style={{ color: 'hsl(8 65% 68%)' }} />
       </div>
       <h2 className="mt-4 text-xl font-bold">Something went wrong</h2>
       <p className="mt-2 text-sm text-muted-foreground max-w-sm">

@@ -44,7 +44,7 @@ export default function PostComposer() {
       />
       <div className="flex items-center justify-between text-xs text-muted-foreground mt-1 mb-3">
         <span>{text.length}/500</span>
-        {text.length < 20 && <span className="text-amber-600">Minimum 20 characters</span>}
+        {text.length < 20 && <span style={{ color: 'hsl(38 75% 65%)' }}>Minimum 20 characters</span>}
       </div>
 
       <div className="flex flex-wrap gap-1.5 mb-3">

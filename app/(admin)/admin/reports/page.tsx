@@ -127,7 +127,7 @@ export default function AdminReportsPage() {
               {m.change && (
                 <div className="flex items-center gap-2 mt-2 text-[10px]">
                   <span className="text-muted-foreground">From {m.before}</span>
-                  <span className="text-green-600 font-medium">→ {m.after}</span>
+                  <span className="font-medium" style={{ color: 'hsl(140 40% 65%)' }}>→ {m.after}</span>
                 </div>
               )}
             </div>
@@ -147,9 +147,9 @@ export default function AdminReportsPage() {
                     <stop offset="100%" stopColor="hsl(142, 30%, 36%)" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="hsl(40, 10%, 90%)" />
-                <XAxis dataKey="week" tick={{ fontSize: 10, fill: "hsl(40, 20%, 50%)" }} axisLine={false} tickLine={false} />
-                <YAxis domain={[0, 10]} tick={{ fontSize: 10, fill: "hsl(40, 20%, 50%)" }} axisLine={false} tickLine={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                <XAxis dataKey="week" tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }} axisLine={false} tickLine={false} />
+                <YAxis domain={[0, 10]} tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }} axisLine={false} tickLine={false} />
                 <Tooltip />
                 <Legend />
                 <Area type="monotone" dataKey="mood" stroke="hsl(142, 30%, 36%)" fill="url(#reportMoodFill)" strokeWidth={2} name="Avg Mood" />
@@ -166,9 +166,9 @@ export default function AdminReportsPage() {
           <div className="h-72">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={toolData} layout="vertical">
-                <CartesianGrid strokeDasharray="3 3" stroke="hsl(40, 10%, 90%)" horizontal={false} />
-                <XAxis type="number" domain={[0, 100]} tick={{ fontSize: 10, fill: "hsl(40, 20%, 50%)" }} tickLine={false} axisLine={false} unit="%" />
-                <YAxis type="category" dataKey="name" tick={{ fontSize: 10, fill: "hsl(40, 20%, 50%)" }} tickLine={false} axisLine={false} width={100} />
+                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" horizontal={false} />
+                <XAxis type="number" domain={[0, 100]} tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }} tickLine={false} axisLine={false} unit="%" />
+                <YAxis type="category" dataKey="name" tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }} tickLine={false} axisLine={false} width={100} />
                 <Tooltip formatter={(value) => `${value}%`} />
                 <Bar dataKey="pct" radius={[0, 4, 4, 0]}>
                   {toolData.map((d, i) => (
@@ -192,9 +192,9 @@ export default function AdminReportsPage() {
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={limitedFunnelData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="hsl(40, 10%, 90%)" vertical={false} />
-                <XAxis dataKey="week" tick={{ fontSize: 10, fill: "hsl(40, 20%, 50%)" }} tickLine={false} axisLine={false} />
-                <YAxis domain={[0, 100]} tick={{ fontSize: 10, fill: "hsl(40, 20%, 50%)" }} tickLine={false} axisLine={false} unit="%" />
+                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
+                <XAxis dataKey="week" tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }} tickLine={false} axisLine={false} />
+                <YAxis domain={[0, 100]} tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }} tickLine={false} axisLine={false} unit="%" />
                 <Tooltip formatter={(value) => `${value}%`} />
                 <Bar dataKey="pct" radius={[4, 4, 0, 0]}>
                   {funnelData.map((d, i) => (
@@ -235,7 +235,7 @@ export default function AdminReportsPage() {
                   <td className="p-3">{row.started}</td>
                   <td className="p-3">{row.completed}</td>
                   <td className="p-3">
-                    <span className={`font-medium ${row.rate >= 60 ? "text-green-600" : row.rate >= 30 ? "text-amber-600" : "text-rose-600"}`}>
+                    <span className="font-medium" style={{ color: row.rate >= 60 ? 'hsl(140 40% 65%)' : row.rate >= 30 ? 'hsl(38 75% 65%)' : 'hsl(8 65% 68%)' }}>
                       {row.rate}%
                     </span>
                   </td>
