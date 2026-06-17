@@ -72,8 +72,8 @@ export default function WeekCard({
             isComplete
               ? "text-white"
               : isUnlocked
-                ? "text-primary-foreground"
-                : "text-muted-foreground"
+                ? "text-white"
+                : ""
           }`}
           style={{
             background: isComplete
@@ -93,16 +93,16 @@ export default function WeekCard({
         </div>
 
         <div className="flex-1 min-w-0">
-          <h3 className={`text-base font-semibold ${isUnlocked ? "text-foreground" : "text-muted-foreground"}`}>
+          <h3           className="text-base font-semibold" style={{ color: isUnlocked ? '#F2F7F1' : '#74917B' }}>
             Week {week.weekNumber}: {week.title}
           </h3>
-          {isUnlocked && <p className="mt-0.5 text-sm text-muted-foreground line-clamp-1">{week.theme}</p>}
+          {isUnlocked && <p className="mt-0.5 text-sm line-clamp-1" style={{ color: '#74917B' }}>{week.theme}</p>}
         </div>
 
         {isUnlocked && (
           <div className="flex flex-col items-end gap-1 shrink-0">
-            <span className="text-sm font-semibold" style={{ color: '#4ADE80' }}>{completedCount}/{totalActivities}</span>
-            <div className="w-16 h-1.5 rounded-full bg-muted overflow-hidden">
+              <span className="text-sm font-semibold" style={{ color: '#4ADE80' }}>{completedCount}/{totalActivities}</span>
+              <div className="w-16 h-1.5 rounded-full overflow-hidden" style={{ backgroundColor: '#142219' }}>
               <div
                 className="h-full rounded-full transition-all"
                 style={{ width: `${progressPercent}%`, background: '#4ADE80' }}
@@ -112,7 +112,7 @@ export default function WeekCard({
         )}
 
         {isUnlocked && (
-          <div className="shrink-0 text-muted-foreground">
+          <div className="shrink-0" style={{ color: '#74917B' }}>
             {expanded ? <ChevronDown className="size-5" /> : <ChevronRight className="size-5" />}
           </div>
         )}
@@ -160,7 +160,7 @@ export default function WeekCard({
 
       {!isUnlocked && (
         <div className="px-4 py-3" style={{ borderTop: '1px solid rgba(31,51,38,0.4)' }}>
-          <p className="text-xs text-muted-foreground text-center">
+          <p className="text-xs text-center" style={{ color: '#74917B' }}>
             Complete Week {week.weekNumber - 1} to unlock
           </p>
         </div>

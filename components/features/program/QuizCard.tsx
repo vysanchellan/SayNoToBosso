@@ -61,13 +61,13 @@ export default function QuizCard({
 
     return (
       <div className="flex flex-col items-center gap-4 py-8 text-center">
-        <div className={`flex size-16 items-center justify-center rounded-full ${perfect ? "bg-accent/20" : "bg-primary/10"}`}>
-          {perfect ? <Award className="size-8 text-accent" /> : <Check className="size-8 text-primary" />}
+        <div className="flex size-16 items-center justify-center rounded-full" style={{ backgroundColor: perfect ? 'rgba(74,222,128,0.15)' : 'rgba(74,222,128,0.1)' }}>
+          {perfect ? <Award className="size-8" style={{ color: '#4ADE80' }} /> : <Check className="size-8" style={{ color: '#4ADE80' }} />}
         </div>
-        <h3 className="text-xl font-semibold text-foreground">
+        <h3 className="text-xl font-semibold" style={{ color: '#F2F7F1' }}>
           {score}/{total} Correct
         </h3>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm" style={{ color: '#74917B' }}>
           {perfect
             ? "Perfect score! You truly understand this week's material."
             : score >= total * 0.8
@@ -75,7 +75,7 @@ export default function QuizCard({
               : "Keep going! Review the lessons and try again."}
         </p>
         {perfect && (
-          <span className="inline-flex items-center gap-1 rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
+          <span className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-medium" style={{ backgroundColor: 'rgba(74,222,128,0.1)', color: '#4ADE80' }}>
             <Award className="size-3" /> Badge Unlocked!
           </span>
         )}
@@ -89,7 +89,7 @@ export default function QuizCard({
   return (
     <div>
       <div className="flex items-center gap-3 mb-6">
-        <button onClick={onBack} className="p-1 text-muted-foreground hover:text-foreground" aria-label="Back to program">
+        <button onClick={onBack} className="p-1" style={{ color: '#74917B' }} aria-label="Back to program">
           <ArrowLeft className="size-5" />
         </button>
         <div className="flex gap-1.5">

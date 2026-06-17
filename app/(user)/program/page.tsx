@@ -104,7 +104,7 @@ export default function ProgramPage() {
   return (
     <div id="main-content" className="space-y-6 max-w-4xl mx-auto">
       <div>
-        <h1 className="text-2xl font-bold text-foreground sm:text-3xl">My Recovery Program</h1>
+        <h1 className="text-2xl font-bold sm:text-3xl" style={{ color: '#F2F7F1' }}>My Recovery Program</h1>
         <div className="mt-3 flex flex-wrap items-center gap-2">
           <span
             className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium"
@@ -138,7 +138,7 @@ export default function ProgramPage() {
         </div>
       </div>
 
-      <div className="h-2 rounded-full bg-muted overflow-hidden">
+      <div className="h-2 rounded-full overflow-hidden" style={{ backgroundColor: '#142219' }}>
         <div
           className="h-full rounded-full transition-all duration-700"
           style={{ width: `${progressPercent}%`, background: '#4ADE80' }}
@@ -162,8 +162,8 @@ export default function ProgramPage() {
           <div className="mx-auto mb-3 flex size-14 items-center justify-center rounded-full" style={{ background: 'rgba(240,180,41,0.15)' }}>
             {quizScore.score === quizScore.total ? <Award className="size-7" style={{ color: '#F0B429' }} /> : <Check className="size-7" style={{ color: '#4ADE80' }} />}
           </div>
-          <h3 className="text-xl font-semibold text-foreground">{quizScore.score}/{quizScore.total} Correct</h3>
-          <p className="text-sm mt-1 text-muted-foreground">
+          <h3 className="text-xl font-semibold" style={{ color: '#F2F7F1' }}>{quizScore.score}/{quizScore.total} Correct</h3>
+          <p className="text-sm mt-1" style={{ color: '#74917B' }}>
             {quizScore.score === quizScore.total ? "Perfect score!" : quizScore.score >= quizScore.total * 0.8 ? "Great work!" : "Keep going!"}
           </p>
           <Button onClick={() => setQuizScore(null)} className="mt-4 rounded-full" variant="outline">Dismiss</Button>
@@ -180,11 +180,11 @@ export default function ProgramPage() {
       )}
 
       {activeQuiz && activeQuiz.questions && (
-        <div className="fixed inset-0 z-50 overflow-y-auto bg-background/95">
+        <div className="fixed inset-0 z-50 overflow-y-auto" style={{ backgroundColor: 'rgba(7,16,11,0.95)' }}>
           <div className="min-h-full flex items-center justify-center p-4">
             <div className="w-full max-w-lg">
               <div className="flex justify-end mb-2">
-                <button onClick={() => setActiveQuiz(null)} className="p-2 text-muted-foreground hover:text-foreground" aria-label="Close quiz">
+                <button onClick={() => setActiveQuiz(null)} className="p-2" style={{ color: '#74917B' }} aria-label="Close quiz">
                   <X className="size-5" />
                 </button>
               </div>
@@ -199,7 +199,7 @@ export default function ProgramPage() {
       )}
 
       {activeJournal && activeJournal.prompt && (
-        <div className="fixed inset-0 z-50 overflow-y-auto bg-background">
+        <div className="fixed inset-0 z-50 overflow-y-auto" style={{ backgroundColor: '#07100B' }}>
           <div className="min-h-full">
             <JournalPrompt
               key="journal"
@@ -212,7 +212,7 @@ export default function ProgramPage() {
       )}
 
       {activeExercise && (
-        <div className="fixed inset-0 z-50 overflow-y-auto bg-background/95">
+        <div className="fixed inset-0 z-50 overflow-y-auto" style={{ backgroundColor: 'rgba(7,16,11,0.95)' }}>
           <div className="min-h-full flex items-center justify-center p-4">
             <div
               className="w-full max-w-md rounded-2xl p-8 text-center"
@@ -224,8 +224,8 @@ export default function ProgramPage() {
               <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-full" style={{ background: 'rgba(94,174,234,0.15)' }}>
                 <ExternalLink className="size-6" style={{ color: '#5EAEEA' }} />
               </div>
-              <h3 className="text-lg font-semibold text-foreground mb-2">{activeExercise.title}</h3>
-              <p className="text-sm text-muted-foreground mb-6">This exercise is available in the Daily Tools section.</p>
+              <h3 className="text-lg font-semibold mb-2" style={{ color: '#F2F7F1' }}>{activeExercise.title}</h3>
+              <p className="text-sm mb-6" style={{ color: '#74917B' }}>This exercise is available in the Daily Tools section.</p>
               <div className="flex gap-3 justify-center">
                 <Button onClick={() => setActiveExercise(null)} variant="outline" className="rounded-full">Cancel</Button>
                 <Link href="/tools" onClick={() => setActiveExercise(null)}>

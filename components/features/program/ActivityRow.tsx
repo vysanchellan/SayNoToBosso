@@ -53,7 +53,7 @@ export default function ActivityRow({
         <Icon className="size-4" style={{ color: meta.color }} />
       </div>
       <div className="flex-1 min-w-0">
-        <p className={`text-sm font-medium truncate ${activity.completed ? "text-muted-foreground line-through" : "text-foreground"}`}>
+        <p className={`text-sm font-medium truncate ${activity.completed ? "line-through" : ""}`} style={{ color: activity.completed ? '#74917B' : '#F2F7F1' }}>
           {activity.title}
         </p>
         <span className="text-xs text-muted-foreground">{activity.duration}</span>
@@ -83,10 +83,10 @@ export function ActivityRowLocked({
         <Icon className="size-4" style={{ color: meta.color }} />
       </div>
       <div className="flex-1 min-w-0">
-        <p className="text-sm font-medium text-muted-foreground truncate">{activity.title}</p>
-        <span className="text-xs text-muted-foreground">{activity.duration}</span>
+        <p className="text-sm font-medium truncate" style={{ color: '#74917B' }}>{activity.title}</p>
+        <span className="text-xs" style={{ color: '#74917B' }}>{activity.duration}</span>
       </div>
-      <Lock className="size-4 text-muted-foreground/50 shrink-0" />
+      <Lock className="size-4 shrink-0" style={{ color: 'rgba(116,145,123,0.5)' }} />
     </div>
   )
 }

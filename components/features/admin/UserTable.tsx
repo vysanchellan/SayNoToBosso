@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { ArrowUp, ArrowDown, ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react"
+import { toast } from "sonner"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -212,15 +213,15 @@ export default function UserTable() {
                 <TableCell className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
                   <DropdownMenu>
                     <DropdownMenuTrigger render={
-                      <button className="size-8 rounded-lg flex items-center justify-center bg-transparent hover:bg-muted transition-colors" aria-label="Actions">
-                        <MoreHorizontal className="size-4 text-muted-foreground" />
+                      <button className="size-8 rounded-lg flex items-center justify-center bg-transparent transition-colors" style={{ color: '#74917B' }} aria-label="Actions">
+                        <MoreHorizontal className="size-4" />
                       </button>
                     } />
                     <DropdownMenuContent align="end">
                       <DropdownMenuItem onSelect={() => { setDrawerUser(user); setDrawerOpen(true) }}>View Profile</DropdownMenuItem>
-                      <DropdownMenuItem>Schedule Check-in</DropdownMenuItem>
-                      <DropdownMenuItem>Send Alert</DropdownMenuItem>
-                      <DropdownMenuItem style={{ color: '#F87171' }}>Suspend</DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => toast.info("Check-in scheduled")}>Schedule Check-in</DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => toast.info("Alert sent")}>Send Alert</DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => toast.warning("User suspended")} style={{ color: '#F87171' }}>Suspend</DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </TableCell>

@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation"
 import { AlertTriangle, AlertCircle, Info } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { toast } from "sonner"
 
 const alerts = [
   {
@@ -73,10 +74,10 @@ export default function AlertFlags() {
             <p className="text-sm mb-2" style={{ color: '#B9D0BE' }}>{alert.reason}</p>
             <div className="flex gap-1.5">
               <Button className="rounded-full h-7 text-[10px]" style={{ backgroundColor: '#4ADE80', color: '#07100B' }} onClick={() => router.push("/admin/users")}>View Profile</Button>
-              <Button className="rounded-full h-7 text-[10px]" style={{ backgroundColor: 'transparent', border: '1px solid #1F3326', color: '#74917B' }}>
+              <Button onClick={() => toast.info(i === 0 ? "Check-in scheduled" : i === 1 ? "Prompt sent to user" : "Note already recorded")} className="rounded-full h-7 text-[10px]" style={{ backgroundColor: 'transparent', border: '1px solid #1F3326', color: '#74917B' }}>
                 {i === 1 ? "Send Prompt" : i === 2 ? "Note Added" : "Schedule Check-in"}
               </Button>
-              <Button className="rounded-full h-7 text-[10px] ml-auto" style={{ backgroundColor: 'transparent', border: '1px solid #1F3326', color: '#74917B' }}>Dismiss</Button>
+              <Button onClick={() => toast.success("Alert dismissed")} className="rounded-full h-7 text-[10px] ml-auto" style={{ backgroundColor: 'transparent', border: '1px solid #1F3326', color: '#74917B' }}>Dismiss</Button>
             </div>
           </div>
         ))}

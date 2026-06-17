@@ -3,13 +3,12 @@
 import { useState, useEffect } from "react"
 import { toast } from "sonner"
 import { HeartPulse, Phone, MessageCircle, Wind, X } from "lucide-react"
+import { useRouter } from "next/navigation"
 import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog"
 
 declare global {
@@ -19,6 +18,7 @@ declare global {
 }
 
 export default function CrisisModal() {
+  const router = useRouter()
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
@@ -31,24 +31,22 @@ export default function CrisisModal() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger
-        render={<button className="hidden" aria-label="Open crisis support" />}
-      />
-      <DialogContent className="sm:max-w-sm gap-0 p-0 overflow-hidden rounded-2xl border-destructive/30">
+      <DialogContent className="sm:max-w-sm gap-0 p-0 overflow-hidden rounded-2xl" style={{ border: '1px solid rgba(248,113,113,0.3)', backgroundColor: '#0E1A12' }}>
         <div className="relative p-6">
           <button
             onClick={() => setOpen(false)}
-            className="absolute top-3 right-3 size-7 rounded-lg hover:bg-muted flex items-center justify-center text-muted-foreground"
+            className="absolute top-3 right-3 size-7 rounded-lg flex items-center justify-center"
+            style={{ color: '#74917B' }}
             aria-label="Close"
           >
             <X className="size-4" />
           </button>
 
           <div className="flex items-center gap-3 mb-1">
-            <HeartPulse className="size-5 text-destructive" />
-            <DialogTitle className="text-base font-bold text-foreground">I Need Support Right Now</DialogTitle>
+            <HeartPulse className="size-5" style={{ color: '#F87171' }} />
+            <DialogTitle className="text-base font-bold" style={{ color: '#F2F7F1' }}>I Need Support Right Now</DialogTitle>
           </div>
-          <DialogDescription className="text-sm text-muted-foreground mt-1">
+          <DialogDescription className="text-sm mt-1" style={{ color: '#74917B' }}>
             You are not alone. What you&apos;re feeling will pass. Choose an option below.
           </DialogDescription>
         </div>
@@ -56,7 +54,8 @@ export default function CrisisModal() {
         <div className="px-6 pb-6 space-y-3">
           <a
             href="tel:0800456789"
-            className="flex w-full items-center gap-3 rounded-xl bg-destructive text-destructive-foreground p-4 hover:bg-destructive/90 transition-colors"
+            className="flex w-full items-center gap-3 rounded-xl p-4 transition-colors"
+            style={{ backgroundColor: '#F87171', color: '#F2F7F1' }}
           >
             <div className="size-9 rounded-xl bg-white/20 flex items-center justify-center shrink-0">
               <Phone className="size-5" />
@@ -67,7 +66,11 @@ export default function CrisisModal() {
             </div>
           </a>
 
-          <button className="flex w-full items-center gap-3 rounded-xl bg-primary text-primary-foreground p-4 hover:bg-primary/90 transition-colors text-left">
+          <button
+            onClick={() => { setOpen(false); router.push("/tools#breathing") }}
+            className="flex w-full items-center gap-3 rounded-xl p-4 transition-colors text-left"
+            style={{ backgroundColor: '#4ADE80', color: '#07100B' }}
+          >
             <div className="size-9 rounded-xl bg-white/20 flex items-center justify-center shrink-0">
               <Wind className="size-5" />
             </div>
@@ -77,13 +80,17 @@ export default function CrisisModal() {
             </div>
           </button>
 
-          <button className="flex w-full items-center gap-3 rounded-xl bg-muted border border-border text-foreground p-4 hover:bg-muted/60 transition-colors text-left">
-            <div className="size-9 rounded-xl bg-muted border border-border flex items-center justify-center shrink-0">
-              <MessageCircle className="size-5" />
+          <button
+            onClick={() => { setOpen(false); router.push("/community") }}
+            className="flex w-full items-center gap-3 rounded-xl p-4 transition-colors text-left"
+            style={{ backgroundColor: '#142219', color: '#F2F7F1', border: '1px solid #1F3326' }}
+          >
+            <div className="size-9 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: '#0E1A12', border: '1px solid #1F3326' }}>
+              <MessageCircle className="size-5" style={{ color: '#74917B' }} />
             </div>
             <div>
               <p className="text-sm font-bold">Message My Care Team</p>
-              <p className="text-xs text-muted-foreground">They&apos;ll respond as soon as possible</p>
+              <p className="text-xs" style={{ color: '#74917B' }}>They&apos;ll respond as soon as possible</p>
             </div>
           </button>
         </div>

@@ -8,6 +8,8 @@ import {
   LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer,
 } from "recharts"
 import { AlertTriangle, Mail } from "lucide-react"
+import { toast } from "sonner"
+import { useRouter } from "next/navigation"
 
 const moods = [
   { day: "D1", mood: 3 }, { day: "D3", mood: 4 }, { day: "D5", mood: 3 }, { day: "D7", mood: 5 },
@@ -28,6 +30,7 @@ interface UserProfileDrawerProps {
 }
 
 export default function UserProfileDrawer({ open, onOpenChange, user }: UserProfileDrawerProps) {
+  const router = useRouter()
   const [tab, setTab] = useState("overview")
   const [note, setNote] = useState("")
 
@@ -199,7 +202,7 @@ export default function UserProfileDrawer({ open, onOpenChange, user }: UserProf
                 placeholder="Add a clinical note..."
                 className="w-full min-h-[80px] rounded-xl border border-muted-foreground/20 bg-card p-3 text-xs resize-none focus:outline-none focus:ring-2 focus:ring-primary/30"
               />
-              <Button className="w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90 text-xs">
+              <Button onClick={() => { setNote(""); toast.success("Clinical note added") }} className="w-full rounded-full text-xs" style={{ backgroundColor: '#4ADE80', color: '#07100B' }}>
                 Add Clinical Note
               </Button>
               <p className="text-[10px] text-muted-foreground/60">Notes are visible to all admin staff, not to the user.</p>
@@ -207,10 +210,10 @@ export default function UserProfileDrawer({ open, onOpenChange, user }: UserProf
           )}
         </div>
 
-        <div className="border-t p-4 flex gap-2">
-          <Button className="rounded-full h-8 text-xs bg-primary text-primary-foreground hover:bg-primary/90">Schedule Check-in</Button>
-          <Button className="rounded-full h-8 text-xs bg-destructive text-destructive-foreground hover:bg-destructive/90">Flag As At-Risk</Button>
-          <Button className="rounded-full h-8 text-xs bg-card border border-muted-foreground/20 text-muted-foreground hover:bg-muted">Suspend</Button>
+        <div className="border-t p-4 flex gap-2" style={{ borderColor: '#1F3326' }}>
+          <Button onClick={() => toast.info("Check-in scheduled")} className="rounded-full h-8 text-xs" style={{ backgroundColor: '#4ADE80', color: '#07100B' }}>Schedule Check-in</Button>
+          <Button onClick={() => toast.warning("User flagged as at-risk")} className="rounded-full h-8 text-xs" style={{ backgroundColor: '#F87171', color: '#F2F7F1' }}>Flag As At-Risk</Button>
+          <Button onClick={() => router.push("/admin/users")} className="rounded-full h-8 text-xs" style={{ backgroundColor: '#0E1A12', border: '1px solid #1F3326', color: '#74917B' }}>Suspend</Button>
         </div>
       </SheetContent>
     </Sheet>

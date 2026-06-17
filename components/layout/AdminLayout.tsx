@@ -8,6 +8,7 @@ import {
   AlertTriangle, ChevronDown, Menu, Download, LogOut, Leaf,
 } from "lucide-react"
 import { useDemo } from "@/lib/demo-context"
+import { toast } from "sonner"
 
 function getInitials(name: string) {
   return name.split(" ").map((n) => n[0]).join("").toUpperCase().slice(0, 2)
@@ -143,7 +144,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               Jun 2026
             </div>
             <button
-              className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors"
+              onClick={() => toast.info("CSV export coming soon")}
+              className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors cursor-pointer"
               style={{ backgroundColor: 'rgba(74,222,128,0.12)', color: '#4ADE80', border: '1px solid rgba(74,222,128,0.25)' }}
             >
               <Download className="size-3.5" />

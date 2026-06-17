@@ -34,8 +34,8 @@ export default function MobileBottomNav() {
   return (
     <>
       <nav
-        className="fixed bottom-0 left-0 right-0 z-40 flex h-16 items-center justify-around border-t bg-card lg:hidden pb-safe"
-        style={{ borderColor: '#1F3326', boxShadow: '0 -1px 0 0 #1F3326, 0 -4px 16px rgba(8,17,12,0.4)' }}
+        className="fixed bottom-0 left-0 right-0 z-40 flex h-16 items-center justify-around border-t lg:hidden pb-safe"
+        style={{ backgroundColor: '#0E1A12', borderColor: '#1F3326', boxShadow: '0 -1px 0 0 #1F3326, 0 -4px 16px rgba(8,17,12,0.4)' }}
         aria-label="Mobile navigation"
       >
         {mainTabs.map((tab) => {
@@ -51,13 +51,13 @@ export default function MobileBottomNav() {
                   />
                 }>
                   <div className="relative">
-                    <MoreHorizontal className="size-5 text-muted-foreground" />
+                    <MoreHorizontal className="size-5" style={{ color: '#74917B' }} />
                   </div>
-                  <span className="text-[10px] text-muted-foreground">More</span>
+                  <span className="text-[10px]" style={{ color: '#74917B' }}>More</span>
                 </SheetTrigger>
-                <SheetContent side="bottom" className="rounded-t-2xl pb-8 bg-card border-t" style={{ borderColor: '#1F3326' }}>
+                <SheetContent side="bottom" className="rounded-t-2xl pb-8 border-t" style={{ backgroundColor: '#0E1A12', borderColor: '#1F3326' }}>
                   <SheetHeader>
-                    <SheetTitle className="text-center text-sm text-foreground">More Options</SheetTitle>
+                    <SheetTitle className="text-center text-sm" style={{ color: '#F2F7F1' }}>More Options</SheetTitle>
                   </SheetHeader>
                   <div className="grid grid-cols-2 gap-3 pt-4">
                     {moreItems.map((item) => (
@@ -69,9 +69,10 @@ export default function MobileBottomNav() {
                             setMoreOpen(false)
                           }
                         }}
-                        className={`flex flex-col items-center gap-2 rounded-xl p-4 min-h-[44px] min-w-[44px] transition-colors bg-muted/30 ${
-                          item.crisis ? "text-destructive hover:bg-destructive/10" : "text-muted-foreground hover:bg-muted"
-                        }`}
+                        className="flex flex-col items-center gap-2 rounded-xl p-4 min-h-[44px] min-w-[44px] transition-colors" style={{
+                          backgroundColor: 'rgba(20,34,25,0.3)',
+                          color: item.crisis ? '#F87171' : '#74917B',
+                        }}
                       >
                         <item.icon className="size-5" />
                         <span className="text-xs font-medium">{item.label}</span>
@@ -89,9 +90,9 @@ export default function MobileBottomNav() {
               href={tab.href}
               className="flex flex-col items-center justify-center gap-0.5 min-h-[44px] min-w-[44px]"
             >
-              <tab.icon className={`size-5 ${active ? "text-primary" : "text-muted-foreground"}`} />
-              {active && <span className="size-1 rounded-full bg-primary" />}
-              <span className={`text-[10px] ${active ? "text-primary font-medium" : "text-muted-foreground"}`}>
+              <tab.icon className="size-5" style={{ color: active ? '#4ADE80' : '#74917B' }} />
+              {active && <span className="size-1 rounded-full" style={{ backgroundColor: '#4ADE80' }} />}
+              <span className="text-[10px]" style={{ color: active ? '#4ADE80' : '#74917B', fontWeight: active ? 500 : 400 }}>
                 {tab.label}
               </span>
             </Link>

@@ -205,7 +205,7 @@ export default function UserLayout({ children }: { children: ReactNode }) {
                     </span>
                   </button>
                   <DropdownMenu>
-                    <DropdownMenuTrigger render={(props) => <button {...props} className="flex items-center gap-2" aria-label="User menu" />}>
+                    <DropdownMenuTrigger className="flex cursor-pointer items-center gap-2" aria-label="User menu">
                       <Avatar className="size-8">
                         <AvatarImage src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" />
                         <AvatarFallback>{initials}</AvatarFallback>
@@ -238,19 +238,19 @@ export default function UserLayout({ children }: { children: ReactNode }) {
                         </div>
                       </div>
                       <div className="py-1" style={{ backgroundColor: '#0E1A12' }}>
-                        <DropdownMenuItem onSelect={() => router.push("/profile")} className="text-sm cursor-pointer focus:bg-white/[0.06]" style={{ color: '#B9D0BE' }}>
+                        <DropdownMenuItem onClick={() => router.push("/profile")} className="text-sm cursor-pointer focus:bg-white/[0.06]" style={{ color: '#B9D0BE' }}>
                           <span className="flex size-6 items-center justify-center rounded-lg" style={{ backgroundColor: '#142219' }}>
                             <User className="size-3.5" />
                           </span>
                           <span>View Profile</span>
                         </DropdownMenuItem>
-                        <DropdownMenuItem onSelect={() => router.push("/program")} className="text-sm cursor-pointer focus:bg-white/[0.06]" style={{ color: '#B9D0BE' }}>
+                        <DropdownMenuItem onClick={() => router.push("/program")} className="text-sm cursor-pointer focus:bg-white/[0.06]" style={{ color: '#B9D0BE' }}>
                           <span className="flex size-6 items-center justify-center rounded-lg" style={{ backgroundColor: '#142219' }}>
                             <BookOpen className="size-3.5" />
                           </span>
                           <span>My Program</span>
                         </DropdownMenuItem>
-                        <DropdownMenuItem onSelect={() => router.push("/journal")} className="text-sm cursor-pointer focus:bg-white/[0.06]" style={{ color: '#B9D0BE' }}>
+                        <DropdownMenuItem onClick={() => router.push("/journal")} className="text-sm cursor-pointer focus:bg-white/[0.06]" style={{ color: '#B9D0BE' }}>
                           <span className="flex size-6 items-center justify-center rounded-lg" style={{ backgroundColor: '#142219' }}>
                             <PenLine className="size-3.5" />
                           </span>
@@ -259,14 +259,14 @@ export default function UserLayout({ children }: { children: ReactNode }) {
                       </div>
                       <DropdownMenuSeparator style={{ backgroundColor: '#1F3326' }} />
                       <div className="py-1" style={{ backgroundColor: '#0E1A12' }}>
-                        <DropdownMenuItem onSelect={() => router.push("/notifications")} className="text-sm cursor-pointer focus:bg-white/[0.06]" style={{ color: '#B9D0BE' }}>
+                        <DropdownMenuItem onClick={() => router.push("/notifications")} className="text-sm cursor-pointer focus:bg-white/[0.06]" style={{ color: '#B9D0BE' }}>
                           <span className="flex size-6 items-center justify-center rounded-lg" style={{ backgroundColor: '#142219' }}>
                             <Bell className="size-3.5" />
                           </span>
                           <span>Notifications</span>
                           <span className="ml-auto min-w-4 h-4 flex items-center justify-center px-1 rounded-full text-[10px] font-bold" style={{ backgroundColor: '#F87171', color: '#F2F7F1' }}>3</span>
                         </DropdownMenuItem>
-                        <DropdownMenuItem onSelect={() => router.push("/settings")} className="text-sm cursor-pointer focus:bg-white/[0.06]" style={{ color: '#B9D0BE' }}>
+                        <DropdownMenuItem onClick={() => router.push("/settings")} className="text-sm cursor-pointer focus:bg-white/[0.06]" style={{ color: '#B9D0BE' }}>
                           <span className="flex size-6 items-center justify-center rounded-lg" style={{ backgroundColor: '#142219' }}>
                             <Settings className="size-3.5" />
                           </span>
@@ -276,7 +276,7 @@ export default function UserLayout({ children }: { children: ReactNode }) {
                       <DropdownMenuSeparator style={{ backgroundColor: '#1F3326' }} />
                       <div className="py-1" style={{ backgroundColor: '#0E1A12' }}>
                         <DropdownMenuItem
-                          onSelect={() => router.push("/")}
+                          onClick={() => router.push("/")}
                           className="text-sm cursor-pointer focus:bg-[rgba(248,113,113,0.10)]"
                           style={{ color: '#F87171' }}
                         >

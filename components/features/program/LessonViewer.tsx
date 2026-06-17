@@ -45,8 +45,8 @@ export default function LessonViewer({
 
   if (!lesson) {
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-background">
-        <p className="text-muted-foreground">Lesson content not found.</p>
+      <div className="fixed inset-0 z-50 flex items-center justify-center" style={{ backgroundColor: '#07100B' }}>
+        <p style={{ color: '#74917B' }}>Lesson content not found.</p>
       </div>
     )
   }
@@ -62,19 +62,19 @@ export default function LessonViewer({
         <div className="w-full max-w-2xl rounded-2xl border shadow-2xl overflow-hidden" style={{ background: '#0E1A12', borderColor: '#1F3326' }}>
           <header className="sticky top-0 z-10 flex items-center justify-between border-b px-6 py-4" style={{ background: '#0E1A12', borderColor: '#1F3326' }}>
             <div className="flex items-center gap-3">
-              <BookOpen className="size-5 text-primary" />
-              <span className="text-sm font-medium text-foreground">Lesson</span>
+              <BookOpen className="size-5" style={{ color: '#4ADE80' }} />
+              <span className="text-sm font-medium" style={{ color: '#F2F7F1' }}>Lesson</span>
             </div>
             <div className="flex items-center gap-4">
-              <span className="text-xs text-muted-foreground">{scrollPercent}% read</span>
-              <button onClick={onClose} className="p-1 text-muted-foreground hover:text-foreground" aria-label="Close lesson">
+              <span className="text-xs" style={{ color: '#74917B' }}>{scrollPercent}% read</span>
+              <button onClick={onClose} className="p-1" style={{ color: '#74917B' }} aria-label="Close lesson">
                 <X className="size-5" />
               </button>
             </div>
           </header>
 
-          <div className="h-1 bg-muted">
-            <div className="h-full bg-primary transition-all duration-150" style={{ width: `${scrollPercent}%` }} />
+          <div className="h-1" style={{ backgroundColor: '#142219' }}>
+            <div className="h-full transition-all duration-150" style={{ width: `${scrollPercent}%`, backgroundColor: '#4ADE80' }} />
           </div>
 
           <div
@@ -84,27 +84,27 @@ export default function LessonViewer({
             <article className="px-6 py-8 space-y-8">
               {lesson.sections.map((section, i) => (
                 <section key={i}>
-                  <h2 className="text-xl font-semibold text-foreground mb-3">{section.heading}</h2>
-                  <div className="text-sm text-foreground/80 leading-relaxed whitespace-pre-line">
+                  <h2 className="text-xl font-semibold mb-3" style={{ color: '#F2F7F1' }}>{section.heading}</h2>
+                  <div className="text-sm leading-relaxed whitespace-pre-line" style={{ color: 'rgba(242,247,241,0.8)' }}>
                     {section.body}
                   </div>
                   {section.heading.includes("Takeaway") && (
-                    <div className="mt-4 rounded-xl border border-accent/30 bg-accent/10 p-4">
-                      <p className="text-sm font-medium text-accent">Key Takeaway</p>
-                      <p className="text-sm text-foreground/80 mt-1">{section.body.split("\n\n").pop()}</p>
+                    <div className="mt-4 rounded-xl p-4" style={{ border: '1px solid rgba(74,222,128,0.3)', backgroundColor: 'rgba(74,222,128,0.1)' }}>
+                      <p className="text-sm font-medium" style={{ color: '#4ADE80' }}>Key Takeaway</p>
+                      <p className="text-sm mt-1" style={{ color: 'rgba(242,247,241,0.8)' }}>{section.body.split("\n\n").pop()}</p>
                     </div>
                   )}
                   {section.heading.includes("Did You Know") && (
                     <div className="mt-4 rounded-xl border p-4 shadow-sm" style={{ background: '#0E1A12', borderColor: '#1F3326' }}>
                       <div className="flex items-start gap-3">
-                        <Brain className="size-5 text-primary shrink-0 mt-0.5" />
-                        <p className="text-sm text-foreground/80">{section.body}</p>
+                        <Brain className="size-5 shrink-0 mt-0.5" style={{ color: '#4ADE80' }} />
+                        <p className="text-sm" style={{ color: 'rgba(242,247,241,0.8)' }}>{section.body}</p>
                       </div>
                     </div>
                   )}
                   {section.heading.includes("Research") && (
-                    <div className="mt-4 rounded-xl border-l-4 border-secondary bg-secondary/5 p-4">
-                      <p className="text-sm italic text-foreground/80">{section.body.split("\n\n").slice(-1)[0]}</p>
+                    <div className="mt-4 rounded-xl p-4" style={{ borderLeft: '4px solid #5EAEEA', backgroundColor: 'rgba(94,174,234,0.05)' }}>
+                      <p className="text-sm italic" style={{ color: 'rgba(242,247,241,0.8)' }}>{section.body.split("\n\n").slice(-1)[0]}</p>
                     </div>
                   )}
                 </section>
@@ -113,7 +113,7 @@ export default function LessonViewer({
               <div className="pt-4 pb-12 text-center">
                 <Button
                   onClick={onComplete}
-                  className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 px-8"
+                  className="rounded-full px-8" style={{ backgroundColor: '#4ADE80', color: '#07100B' }}
                 >
                   Mark as Complete &amp; Continue
                 </Button>
