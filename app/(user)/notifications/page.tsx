@@ -20,10 +20,10 @@ const initialNotifications: Notification[] = [
 ]
 
 const iconConfig: Record<string, { icon: typeof Trophy; className: string; bg: string }> = {
-  milestone: { icon: Trophy, className: "text-amber-500", bg: "bg-amber-500/10" },
-  reminder: { icon: Droplets, className: "text-blue-500", bg: "bg-blue-500/10" },
+  milestone: { icon: Trophy, className: "text-amber-400", bg: "bg-amber-500/10" },
+  reminder: { icon: Droplets, className: "text-blue-400", bg: "bg-blue-500/10" },
   community: { icon: Users, className: "text-primary", bg: "bg-primary/10" },
-  program: { icon: BookOpen, className: "text-sage dark:text-sage", bg: "bg-muted" },
+  program: { icon: BookOpen, className: "text-sage", bg: "bg-muted" },
 }
 
 export default function NotificationsPage() {
@@ -68,7 +68,7 @@ export default function NotificationsPage() {
                 key={n.id}
                 className={`relative rounded-xl border p-4 flex gap-3 transition-colors ${
                   !n.read
-                    ? "border-l-4 border-l-primary bg-primary/5 dark:bg-primary/10 border-border"
+                    ? "border-l-4 border-l-primary bg-primary/10 border-border"
                     : "bg-card border-border"
                 }`}
               >

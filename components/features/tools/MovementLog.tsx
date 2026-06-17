@@ -117,10 +117,10 @@ export default function MovementLog() {
             <BarChart data={weekData} layout="vertical" margin={{ top: 5, right: 10, bottom: 5, left: 10 }}>
               <XAxis type="number" tick={{ fontSize: 11 }} axisLine={false} tickLine={false} />
               <YAxis dataKey="day" type="category" tick={{ fontSize: 11 }} axisLine={false} tickLine={false} />
-              <ReferenceLine x={30} stroke="#D4A017" strokeDasharray="4 4" strokeWidth={2} />
+              <ReferenceLine x={30} stroke="hsl(var(--amber))" strokeDasharray="4 4" strokeWidth={2} />
               <Bar dataKey="minutes" radius={[0, 6, 6, 0]} barSize={20}>
                 {weekData.map((entry, i) => (
-                  <Cell key={i} fill={entry.minutes >= 30 ? "#1A5C3A" : entry.minutes > 0 ? "#6B9E78" : "#e5e7eb"} />
+                  <Cell key={i} fill={entry.minutes >= 30 ? "#1A5C3A" : entry.minutes > 0 ? "#6B9E78" : "#2b3831"} />
                 ))}
               </Bar>
             </BarChart>

@@ -44,8 +44,8 @@ const mockUsers: UserRow[] = [
 ]
 
 const tierBadgeClass: Record<string, string> = {
-  Mild: "bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-500/20",
-  Moderate: "bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20",
+  Mild: "bg-blue-500/10 text-blue-400 border border-blue-500/20",
+  Moderate: "bg-amber-500/10 text-amber-400 border border-amber-500/20",
   Heavy: "bg-destructive/10 text-destructive border border-destructive/20",
 }
 

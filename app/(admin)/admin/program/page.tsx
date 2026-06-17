@@ -140,7 +140,7 @@ export default function AdminProgramPage() {
                   <p className="text-xs font-medium truncate text-foreground">{w.title}</p>
                 </div>
                 {w.completed && (
-                  <span className="size-2 rounded-full bg-green-500 ml-auto shrink-0" />
+                  <span className="size-2 rounded-full bg-emerald-500 ml-auto shrink-0" />
                 )}
               </button>
             ))}
@@ -157,7 +157,7 @@ export default function AdminProgramPage() {
               </div>
               <span className={`ml-auto flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium ${
                 selectedWeek <= 2
-                  ? "bg-green-500/10 text-green-700 dark:text-green-400 border border-green-500/20"
+                  ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
                   : "text-muted-foreground"
               }`}>
                 {selectedWeek <= 2 ? <><CheckCircle className="size-3" /> Unlocked</> : null}
@@ -275,7 +275,7 @@ export default function AdminProgramPage() {
                   {s.label === "User Rating" ? (
                     <span className="flex items-center gap-0.5">
                       {Array.from({ length: 5 }, (_, i) => (
-                        <span key={i} className={i < 4 ? "text-amber-400" : "text-muted-foreground/30"}>★</span>
+                        <span key={i} className={i < 4 ? "text-accent" : "text-muted-foreground/30"}>★</span>
                       ))}
                     </span>
                   ) : s.value}

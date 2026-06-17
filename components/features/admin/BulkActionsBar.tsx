@@ -23,7 +23,7 @@ export default function BulkActionsBar({ count, onClear }: BulkActionsBarProps) 
       <div className="flex gap-2">
         <Button className="rounded-full h-8 text-xs bg-card border border-muted-foreground/20 text-muted-foreground hover:bg-muted">Send Group Message</Button>
         <Button className="rounded-full h-8 text-xs bg-card border border-muted-foreground/20 text-muted-foreground hover:bg-muted">Export Selected</Button>
-        <Button onClick={() => toast.warning(`Flagged ${count} user${count > 1 ? "s" : ""} for clinical review`)} className="rounded-full h-8 text-xs bg-rose-500 text-white hover:bg-rose-600">Flag All</Button>
+        <Button onClick={() => toast.warning(`Flagged ${count} user${count > 1 ? "s" : ""} for clinical review`)} className="rounded-full h-8 text-xs bg-destructive text-destructive-foreground hover:bg-destructive/90">Flag All</Button>
         <Button onClick={onClear} className="rounded-full h-8 text-xs bg-card border border-muted-foreground/20 text-muted-foreground hover:bg-muted">Clear</Button>
       </div>
     </motion.div>

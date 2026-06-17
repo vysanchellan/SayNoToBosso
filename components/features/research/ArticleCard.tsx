@@ -1,11 +1,11 @@
 import { Clock, ArrowRight } from "lucide-react"
 
 const categoryStyles: Record<string, { bg: string; text: string; border: string }> = {
-  Science: { bg: 'bg-blue-500/10', text: 'text-blue-700 dark:text-blue-400', border: 'border-blue-500/20' },
-  Nutrition: { bg: 'bg-amber-500/10', text: 'text-amber-700 dark:text-amber-400', border: 'border-amber-500/20' },
-  Sleep: { bg: 'bg-indigo-500/10', text: 'text-indigo-700 dark:text-indigo-400', border: 'border-indigo-500/20' },
-  "Mental Health": { bg: 'bg-purple-500/10', text: 'text-purple-700 dark:text-purple-400', border: 'border-purple-500/20' },
-  "Cannabis & SA": { bg: 'bg-amber-500/10', text: 'text-amber-700 dark:text-amber-400', border: 'border-amber-500/20' },
+  Science: { bg: 'bg-blue-500/10', text: 'text-blue-400', border: 'border-blue-500/20' },
+  Nutrition: { bg: 'bg-amber-500/10', text: 'text-amber-400', border: 'border-amber-500/20' },
+  Sleep: { bg: 'bg-indigo-500/10', text: 'text-indigo-400', border: 'border-indigo-500/20' },
+  "Mental Health": { bg: 'bg-purple-500/10', text: 'text-purple-400', border: 'border-purple-500/20' },
+  "Cannabis & SA": { bg: 'bg-amber-500/10', text: 'text-amber-400', border: 'border-amber-500/20' },
 }
 
 export default function ArticleCard({

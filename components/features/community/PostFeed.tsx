@@ -58,7 +58,7 @@ const mockPosts: Post[] = [
   },
 ]
 
-const colorMap = ["bg-red-500", "bg-blue-500", "bg-green-500", "bg-purple-500", "bg-amber-500", "bg-teal-500", "bg-pink-500", "bg-indigo-500"]
+const colorMap = ["bg-red-500/20", "bg-blue-500/20", "bg-emerald-500/20", "bg-purple-500/20", "bg-amber-500/20", "bg-teal-500/20", "bg-pink-500/20", "bg-indigo-500/20"]
 
 function getColor(initials: string) {
   let idx = 0

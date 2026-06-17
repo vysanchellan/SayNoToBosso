@@ -39,7 +39,7 @@ const logEntries = Array.from({ length: 10 }, (_, i) => ({
 }))
 
 const statusSummary = [
-  { key: "pending", label: "Pending", bg: "bg-amber-500/10 text-amber-500 border border-amber-500/20" },
+  { key: "pending", label: "Pending", bg: "bg-amber-500/10 text-amber-400 border border-amber-500/20" },
   { key: "approved", label: "Approved", bg: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" },
   { key: "removed", label: "Removed", bg: "bg-destructive/10 text-destructive border border-destructive/20" },
 ]
@@ -143,13 +143,13 @@ export default function AdminCommunityPage() {
                     {tab === "pending" && (
                       <>
                         <div className="flex items-center gap-2 mt-3">
-                          <button onClick={() => handleApprove(post.id)} className="flex items-center gap-1 rounded-xl bg-green-600 text-white px-3 h-8 text-xs font-semibold hover:bg-green-700 transition-colors">
+                          <button onClick={() => handleApprove(post.id)} className="flex items-center gap-1 rounded-xl bg-emerald-600 text-white px-3 h-8 text-xs font-semibold hover:bg-emerald-500 transition-colors">
                             <Check className="size-3.5" /> Approve
                           </button>
                           <button onClick={() => handleRemove(post.id)} className="flex items-center gap-1 rounded-xl bg-destructive text-destructive-foreground px-3 h-8 text-xs font-semibold hover:bg-destructive/90 transition-colors">
                             <X className="size-3.5" /> Remove
                           </button>
-                          <button className="flex items-center gap-1 rounded-xl bg-amber-500 text-white px-3 h-8 text-xs font-semibold hover:bg-amber-600 transition-colors">
+                          <button className="flex items-center gap-1 rounded-xl bg-amber-600 text-white px-3 h-8 text-xs font-semibold hover:bg-amber-500 transition-colors">
                             <Flag className="size-3.5" /> Flag for Clinical Review
                           </button>
                         </div>

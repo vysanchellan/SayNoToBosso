@@ -209,7 +209,7 @@ export default function UserProfileDrawer({ open, onOpenChange, user }: UserProf
 
         <div className="border-t p-4 flex gap-2">
           <Button className="rounded-full h-8 text-xs bg-primary text-primary-foreground hover:bg-primary/90">Schedule Check-in</Button>
-          <Button className="rounded-full h-8 text-xs bg-rose-500 text-white hover:bg-rose-600">Flag As At-Risk</Button>
+          <Button className="rounded-full h-8 text-xs bg-destructive text-destructive-foreground hover:bg-destructive/90">Flag As At-Risk</Button>
           <Button className="rounded-full h-8 text-xs bg-card border border-muted-foreground/20 text-muted-foreground hover:bg-muted">Suspend</Button>
         </div>
       </SheetContent>

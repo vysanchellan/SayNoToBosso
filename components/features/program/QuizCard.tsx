@@ -97,7 +97,7 @@ export default function QuizCard({
             <div
               key={i}
               className={`h-1.5 w-6 rounded-full transition-colors ${
-                i < current ? "bg-green-500" : i === current ? "bg-primary" : "bg-muted"
+                i < current ? "bg-primary" : i === current ? "bg-primary" : "bg-muted"
               }`}
             />
           ))}
@@ -129,12 +129,12 @@ export default function QuizCard({
                 onClick={() => handleSelect(i)}
                 className={`flex w-full items-center gap-3 rounded-xl border p-3 text-left text-sm transition-all cursor-pointer ${
                   state === "correct"
-                    ? "border-green-500 ring-2 ring-green-500/30"
+                    ? "ring-2"
                     : state === "wrong"
-                      ? "border-red-400 ring-2 ring-red-500/30"
+                      ? "ring-2"
                       : isSelected
-                        ? "ring-2 ring-primary/40 text-foreground font-medium"
-                        : "border-muted-foreground/20 bg-card text-foreground hover:border-primary/50"
+                        ? "ring-2 text-foreground font-medium"
+                        : "text-foreground hover:border-primary/50"
                 }`}
                 style={
                   state === "correct"
@@ -149,9 +149,9 @@ export default function QuizCard({
                 <div
                   className={`flex size-7 shrink-0 items-center justify-center rounded-full text-sm font-bold ${
                     state === "correct"
-                      ? "bg-green-500 text-white"
+                      ? "text-white"
                       : state === "wrong"
-                        ? "bg-red-500 text-white"
+                        ? "text-white"
                         : isSelected
                           ? "text-white"
                           : "bg-muted text-muted-foreground"
