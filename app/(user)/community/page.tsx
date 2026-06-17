@@ -13,9 +13,9 @@ export default function CommunityPage() {
         </p>
       </div>
 
-      <div className="flex items-start gap-3 rounded-xl border border-amber-200 bg-amber-50 p-3">
-        <AlertTriangle className="size-5 shrink-0 text-amber-600 mt-0.5" />
-        <p className="text-xs text-amber-800">
+      <div className="flex items-start gap-3 rounded-xl p-3" style={{ background: 'hsl(38 75% 48% / 0.1)', border: '1px solid hsl(38 75% 48% / 0.25)' }}>
+        <AlertTriangle className="size-5 shrink-0 text-amber-400 mt-0.5" />
+        <p className="text-xs" style={{ color: 'hsl(38 75% 70%)' }}>
           <strong>Reminder:</strong> Do not share identifying information. If you&apos;re in crisis, use the Crisis Support button in the sidebar.
         </p>
       </div>
@@ -27,11 +27,11 @@ export default function CommunityPage() {
         </div>
 
         <aside className="space-y-6">
-          <div className="rounded-2xl border overflow-hidden">
+          <div className="rounded-2xl border bg-card overflow-hidden">
             <div className="bg-primary p-3">
               <h3 className="text-sm font-semibold text-primary-foreground">Community Guidelines</h3>
             </div>
-            <div className="p-4 space-y-3">
+            <div className="p-4 space-y-3 bg-card">
               {[
                 "Be kind and supportive",
                 "No identifying information",

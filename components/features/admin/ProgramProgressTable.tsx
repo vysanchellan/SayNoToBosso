@@ -22,9 +22,9 @@ export default function ProgramProgressTable() {
       <div className="h-64">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" stroke="hsl(40, 10%, 90%)" vertical={false} />
-            <XAxis dataKey="week" tick={{ fontSize: 10, fill: "hsl(40, 20%, 50%)" }} tickLine={false} axisLine={false} />
-            <YAxis domain={[0, 100]} tick={{ fontSize: 10, fill: "hsl(40, 20%, 50%)" }} tickLine={false} axisLine={false} unit="%" />
+            <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
+            <XAxis dataKey="week" tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }} tickLine={false} axisLine={false} />
+            <YAxis domain={[0, 100]} tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }} tickLine={false} axisLine={false} unit="%" />
             <Tooltip formatter={(value) => `${value}%`} />
             <Bar dataKey="pct" radius={[4, 4, 0, 0]}>
               {data.map((entry, idx) => (
@@ -34,8 +34,8 @@ export default function ProgramProgressTable() {
           </BarChart>
         </ResponsiveContainer>
       </div>
-      <div className="mt-3 rounded-xl bg-amber-50 border border-amber-200 p-3">
-        <p className="text-xs text-amber-800">
+      <div className="mt-3 rounded-xl p-3" style={{ background: 'hsl(38 75% 48% / 0.1)', border: '1px solid hsl(38 75% 48% / 0.25)' }}>
+        <p className="text-xs" style={{ color: 'hsl(38 75% 68%)' }}>
           <strong>Insight:</strong> Dropout spikes between Week 3-4. Consider scheduling a clinical check-in at this point.
         </p>
       </div>

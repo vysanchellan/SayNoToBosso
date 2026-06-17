@@ -14,9 +14,9 @@ export default function PostComposer() {
 
   if (posted) {
     return (
-      <div className="rounded-2xl border bg-green-50 p-4 text-center">
-        <p className="text-sm font-medium text-green-700">Your post has been submitted for review.</p>
-        <p className="text-xs text-green-600 mt-1">It will appear in the feed within 24 hours.</p>
+      <div className="rounded-2xl p-4 text-center" style={{ background: 'hsl(var(--primary)/0.1)', boxShadow: '0 0 0 1px hsl(var(--primary)/0.2)' }}>
+        <p className="text-sm font-medium" style={{ color: 'hsl(140 40% 65%)' }}>Your post has been submitted for review.</p>
+        <p className="text-xs mt-1" style={{ color: 'hsl(140 40% 55%)' }}>It will appear in the feed within 24 hours.</p>
       </div>
     )
   }

@@ -39,8 +39,8 @@ const logEntries = Array.from({ length: 10 }, (_, i) => ({
 }))
 
 const statusSummary = [
-  { key: "pending", label: "Pending", bg: "bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20" },
-  { key: "approved", label: "Approved", bg: "bg-green-500/10 text-green-700 dark:text-green-400 border border-green-500/20" },
+  { key: "pending", label: "Pending", bg: "bg-amber-500/10 text-amber-500 border border-amber-500/20" },
+  { key: "approved", label: "Approved", bg: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" },
   { key: "removed", label: "Removed", bg: "bg-destructive/10 text-destructive border border-destructive/20" },
 ]
 
@@ -137,7 +137,7 @@ export default function AdminCommunityPage() {
                     )}
 
                     {post.status === "approved" && post.approvedBy && (
-                      <p className="text-[10px] text-green-600 dark:text-green-400 mt-2">Approved by {post.approvedBy} &middot; {post.approvedAt}</p>
+                      <p className="text-[10px] mt-2" style={{ color: 'hsl(140 40% 65%)' }}>Approved by {post.approvedBy} &middot; {post.approvedAt}</p>
                     )}
 
                     {tab === "pending" && (
@@ -166,7 +166,7 @@ export default function AdminCommunityPage() {
 
                     {tab === "approved" && (
                       <div className="flex items-center gap-2 mt-3">
-                        <button onClick={() => handleRemove(post.id)} className="flex items-center gap-1 rounded-xl border border-rose-300 dark:border-rose-700 px-3 h-8 text-xs font-semibold text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950 transition-colors">
+                        <button onClick={() => handleRemove(post.id)} className="flex items-center gap-1 rounded-xl border border-rose-700 px-3 h-8 text-xs font-semibold text-rose-400 hover:bg-rose-950/50 transition-colors">
                           <X className="size-3.5" /> Remove
                         </button>
                         <button onClick={() => handlePin(post.id)} className="flex items-center gap-1 rounded-xl border border-accent/30 px-3 h-8 text-xs font-semibold text-accent hover:bg-accent/5 transition-colors">
@@ -176,7 +176,7 @@ export default function AdminCommunityPage() {
                     )}
 
                     {tab === "removed" && (
-                      <button onClick={() => handleRestore(post.id)} className="flex items-center gap-1 rounded-xl border border-green-300 dark:border-green-700 px-3 h-8 text-xs font-semibold text-green-600 dark:text-green-400 hover:bg-green-50 dark:hover:bg-green-950 transition-colors mt-3">
+                      <button onClick={() => handleRestore(post.id)} className="flex items-center gap-1 rounded-xl border border-green-700 px-3 h-8 text-xs font-semibold text-green-400 hover:bg-green-950/50 transition-colors mt-3">
                         <RotateCcw className="size-3.5" /> Restore
                       </button>
                     )}
@@ -193,10 +193,10 @@ export default function AdminCommunityPage() {
             <div className="space-y-3">
               <div>
                 <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1">Approve when:</p>
-                <div className="flex items-start gap-1.5 text-xs text-green-700 dark:text-green-400">
-                  <CheckCircle className="size-3.5 mt-0.5 shrink-0" />
-                  <span>Supportive, on-topic, respectful, follows guidelines</span>
-                </div>
+                  <div className="flex items-start gap-1.5 text-xs" style={{ color: 'hsl(140 40% 65%)' }}>
+                    <CheckCircle className="size-3.5 mt-0.5 shrink-0" />
+                    <span>Supportive, on-topic, respectful, follows guidelines</span>
+                  </div>
               </div>
               <div>
                 <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1">Remove when:</p>
@@ -207,7 +207,7 @@ export default function AdminCommunityPage() {
               </div>
               <div>
                 <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1">Escalate when:</p>
-                <div className="flex items-start gap-1.5 text-xs text-amber-600 dark:text-amber-400">
+                <div className="flex items-start gap-1.5 text-xs" style={{ color: 'hsl(38 75% 65%)' }}>
                   <AlertTriangle className="size-3.5 mt-0.5 shrink-0" />
                   <span>Self-harm language, suicidal ideation, severe distress</span>
                 </div>
@@ -244,7 +244,7 @@ export default function AdminCommunityPage() {
                   <td className="p-2 font-medium text-foreground">{entry.postId}</td>
                   <td className="p-2">
                     <span className={`inline-flex rounded-full px-2 py-0.5 text-[9px] font-medium ${
-                      entry.action === "Approved" ? "bg-green-500/10 text-green-700 dark:text-green-400" : entry.action === "Removed" ? "bg-destructive/10 text-destructive" : "bg-amber-500/10 text-amber-700 dark:text-amber-400"
+                      entry.action === "Approved" ? "bg-emerald-500/10 text-emerald-400" : entry.action === "Removed" ? "bg-destructive/10 text-destructive" : "bg-amber-500/10 text-amber-500"
                     }`}>{entry.action}</span>
                   </td>
                   <td className="p-2 text-muted-foreground">{entry.staff}</td>

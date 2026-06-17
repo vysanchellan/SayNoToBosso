@@ -36,7 +36,7 @@ export default function RootLayout({
             duration: 4000,
             className: "text-sm font-medium",
             style: {
-              border: "1px solid hsl(40 20% 85%)",
+              border: "1px solid hsl(160 18% 22%)",
               borderRadius: "12px",
             },
           }}

@@ -17,11 +17,11 @@ const events = [
 const filters = ["All", "Check-in", "Milestone", "Lesson", "Crisis", "Journal"]
 
 const eventStyles: Record<string, { bg: string; iconColor: string }> = {
-  checkin: { bg: 'hsl(145,30%,88%)', iconColor: 'hsl(145,55%,25%)' },
-  milestone: { bg: 'hsl(42,90%,92%)', iconColor: 'hsl(38,85%,35%)' },
-  lesson: { bg: 'hsl(210,40%,92%)', iconColor: 'hsl(210,65%,35%)' },
-  crisis: { bg: 'hsl(8,80%,95%)', iconColor: 'hsl(8,72%,45%)' },
-  journal: { bg: 'hsl(280,30%,92%)', iconColor: 'hsl(280,45%,45%)' },
+  checkin: { bg: 'hsl(145 30% 48% / 0.15)', iconColor: 'hsl(145 40% 60%)' },
+  milestone: { bg: 'hsl(42 75% 55% / 0.15)', iconColor: 'hsl(42 75% 65%)' },
+  lesson: { bg: 'hsl(210 55% 48% / 0.15)', iconColor: 'hsl(210 55% 65%)' },
+  crisis: { bg: 'hsl(8 65% 58% / 0.15)', iconColor: 'hsl(8 65% 68%)' },
+  journal: { bg: 'hsl(280 40% 55% / 0.15)', iconColor: 'hsl(280 40% 70%)' },
 }
 
 export default function ActivityFeed() {

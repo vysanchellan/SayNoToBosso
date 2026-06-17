@@ -112,7 +112,7 @@ html {
   --card-foreground: 145 20% 85%;
   --popover: 160 22% 10%;
   --popover-foreground: 145 20% 85%;
-  --primary: 140 40% 48%;
+  --primary: 142 55% 52%;
   --primary-foreground: 160 25% 7%;
   --secondary: 38 60% 50%;
   --secondary-foreground: 160 25% 7%;
@@ -124,8 +124,8 @@ html {
   --destructive-foreground: 0 0% 98%;
   --border: 160 18% 18%;
   --input: 160 18% 18%;
-  --ring: 140 40% 48%;
-  --forest: 140 40% 48%;
+  --ring: 142 55% 52%;
+  --forest: 142 55% 52%;
   --forest-mid: 155 35% 30%;
   --sage: 145 25% 42%;
   --sage-light: 160 18% 18%;
@@ -146,7 +146,7 @@ html {
   --sidebar-accent-foreground: 145 18% 82%;
   --sidebar-border: 160 18% 12%;
   --sidebar-ring: 140 40% 48%;
-  --chart-1: 140 40% 48%;
+  --chart-1: 142 55% 52%;
   --chart-2: 38 75% 55%;
   --chart-3: 8 65% 58%;
   --chart-4: 200 50% 52%;
@@ -219,7 +219,7 @@ html {
     font-size: 0.6875rem;
     font-weight: 600;
     background: hsl(var(--primary) / 0.15);
-    color: hsl(140 40% 65%);
+    color: hsl(142 55% 72%);
   }
 
   .tag-secondary {

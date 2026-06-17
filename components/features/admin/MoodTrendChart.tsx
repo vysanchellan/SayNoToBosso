@@ -21,9 +21,9 @@ export default function MoodTrendChart() {
                 <stop offset="100%" stopColor="hsl(142, 30%, 36%)" stopOpacity={0} />
               </linearGradient>
             </defs>
-            <CartesianGrid strokeDasharray="3 3" stroke="hsl(40, 10%, 90%)" />
-            <XAxis dataKey="day" tick={{ fontSize: 10, fill: "hsl(40, 20%, 50%)" }} tickLine={false} axisLine={false} interval={4} />
-            <YAxis domain={[1, 10]} tick={{ fontSize: 10, fill: "hsl(40, 20%, 50%)" }} tickLine={false} axisLine={false} />
+            <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+            <XAxis dataKey="day" tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }} tickLine={false} axisLine={false} interval={4} />
+            <YAxis domain={[1, 10]} tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }} tickLine={false} axisLine={false} />
             <Tooltip />
             <Legend />
             <Area type="monotone" dataKey="mood" stroke="hsl(142, 30%, 36%)" fill="url(#moodFill)" strokeWidth={2} name="Average Mood" />

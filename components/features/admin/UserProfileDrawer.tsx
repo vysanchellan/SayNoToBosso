@@ -57,9 +57,14 @@ export default function UserProfileDrawer({ open, onOpenChange, user }: UserProf
         </SheetHeader>
 
         <div className="flex items-center gap-2 px-4 pb-3">
-          <Badge className={`text-[10px] font-medium border-0 ${
-            user.tier === "Mild" ? "bg-sage-100 text-sage-700" : user.tier === "Moderate" ? "bg-amber-100 text-amber-700" : "bg-rose-100 text-rose-700"
-          }`}>{user.tier}</Badge>
+          {(() => {
+            const tierStyle = user.tier === "Mild"
+              ? "bg-primary/10 text-primary border border-primary/20"
+              : user.tier === "Moderate"
+                ? "bg-amber-500/10 text-amber-500 border border-amber-500/20"
+                : "bg-destructive/10 text-destructive border border-destructive/20"
+            return <Badge className={`text-[10px] font-medium ${tierStyle}`}>{user.tier}</Badge>
+          })()}
           <span className="text-[10px] text-muted-foreground">Day {user.day} · Week {user.week}</span>
           {user.status === "At-Risk" && (
             <span className="flex items-center gap-1 text-[10px] text-rose-600 font-medium">
@@ -151,9 +156,9 @@ export default function UserProfileDrawer({ open, onOpenChange, user }: UserProf
           )}
 
           {tab === "journal" && (
-            <div className="rounded-xl border bg-amber-50 p-4 text-center">
-              <p className="text-sm text-amber-700 font-medium">User has not consented to share journal entries</p>
-              <p className="text-xs text-amber-600 mt-1">Journal sharing must be enabled in Privacy settings by the user.</p>
+            <div className="rounded-xl border bg-card p-4 text-center" style={{ borderColor: 'hsl(38 75% 48% / 0.25)' }}>
+              <p className="text-sm font-medium" style={{ color: 'hsl(38 75% 65%)' }}>User has not consented to share journal entries</p>
+              <p className="text-xs mt-1" style={{ color: 'hsl(38 75% 55%)' }}>Journal sharing must be enabled in Privacy settings by the user.</p>
             </div>
           )}
 
@@ -181,13 +186,13 @@ export default function UserProfileDrawer({ open, onOpenChange, user }: UserProf
 
           {tab === "notes" && (
             <div className="space-y-3">
-              <div className="rounded-xl border bg-amber-50 p-3">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-xs font-medium">Dr. Naledi Sithole</span>
-                  <span className="text-[10px] text-muted-foreground">28 May 2026</span>
-                </div>
-                <p className="text-xs text-muted-foreground">Patient reports improved mood. Continue monitoring cravings post-lunch. Consider adjusting program pacing.</p>
+            <div className="rounded-xl border bg-card p-3" style={{ borderColor: 'hsl(38 75% 48% / 0.25)' }}>
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-xs font-medium">Dr. Naledi Sithole</span>
+                <span className="text-[10px] text-muted-foreground">28 May 2026</span>
               </div>
+              <p className="text-xs text-muted-foreground">Patient reports improved mood. Continue monitoring cravings post-lunch. Consider adjusting program pacing.</p>
+            </div>
               <textarea
                 value={note}
                 onChange={(e) => setNote(e.target.value)}

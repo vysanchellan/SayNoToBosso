@@ -99,7 +99,7 @@ export default function PostFeed() {
                 ? "text-foreground"
                 : "text-muted-foreground hover:text-foreground"
             }`}
-            style={categoryFilter === f ? { background: 'hsl(var(--sage-light))', color: 'hsl(var(--forest))' } : {}}
+            style={categoryFilter === f ? { background: 'hsl(var(--sage-light))', color: 'hsl(var(--forest))' } : { background: 'hsl(var(--muted))' }}
           >
             {f}
           </button>
@@ -116,7 +116,7 @@ export default function PostFeed() {
                 ? "text-foreground"
                 : "text-muted-foreground hover:text-foreground"
             }`}
-            style={sortFilter === f ? { background: 'hsl(var(--sage-light))', color: 'hsl(var(--forest))' } : {}}
+            style={sortFilter === f ? { background: 'hsl(var(--sage-light))', color: 'hsl(var(--forest))' } : { background: 'hsl(var(--muted))' }}
           >
             {f}
           </button>

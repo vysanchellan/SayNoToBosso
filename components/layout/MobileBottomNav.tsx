@@ -34,8 +34,8 @@ export default function MobileBottomNav() {
   return (
     <>
       <nav
-        className="fixed bottom-0 left-0 right-0 z-40 flex h-16 items-center justify-around border-t bg-card shadow-lg lg:hidden pb-safe"
-        style={{ borderColor: 'hsl(var(--border))' }}
+        className="fixed bottom-0 left-0 right-0 z-40 flex h-16 items-center justify-around border-t bg-card lg:hidden pb-safe"
+        style={{ borderColor: 'hsl(var(--border))', boxShadow: '0 -1px 0 0 hsl(var(--border)), 0 -4px 16px hsl(160 28% 4% / 0.4)' }}
         aria-label="Mobile navigation"
       >
         {mainTabs.map((tab) => {
@@ -69,8 +69,8 @@ export default function MobileBottomNav() {
                             setMoreOpen(false)
                           }
                         }}
-                        className={`flex flex-col items-center gap-2 rounded-xl p-4 min-h-[44px] min-w-[44px] transition-colors ${
-                          item.crisis ? "text-destructive hover:bg-destructive/5" : "text-muted-foreground hover:bg-muted"
+                        className={`flex flex-col items-center gap-2 rounded-xl p-4 min-h-[44px] min-w-[44px] transition-colors bg-muted/30 ${
+                          item.crisis ? "text-destructive hover:bg-destructive/10" : "text-muted-foreground hover:bg-muted"
                         }`}
                       >
                         <item.icon className="size-5" />
