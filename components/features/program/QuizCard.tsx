@@ -176,7 +176,7 @@ export default function QuizCard({
               boxShadow: selected === q.correct ? '0 0 0 1px hsl(var(--primary)/0.2)' : '0 0 0 1px hsl(38 75% 48% / 0.25)',
             }}
           >
-            <span style={{ color: selected === q.correct ? 'hsl(140 40% 65%)' : 'hsl(38 75% 65%)' }}>{q.explanation}</span>
+            <span style={{ color: selected === q.correct ? 'hsl(152 55% 65%)' : 'hsl(38 75% 65%)' }}>{q.explanation}</span>
           </motion.div>
         )}
 

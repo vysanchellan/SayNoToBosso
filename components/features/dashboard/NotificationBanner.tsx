@@ -23,10 +23,10 @@ export default function NotificationBanner() {
         className="size-8 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5"
         style={{ background: 'hsl(var(--primary)/0.2)' }}
       >
-        <Sparkles className="size-4" style={{ color: 'hsl(140 40% 65%)' }} />
+        <Sparkles className="size-4" style={{ color: 'hsl(152 55% 65%)' }} />
       </div>
       <p className="flex-1 text-sm text-foreground/80">
-        <span className="font-semibold" style={{ color: 'hsl(140 40% 65%)' }}>New lesson ready: </span>
+        <span className="font-semibold" style={{ color: 'hsl(152 55% 65%)' }}>New lesson ready: </span>
         Your Week 2 lesson &ldquo;Anxiety &amp; The Cannabis Connection&rdquo; is now available.
       </p>
       <button

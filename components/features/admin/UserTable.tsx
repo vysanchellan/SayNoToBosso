@@ -197,7 +197,7 @@ export default function UserTable() {
                 <TableCell className="px-4 py-3 text-sm text-muted-foreground">Week {user.week}</TableCell>
                 <TableCell className="px-4 py-3 text-sm text-muted-foreground">{user.lastActive}</TableCell>
                 <TableCell className="px-4 py-3">
-                  <span className={getMoodClass(user.mood)} style={{ color: user.mood >= 8 ? 'hsl(140 40% 65%)' : user.mood >= 6 ? 'hsl(38 75% 65%)' : 'hsl(8 65% 68%)' }}>{user.mood}</span>
+                  <span className={getMoodClass(user.mood)} style={{ color: user.mood >= 8 ? 'hsl(152 55% 65%)' : user.mood >= 6 ? 'hsl(38 75% 65%)' : 'hsl(8 65% 68%)' }}>{user.mood}</span>
                 </TableCell>
                 <TableCell className="px-4 py-3">
                   <span className="text-sm font-medium text-foreground">

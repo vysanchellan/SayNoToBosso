@@ -19,8 +19,8 @@ export default function ForgotPasswordPage() {
 
           {sent ? (
             <div className="rounded-2xl p-6 text-center" style={{ background: 'hsl(var(--primary)/0.1)', boxShadow: '0 0 0 1px hsl(var(--primary)/0.2)' }}>
-              <p className="text-sm font-medium" style={{ color: 'hsl(140 40% 65%)' }}>If this email exists, a reset link has been sent.</p>
-              <p className="text-xs mt-2" style={{ color: 'hsl(140 40% 55%)' }}>Please check your inbox and follow the instructions.</p>
+              <p className="text-sm font-medium" style={{ color: 'hsl(152 55% 65%)' }}>If this email exists, a reset link has been sent.</p>
+              <p className="text-xs mt-2" style={{ color: 'hsl(152 55% 55%)' }}>Please check your inbox and follow the instructions.</p>
             </div>
           ) : (
             <div className="space-y-4">

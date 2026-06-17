@@ -28,7 +28,7 @@ export default function StreakCounter() {
           <circle cx="48" cy="48" r="42" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="6" />
           <circle
             cx="48" cy="48" r="42" fill="none"
-            stroke="hsl(38, 85%, 55%)" strokeWidth="6" strokeLinecap="round"
+            stroke="hsl(38 85% 55%)" strokeWidth="6" strokeLinecap="round"
             strokeDasharray={circumference}
             strokeDashoffset={circumference * (1 - percentToNext / 100)}
             className="transition-all duration-1000"

@@ -5,7 +5,7 @@ const tools = [
   { icon: Wind, label: "Breathing", href: "/tools#breathing", bg: "hsl(155 50% 32%/0.2)", color: "hsl(155 50% 60%)" },
   { icon: Moon, label: "Sleep Log", href: "/tools#sleep", bg: "hsl(250 40% 48%/0.2)", color: "hsl(250 40% 70%)" },
   { icon: Apple, label: "Nutrition", href: "/tools#nutrition", bg: "hsl(38 75% 48%/0.2)", color: "hsl(38 75% 65%)" },
-  { icon: PenLine, label: "Journal", href: "/journal", bg: "hsl(var(--primary)/0.15)", color: "hsl(140 40% 60%)" },
+  { icon: PenLine, label: "Journal", href: "/journal", bg: "hsl(var(--primary)/0.15)", color: "hsl(152 55% 60%)" },
   { icon: BookOpen, label: "Research", href: "/research", bg: "hsl(200 55% 48%/0.2)", color: "hsl(200 55% 65%)" },
   { icon: HeartPulse, label: "Crisis Help", href: "#crisis", bg: "hsl(8 65% 58%/0.15)", color: "hsl(8 65% 68%)" },
 ]

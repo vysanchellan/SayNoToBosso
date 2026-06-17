@@ -30,7 +30,7 @@ export default function WeeklyProgramCard() {
         <span className="text-xs text-muted-foreground">{completed} of {total} activities complete</span>
       </div>
 
-      <h3 className="text-xl font-bold mt-2" style={{ color: 'hsl(140 40% 65%)' }}>Brain Reset</h3>
+      <h3 className="text-xl font-bold mt-2" style={{ color: 'hsl(152 55% 65%)' }}>Brain Reset</h3>
 
       <div className="relative h-2 rounded-full overflow-hidden mt-3 mb-4" style={{ background: 'hsl(var(--muted))' }}>
         <div
@@ -46,7 +46,7 @@ export default function WeeklyProgramCard() {
         {activities.map((a) => (
           <li key={a.label} className="flex items-center gap-3 py-2 text-sm">
             {a.done ? (
-              <CheckCircle2 className="size-4 shrink-0" style={{ color: 'hsl(140 40% 55%)' }} />
+              <CheckCircle2 className="size-4 shrink-0" style={{ color: 'hsl(152 55% 60%)' }} />
             ) : a.inProgress ? (
               <div className="size-4 shrink-0 rounded-full flex items-center justify-center" style={{ background: 'hsl(38 75% 48%)' }}>
                 <span className="size-1.5 rounded-full bg-white" />
@@ -65,7 +65,7 @@ export default function WeeklyProgramCard() {
               {a.label}
             </span>
             {a.isToday && (
-              <span className="rounded-full px-2 py-0.5 text-[10px] font-semibold" style={{ background: 'hsl(var(--primary)/0.15)', color: 'hsl(140 40% 65%)' }}>
+              <span className="rounded-full px-2 py-0.5 text-[10px] font-semibold" style={{ background: 'hsl(var(--primary)/0.15)', color: 'hsl(152 55% 65%)' }}>
                 Today
               </span>
             )}

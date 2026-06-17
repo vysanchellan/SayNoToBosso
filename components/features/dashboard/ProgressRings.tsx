@@ -42,10 +42,10 @@ export default function ProgressRings() {
   return (
     <div className="rounded-2xl bg-card p-5" style={{ boxShadow: '0 0 0 1px hsl(var(--border)/0.4)' }}>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <Ring label="Sleep" value="6.5" percent={81} color="hsl(145, 40%, 48%)" sublabel="Sleep" />
-        <Ring label="Hydration" value="50%" percent={50} color="hsl(200, 65%, 48%)" sublabel="Hydration" />
-        <Ring label="Mood Avg" value="7.2" percent={72} color="hsl(38, 85%, 48%)" sublabel="Mood" />
-        <Ring label="Craving" value="↓ 32%" percent={68} color="hsl(155, 55%, 30%)" sublabel="Craving" />
+        <Ring label="Sleep" value="6.5" percent={81} color="hsl(152 55% 50%)" sublabel="Sleep" />
+        <Ring label="Hydration" value="50%" percent={50} color="hsl(200 65% 52%)" sublabel="Hydration" />
+        <Ring label="Mood Avg" value="7.2" percent={72} color="hsl(38 75% 55%)" sublabel="Mood" />
+        <Ring label="Craving" value="↓ 32%" percent={68} color="hsl(155 55% 38%)" sublabel="Craving" />
       </div>
     </div>
   )

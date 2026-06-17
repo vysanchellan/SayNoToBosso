@@ -46,7 +46,7 @@ export function BreathingGoal() {
     return (
       <div className="rounded-xl p-4" style={{ background: 'hsl(var(--primary)/0.1)', boxShadow: '0 0 0 1px hsl(var(--primary)/0.2)' }}>
         <div className="flex items-center gap-3">
-          <CheckCircle2 className="size-5" style={{ color: 'hsl(140 40% 55%)' }} />
+          <CheckCircle2 className="size-5" style={{ color: 'hsl(152 55% 60%)' }} />
           <span className="text-sm font-medium text-foreground">Breathing done today</span>
         </div>
       </div>
@@ -57,7 +57,7 @@ export function BreathingGoal() {
     <div className="rounded-xl bg-card p-4" style={{ boxShadow: '0 0 0 1px hsl(var(--border)/0.4)' }}>
       <div className="flex items-center gap-2 mb-3">
         <div className="flex size-9 items-center justify-center rounded-xl" style={{ background: 'hsl(var(--primary)/0.15)' }}>
-          <Wind className="size-4" style={{ color: 'hsl(140 40% 60%)' }} />
+          <Wind className="size-4" style={{ color: 'hsl(152 55% 65%)' }} />
         </div>
         <span className="text-sm font-semibold text-foreground">Breathing Exercise</span>
       </div>
@@ -66,7 +66,7 @@ export function BreathingGoal() {
         size="sm"
         onClick={() => setDone(true)}
         className="w-full rounded-full text-xs font-semibold"
-        style={{ background: 'hsl(var(--primary)/0.15)', color: 'hsl(140 40% 65%)' }}
+        style={{ background: 'hsl(var(--primary)/0.15)', color: 'hsl(152 55% 65%)' }}
       >
         Start
       </Button>

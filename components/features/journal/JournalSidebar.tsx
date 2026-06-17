@@ -18,7 +18,7 @@ interface Entry {
 const tagColours: Record<string, { bg: string; text: string }> = {
   "Milestone": { bg: "hsl(38 75% 55% / 0.15)", text: "hsl(var(--accent))" },
   "Difficult Day": { bg: "hsl(8 65% 58% / 0.15)", text: "hsl(var(--destructive))" },
-  "Gratitude": { bg: "hsl(140 40% 48% / 0.15)", text: "hsl(140 40% 65%)" },
+  "Gratitude": { bg: "hsl(152 55% 48% / 0.15)", text: "hsl(152 55% 65%)" },
   "Week 1": { bg: "hsl(var(--muted))", text: "hsl(var(--muted-foreground))" },
   "Week 2": { bg: "hsl(var(--muted))", text: "hsl(var(--muted-foreground))" },
   "Week 3": { bg: "hsl(var(--muted))", text: "hsl(var(--muted-foreground))" },
@@ -96,7 +96,7 @@ export default function JournalSidebar({
               className="shrink-0 rounded-lg px-3 py-1 text-xs font-medium transition-colors"
               style={{
                 background: active ? 'hsl(var(--primary) / 0.25)' : 'hsl(var(--sidebar-accent))',
-                color: active ? 'hsl(140 40% 65%)' : 'hsl(var(--sidebar-foreground))',
+                color: active ? 'hsl(152 55% 65%)' : 'hsl(var(--sidebar-foreground))',
               }}
             >
               {f}

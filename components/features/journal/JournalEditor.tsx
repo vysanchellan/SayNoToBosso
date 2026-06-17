@@ -17,9 +17,9 @@ import {
 const moodEmojis = ["😔", "😐", "😊", "🔥", "💪"]
 
 const tagOptions = [
-  { label: "Personal", bg: "hsl(var(--primary) / 0.15)", color: "hsl(140 40% 65%)" },
+  { label: "Personal", bg: "hsl(var(--primary) / 0.15)", color: "hsl(152 55% 65%)" },
   { label: "Milestone", bg: "hsl(var(--accent) / 0.15)", color: "hsl(var(--accent))" },
-  { label: "Gratitude", bg: "hsl(140 40% 48% / 0.15)", color: "hsl(140 40% 65%)" },
+  { label: "Gratitude", bg: "hsl(152 55% 48% / 0.15)", color: "hsl(152 55% 65%)" },
   { label: "Difficult Day", bg: "hsl(8 65% 58% / 0.15)", color: "hsl(var(--destructive))" },
 ] as const
 
@@ -102,7 +102,7 @@ export default function JournalEditor({
           <button
             onClick={() => { setIsPrivate(!isPrivate); persist({ isPrivate: !isPrivate }) }}
             className="flex items-center gap-1 rounded-lg px-2.5 py-1 text-xs font-medium transition-colors"
-            style={{ background: isPrivate ? 'hsl(var(--muted))' : 'hsl(var(--primary) / 0.15)', color: isPrivate ? 'hsl(var(--muted-foreground))' : 'hsl(140 40% 65%)' }}
+            style={{ background: isPrivate ? 'hsl(var(--muted))' : 'hsl(var(--primary) / 0.15)', color: isPrivate ? 'hsl(var(--muted-foreground))' : 'hsl(152 55% 65%)' }}
           >
             {isPrivate ? <Lock className="size-3" /> : <Eye className="size-3" />}
             {isPrivate ? "Private" : "Shared"}

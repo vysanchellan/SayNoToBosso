@@ -127,7 +127,7 @@ export default function AdminReportsPage() {
               {m.change && (
                 <div className="flex items-center gap-2 mt-2 text-[10px]">
                   <span className="text-muted-foreground">From {m.before}</span>
-                  <span className="font-medium" style={{ color: 'hsl(140 40% 65%)' }}>→ {m.after}</span>
+                  <span className="font-medium" style={{ color: 'hsl(152 55% 65%)' }}>→ {m.after}</span>
                 </div>
               )}
             </div>
@@ -235,7 +235,7 @@ export default function AdminReportsPage() {
                   <td className="p-3">{row.started}</td>
                   <td className="p-3">{row.completed}</td>
                   <td className="p-3">
-                    <span className="font-medium" style={{ color: row.rate >= 60 ? 'hsl(140 40% 65%)' : row.rate >= 30 ? 'hsl(38 75% 65%)' : 'hsl(8 65% 68%)' }}>
+                    <span className="font-medium" style={{ color: row.rate >= 60 ? 'hsl(152 55% 65%)' : row.rate >= 30 ? 'hsl(38 75% 65%)' : 'hsl(8 65% 68%)' }}>
                       {row.rate}%
                     </span>
                   </td>

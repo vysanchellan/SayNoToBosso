@@ -35,7 +35,7 @@ export default function MilestonesPreview() {
               }
             >
               {badge.unlocked ? (
-                <Flame className="size-6 text-amber-400" />
+                <Flame className="size-6" style={{ color: 'hsl(var(--accent))' }} />
               ) : badge.icon ? (
                 <Lock className="size-5 text-muted-foreground opacity-40" />
               ) : (
@@ -55,7 +55,7 @@ export default function MilestonesPreview() {
       {badges[0].current && (
         <div className="mt-3 text-center">
           <span className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold" style={{ color: 'hsl(38 75% 65%)' }}>
-            🔥 New: 24 Hours badge earned!
+            New: 24 Hours badge earned!
           </span>
         </div>
       )}
@@ -63,7 +63,7 @@ export default function MilestonesPreview() {
       <Link
         href="/profile"
         className="mt-4 flex items-center justify-center gap-1 text-xs font-medium transition-colors"
-        style={{ color: 'hsl(140 40% 60%)' }}
+        style={{ color: 'hsl(152 55% 65%)' }}
       >
         View All Achievements <ArrowRight className="size-3.5" />
       </Link>

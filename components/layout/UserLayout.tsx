@@ -187,7 +187,7 @@ export default function UserLayout({ children }: { children: ReactNode }) {
                     <Leaf className="size-3.5" style={{ color: 'hsl(var(--primary))' }} />
                     <span className="text-xs font-semibold tabular-nums" style={{ color: 'hsl(var(--primary))' }}>Day {dayInProgram} of 70</span>
                     <span style={{ color: 'hsl(var(--primary) / 0.4)' }}>|</span>
-                    <span className="text-xs font-medium" style={{ color: 'hsl(140 40% 65%)' }}>Week {currentWeek}</span>
+                    <span className="text-xs font-medium" style={{ color: 'hsl(152 55% 65%)' }}>Week {currentWeek}</span>
                   </div>
                 </div>
               </div>
@@ -228,7 +228,7 @@ export default function UserLayout({ children }: { children: ReactNode }) {
                           </div>
                         </div>
                         <div className="flex gap-2">
-                          <span className="rounded-full px-2 py-0.5 text-xs font-medium" style={{ background: 'hsl(var(--primary) / 0.15)', color: 'hsl(140 40% 65%)' }}>
+                          <span className="rounded-full px-2 py-0.5 text-xs font-medium" style={{ background: 'hsl(var(--primary) / 0.15)', color: 'hsl(152 55% 65%)' }}>
                             Day {dayInProgram}
                           </span>
                           <span className="rounded-full px-2 py-0.5 text-xs font-medium" style={{ background: 'hsl(var(--accent) / 0.15)', color: 'hsl(var(--accent))' }}>

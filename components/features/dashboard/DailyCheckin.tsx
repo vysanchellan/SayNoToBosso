@@ -28,11 +28,11 @@ export default function DailyCheckin() {
       <div className="rounded-2xl p-6" style={{ background: 'hsl(var(--primary)/0.1)', boxShadow: '0 0 0 1px hsl(var(--primary)/0.2)' }}>
         <div className="flex items-center gap-3 mb-4">
           <div className="flex size-10 items-center justify-center rounded-full" style={{ background: 'hsl(var(--primary)/0.2)' }}>
-            <CheckCircle2 className="size-5" style={{ color: 'hsl(140 40% 55%)' }} />
+            <CheckCircle2 className="size-5" style={{ color: 'hsl(152 55% 60%)' }} />
           </div>
           <div>
             <h3 className="font-semibold text-foreground">Check-in complete</h3>
-            <p className="text-sm" style={{ color: 'hsl(140 40% 55%)' }}>
+            <p className="text-sm" style={{ color: 'hsl(152 55% 60%)' }}>
               Mood: {mood ? moods.find((m) => m.value === mood)?.label : "-"} &middot; Craving: {craving}/10 &middot; Sleep: {sleep}/5 stars
             </p>
           </div>
@@ -43,7 +43,7 @@ export default function DailyCheckin() {
 
   return (
     <div className="rounded-2xl bg-card p-6" style={{ borderTop: '2px solid hsl(var(--primary))', boxShadow: '0 0 0 1px hsl(var(--border)/0.4)' }}>
-      <p className="eyebrow mb-5" style={{ color: 'hsl(140 40% 55%)' }}>Morning Check-In</p>
+      <p className="eyebrow mb-5" style={{ color: 'hsl(152 55% 60%)' }}>Morning Check-In</p>
 
       <h3 className="text-lg font-bold text-foreground mb-1">Today&apos;s Check-In</h3>
       <p className="text-sm text-muted-foreground mb-6">How are you feeling this morning?</p>
@@ -70,7 +70,7 @@ export default function DailyCheckin() {
                     initial={{ opacity: 0, y: -5 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="text-[10px] font-medium"
-                    style={{ color: 'hsl(140 40% 65%)' }}
+                    style={{ color: 'hsl(152 55% 65%)' }}
                   >
                     {m.label}
                   </motion.span>

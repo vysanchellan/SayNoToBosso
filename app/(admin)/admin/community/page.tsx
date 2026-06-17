@@ -137,7 +137,7 @@ export default function AdminCommunityPage() {
                     )}
 
                     {post.status === "approved" && post.approvedBy && (
-                      <p className="text-[10px] mt-2" style={{ color: 'hsl(140 40% 65%)' }}>Approved by {post.approvedBy} &middot; {post.approvedAt}</p>
+                      <p className="text-[10px] mt-2" style={{ color: 'hsl(152 55% 65%)' }}>Approved by {post.approvedBy} &middot; {post.approvedAt}</p>
                     )}
 
                     {tab === "pending" && (
@@ -193,7 +193,7 @@ export default function AdminCommunityPage() {
             <div className="space-y-3">
               <div>
                 <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1">Approve when:</p>
-                  <div className="flex items-start gap-1.5 text-xs" style={{ color: 'hsl(140 40% 65%)' }}>
+                  <div className="flex items-start gap-1.5 text-xs" style={{ color: 'hsl(152 55% 65%)' }}>
                     <CheckCircle className="size-3.5 mt-0.5 shrink-0" />
                     <span>Supportive, on-topic, respectful, follows guidelines</span>
                   </div>

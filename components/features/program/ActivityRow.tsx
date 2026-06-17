@@ -12,7 +12,7 @@ interface Activity {
 }
 
 const iconMap: Record<string, { icon: typeof BookOpen; bg: string; color: string; hoverBg: string }> = {
-  lesson: { icon: BookOpen, bg: "hsl(var(--primary) / 0.15)", color: "hsl(140 40% 65%)", hoverBg: "hsl(var(--primary) / 0.2)" },
+  lesson: { icon: BookOpen, bg: "hsl(var(--primary) / 0.15)", color: "hsl(152 55% 65%)", hoverBg: "hsl(var(--primary) / 0.2)" },
   exercise: { icon: Wind, bg: "hsl(var(--accent) / 0.15)", color: "hsl(var(--accent))", hoverBg: "hsl(var(--accent) / 0.2)" },
   journal: { icon: PenLine, bg: "hsl(var(--secondary) / 0.15)", color: "hsl(var(--secondary))", hoverBg: "hsl(var(--secondary) / 0.2)" },
   quiz: { icon: HelpCircle, bg: "hsl(38 75% 55% / 0.15)", color: "hsl(var(--amber))", hoverBg: "hsl(38 75% 55% / 0.25)" },
