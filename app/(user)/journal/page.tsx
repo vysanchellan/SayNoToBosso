@@ -121,7 +121,7 @@ export default function JournalPage() {
 
   return (
     <div id="main-content" className="flex h-[calc(100vh-8rem)] -mx-4 sm:-mx-6 lg:-mx-8">
-      <div className={`w-80 shrink-0 overflow-hidden ${showMobileList ? "block" : "hidden lg:block"}`} style={{ borderRight: '1px solid hsl(var(--sidebar-border))' }}>
+      <div className={`w-80 shrink-0 overflow-hidden ${showMobileList ? "block" : "hidden lg:block"}`} style={{ borderRight: '1px solid #1F3326' }}>
         <JournalSidebar
           entries={entries}
           activeId={activeId}

@@ -3,6 +3,7 @@ import "./globals.css"
 import { Toaster } from "sonner"
 import { DemoProvider } from "@/lib/demo-context"
 import PageTransition from "@/components/ui/PageTransition"
+import { ForceDarkMode } from "@/components/ForceDarkMode"
 
 export const metadata: Metadata = {
   title: "CannaClear — Your guided path to cannabis-free living",
@@ -28,6 +29,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         <DemoProvider>
+          <ForceDarkMode />
           <PageTransition>{children}</PageTransition>
         </DemoProvider>
         <Toaster

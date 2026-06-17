@@ -35,7 +35,7 @@ export default function MobileBottomNav() {
     <>
       <nav
         className="fixed bottom-0 left-0 right-0 z-40 flex h-16 items-center justify-around border-t bg-card lg:hidden pb-safe"
-        style={{ borderColor: 'hsl(var(--border))', boxShadow: '0 -1px 0 0 hsl(var(--border)), 0 -4px 16px hsl(160 28% 4% / 0.4)' }}
+        style={{ borderColor: '#1F3326', boxShadow: '0 -1px 0 0 #1F3326, 0 -4px 16px rgba(8,17,12,0.4)' }}
         aria-label="Mobile navigation"
       >
         {mainTabs.map((tab) => {
@@ -55,7 +55,7 @@ export default function MobileBottomNav() {
                   </div>
                   <span className="text-[10px] text-muted-foreground">More</span>
                 </SheetTrigger>
-                <SheetContent side="bottom" className="rounded-t-2xl pb-8 bg-card border-t" style={{ borderColor: 'hsl(var(--border))' }}>
+                <SheetContent side="bottom" className="rounded-t-2xl pb-8 bg-card border-t" style={{ borderColor: '#1F3326' }}>
                   <SheetHeader>
                     <SheetTitle className="text-center text-sm text-foreground">More Options</SheetTitle>
                   </SheetHeader>

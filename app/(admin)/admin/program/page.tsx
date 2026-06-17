@@ -121,7 +121,7 @@ export default function AdminProgramPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <aside className="lg:col-span-3 space-y-1">
-          <div className="rounded-2xl bg-card p-3" style={{ boxShadow: '0 0 0 1px hsl(var(--border) / 0.4)' }}>
+          <div className="rounded-2xl bg-card p-3" style={{ boxShadow: '0 0 0 1px rgba(31,51,38,0.4)' }}>
             <p className="eyebrow mb-2 px-1">Weeks</p>
             {tierWeeks.map((w) => (
               <button
@@ -148,7 +148,7 @@ export default function AdminProgramPage() {
         </aside>
 
         <div className="lg:col-span-6 space-y-4">
-          <div className="rounded-2xl bg-card p-5" style={{ boxShadow: '0 0 0 1px hsl(var(--border) / 0.4)' }}>
+          <div className="rounded-2xl bg-card p-5" style={{ boxShadow: '0 0 0 1px rgba(31,51,38,0.4)' }}>
             <div className="flex items-center gap-3 mb-4">
               <span className="inline-flex items-center rounded-full bg-primary/10 text-primary px-3 py-0.5 text-xs font-semibold">Week {selectedWeek}</span>
               <div>
@@ -170,7 +170,7 @@ export default function AdminProgramPage() {
                 const toggled = toggles[`${selectedWeek}-${i}`]
 
                 return (
-                  <div key={i} className="rounded-2xl bg-card p-4 mb-3" style={{ boxShadow: '0 0 0 1px hsl(var(--border) / 0.4)' }}>
+                  <div key={i} className="rounded-2xl bg-card p-4 mb-3" style={{ boxShadow: '0 0 0 1px rgba(31,51,38,0.4)' }}>
                     <div className="flex items-start gap-3">
                       <div className="size-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                         <Icon className="size-4 text-primary" />
@@ -257,14 +257,14 @@ export default function AdminProgramPage() {
             <div className="rounded-xl border border-primary/20 bg-primary/8 p-3 text-xs text-muted-foreground">
               <strong className="text-foreground">4-7-8 Breathing</strong> has a 94% completion rate &mdash; most popular tool.
             </div>
-            <div className="rounded-xl bg-muted/50 p-3 text-xs text-muted-foreground" style={{ boxShadow: '0 0 0 1px hsl(var(--border) / 0.4)' }}>
+            <div className="rounded-xl bg-muted/50 p-3 text-xs text-muted-foreground" style={{ boxShadow: '0 0 0 1px rgba(31,51,38,0.4)' }}>
               <strong className="text-foreground">Quiz scores</strong> average 78% across all users. Learning objectives appear to be met.
             </div>
           </div>
         </div>
 
         <aside className="lg:col-span-3 space-y-4">
-          <div className="rounded-2xl bg-muted/50 p-4" style={{ boxShadow: '0 0 0 1px hsl(var(--border) / 0.4)' }}>
+          <div className="rounded-2xl bg-muted/50 p-4" style={{ boxShadow: '0 0 0 1px rgba(31,51,38,0.4)' }}>
             <p className="eyebrow mb-3">Week {selectedWeek} Statistics</p>
             {stats.map((s) => (
               <div key={s.label} className="flex items-center justify-between py-1.5 border-b border-border last:border-0">
@@ -288,7 +288,7 @@ export default function AdminProgramPage() {
 
       {previewQuiz && (
         <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/40 pt-12">
-          <div className="w-full max-w-lg rounded-2xl bg-card p-6 mx-4" style={{ boxShadow: '0 0 0 1px hsl(var(--border) / 0.4), 0 8px 32px hsl(160 28% 4% / 0.4)' }}>
+          <div className="w-full max-w-lg rounded-2xl bg-card p-6 mx-4" style={{ boxShadow: '0 0 0 1px rgba(31,51,38,0.4), 0 8px 32px rgba(8,17,12,0.4)' }}>
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-base font-semibold text-foreground">{previewQuiz.title}</h3>
               <button onClick={() => setPreviewQuiz(null)} className="size-8 rounded-lg flex items-center justify-center hover:bg-muted text-muted-foreground" aria-label="Close preview">
@@ -297,7 +297,7 @@ export default function AdminProgramPage() {
             </div>
             <div className="space-y-4">
               {["What is the first step in managing a cannabis craving?", "Which breathing technique is most effective for acute cravings?", "What does SMART stand for in goal setting?", "How long does a typical cannabis craving last?", "Which of the following is a common trigger for cannabis use?"].map((q, i) => (
-                <div key={i} className="rounded-xl bg-muted/30 p-3" style={{ boxShadow: '0 0 0 1px hsl(var(--border) / 0.4)' }}>
+                <div key={i} className="rounded-xl bg-muted/30 p-3" style={{ boxShadow: '0 0 0 1px rgba(31,51,38,0.4)' }}>
                   <p className="text-xs font-medium text-foreground mb-2">{i + 1}. {q}</p>
                   <div className="space-y-1">
                     {[`Option A${i + 1}`, `Option B${i + 1}`, `Option C${i + 1}`, `Option D${i + 1}`].map((opt, j) => (

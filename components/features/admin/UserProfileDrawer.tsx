@@ -67,7 +67,7 @@ export default function UserProfileDrawer({ open, onOpenChange, user }: UserProf
           })()}
           <span className="text-[10px] text-muted-foreground">Day {user.day} · Week {user.week}</span>
           {user.status === "At-Risk" && (
-            <span className="flex items-center gap-1 text-[10px] font-medium" style={{ color: 'hsl(8 65% 68%)' }}>
+            <span className="flex items-center gap-1 text-[10px] font-medium" style={{ color: '#F87171' }}>
               <AlertTriangle className="size-3" /> At-Risk
             </span>
           )}
@@ -108,10 +108,10 @@ export default function UserProfileDrawer({ open, onOpenChange, user }: UserProf
                 <div className="h-32">
                   <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={moods}>
-                      <XAxis dataKey="day" tick={{ fontSize: 9, fill: "hsl(40, 20%, 50%)" }} axisLine={false} tickLine={false} />
-                      <YAxis domain={[1, 10]} tick={{ fontSize: 9, fill: "hsl(40, 20%, 50%)" }} axisLine={false} tickLine={false} />
+                      <XAxis dataKey="day" tick={{ fontSize: 9, fill: "#74917B" }} axisLine={false} tickLine={false} />
+                      <YAxis domain={[1, 10]} tick={{ fontSize: 9, fill: "#74917B" }} axisLine={false} tickLine={false} />
                       <Tooltip />
-                      <Line type="monotone" dataKey="mood" stroke="hsl(142, 30%, 36%)" strokeWidth={2} dot={{ r: 2 }} />
+                      <Line type="monotone" dataKey="mood" stroke="#4ADE80" strokeWidth={2} dot={{ r: 2 }} />
                     </LineChart>
                   </ResponsiveContainer>
                 </div>
@@ -144,7 +144,7 @@ export default function UserProfileDrawer({ open, onOpenChange, user }: UserProf
                   {checkins.map((c, i) => (
                     <tr key={i} className="border-b last:border-0">
                       <td className="p-2">{c.date}</td>
-                      <td className="p-2 font-medium" style={{ color: c.mood < 4 ? 'hsl(8 65% 68%)' : c.mood < 7 ? 'hsl(38 75% 65%)' : 'hsl(152 55% 65%)' }}>{c.mood}</td>
+                      <td className="p-2 font-medium" style={{ color: c.mood < 4 ? '#F87171' : c.mood < 7 ? '#F0B429' : '#4ADE80' }}>{c.mood}</td>
                       <td className="p-2 text-muted-foreground">{c.craving}</td>
                       <td className="p-2 text-muted-foreground">{c.sleep}</td>
                       <td className="p-2 text-muted-foreground italic">{c.note}</td>
@@ -156,9 +156,9 @@ export default function UserProfileDrawer({ open, onOpenChange, user }: UserProf
           )}
 
           {tab === "journal" && (
-            <div className="rounded-xl border bg-card p-4 text-center" style={{ borderColor: 'hsl(38 75% 48% / 0.25)' }}>
-              <p className="text-sm font-medium" style={{ color: 'hsl(38 75% 65%)' }}>User has not consented to share journal entries</p>
-              <p className="text-xs mt-1" style={{ color: 'hsl(38 75% 55%)' }}>Journal sharing must be enabled in Privacy settings by the user.</p>
+            <div className="rounded-xl border bg-card p-4 text-center" style={{ borderColor: 'rgba(192,140,15,0.25)' }}>
+              <p className="text-sm font-medium" style={{ color: '#F0B429' }}>User has not consented to share journal entries</p>
+              <p className="text-xs mt-1" style={{ color: '#C8951F' }}>Journal sharing must be enabled in Privacy settings by the user.</p>
             </div>
           )}
 
@@ -176,7 +176,7 @@ export default function UserProfileDrawer({ open, onOpenChange, user }: UserProf
               {Array.from({ length: 10 }, (_, i) => (
                 <div key={i} className="flex items-center justify-between rounded-xl border bg-card px-3 py-2">
                   <span className="text-xs font-medium">Week {i + 1}</span>
-                  <span className="text-[10px]" style={{ color: i < 3 ? 'hsl(152 55% 65%)' : i === 3 ? 'hsl(var(--accent))' : 'hsl(var(--muted-foreground) / 0.5)' }}>
+                  <span className="text-[10px]" style={{ color: i < 3 ? '#4ADE80' : i === 3 ? '#F0B429' : 'rgba(116,145,123,0.5)' }}>
                     {i < 3 ? "Complete" : i === 3 ? "In Progress" : "Locked"}
                   </span>
                 </div>
@@ -186,7 +186,7 @@ export default function UserProfileDrawer({ open, onOpenChange, user }: UserProf
 
           {tab === "notes" && (
             <div className="space-y-3">
-            <div className="rounded-xl border bg-card p-3" style={{ borderColor: 'hsl(38 75% 48% / 0.25)' }}>
+            <div className="rounded-xl border bg-card p-3" style={{ borderColor: 'rgba(192,140,15,0.25)' }}>
               <div className="flex items-center justify-between mb-1">
                 <span className="text-xs font-medium">Dr. Naledi Sithole</span>
                 <span className="text-[10px] text-muted-foreground">28 May 2026</span>

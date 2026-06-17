@@ -5,10 +5,9 @@ const alerts = [
   {
     priority: "HIGH",
     icon: AlertTriangle,
-    border: "hsl(var(--coral))",
-    bg: 'linear-gradient(135deg, rgba(61,16,8,0.08) 0%, rgba(140,42,20,0.05) 100%)',
-    borderColor: '1px solid rgba(224,80,58,0.20)',
-    badge: "bg-coral",
+    border: "#F87171",
+    bg: 'linear-gradient(135deg, rgba(90,30,18,0.15) 0%, rgba(140,50,30,0.08) 100%)',
+    borderColor: '1px solid rgba(248,113,113,0.25)',
     user: "User #A09",
     day: "Day 6",
     tier: "Moderate",
@@ -17,10 +16,9 @@ const alerts = [
   {
     priority: "MEDIUM",
     icon: AlertCircle,
-    border: "hsl(var(--amber))",
-    bg: 'linear-gradient(135deg, rgba(92,58,0,0.06) 0%, rgba(168,107,0,0.03) 100%)',
-    borderColor: '1px solid rgba(217,146,10,0.20)',
-    badge: "bg-amber",
+    border: "#F0B429",
+    bg: 'linear-gradient(135deg, rgba(92,58,0,0.10) 0%, rgba(168,107,0,0.05) 100%)',
+    borderColor: '1px solid rgba(240,180,41,0.25)',
     user: "User #B15",
     day: "Day 22",
     tier: "Heavy",
@@ -29,10 +27,9 @@ const alerts = [
   {
     priority: "LOW",
     icon: Info,
-    border: "hsl(var(--sage))",
-    bg: 'linear-gradient(135deg, rgba(86,138,101,0.06) 0%, rgba(86,138,101,0.03) 100%)',
-    borderColor: '1px solid rgba(86,138,101,0.20)',
-    badge: "bg-sage",
+    border: "#4ADE80",
+    bg: 'linear-gradient(135deg, rgba(74,222,128,0.08) 0%, rgba(74,222,128,0.03) 100%)',
+    borderColor: '1px solid rgba(74,222,128,0.20)',
     user: "User #C31",
     day: "Day 11",
     tier: "Mild",
@@ -42,10 +39,10 @@ const alerts = [
 
 export default function AlertFlags() {
   return (
-    <div className="rounded-2xl border bg-card p-5" style={{ borderColor: 'hsl(var(--border))' }}>
+    <div className="rounded-2xl p-5" style={{ backgroundColor: '#0E1A12', border: '1px solid #1F3326' }}>
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-sm font-semibold">Requires Clinical Attention</h3>
-        <span className="rounded-full px-2 py-0.5 text-[10px] font-bold" style={{ background: 'hsl(var(--coral) / 0.15)', color: 'hsl(var(--coral))' }}>3</span>
+        <h3 className="text-sm font-semibold" style={{ color: '#F2F7F1' }}>Requires Clinical Attention</h3>
+        <span className="rounded-full px-2 py-0.5 text-[10px] font-bold" style={{ backgroundColor: 'rgba(248,113,113,0.15)', color: '#F87171' }}>3</span>
       </div>
       <div className="space-y-3">
         {alerts.map((alert, i) => (
@@ -62,20 +59,20 @@ export default function AlertFlags() {
               <alert.icon className="size-4" style={{ color: alert.border }} />
               <span
                 className="rounded-full px-2 py-0.5 text-[9px] font-bold text-white"
-                style={{ background: alert.border }}
+                style={{ backgroundColor: alert.border }}
               >
                 {alert.priority}
               </span>
-              <span className="text-xs font-semibold">{alert.user}</span>
-              <span className="text-[10px] text-muted-foreground">{alert.day} · {alert.tier}</span>
+              <span className="text-xs font-semibold" style={{ color: '#F2F7F1' }}>{alert.user}</span>
+              <span className="text-[10px]" style={{ color: '#74917B' }}>{alert.day} &middot; {alert.tier}</span>
             </div>
-            <p className="text-sm text-muted-foreground mb-2">{alert.reason}</p>
+            <p className="text-sm mb-2" style={{ color: '#B9D0BE' }}>{alert.reason}</p>
             <div className="flex gap-1.5">
-              <Button className="rounded-full h-7 text-[10px] bg-primary text-primary-foreground hover:bg-primary/90">View Profile</Button>
-              <Button className="rounded-full h-7 text-[10px] border text-muted-foreground hover:bg-muted" style={{ borderColor: 'hsl(var(--border))', background: 'transparent' }}>
+              <Button className="rounded-full h-7 text-[10px]" style={{ backgroundColor: '#4ADE80', color: '#07100B' }}>View Profile</Button>
+              <Button className="rounded-full h-7 text-[10px]" style={{ backgroundColor: 'transparent', border: '1px solid #1F3326', color: '#74917B' }}>
                 {i === 1 ? "Send Prompt" : i === 2 ? "Note Added" : "Schedule Check-in"}
               </Button>
-              <Button className="rounded-full h-7 text-[10px] border text-muted-foreground hover:bg-muted ml-auto" style={{ borderColor: 'hsl(var(--border))', background: 'transparent' }}>Dismiss</Button>
+              <Button className="rounded-full h-7 text-[10px] ml-auto" style={{ backgroundColor: 'transparent', border: '1px solid #1F3326', color: '#74917B' }}>Dismiss</Button>
             </div>
           </div>
         ))}

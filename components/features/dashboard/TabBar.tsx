@@ -20,11 +20,12 @@ export default function TabBar({ active, onChange }: { active: string; onChange:
           <button
             key={tab.label}
             onClick={() => onChange(tab.label)}
-            className={`flex items-center gap-1.5 rounded-xl px-4 py-1.5 text-sm transition-colors duration-150 ${
+            className="flex items-center gap-1.5 rounded-xl px-4 py-1.5 text-sm transition-colors duration-150"
+            style={
               isActive
-                ? "bg-primary text-primary-foreground shadow-sm font-semibold"
-                : "bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
-            }`}
+                ? { backgroundColor: 'rgba(255,255,255,0.06)', color: '#F2F7F1', fontWeight: 600 }
+                : { color: '#74917B' }
+            }
           >
             <tab.icon className="size-3.5" />
             <span className="hidden sm:inline">{tab.label}</span>

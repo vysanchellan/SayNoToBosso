@@ -126,7 +126,7 @@ export default function UserTable() {
 
       <BulkActionsBar count={selected.length} onClear={() => setSelected([])} />
 
-      <div className="rounded-2xl overflow-hidden" style={{ boxShadow: '0 0 0 1px hsl(var(--border) / 0.4), 0 1px 3px hsl(160 28% 4% / 0.1)' }}>
+      <div className="rounded-2xl overflow-hidden" style={{ boxShadow: '0 0 0 1px rgba(31,51,38,0.4), 0 1px 3px rgba(8,17,12,0.1)' }}>
         <Table>
           <TableHeader>
             <TableRow className="bg-muted">
@@ -197,7 +197,7 @@ export default function UserTable() {
                 <TableCell className="px-4 py-3 text-sm text-muted-foreground">Week {user.week}</TableCell>
                 <TableCell className="px-4 py-3 text-sm text-muted-foreground">{user.lastActive}</TableCell>
                 <TableCell className="px-4 py-3">
-                  <span className={getMoodClass(user.mood)} style={{ color: user.mood >= 8 ? 'hsl(152 55% 65%)' : user.mood >= 6 ? 'hsl(38 75% 65%)' : 'hsl(8 65% 68%)' }}>{user.mood}</span>
+                  <span className={getMoodClass(user.mood)} style={{ color: user.mood >= 8 ? '#4ADE80' : user.mood >= 6 ? '#F0B429' : '#F87171' }}>{user.mood}</span>
                 </TableCell>
                 <TableCell className="px-4 py-3">
                   <span className="text-sm font-medium text-foreground">
@@ -220,7 +220,7 @@ export default function UserTable() {
                       <DropdownMenuItem onSelect={() => { setDrawerUser(user); setDrawerOpen(true) }}>View Profile</DropdownMenuItem>
                       <DropdownMenuItem>Schedule Check-in</DropdownMenuItem>
                       <DropdownMenuItem>Send Alert</DropdownMenuItem>
-                      <DropdownMenuItem style={{ color: 'hsl(8 65% 68%)' }}>Suspend</DropdownMenuItem>
+                      <DropdownMenuItem style={{ color: '#F87171' }}>Suspend</DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </TableCell>

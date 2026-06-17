@@ -13,9 +13,9 @@ export default function CommunityPage() {
         </p>
       </div>
 
-      <div className="flex items-start gap-3 rounded-xl p-3" style={{ background: 'hsl(38 75% 48% / 0.1)', border: '1px solid hsl(38 75% 48% / 0.25)' }}>
+      <div className="flex items-start gap-3 rounded-xl p-3" style={{ background: 'rgba(240,180,41,0.1)', border: '1px solid rgba(240,180,41,0.25)' }}>
         <AlertTriangle className="size-5 shrink-0 text-amber-400 mt-0.5" />
-        <p className="text-xs" style={{ color: 'hsl(38 75% 70%)' }}>
+        <p className="text-xs" style={{ color: '#F0B429' }}>
           <strong>Reminder:</strong> Do not share identifying information. If you&apos;re in crisis, use the Crisis Support button in the sidebar.
         </p>
       </div>

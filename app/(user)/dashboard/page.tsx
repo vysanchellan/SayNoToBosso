@@ -22,20 +22,20 @@ export default function UserDashboard() {
       <NotificationBanner />
 
       <div
-        className="rounded-2xl p-6 sm:p-8 relative overflow-hidden text-white"
+        className="rounded-2xl p-6 sm:p-8 relative overflow-hidden"
         style={{
-          background: 'linear-gradient(135deg, #0D3D24 0%, #1A5C38 60%, #0A2B18 100%)',
+          background: 'linear-gradient(135deg, #103D24 0%, #1E6B3F 60%, #0C2D1A 100%)',
           border: '1px solid rgba(255,255,255,0.08)',
           boxShadow: '0 8px 32px rgba(13,61,36,0.35)',
         }}
       >
-        <div className="absolute top-0 right-0 size-40 rounded-full blur-3xl pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(217,146,10,0.20) 0%, transparent 70%)' }} />
+        <div className="absolute top-0 right-0 size-40 rounded-full blur-3xl pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(240,180,41,0.15) 0%, transparent 70%)' }} />
         <div className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
-            <h2 className="text-2xl font-bold text-white sm:text-3xl font-display">
+            <h2 className="text-2xl font-bold sm:text-3xl font-display" style={{ color: '#F2F7F1' }}>
               Good morning, {firstName}.
             </h2>
-            <p className="mt-1 text-white/70">Day 14 of your recovery. You&apos;ve come a long way.</p>
+            <p className="mt-1" style={{ color: 'rgba(242,247,241,0.65)' }}>Day 14 of your recovery. You&apos;ve come a long way.</p>
           </div>
           <StreakCounter />
         </div>
@@ -60,7 +60,7 @@ export default function UserDashboard() {
       </div>
 
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-foreground">Quick Tools</h3>
+        <h3 className="text-lg font-semibold" style={{ color: '#F2F7F1' }}>Quick Tools</h3>
         <TabBar active={activeTab} onChange={setActiveTab} />
       </div>
 

@@ -99,7 +99,7 @@ export default function PostFeed() {
                 ? "text-foreground"
                 : "text-muted-foreground hover:text-foreground"
             }`}
-            style={categoryFilter === f ? { background: 'hsl(var(--sage-light))', color: 'hsl(var(--forest))' } : { background: 'hsl(var(--muted))' }}
+            style={categoryFilter === f ? { background: 'rgba(74,222,128,0.15)', color: '#4ADE80' } : { background: '#142219' }}
           >
             {f}
           </button>
@@ -116,7 +116,7 @@ export default function PostFeed() {
                 ? "text-foreground"
                 : "text-muted-foreground hover:text-foreground"
             }`}
-            style={sortFilter === f ? { background: 'hsl(var(--sage-light))', color: 'hsl(var(--forest))' } : { background: 'hsl(var(--muted))' }}
+            style={sortFilter === f ? { background: 'rgba(74,222,128,0.15)', color: '#4ADE80' } : { background: '#142219' }}
           >
             {f}
           </button>
@@ -124,7 +124,7 @@ export default function PostFeed() {
       </div>
 
       {filtered.map((post) => (
-        <div key={post.id} className="rounded-2xl border bg-card p-4 shadow-sm" style={{ borderColor: 'hsl(var(--border))' }}>
+        <div key={post.id} className="rounded-2xl border bg-card p-4 shadow-sm" style={{ borderColor: '#1F3326' }}>
           <div className="flex items-start gap-3">
             <div className={`size-9 shrink-0 rounded-full ${getColor(post.initials)} flex items-center justify-center text-xs font-bold text-white`}>
               {post.initials}
@@ -132,7 +132,7 @@ export default function PostFeed() {
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
                 <span className="text-sm font-medium text-foreground">{post.name}</span>
-                <span className="rounded-full px-2 py-0.5 text-[10px] font-medium" style={{ background: 'hsl(var(--accent) / 0.1)', color: 'hsl(var(--accent))' }}>
+                <span className="rounded-full px-2 py-0.5 text-[10px] font-medium" style={{ background: 'rgba(240,180,41,0.1)', color: '#F0B429' }}>
                   Day {post.day}
                 </span>
                 <span className="text-[10px] text-muted-foreground">{post.timeAgo}</span>
@@ -161,7 +161,7 @@ export default function PostFeed() {
               </div>
 
               {expanded === post.id && (
-                <div className="mt-3 border-t pt-3 space-y-2" style={{ borderColor: 'hsl(var(--border))' }}>
+                <div className="mt-3 border-t pt-3 space-y-2" style={{ borderColor: '#1F3326' }}>
                   <div className="flex items-start gap-2 text-xs text-muted-foreground">
                     <div className="size-6 shrink-0 rounded-full bg-muted flex items-center justify-center text-[9px] font-medium">
                       AN

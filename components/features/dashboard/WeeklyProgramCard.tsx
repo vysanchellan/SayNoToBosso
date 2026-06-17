@@ -16,28 +16,28 @@ export default function WeeklyProgramCard() {
 
   return (
     <div
-      className="relative overflow-hidden rounded-2xl bg-card p-5"
-      style={{ borderLeft: '3px solid hsl(var(--accent))', boxShadow: '0 0 0 1px hsl(var(--border)/0.4)' }}
+      className="relative overflow-hidden rounded-2xl p-6"
+      style={{ backgroundColor: '#0E1A12', border: '1px solid #1F3326', borderLeft: '3px solid #4ADE80' }}
     >
       <div className="flex items-center justify-between mb-4">
         <span
           className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold"
-          style={{ background: 'hsl(38 75% 48%/0.15)', color: 'hsl(38 75% 65%)' }}
+          style={{ backgroundColor: 'rgba(240,180,41,0.15)', color: '#F0B429' }}
         >
           <span className="size-1.5 rounded-full bg-current" />
           Week 2
         </span>
-        <span className="text-xs text-muted-foreground">{completed} of {total} activities complete</span>
+        <span className="text-xs" style={{ color: '#74917B' }}>{completed} of {total} activities complete</span>
       </div>
 
-      <h3 className="text-xl font-bold mt-2" style={{ color: 'hsl(152 55% 65%)' }}>Brain Reset</h3>
+      <h3 className="text-xl font-bold mt-2" style={{ color: '#4ADE80' }}>Brain Reset</h3>
 
-      <div className="relative h-2 rounded-full overflow-hidden mt-3 mb-4" style={{ background: 'hsl(var(--muted))' }}>
+      <div className="relative h-2 rounded-full overflow-hidden mt-3 mb-4" style={{ backgroundColor: '#1F3326' }}>
         <div
           className="h-full rounded-full transition-all duration-500"
           style={{
             width: `${(completed / total) * 100}%`,
-            background: 'linear-gradient(90deg, hsl(155 50% 32%), hsl(38 75% 48%))',
+            background: 'linear-gradient(90deg, #4ADE80 0%, #F0B429 100%)',
           }}
         />
       </div>
@@ -46,18 +46,19 @@ export default function WeeklyProgramCard() {
         {activities.map((a) => (
           <li key={a.label} className="flex items-center gap-3 py-2 text-sm">
             {a.done ? (
-              <CheckCircle2 className="size-4 shrink-0" style={{ color: 'hsl(152 55% 60%)' }} />
+              <CheckCircle2 className="size-4 shrink-0" style={{ color: '#4ADE80' }} />
             ) : a.inProgress ? (
-              <div className="size-4 shrink-0 rounded-full flex items-center justify-center" style={{ background: 'hsl(38 75% 48%)' }}>
-                <span className="size-1.5 rounded-full bg-white" />
+              <div className="relative flex h-4 w-4 shrink-0 items-center justify-center">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ backgroundColor: '#F0B429' }} />
+                <span className="relative inline-flex rounded-full h-3 w-3" style={{ backgroundColor: '#F0B429' }} />
               </div>
             ) : (
-              <div className="size-4 shrink-0 rounded-full" style={{ border: '2px solid hsl(var(--border))' }} />
+              <div className="size-4 shrink-0 rounded-full" style={{ border: '2px solid #2A4534' }} />
             )}
             <span
               className="flex-1"
               style={{
-                color: a.done ? 'hsl(var(--muted-foreground))' : a.inProgress ? 'hsl(var(--foreground))' : 'hsl(var(--muted-foreground))',
+                color: a.done ? '#74917B' : a.inProgress ? '#F0B429' : '#74917B',
                 textDecoration: a.done ? 'line-through' : 'none',
                 fontWeight: a.inProgress ? 600 : 400,
               }}
@@ -65,7 +66,7 @@ export default function WeeklyProgramCard() {
               {a.label}
             </span>
             {a.isToday && (
-              <span className="rounded-full px-2 py-0.5 text-[10px] font-semibold" style={{ background: 'hsl(var(--primary)/0.15)', color: 'hsl(152 55% 65%)' }}>
+              <span className="rounded-full px-2 py-0.5 text-[10px] font-semibold" style={{ backgroundColor: 'rgba(74,222,128,0.15)', color: '#4ADE80' }}>
                 Today
               </span>
             )}
@@ -76,7 +77,7 @@ export default function WeeklyProgramCard() {
       <Link href="/program">
         <Button
           className="w-full py-3 rounded-xl text-sm font-bold transition-all active:scale-[0.99]"
-          style={{ background: 'hsl(var(--primary))', color: 'white' }}
+          style={{ background: 'linear-gradient(135deg, #1E6B3F 0%, #4ADE80 100%)', color: '#07100B' }}
         >
           Continue Program
         </Button>

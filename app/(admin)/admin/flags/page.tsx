@@ -83,30 +83,30 @@ const resolvedAlerts = Array.from({ length: 10 }, (_, i) => ({
 const severityConfig: Record<string, { icon: typeof AlertTriangle; bg: string; borderGlow: string; badgeBg: string; badgeText: string; text: string; buttonBg: string }> = {
   HIGH: {
     icon: AlertTriangle,
-    bg: "hsl(8 65% 8%)",
-    borderGlow: "0 0 0 1px hsl(8 65% 25%), 0 0 40px hsl(8 65% 15% / 0.3)",
-    badgeBg: "hsl(8 65% 58%)",
+    bg: "#1A0706",
+    borderGlow: "0 0 0 1px #6B1C16, 0 0 40px rgba(107,28,22,0.3)",
+    badgeBg: "#E05C4B",
     badgeText: "white",
-    text: "hsl(8 65% 75%)",
-    buttonBg: "hsl(8 65% 58%)",
+    text: "#E8837A",
+    buttonBg: "#E05C4B",
   },
   MEDIUM: {
     icon: AlertCircle,
-    bg: "hsl(38 50% 8%)",
-    borderGlow: "0 0 0 1px hsl(38 50% 25%), 0 0 40px hsl(38 50% 15% / 0.3)",
-    badgeBg: "hsl(38 60% 50%)",
+    bg: "#1A1400",
+    borderGlow: "0 0 0 1px #604A12, 0 0 40px rgba(96,74,18,0.3)",
+    badgeBg: "#C08C19",
     badgeText: "white",
-    text: "hsl(38 60% 70%)",
-    buttonBg: "hsl(38 60% 50%)",
+    text: "#D9A832",
+    buttonBg: "#C08C19",
   },
   LOW: {
     icon: Info,
-    bg: "hsl(200 40% 8%)",
-    borderGlow: "0 0 0 1px hsl(200 40% 25%), 0 0 40px hsl(200 40% 15% / 0.3)",
-    badgeBg: "hsl(200 50% 52%)",
+    bg: "#0D1A26",
+    borderGlow: "0 0 0 1px #1A4D6B, 0 0 40px rgba(26,77,107,0.3)",
+    badgeBg: "#3A99D4",
     badgeText: "white",
-    text: "hsl(200 50% 70%)",
-    buttonBg: "hsl(200 50% 52%)",
+    text: "#70BDE3",
+    buttonBg: "#3A99D4",
   },
 }
 
@@ -125,7 +125,7 @@ export default function AdminFlagsPage() {
         <div>
           <h1 className="text-xl font-bold text-foreground">Clinical Alert Flags</h1>
           <div className="flex items-center gap-2 mt-1">
-            <span className="inline-flex items-center gap-1 rounded-full px-3 py-0.5 text-xs font-bold text-white" style={{ background: 'hsl(var(--destructive))' }}>
+            <span className="inline-flex items-center gap-1 rounded-full px-3 py-0.5 text-xs font-bold text-white" style={{ background: '#F87171' }}>
               {alerts.length} Active Alerts
             </span>
             <span className="text-sm text-muted-foreground">Users who may require immediate clinical attention</span>
@@ -136,8 +136,8 @@ export default function AdminFlagsPage() {
       <div
         className="flex gap-1 rounded-2xl p-1 w-fit"
         style={{
-          background: 'hsl(var(--card))',
-          boxShadow: '0 0 0 1px hsl(var(--border) / 0.4)',
+          background: '#0E1A12',
+          boxShadow: '0 0 0 1px rgba(31,51,38,0.4)',
         }}
       >
         {[
@@ -148,7 +148,7 @@ export default function AdminFlagsPage() {
         ].map((t) => {
           const active = tab === t.key
           const isSeverity = t.key === "HIGH" || t.key === "MEDIUM" || t.key === "LOW"
-          const sevColor = isSeverity ? severityConfig[t.key].badgeBg : "hsl(var(--primary))"
+          const sevColor = isSeverity ? severityConfig[t.key].badgeBg : "#4ADE80"
           return (
             <button
               key={t.key}
@@ -156,7 +156,7 @@ export default function AdminFlagsPage() {
               className="rounded-xl px-4 py-1.5 text-xs font-medium transition-colors"
               style={{
                 background: active ? sevColor : 'transparent',
-                color: active ? 'white' : 'hsl(var(--muted-foreground))',
+                color: active ? 'white' : '#74917B',
               }}
             >
               {t.label}
@@ -208,8 +208,8 @@ export default function AdminFlagsPage() {
                 <div
                   className="rounded-xl p-3"
                   style={{
-                    background: 'hsl(160 22% 10%)',
-                    boxShadow: '0 0 0 1px hsl(var(--border) / 0.3)',
+                    background: '#0D1A14',
+                    boxShadow: '0 0 0 1px rgba(31,51,38,0.3)',
                   }}
                 >
                   <p className="text-xs font-semibold text-foreground mb-2">Alert Details</p>
@@ -223,8 +223,8 @@ export default function AdminFlagsPage() {
                 <div
                   className="rounded-xl p-3"
                   style={{
-                    background: 'hsl(160 22% 10%)',
-                    boxShadow: '0 0 0 1px hsl(var(--border) / 0.3)',
+                    background: '#0D1A14',
+                    boxShadow: '0 0 0 1px rgba(31,51,38,0.3)',
                   }}
                 >
                   <p className="text-xs font-semibold text-foreground mb-2">Risk Factors</p>
@@ -238,8 +238,8 @@ export default function AdminFlagsPage() {
                 <div
                   className="rounded-xl p-3"
                   style={{
-                    background: 'hsl(160 22% 10%)',
-                    boxShadow: '0 0 0 1px hsl(var(--border) / 0.3)',
+                    background: '#0D1A14',
+                    boxShadow: '0 0 0 1px rgba(31,51,38,0.3)',
                   }}
                 >
                   <p className="text-xs font-semibold text-foreground mb-2">Recommended Actions</p>
@@ -253,20 +253,20 @@ export default function AdminFlagsPage() {
 
               <div
                 className="flex items-center gap-2 mt-4 pt-3"
-                style={{ borderTop: '1px solid hsl(var(--border) / 0.3)' }}
+                style={{ borderTop: '1px solid rgba(31,51,38,0.3)' }}
               >
-                <Button className="rounded-full h-8 text-xs" style={{ background: 'hsl(var(--primary))', color: 'white' }}>
+                <Button className="rounded-full h-8 text-xs" style={{ background: '#4ADE80', color: 'white' }}>
                   <Calendar className="size-3.5 mr-1" /> Schedule Check-in
                 </Button>
-                <Button
-                  className="rounded-full h-8 text-xs"
-                  style={{
-                    background: 'hsl(160 22% 10%)',
-                    color: 'hsl(var(--muted-foreground))',
-                    boxShadow: '0 0 0 1px hsl(var(--border) / 0.4)',
-                  }}
-                >
-                  <FileText className="size-3.5 mr-1" /> Add Clinical Note
+                  <Button
+                    className="rounded-full h-8 text-xs"
+                    style={{
+                      background: '#0D1A14',
+                      color: '#74917B',
+                      boxShadow: '0 0 0 1px rgba(31,51,38,0.4)',
+                    }}
+                  >
+                    <FileText className="size-3.5 mr-1" /> Add Clinical Note
                 </Button>
                 <Button
                   className="rounded-full h-8 text-xs text-white"
@@ -274,15 +274,15 @@ export default function AdminFlagsPage() {
                 >
                   Escalate to Medical Team
                 </Button>
-                <Button
-                  className="rounded-full h-8 text-xs ml-auto"
-                  style={{
-                    background: 'hsl(160 22% 10%)',
-                    color: 'hsl(var(--muted-foreground))',
-                    boxShadow: '0 0 0 1px hsl(var(--border) / 0.4)',
-                  }}
-                >
-                  Dismiss
+                  <Button
+                    className="rounded-full h-8 text-xs ml-auto"
+                    style={{
+                      background: '#0D1A14',
+                      color: '#74917B',
+                      boxShadow: '0 0 0 1px rgba(31,51,38,0.4)',
+                    }}
+                  >
+                    Dismiss
                 </Button>
               </div>
             </div>
@@ -301,14 +301,14 @@ export default function AdminFlagsPage() {
         {showResolved && (
           <div
             className="rounded-2xl overflow-hidden"
-            style={{
-              background: 'hsl(var(--card))',
-              boxShadow: '0 0 0 1px hsl(var(--border) / 0.4)',
-            }}
+        style={{
+          background: '#0E1A12',
+          boxShadow: '0 0 0 1px rgba(31,51,38,0.4)',
+        }}
           >
             <table className="w-full text-xs">
               <thead>
-                <tr style={{ borderBottom: '1px solid hsl(var(--border) / 0.3)', background: 'hsl(var(--muted) / 0.3)' }}>
+                <tr style={{ borderBottom: '1px solid rgba(31,51,38,0.3)', background: 'rgba(20,34,25,0.3)' }}>
                   <th className="text-left p-3 font-medium text-muted-foreground">User ID</th>
                   <th className="text-left p-3 font-medium text-muted-foreground">Alert Type</th>
                   <th className="text-left p-3 font-medium text-muted-foreground">Severity</th>
@@ -319,13 +319,13 @@ export default function AdminFlagsPage() {
               </thead>
               <tbody>
                 {resolvedAlerts.map((ra, i) => (
-                  <tr key={i} style={{ borderBottom: '1px solid hsl(var(--border) / 0.3)' }}>
+                  <tr key={i} style={{ borderBottom: '1px solid rgba(31,51,38,0.3)' }}>
                     <td className="p-3 font-medium text-foreground">{ra.user}</td>
                     <td className="p-3 text-muted-foreground">{ra.type}</td>
                     <td className="p-3">
                       <span
                         className="inline-flex rounded-full px-2 py-0.5 text-[9px] font-medium text-white"
-                        style={{ background: severityConfig[ra.severity]?.badgeBg || 'hsl(var(--muted))' }}
+                        style={{ background: severityConfig[ra.severity]?.badgeBg || '#142219' }}
                       >
                         {ra.severity}
                       </span>
@@ -344,8 +344,8 @@ export default function AdminFlagsPage() {
       <div
         className="rounded-2xl p-4"
         style={{
-          background: 'hsl(var(--card))',
-          boxShadow: '0 0 0 1px hsl(var(--border) / 0.4)',
+          background: '#0E1A12',
+          boxShadow: '0 0 0 1px rgba(31,51,38,0.4)',
         }}
       >
         <h3 className="text-xs font-semibold text-muted-foreground mb-3">Auto-Alert Rules</h3>
@@ -371,7 +371,7 @@ export default function AdminFlagsPage() {
             )
           })}
         </div>
-        <p className="text-[10px] text-muted-foreground mt-3 pt-3" style={{ borderTop: '1px solid hsl(var(--border) / 0.3)' }}>
+        <p className="text-[10px] text-muted-foreground mt-3 pt-3" style={{ borderTop: '1px solid rgba(31,51,38,0.3)' }}>
           Alert thresholds are configurable in production settings.
         </p>
       </div>

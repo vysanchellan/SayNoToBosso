@@ -52,15 +52,15 @@ export default function LessonViewer({
   }
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto" style={{ background: 'hsl(var(--background) / 0.95)' }}>
+    <div className="fixed inset-0 z-50 overflow-y-auto" style={{ background: 'rgba(7,16,11,0.95)' }}>
       <motion.div
         initial={{ y: 30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.2, ease: "easeOut" }}
         className="min-h-full flex items-center justify-center p-4"
       >
-        <div className="w-full max-w-2xl rounded-2xl border shadow-2xl overflow-hidden" style={{ background: 'hsl(var(--card))', borderColor: 'hsl(var(--border))' }}>
-          <header className="sticky top-0 z-10 flex items-center justify-between border-b px-6 py-4" style={{ background: 'hsl(var(--card))', borderColor: 'hsl(var(--border))' }}>
+        <div className="w-full max-w-2xl rounded-2xl border shadow-2xl overflow-hidden" style={{ background: '#0E1A12', borderColor: '#1F3326' }}>
+          <header className="sticky top-0 z-10 flex items-center justify-between border-b px-6 py-4" style={{ background: '#0E1A12', borderColor: '#1F3326' }}>
             <div className="flex items-center gap-3">
               <BookOpen className="size-5 text-primary" />
               <span className="text-sm font-medium text-foreground">Lesson</span>
@@ -95,7 +95,7 @@ export default function LessonViewer({
                     </div>
                   )}
                   {section.heading.includes("Did You Know") && (
-                    <div className="mt-4 rounded-xl border p-4 shadow-sm" style={{ background: 'hsl(var(--card))', borderColor: 'hsl(var(--border))' }}>
+                    <div className="mt-4 rounded-xl border p-4 shadow-sm" style={{ background: '#0E1A12', borderColor: '#1F3326' }}>
                       <div className="flex items-start gap-3">
                         <Brain className="size-5 text-primary shrink-0 mt-0.5" />
                         <p className="text-sm text-foreground/80">{section.body}</p>

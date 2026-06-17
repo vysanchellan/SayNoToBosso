@@ -25,14 +25,14 @@ export default function DailyCheckin() {
 
   if (submitted) {
     return (
-      <div className="rounded-2xl p-6" style={{ background: 'hsl(var(--primary)/0.1)', boxShadow: '0 0 0 1px hsl(var(--primary)/0.2)' }}>
+      <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(74,222,128,0.1)', boxShadow: '0 0 0 1px rgba(74,222,128,0.2)' }}>
         <div className="flex items-center gap-3 mb-4">
-          <div className="flex size-10 items-center justify-center rounded-full" style={{ background: 'hsl(var(--primary)/0.2)' }}>
-            <CheckCircle2 className="size-5" style={{ color: 'hsl(152 55% 60%)' }} />
+          <div className="flex size-10 items-center justify-center rounded-full" style={{ backgroundColor: 'rgba(74,222,128,0.2)' }}>
+            <CheckCircle2 className="size-5" style={{ color: '#4ADE80' }} />
           </div>
           <div>
-            <h3 className="font-semibold text-foreground">Check-in complete</h3>
-            <p className="text-sm" style={{ color: 'hsl(152 55% 60%)' }}>
+            <h3 className="font-semibold" style={{ color: '#F2F7F1' }}>Check-in complete</h3>
+            <p className="text-sm" style={{ color: '#4ADE80' }}>
               Mood: {mood ? moods.find((m) => m.value === mood)?.label : "-"} &middot; Craving: {craving}/10 &middot; Sleep: {sleep}/5 stars
             </p>
           </div>
@@ -42,15 +42,15 @@ export default function DailyCheckin() {
   }
 
   return (
-    <div className="rounded-2xl bg-card p-6" style={{ borderTop: '2px solid hsl(var(--primary))', boxShadow: '0 0 0 1px hsl(var(--border)/0.4)' }}>
-      <p className="eyebrow mb-5" style={{ color: 'hsl(152 55% 60%)' }}>Morning Check-In</p>
+    <div className="rounded-2xl p-6" style={{ backgroundColor: '#0E1A12', borderTop: '2px solid #4ADE80', boxShadow: '0 0 0 1px #1F3326' }}>
+      <p className="eyebrow mb-5" style={{ color: '#4ADE80' }}>Morning Check-In</p>
 
-      <h3 className="text-lg font-bold text-foreground mb-1">Today&apos;s Check-In</h3>
-      <p className="text-sm text-muted-foreground mb-6">How are you feeling this morning?</p>
+      <h3 className="text-lg font-bold mb-1" style={{ color: '#F2F7F1' }}>Today&apos;s Check-In</h3>
+      <p className="text-sm mb-6" style={{ color: '#74917B' }}>How are you feeling this morning?</p>
 
       <div className="space-y-6">
         <div>
-          <Label className="text-sm font-medium text-foreground mb-3 block">Mood</Label>
+          <Label className="text-sm font-medium mb-3 block" style={{ color: '#B9D0BE' }}>Mood</Label>
           <div className="flex gap-3 justify-center">
             {moods.map((m) => (
               <button
@@ -58,8 +58,8 @@ export default function DailyCheckin() {
                 onClick={() => setMood(m.value)}
                 className="flex flex-col items-center gap-1 rounded-xl p-3 transition-all"
                 style={{
-                  background: mood === m.value ? 'hsl(var(--primary)/0.15)' : 'hsl(var(--muted))',
-                  boxShadow: mood === m.value ? '0 0 0 2px hsl(var(--primary)/0.5)' : 'none',
+                  backgroundColor: mood === m.value ? 'rgba(74,222,128,0.15)' : '#142219',
+                  boxShadow: mood === m.value ? '0 0 0 2px rgba(74,222,128,0.5)' : 'none',
                   transform: mood === m.value ? 'scale(1.15)' : 'scale(1)',
                 }}
                 aria-label={`Mood: ${m.label}`}
@@ -70,7 +70,7 @@ export default function DailyCheckin() {
                     initial={{ opacity: 0, y: -5 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="text-[10px] font-medium"
-                    style={{ color: 'hsl(152 55% 65%)' }}
+                    style={{ color: '#4ADE80' }}
                   >
                     {m.label}
                   </motion.span>
@@ -81,11 +81,11 @@ export default function DailyCheckin() {
         </div>
 
         <div>
-          <Label className="text-sm font-medium text-foreground mb-3 block">
-            Craving intensity: <span className="text-accent font-bold">{craving}/10</span>
+          <Label className="text-sm font-medium mb-3 block" style={{ color: '#B9D0BE' }}>
+            Craving intensity: <span style={{ color: '#F0B429', fontWeight: 'bold' }}>{craving}/10</span>
           </Label>
           <div className="flex items-center gap-3">
-            <span className="text-xs text-muted-foreground w-16 text-right">No craving</span>
+            <span className="text-xs" style={{ color: '#74917B' }}>No craving</span>
             <input
               type="range"
               min="0"
@@ -94,16 +94,16 @@ export default function DailyCheckin() {
               onChange={(e) => setCraving(Number(e.target.value))}
               className="flex-1 h-2 rounded-full appearance-none cursor-pointer"
               style={{
-                background: `linear-gradient(to right, hsl(38 85% 48%), hsl(155 55% 30%) ${craving * 10}%, hsl(var(--muted)) ${craving * 10}%)`,
+                background: `linear-gradient(to right, #F0B429, #92660A ${craving * 10}%, #1F3326 ${craving * 10}%)`,
               }}
               aria-label="Craving intensity"
             />
-            <span className="text-xs text-muted-foreground w-16">Intense craving</span>
+            <span className="text-xs" style={{ color: '#74917B' }}>Intense craving</span>
           </div>
         </div>
 
         <div>
-          <Label className="text-sm font-medium text-foreground mb-3 block">Sleep quality last night</Label>
+          <Label className="text-sm font-medium mb-3 block" style={{ color: '#B9D0BE' }}>Sleep quality last night</Label>
           <div className="flex gap-1">
             {[1, 2, 3, 4, 5].map((star) => (
               <button
@@ -131,11 +131,11 @@ export default function DailyCheckin() {
         </div>
 
         <Button
-          onClick={() => { setSubmitted(true); toast.success("Check-in logged ✓ Keep it up!") }}
+          onClick={() => { setSubmitted(true); toast.success("Check-in logged, keep it up!") }}
           disabled={!mood}
           className="w-full rounded-full font-medium text-white py-3 text-base"
           style={{
-            background: 'linear-gradient(135deg, hsl(155, 48%, 22%), hsl(155, 55%, 28%))',
+            background: 'linear-gradient(135deg, #103D24, #1E6B3F)',
             boxShadow: '0 4px 14px rgba(13,61,36,0.40)',
           }}
         >

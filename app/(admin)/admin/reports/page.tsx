@@ -57,9 +57,9 @@ const summaryRows = Array.from({ length: 10 }, (_, i) => ({
 }))
 
 function getToolColor(pct: number) {
-  if (pct >= 70) return "hsl(142, 30%, 36%)"
-  if (pct >= 50) return "hsl(42, 82%, 48%)"
-  return "hsl(4, 72%, 58%)"
+  if (pct >= 70) return "#1A5C38"
+  if (pct >= 50) return "#D69A0D"
+  return "#D94C3C"
 }
 
 export default function AdminReportsPage() {
@@ -90,7 +90,7 @@ export default function AdminReportsPage() {
           <p className="text-sm text-muted-foreground">White River Manor Recovery Centre &middot; {rangeLabel} view</p>
         </div>
         <div className="flex items-center gap-2">
-          <div className="flex rounded-lg border overflow-hidden" style={{ borderColor: 'hsl(var(--border))', background: 'hsl(var(--card))' }}>
+          <div className="flex rounded-lg border overflow-hidden" style={{ borderColor: '#1F3326', background: '#0E1A12' }}>
             {["7", "30", "90", "custom"].map((r) => (
               <button
                 key={r}
@@ -127,7 +127,7 @@ export default function AdminReportsPage() {
               {m.change && (
                 <div className="flex items-center gap-2 mt-2 text-[10px]">
                   <span className="text-muted-foreground">From {m.before}</span>
-                  <span className="font-medium" style={{ color: 'hsl(152 55% 65%)' }}>→ {m.after}</span>
+                  <span className="font-medium" style={{ color: '#4ADE80' }}>→ {m.after}</span>
                 </div>
               )}
             </div>
@@ -143,16 +143,16 @@ export default function AdminReportsPage() {
               <ComposedChart data={limitedMoodData}>
                 <defs>
                   <linearGradient id="reportMoodFill" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="hsl(142, 30%, 36%)" stopOpacity={0.2} />
-                    <stop offset="100%" stopColor="hsl(142, 30%, 36%)" stopOpacity={0} />
+                    <stop offset="0%" stopColor="#1A5C38" stopOpacity={0.2} />
+                    <stop offset="100%" stopColor="#1A5C38" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                <XAxis dataKey="week" tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }} axisLine={false} tickLine={false} />
-                <YAxis domain={[0, 10]} tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }} axisLine={false} tickLine={false} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#1F3326" />
+                <XAxis dataKey="week" tick={{ fontSize: 10, fill: "#74917B" }} axisLine={false} tickLine={false} />
+                <YAxis domain={[0, 10]} tick={{ fontSize: 10, fill: "#74917B" }} axisLine={false} tickLine={false} />
                 <Tooltip />
                 <Legend />
-                <Area type="monotone" dataKey="mood" stroke="hsl(142, 30%, 36%)" fill="url(#reportMoodFill)" strokeWidth={2} name="Avg Mood" />
+                <Area type="monotone" dataKey="mood" stroke="#1A5C38" fill="url(#reportMoodFill)" strokeWidth={2} name="Avg Mood" />
                 <Line type="monotone" dataKey="craving" stroke="#E05C4B" strokeWidth={2} name="Avg Craving" dot={false} />
               </ComposedChart>
             </ResponsiveContainer>
@@ -166,9 +166,9 @@ export default function AdminReportsPage() {
           <div className="h-72">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={toolData} layout="vertical">
-                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" horizontal={false} />
-                <XAxis type="number" domain={[0, 100]} tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }} tickLine={false} axisLine={false} unit="%" />
-                <YAxis type="category" dataKey="name" tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }} tickLine={false} axisLine={false} width={100} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#1F3326" horizontal={false} />
+                <XAxis type="number" domain={[0, 100]} tick={{ fontSize: 10, fill: "#74917B" }} tickLine={false} axisLine={false} unit="%" />
+                <YAxis type="category" dataKey="name" tick={{ fontSize: 10, fill: "#74917B" }} tickLine={false} axisLine={false} width={100} />
                 <Tooltip formatter={(value) => `${value}%`} />
                 <Bar dataKey="pct" radius={[0, 4, 4, 0]}>
                   {toolData.map((d, i) => (
@@ -178,8 +178,8 @@ export default function AdminReportsPage() {
               </BarChart>
             </ResponsiveContainer>
           </div>
-          <div className="mt-3 rounded-xl p-3" style={{ background: 'hsl(var(--primary) / 0.08)', border: '1px solid hsl(var(--primary) / 0.2)' }}>
-            <p className="text-xs" style={{ color: 'hsl(var(--primary))' }}>
+          <div className="mt-3 rounded-xl p-3" style={{ background: 'rgba(74,222,128,0.08)', border: '1px solid rgba(74,222,128,0.2)' }}>
+            <p className="text-xs" style={{ color: '#4ADE80' }}>
               <strong>Insight:</strong> Daily check-in has highest engagement (91%). Consider using it to prompt engagement with lower-performing tools.
             </p>
           </div>
@@ -192,20 +192,20 @@ export default function AdminReportsPage() {
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={limitedFunnelData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
-                <XAxis dataKey="week" tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }} tickLine={false} axisLine={false} />
-                <YAxis domain={[0, 100]} tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }} tickLine={false} axisLine={false} unit="%" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#1F3326" vertical={false} />
+                <XAxis dataKey="week" tick={{ fontSize: 10, fill: "#74917B" }} tickLine={false} axisLine={false} />
+                <YAxis domain={[0, 100]} tick={{ fontSize: 10, fill: "#74917B" }} tickLine={false} axisLine={false} unit="%" />
                 <Tooltip formatter={(value) => `${value}%`} />
                 <Bar dataKey="pct" radius={[4, 4, 0, 0]}>
                   {funnelData.map((d, i) => (
-                    <Cell key={i} fill={`hsla(142, 30%, ${30 + (d.pct / 100) * 25}%, ${0.3 + (d.pct / 100) * 0.5})`} />
+                    <Cell key={i} fill={`rgba(26,92,56,${0.3 + (d.pct / 100) * 0.5})`} />
                   ))}
                 </Bar>
               </BarChart>
             </ResponsiveContainer>
           </div>
-          <div className="mt-3 rounded-xl p-3" style={{ background: 'hsl(var(--accent) / 0.1)', border: '1px solid hsl(var(--accent) / 0.2)' }}>
-            <p className="text-xs" style={{ color: 'hsl(var(--accent) / 0.9)' }}>
+          <div className="mt-3 rounded-xl p-3" style={{ background: 'rgba(240,180,41,0.1)', border: '1px solid rgba(240,180,41,0.2)' }}>
+            <p className="text-xs" style={{ color: 'rgba(240,180,41,0.9)' }}>
               <strong>Drop-off point:</strong> Highest dropout occurs between Week 3 (73%) and Week 4 (60%). Clinical check-in recommended at this stage.
             </p>
           </div>
@@ -235,7 +235,7 @@ export default function AdminReportsPage() {
                   <td className="p-3">{row.started}</td>
                   <td className="p-3">{row.completed}</td>
                   <td className="p-3">
-                    <span className="font-medium" style={{ color: row.rate >= 60 ? 'hsl(152 55% 65%)' : row.rate >= 30 ? 'hsl(38 75% 65%)' : 'hsl(8 65% 68%)' }}>
+                    <span className="font-medium" style={{ color: row.rate >= 60 ? '#4ADE80' : row.rate >= 30 ? '#F0B429' : '#F87171' }}>
                       {row.rate}%
                     </span>
                   </td>

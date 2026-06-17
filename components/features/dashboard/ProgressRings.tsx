@@ -18,7 +18,7 @@ function Ring({ label, value, percent, color, sublabel }: RingProps) {
     <div className="flex flex-col items-center">
       <div className="relative size-24">
         <svg className="size-24 -rotate-90" viewBox="0 0 80 80">
-          <circle cx="40" cy="40" r="36" fill="none" stroke="hsl(var(--muted))" strokeWidth="5" />
+          <circle cx="40" cy="40" r="36" fill="none" stroke="#142219" strokeWidth="5" />
           <motion.circle
             cx="40" cy="40" r="36" fill="none"
             stroke={color} strokeWidth="5" strokeLinecap="round"
@@ -29,23 +29,23 @@ function Ring({ label, value, percent, color, sublabel }: RingProps) {
           />
         </svg>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-2xl font-bold font-display ring-label" style={{ fontVariantNumeric: 'tabular-nums' }}>{value}</span>
+          <span className="text-2xl font-bold font-display" style={{ color: '#F2F7F1', fontVariantNumeric: 'tabular-nums' }}>{value}</span>
         </div>
       </div>
-      <span className="mt-2 text-sm font-medium text-foreground">{label}</span>
-      <span className="text-xs text-muted-foreground uppercase tracking-wide">{sublabel}</span>
+      <span className="mt-2 text-sm font-medium" style={{ color: '#F2F7F1' }}>{label}</span>
+      <span className="text-xs uppercase tracking-wide" style={{ color: '#74917B' }}>{sublabel}</span>
     </div>
   )
 }
 
 export default function ProgressRings() {
   return (
-    <div className="rounded-2xl bg-card p-5" style={{ boxShadow: '0 0 0 1px hsl(var(--border)/0.4)' }}>
+    <div className="rounded-2xl p-5" style={{ backgroundColor: '#0E1A12', border: '1px solid #1F3326' }}>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <Ring label="Sleep" value="6.5" percent={81} color="hsl(152 55% 50%)" sublabel="Sleep" />
-        <Ring label="Hydration" value="50%" percent={50} color="hsl(200 65% 52%)" sublabel="Hydration" />
-        <Ring label="Mood Avg" value="7.2" percent={72} color="hsl(38 75% 55%)" sublabel="Mood" />
-        <Ring label="Craving" value="↓ 32%" percent={68} color="hsl(155 55% 38%)" sublabel="Craving" />
+        <Ring label="Sleep" value="6.5" percent={81} color="#4ADE80" sublabel="Sleep" />
+        <Ring label="Hydration" value="50%" percent={50} color="#5EAEEA" sublabel="Hydration" />
+        <Ring label="Mood Avg" value="7.2" percent={72} color="#F0B429" sublabel="Mood" />
+        <Ring label="Craving" value="↓ 32%" percent={68} color="#92660A" sublabel="Craving" />
       </div>
     </div>
   )

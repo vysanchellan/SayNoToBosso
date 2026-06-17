@@ -17,11 +17,11 @@ const events = [
 const filters = ["All", "Check-in", "Milestone", "Lesson", "Crisis", "Journal"]
 
 const eventStyles: Record<string, { bg: string; iconColor: string }> = {
-  checkin: { bg: 'hsl(145 30% 48% / 0.15)', iconColor: 'hsl(145 40% 60%)' },
-  milestone: { bg: 'hsl(42 75% 55% / 0.15)', iconColor: 'hsl(42 75% 65%)' },
-  lesson: { bg: 'hsl(210 55% 48% / 0.15)', iconColor: 'hsl(210 55% 65%)' },
-  crisis: { bg: 'hsl(8 65% 58% / 0.15)', iconColor: 'hsl(8 65% 68%)' },
-  journal: { bg: 'hsl(280 40% 55% / 0.15)', iconColor: 'hsl(280 40% 70%)' },
+  checkin: { bg: 'rgba(74,222,128,0.15)', iconColor: '#4ADE80' },
+  milestone: { bg: 'rgba(240,180,41,0.15)', iconColor: '#F0B429' },
+  lesson: { bg: 'rgba(94,174,234,0.15)', iconColor: '#5EAEEA' },
+  crisis: { bg: 'rgba(248,113,113,0.15)', iconColor: '#F87171' },
+  journal: { bg: 'rgba(180,130,210,0.15)', iconColor: '#B482D2' },
 }
 
 export default function ActivityFeed() {
@@ -38,19 +38,19 @@ export default function ActivityFeed() {
   })
 
   return (
-    <div className="rounded-2xl border bg-card p-5" style={{ borderColor: 'hsl(var(--border))' }}>
-      <h3 className="text-sm font-semibold mb-4">Recent Activity</h3>
+    <div className="rounded-2xl p-5" style={{ backgroundColor: '#0E1A12', border: '1px solid #1F3326' }}>
+      <h3 className="text-sm font-semibold mb-4" style={{ color: '#F2F7F1' }}>Recent Activity</h3>
       <div className="flex gap-1.5 overflow-x-auto mb-4" style={{ scrollbarWidth: "none" }}>
         {filters.map((f) => (
           <button
             key={f}
             onClick={() => setFilter(f)}
-            className={`shrink-0 rounded-full px-2.5 py-1 text-[10px] font-medium transition-colors ${
+            className="shrink-0 rounded-full px-2.5 py-1 text-[10px] font-medium transition-colors"
+            style={
               filter === f
-                ? "text-foreground"
-                : "text-muted-foreground hover:text-foreground"
-            }`}
-            style={filter === f ? { background: 'hsl(var(--sage-light))', color: 'hsl(var(--forest))' } : {}}
+                ? { backgroundColor: '#142219', color: '#F2F7F1' }
+                : { color: '#74917B' }
+            }
           >
             {f}
           </button>
@@ -60,13 +60,13 @@ export default function ActivityFeed() {
         {filtered.slice(0, count).map((ev, i) => {
           const es = eventStyles[ev.type] || eventStyles.checkin
           return (
-            <div key={i} className="flex items-start gap-3 py-3 border-b last:border-0" style={{ borderColor: 'hsl(var(--border) / 0.5)' }}>
-              <div className="size-8 rounded-full flex items-center justify-center shrink-0" style={{ background: es.bg }}>
+            <div key={i} className="flex items-start gap-3 py-3 border-b last:border-0" style={{ borderColor: 'rgba(31,51,38,0.5)' }}>
+              <div className="size-8 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: es.bg }}>
                 <ev.icon className="size-4" style={{ color: es.iconColor }} />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-foreground">{ev.label}</p>
-                <p className="text-xs text-muted-foreground">{ev.time}</p>
+                <p className="text-sm font-medium" style={{ color: '#F2F7F1' }}>{ev.label}</p>
+                <p className="text-xs" style={{ color: '#74917B' }}>{ev.time}</p>
               </div>
             </div>
           )
@@ -75,8 +75,8 @@ export default function ActivityFeed() {
       {count < filtered.length && (
         <button
           onClick={() => setCount((c) => c + 5)}
-          className="mt-4 w-full rounded-lg border py-2 text-xs text-muted-foreground hover:bg-muted transition-colors"
-          style={{ borderColor: 'hsl(var(--border))' }}
+          className="mt-4 w-full rounded-lg border py-2 text-xs transition-colors"
+          style={{ borderColor: '#1F3326', color: '#74917B' }}
         >
           Load More
         </button>

@@ -134,7 +134,7 @@ export default function ArticleReader({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 overflow-y-auto" style={{ background: 'hsl(var(--background) / 0.95)' }}
+      className="fixed inset-0 z-50 overflow-y-auto" style={{ background: 'rgba(7,16,11,0.95)' }}
       onClick={(e) => { if (e.target === e.currentTarget) onClose() }}
     >
       <div className="min-h-full flex items-start justify-center p-4 pt-12">
@@ -142,7 +142,7 @@ export default function ArticleReader({
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           className="relative w-full max-w-2xl rounded-xl border bg-card p-6 sm:p-8 shadow-xl"
-          style={{ borderColor: 'hsl(var(--border))' }}
+          style={{ borderColor: '#1F3326' }}
         >
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
@@ -173,8 +173,8 @@ export default function ArticleReader({
                       {section.body}
                     </div>
                     {section.heading.includes("Finding") || section.heading.includes("Key Finding") ? (
-                      <div className="mt-4 rounded-lg border p-4" style={{ borderColor: 'hsl(var(--accent) / 0.3)', background: 'hsl(var(--accent) / 0.08)' }}>
-                        <p className="text-sm font-medium mb-1" style={{ color: 'hsl(var(--accent))' }}>Key Finding</p>
+                      <div className="mt-4 rounded-lg border p-4" style={{ borderColor: 'rgba(240,180,41,0.3)', background: 'rgba(240,180,41,0.08)' }}>
+                        <p className="text-sm font-medium mb-1" style={{ color: '#F0B429' }}>Key Finding</p>
                         <p className="text-sm text-foreground/80">{section.body.split("\n\n").pop()}</p>
                       </div>
                     ) : null}
@@ -182,13 +182,13 @@ export default function ArticleReader({
                 ))}
               </div>
 
-              <div className="mt-10 border-t pt-6" style={{ borderColor: 'hsl(var(--border))' }}>
+              <div className="mt-10 border-t pt-6" style={{ borderColor: '#1F3326' }}>
                 <p className="text-sm font-medium text-foreground mb-3">Was this helpful?</p>
                 <div className="flex gap-3">
-                  <button className="flex items-center gap-2 rounded-lg border px-4 py-2 text-sm text-muted-foreground hover:border-primary hover:text-primary transition-colors" aria-label="Thumbs up" style={{ borderColor: 'hsl(var(--border))' }}>
+                  <button className="flex items-center gap-2 rounded-lg border px-4 py-2 text-sm text-muted-foreground hover:border-primary hover:text-primary transition-colors" aria-label="Thumbs up" style={{ borderColor: '#1F3326' }}>
                     <ThumbsUp className="size-4" /> Yes
                   </button>
-                  <button className="flex items-center gap-2 rounded-lg border px-4 py-2 text-sm text-muted-foreground hover:border-primary hover:text-primary transition-colors" aria-label="Thumbs down" style={{ borderColor: 'hsl(var(--border))' }}>
+                  <button className="flex items-center gap-2 rounded-lg border px-4 py-2 text-sm text-muted-foreground hover:border-primary hover:text-primary transition-colors" aria-label="Thumbs down" style={{ borderColor: '#1F3326' }}>
                     <ThumbsDown className="size-4" /> No
                   </button>
                 </div>

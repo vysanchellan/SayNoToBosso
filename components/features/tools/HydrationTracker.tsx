@@ -9,12 +9,12 @@ export default function HydrationTracker() {
   const percent = Math.min((glasses / goal) * 100, 100)
   const [showInfo, setShowInfo] = useState(false)
 
-  const waterLevel = "hsl(155 50% 65%)"
-  const waterLevelDark = "hsl(155 50% 45%)"
+  const waterLevel = "rgba(74,222,128,0.6)"
+  const waterLevelDark = "rgba(74,222,128,0.4)"
 
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl bg-card p-6" style={{ boxShadow: '0 0 0 1px hsl(var(--border) / 0.4), 0 1px 3px hsl(160 28% 4% / 0.1)' }}>
+      <div className="rounded-2xl bg-card p-6" style={{ boxShadow: '0 0 0 1px rgba(31,51,38,0.4), 0 1px 3px rgba(8,17,12,0.1)' }}>
         <div className="flex flex-col items-center">
           <div className="relative mb-6" style={{ width: 80, height: 200 }}>
             <svg width="80" height="200" viewBox="0 0 80 200" className="drop-shadow-md">
@@ -23,15 +23,15 @@ export default function HydrationTracker() {
                   <rect x="15" y="10" width="50" height="170" rx="8" />
                 </clipPath>
                 <linearGradient id="water-grad" x1="0" y1="1" x2="0" y2="0">
-                  <stop offset="0%" stopColor="hsl(155 50% 65%)" />
-                  <stop offset="100%" stopColor="hsl(155 50% 65% / 0.6)" />
+                  <stop offset="0%" stopColor="rgba(74,222,128,0.6)" />
+                  <stop offset="100%" stopColor="rgba(74,222,128,0.3)" />
                 </linearGradient>
                 <linearGradient id="water-grad-dark" x1="0" y1="1" x2="0" y2="0">
-                  <stop offset="0%" stopColor="hsl(155 50% 45%)" />
-                  <stop offset="100%" stopColor="hsl(155 50% 45% / 0.6)" />
+                  <stop offset="0%" stopColor="rgba(74,222,128,0.4)" />
+                  <stop offset="100%" stopColor="rgba(74,222,128,0.15)" />
                 </linearGradient>
               </defs>
-              <rect x="15" y="10" width="50" height="170" rx="8" fill="none" stroke="hsl(var(--primary))" strokeWidth="2" opacity="0.4" />
+              <rect x="15" y="10" width="50" height="170" rx="8" fill="none" stroke="#4ADE80" strokeWidth="2" opacity="0.4" />
               <rect clipPath="url(#bottle-clip)" x="15" y={180 - percent * 1.7} width="50" height={percent * 1.7} fill="url(#water-grad)" className="dark:hidden" rx="0" style={{ transition: "y 0.5s ease, height 0.5s ease" }} />
               <rect clipPath="url(#bottle-clip)" x="15" y={180 - percent * 1.7} width="50" height={percent * 1.7} fill="url(#water-grad-dark)" className="hidden dark:block" rx="0" style={{ transition: "y 0.5s ease, height 0.5s ease" }} />
               {percent > 10 && (
@@ -39,7 +39,7 @@ export default function HydrationTracker() {
                   <animate attributeName="rx" values="20;22;20" dur="2s" repeatCount="indefinite" />
                 </ellipse>
               )}
-              <rect x="28" y="2" width="24" height="10" rx="4" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5" opacity="0.4" />
+              <rect x="28" y="2" width="24" height="10" rx="4" fill="none" stroke="#4ADE80" strokeWidth="1.5" opacity="0.4" />
             </svg>
           </div>
 
@@ -91,7 +91,7 @@ export default function HydrationTracker() {
         )}
       </div>
 
-      <div className="rounded-2xl bg-card" style={{ boxShadow: '0 0 0 1px hsl(var(--border) / 0.4), 0 1px 3px hsl(160 28% 4% / 0.1)' }}>
+      <div className="rounded-2xl bg-card" style={{ boxShadow: '0 0 0 1px rgba(31,51,38,0.4), 0 1px 3px rgba(8,17,12,0.1)' }}>
         <button
           onClick={() => setShowInfo(!showInfo)}
           className="flex w-full items-center justify-between p-4 text-left"

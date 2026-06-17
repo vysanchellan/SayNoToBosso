@@ -17,25 +17,25 @@ const data = [
 
 export default function ProgramProgressTable() {
   return (
-    <div className="rounded-2xl border bg-card p-5">
-      <h3 className="text-sm font-semibold mb-4">Weekly Program Completion Rates</h3>
+    <div className="rounded-2xl p-5" style={{ backgroundColor: '#0E1A12', border: '1px solid #1F3326' }}>
+      <h3 className="text-sm font-semibold mb-4" style={{ color: '#F2F7F1' }}>Weekly Program Completion Rates</h3>
       <div className="h-64">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
-            <XAxis dataKey="week" tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }} tickLine={false} axisLine={false} />
-            <YAxis domain={[0, 100]} tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }} tickLine={false} axisLine={false} unit="%" />
-            <Tooltip formatter={(value) => `${value}%`} />
+            <CartesianGrid strokeDasharray="3 3" stroke="#1F3326" vertical={false} />
+            <XAxis dataKey="week" tick={{ fontSize: 10, fill: '#74917B' }} tickLine={false} axisLine={false} />
+            <YAxis domain={[0, 100]} tick={{ fontSize: 10, fill: '#74917B' }} tickLine={false} axisLine={false} unit="%" />
+            <Tooltip formatter={(value) => `${value}%`} contentStyle={{ backgroundColor: '#142219', border: '1px solid #2A4534', borderRadius: '8px' }} />
             <Bar dataKey="pct" radius={[4, 4, 0, 0]}>
               {data.map((entry, idx) => (
-                <Cell key={idx} fill={entry.current ? "hsl(42, 82%, 48%)" : "hsl(142, 30%, 36%)"} />
+                <Cell key={idx} fill={entry.current ? "#F0B429" : "#2A4534"} />
               ))}
             </Bar>
           </BarChart>
         </ResponsiveContainer>
       </div>
-      <div className="mt-3 rounded-xl p-3" style={{ background: 'hsl(38 75% 48% / 0.1)', border: '1px solid hsl(38 75% 48% / 0.25)' }}>
-        <p className="text-xs" style={{ color: 'hsl(38 75% 68%)' }}>
+      <div className="mt-3 rounded-xl p-3" style={{ backgroundColor: 'rgba(240,180,41,0.1)', border: '1px solid rgba(240,180,41,0.25)' }}>
+        <p className="text-xs" style={{ color: '#F0B429' }}>
           <strong>Insight:</strong> Dropout spikes between Week 3-4. Consider scheduling a clinical check-in at this point.
         </p>
       </div>

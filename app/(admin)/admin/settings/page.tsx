@@ -16,9 +16,9 @@ export default function AdminSettingsPage() {
         <p className="text-sm text-muted-foreground">Admin settings coming in production</p>
       </div>
 
-      <div className="rounded-2xl p-4" style={{ background: 'hsl(38 75% 48% / 0.1)', border: '1px solid hsl(38 75% 48% / 0.25)' }}>
-        <p className="text-sm font-medium" style={{ color: 'hsl(38 75% 65%)' }}>Admin settings are not editable in the demo version.</p>
-        <p className="text-xs mt-1" style={{ color: 'hsl(38 75% 55%)' }}>Full configuration will be available in the production release.</p>
+      <div className="rounded-2xl p-4" style={{ background: 'rgba(240,180,41,0.1)', border: '1px solid rgba(240,180,41,0.25)' }}>
+        <p className="text-sm font-medium" style={{ color: '#F0B429' }}>Admin settings are not editable in the demo version.</p>
+        <p className="text-xs mt-1" style={{ color: '#C8951F' }}>Full configuration will be available in the production release.</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

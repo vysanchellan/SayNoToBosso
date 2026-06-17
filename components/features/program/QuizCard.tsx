@@ -138,11 +138,11 @@ export default function QuizCard({
                 }`}
                 style={
                   state === "correct"
-                    ? { borderColor: 'hsl(142 55% 40%)', background: 'hsl(142 55% 52% / 0.1)', boxShadow: '0 0 0 2px hsl(142 55% 52% / 0.3)' }
+                    ? { borderColor: '#2D8A4E', background: 'rgba(74,222,128,0.1)', boxShadow: '0 0 0 2px rgba(74,222,128,0.3)' }
                     : state === "wrong"
-                      ? { borderColor: 'hsl(8 65% 50%)', background: 'hsl(8 65% 58% / 0.1)', boxShadow: '0 0 0 2px hsl(8 65% 58% / 0.25)' }
+                      ? { borderColor: '#CC4B3E', background: 'rgba(204,75,62,0.1)', boxShadow: '0 0 0 2px rgba(204,75,62,0.25)' }
                       : isSelected
-                        ? { borderColor: 'hsl(var(--primary))', background: 'hsl(var(--primary) / 0.06)' }
+                        ? { borderColor: '#4ADE80', background: 'rgba(74,222,128,0.06)' }
                         : {}
                 }
               >
@@ -156,7 +156,7 @@ export default function QuizCard({
                           ? "text-white"
                           : "bg-muted text-muted-foreground"
                   }`}
-                  style={isSelected ? { background: 'hsl(var(--primary))' } : {}}
+                  style={isSelected ? { background: '#4ADE80' } : {}}
                 >
                   {state === "correct" ? <Check className="size-4" /> : state === "wrong" ? <X className="size-4" /> : String.fromCharCode(65 + i)}
                 </div>
@@ -172,11 +172,11 @@ export default function QuizCard({
             animate={{ opacity: 1, y: 0 }}
             className="mt-4 rounded-xl p-3 text-sm"
             style={{
-              background: selected === q.correct ? 'hsl(var(--primary)/0.1)' : 'hsl(38 75% 48% / 0.1)',
-              boxShadow: selected === q.correct ? '0 0 0 1px hsl(var(--primary)/0.2)' : '0 0 0 1px hsl(38 75% 48% / 0.25)',
+              background: selected === q.correct ? 'rgba(74,222,128,0.1)' : 'rgba(192,140,15,0.1)',
+              boxShadow: selected === q.correct ? '0 0 0 1px rgba(74,222,128,0.2)' : '0 0 0 1px rgba(192,140,15,0.25)',
             }}
           >
-            <span style={{ color: selected === q.correct ? 'hsl(152 55% 65%)' : 'hsl(38 75% 65%)' }}>{q.explanation}</span>
+            <span style={{ color: selected === q.correct ? '#4ADE80' : '#F0B429' }}>{q.explanation}</span>
           </motion.div>
         )}
 

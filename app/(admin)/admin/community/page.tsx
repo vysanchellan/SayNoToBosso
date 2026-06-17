@@ -118,7 +118,7 @@ export default function AdminCommunityPage() {
 
           <div className="space-y-3">
             {displayPosts.map((post) => (
-              <div key={post.id} className={`rounded-2xl bg-card p-4 mb-3 ${post.pinned ? "ring-1 ring-accent" : ""}`} style={post.pinned ? {} : { boxShadow: '0 0 0 1px hsl(var(--border) / 0.4)' }}>
+              <div key={post.id} className={`rounded-2xl bg-card p-4 mb-3 ${post.pinned ? "ring-1 ring-accent" : ""}`} style={post.pinned ? {} : { boxShadow: '0 0 0 1px rgba(31,51,38,0.4)' }}>
                 <div className="flex items-start gap-3">
                   <div className="size-9 rounded-full bg-primary/15 flex items-center justify-center text-xs font-bold text-primary shrink-0">
                     {post.user.split("#")[1] || "U"}
@@ -137,7 +137,7 @@ export default function AdminCommunityPage() {
                     )}
 
                     {post.status === "approved" && post.approvedBy && (
-                      <p className="text-[10px] mt-2" style={{ color: 'hsl(152 55% 65%)' }}>Approved by {post.approvedBy} &middot; {post.approvedAt}</p>
+                      <p className="text-[10px] mt-2" style={{ color: '#4ADE80' }}>Approved by {post.approvedBy} &middot; {post.approvedAt}</p>
                     )}
 
                     {tab === "pending" && (
@@ -188,12 +188,12 @@ export default function AdminCommunityPage() {
         </div>
 
         <aside className="space-y-4">
-          <div className="rounded-2xl bg-card p-4" style={{ boxShadow: '0 0 0 1px hsl(var(--border) / 0.4)' }}>
+          <div className="rounded-2xl bg-card p-4" style={{ boxShadow: '0 0 0 1px rgba(31,51,38,0.4)' }}>
             <h3 className="eyebrow mb-3">Content Guidelines</h3>
             <div className="space-y-3">
               <div>
                 <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1">Approve when:</p>
-                  <div className="flex items-start gap-1.5 text-xs" style={{ color: 'hsl(152 55% 65%)' }}>
+                  <div className="flex items-start gap-1.5 text-xs" style={{ color: '#4ADE80' }}>
                     <CheckCircle className="size-3.5 mt-0.5 shrink-0" />
                     <span>Supportive, on-topic, respectful, follows guidelines</span>
                   </div>
@@ -207,7 +207,7 @@ export default function AdminCommunityPage() {
               </div>
               <div>
                 <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1">Escalate when:</p>
-                <div className="flex items-start gap-1.5 text-xs" style={{ color: 'hsl(38 75% 65%)' }}>
+                <div className="flex items-start gap-1.5 text-xs" style={{ color: '#F0B429' }}>
                   <AlertTriangle className="size-3.5 mt-0.5 shrink-0" />
                   <span>Self-harm language, suicidal ideation, severe distress</span>
                 </div>
@@ -220,7 +220,7 @@ export default function AdminCommunityPage() {
         </aside>
       </div>
 
-      <div className="rounded-2xl bg-card p-4" style={{ boxShadow: '0 0 0 1px hsl(var(--border) / 0.4)' }}>
+      <div className="rounded-2xl bg-card p-4" style={{ boxShadow: '0 0 0 1px rgba(31,51,38,0.4)' }}>
         <div className="flex items-center justify-between mb-3">
           <h3 className="eyebrow">Moderation Log</h3>
           <button className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground">

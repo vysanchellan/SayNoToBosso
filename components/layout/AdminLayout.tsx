@@ -33,21 +33,21 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const isActive = (href: string) => pathname === href
 
   return (
-    <div className="flex h-screen" style={{ background: 'hsl(var(--background))' }}>
+    <div className="flex h-screen" style={{ backgroundColor: '#07100B' }}>
       <aside
-        className={`fixed inset-y-0 left-0 z-50 flex w-64 flex-col text-sidebar-foreground transition-transform lg:static lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-50 flex w-64 flex-col transition-transform lg:static lg:translate-x-0 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
         style={{
-          background: 'hsl(var(--sidebar-background))',
-          borderRight: '1px solid hsl(var(--sidebar-border))',
+          background: 'linear-gradient(180deg, #050B07 0%, #0A1610 100%)',
+          borderRight: '1px solid #1F3326',
         }}
       >
         <div className="flex items-center gap-2 px-6 pt-6 pb-4">
-          <Leaf className="size-5 text-amber-400 shrink-0" />
+          <Leaf className="size-5 shrink-0" style={{ color: '#4ADE80' }} />
           <div>
-            <p className="text-lg font-bold tracking-tight text-white">CannaClear</p>
-            <span className="tag-accent text-[10px]">Clinical Admin</span>
+            <p className="text-lg font-bold tracking-tight" style={{ color: '#F2F7F1' }}>CannaClear</p>
+            <span className="rounded-full px-2 py-0.5 text-xs font-medium" style={{ backgroundColor: 'rgba(240,180,41,0.12)', color: '#F0B429' }}>Clinical Admin</span>
           </div>
         </div>
 
@@ -59,49 +59,55 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 key={item.href}
                 href={item.href}
                 onClick={() => setSidebarOpen(false)}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150 ${
+                className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150"
+                style={
                   active
-                    ? "text-amber-400 bg-sidebar-accent border-l-2 border-amber-400"
-                    : "text-sidebar-foreground hover:text-white hover:bg-sidebar-accent/50"
-                }`}
+                    ? {
+                        backgroundColor: 'rgba(240,180,41,0.12)',
+                        color: '#F0B429',
+                        borderLeft: '2px solid #F0B429',
+                      }
+                    : { color: '#B9D0BE' }
+                }
               >
                 <item.icon className="size-4 shrink-0" />
                 {item.label}
               </Link>
             )
           })}
-          <div className="my-2 mx-4 h-px" style={{ background: 'hsl(var(--sidebar-border))' }} />
+          <div className="my-2 mx-4 h-px" style={{ backgroundColor: '#1F3326' }} />
           <Link
             href="/admin/flags"
             onClick={() => setSidebarOpen(false)}
-            className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150 ${
-              pathname === "/admin/flags"
-                ? "text-red-300 bg-red-400/10"
-                : "text-red-400 hover:bg-red-400/10"
-            }`}
+            className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150"
+            style={{
+              color: pathname === "/admin/flags" ? '#F87171' : '#F87171',
+              backgroundColor: pathname === "/admin/flags" ? 'rgba(248,113,113,0.10)' : 'transparent',
+            }}
           >
             <AlertTriangle className="size-4 shrink-0" />
             Alert Flags
           </Link>
-          <div className="my-2 mx-4 h-px" style={{ background: 'hsl(var(--sidebar-border))' }} />
+          <div className="my-2 mx-4 h-px" style={{ backgroundColor: '#1F3326' }} />
           <Link
             href="/"
             onClick={() => setSidebarOpen(false)}
-            className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150 text-sidebar-foreground hover:text-white hover:bg-sidebar-accent/50"
+            className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150"
+            style={{ color: '#B9D0BE' }}
           >
             <LogOut className="size-4 shrink-0" />
             Sign Out
           </Link>
         </nav>
 
-        <div className="mx-2 mb-3 p-3 rounded-xl" style={{ background: 'hsl(var(--sidebar-accent))', boxShadow: '0 0 0 1px hsl(var(--sidebar-border))' }}>
+        <div className="mx-2 mb-3 p-3 rounded-xl" style={{ backgroundColor: '#0E1A12', border: '1px solid #1F3326' }}>
           <div className="flex items-center gap-3">
-            <div className="size-9 rounded-full flex items-center justify-center text-sm font-bold" style={{ background: 'linear-gradient(135deg, hsl(155,50%,20%), hsl(155,45%,28%))', color: 'white' }}>
+            <div className="size-9 rounded-full flex items-center justify-center text-sm font-bold" style={{ background: 'linear-gradient(135deg, #103D24, #1A5C38)', color: '#F2F7F1' }}>
               {adminInitials}
             </div>
             <div>
-              <p className="text-sm font-medium text-white">{adminName}</p>
-              <p className="text-xs text-sidebar-foreground">{adminRole}</p>
+              <p className="text-sm font-medium" style={{ color: '#F2F7F1' }}>{adminName}</p>
+              <p className="text-xs" style={{ color: '#74917B' }}>{adminRole}</p>
             </div>
           </div>
         </div>
@@ -117,28 +123,28 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <div className="flex flex-1 flex-col min-w-0">
         <header
           className="sticky top-0 z-30 flex items-center justify-between px-4 lg:px-6 py-3"
-          style={{ background: 'hsl(160 25% 9%)', boxShadow: '0 1px 0 0 hsl(var(--sidebar-border))' }}
+          style={{ backgroundColor: '#0A1610', boxShadow: '0 1px 0 0 #1F3326' }}
         >
           <div className="flex items-center gap-3">
             <button onClick={() => setSidebarOpen(true)} className="lg:hidden" aria-label="Open sidebar">
-              <Menu className="size-5" style={{ color: 'hsl(var(--sidebar-foreground))' }} />
+              <Menu className="size-5" style={{ color: '#B9D0BE' }} />
             </button>
-            <div className="text-sm" style={{ color: 'hsl(var(--sidebar-foreground))' }}>
-              <span className="font-medium text-white">CannaClear Admin</span>
-              <span className="mx-1.5" style={{ color: 'hsl(var(--sidebar-foreground) / 0.4)' }}>/</span>
-              <span>Facility Overview</span>
+            <div className="text-sm" style={{ color: '#74917B' }}>
+              <span className="font-medium" style={{ color: '#F2F7F1' }}>CannaClear Admin</span>
+              <span className="mx-1.5" style={{ color: '#445347' }}>/</span>
+              <span style={{ color: '#F2F7F1' }}>Facility Overview</span>
             </div>
           </div>
           <div className="flex items-center gap-3">
             <div
               className="w-28 rounded-lg px-2.5 py-1.5 text-xs text-center font-medium"
-              style={{ background: 'hsl(var(--sidebar-accent))', color: 'hsl(var(--sidebar-foreground))' }}
+              style={{ backgroundColor: '#142219', color: '#B9D0BE' }}
             >
               Jun 2026
             </div>
             <button
               className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors"
-              style={{ background: 'hsl(var(--primary) / 0.2)', color: 'hsl(var(--primary))' }}
+              style={{ backgroundColor: 'rgba(74,222,128,0.12)', color: '#4ADE80', border: '1px solid rgba(74,222,128,0.25)' }}
             >
               <Download className="size-3.5" />
               Export CSV
@@ -146,16 +152,16 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <div className="flex items-center gap-2">
               <div
                 className="size-7 rounded-full flex items-center justify-center text-[10px] font-bold"
-                style={{ background: 'linear-gradient(135deg, hsl(155,50%,20%), hsl(155,45%,28%))', color: 'white' }}
+                style={{ background: 'linear-gradient(135deg, #103D24, #1A5C38)', color: '#F2F7F1' }}
               >
                 {adminInitials}
               </div>
-              <ChevronDown className="size-3" style={{ color: 'hsl(var(--sidebar-foreground))' }} />
+              <ChevronDown className="size-3" style={{ color: '#74917B' }} />
             </div>
           </div>
         </header>
 
-        <main className="flex-1 overflow-y-auto p-4 lg:p-6 bg-background text-foreground">
+        <main className="flex-1 overflow-y-auto p-4 lg:p-6" style={{ backgroundColor: '#07100B', color: '#B9D0BE' }}>
           {children}
         </main>
       </div>

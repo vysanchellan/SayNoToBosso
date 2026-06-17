@@ -14,8 +14,8 @@ const badges = [
 
 export default function MilestonesPreview() {
   return (
-    <div className="rounded-2xl bg-card p-5" style={{ boxShadow: '0 0 0 1px hsl(var(--border)/0.4)' }}>
-      <h3 className="text-base font-bold text-foreground mb-4">Your Achievements</h3>
+    <div className="rounded-2xl p-6" style={{ backgroundColor: '#0E1A12', border: '1px solid #1F3326' }}>
+      <h3 className="text-base font-bold mb-4" style={{ color: '#F2F7F1' }}>Your Achievements</h3>
 
       <div className="flex gap-4 overflow-x-auto pb-2" style={{ scrollbarWidth: "none" }}>
         {badges.map((badge, i) => (
@@ -27,24 +27,24 @@ export default function MilestonesPreview() {
             className="flex flex-col items-center gap-1.5 min-w-[72px]"
           >
             <div
-              className="flex size-14 items-center justify-center rounded-full"
+              className="flex size-16 items-center justify-center rounded-full"
               style={
                 badge.unlocked
-                  ? { background: 'hsl(38 75% 48%/0.15)', boxShadow: '0 0 0 2px hsl(38 75% 48%/0.4)' }
-                  : { background: 'hsl(var(--muted))' }
+                  ? { background: 'linear-gradient(135deg, #92660A 0%, #F0B429 100%)', boxShadow: '0 0 20px rgba(240,180,41,0.35)' }
+                  : { backgroundColor: '#142219', border: '1px dashed #2A4534' }
               }
             >
               {badge.unlocked ? (
-                <Flame className="size-6" style={{ color: 'hsl(var(--accent))' }} />
+                <Flame className="size-6 text-white" />
               ) : badge.icon ? (
-                <Lock className="size-5 text-muted-foreground opacity-40" />
+                <Lock className="size-5" style={{ color: '#445347' }} />
               ) : (
-                <Lock className="size-5 text-muted-foreground opacity-40" />
+                <Lock className="size-5" style={{ color: '#445347' }} />
               )}
             </div>
             <span
               className="text-[10px] font-semibold"
-              style={{ color: badge.unlocked ? 'hsl(var(--accent))' : 'hsl(var(--muted-foreground))' }}
+              style={{ color: badge.unlocked ? '#F0B429' : '#74917B' }}
             >
               {badge.label}
             </span>
@@ -54,7 +54,7 @@ export default function MilestonesPreview() {
 
       {badges[0].current && (
         <div className="mt-3 text-center">
-          <span className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold" style={{ color: 'hsl(38 75% 65%)' }}>
+          <span className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold" style={{ color: '#F0B429' }}>
             New: 24 Hours badge earned!
           </span>
         </div>
@@ -63,7 +63,7 @@ export default function MilestonesPreview() {
       <Link
         href="/profile"
         className="mt-4 flex items-center justify-center gap-1 text-xs font-medium transition-colors"
-        style={{ color: 'hsl(152 55% 65%)' }}
+        style={{ color: '#4ADE80' }}
       >
         View All Achievements <ArrowRight className="size-3.5" />
       </Link>

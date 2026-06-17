@@ -14,9 +14,9 @@ export default function PostComposer() {
 
   if (posted) {
     return (
-      <div className="rounded-2xl p-4 text-center" style={{ background: 'hsl(var(--primary)/0.1)', boxShadow: '0 0 0 1px hsl(var(--primary)/0.2)' }}>
-        <p className="text-sm font-medium" style={{ color: 'hsl(152 55% 65%)' }}>Your post has been submitted for review.</p>
-        <p className="text-xs mt-1" style={{ color: 'hsl(152 55% 55%)' }}>It will appear in the feed within 24 hours.</p>
+      <div className="rounded-2xl p-4 text-center" style={{ background: 'rgba(74,222,128,0.1)', boxShadow: '0 0 0 1px rgba(74,222,128,0.2)' }}>
+        <p className="text-sm font-medium" style={{ color: '#4ADE80' }}>Your post has been submitted for review.</p>
+        <p className="text-xs mt-1" style={{ color: '#2FA85C' }}>It will appear in the feed within 24 hours.</p>
       </div>
     )
   }
@@ -26,7 +26,7 @@ export default function PostComposer() {
       <button
         onClick={() => setOpen(true)}
         className="w-full rounded-2xl border-2 border-dashed p-4 text-center text-sm transition-colors hover:border-primary/50 hover:text-primary"
-        style={{ borderColor: 'hsl(var(--muted-foreground) / 0.2)', color: 'hsl(var(--muted-foreground))', background: 'hsl(var(--card))' }}
+        style={{ borderColor: 'rgba(116,145,123,0.2)', color: '#74917B', background: '#0E1A12' }}
       >
         Share with the community...
       </button>
@@ -34,7 +34,7 @@ export default function PostComposer() {
   }
 
   return (
-    <div className="rounded-2xl border p-4 shadow-sm" style={{ borderColor: 'hsl(var(--border))', background: 'hsl(var(--card))' }}>
+    <div className="rounded-2xl border p-4 shadow-sm" style={{ borderColor: '#1F3326', background: '#0E1A12' }}>
       <textarea
         value={text}
         onChange={(e) => setText(e.target.value)}
@@ -44,7 +44,7 @@ export default function PostComposer() {
       />
       <div className="flex items-center justify-between text-xs text-muted-foreground mt-1 mb-3">
         <span>{text.length}/500</span>
-        {text.length < 20 && <span style={{ color: 'hsl(38 75% 65%)' }}>Minimum 20 characters</span>}
+        {text.length < 20 && <span style={{ color: '#F0B429' }}>Minimum 20 characters</span>}
       </div>
 
       <div className="flex flex-wrap gap-1.5 mb-3">

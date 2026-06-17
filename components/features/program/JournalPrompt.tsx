@@ -27,8 +27,8 @@ export default function JournalPrompt({
         className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm"
       >
         <div className="rounded-2xl border bg-card p-8 text-center max-w-sm mx-4">
-          <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-full" style={{ background: 'hsl(var(--primary)/0.15)' }}>
-            <PenLine className="size-6" style={{ color: 'hsl(152 55% 60%)' }} />
+          <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-full" style={{ background: 'rgba(74,222,128,0.15)' }}>
+            <PenLine className="size-6" style={{ color: '#4ADE80' }} />
           </div>
           <h3 className="text-lg font-semibold text-foreground mb-2">Entry Saved</h3>
           <p className="text-sm text-muted-foreground mb-4">Your reflection has been saved to your journal.</p>

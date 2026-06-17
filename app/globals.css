@@ -153,6 +153,31 @@ html {
   --chart-5: 280 40% 55%;
 }
 
+/* APP DARK MODE — LOCKED PALETTE, DO NOT USE FOR MARKETING PAGES */
+:root {
+  --app-bg: #07100B;
+  --app-surface: #0E1A12;
+  --app-surface-2: #142219;
+  --app-border: #1F3326;
+  --app-border-strong: #2A4534;
+  --text-high: #F2F7F1;
+  --text-mid: #B9D0BE;
+  --text-low: #74917B;
+  --text-disabled: #445347;
+  --accent-green-bright: #4ADE80;
+  --accent-green-deep: #1A5C38;
+  --accent-amber: #F0B429;
+  --accent-amber-deep: #92660A;
+  --accent-coral: #F87171;
+  --accent-coral-deep: #7A2015;
+  --accent-blue: #5EAEEA;
+  --grad-green: linear-gradient(135deg, #103D24 0%, #1E6B3F 100%);
+  --grad-amber: linear-gradient(135deg, #5C3A00 0%, #C98A0A 100%);
+  --grad-coral: linear-gradient(135deg, #5C1810 0%, #C9402A 100%);
+  --grad-blue: linear-gradient(135deg, #0F2E4A 0%, #1F5C8C 100%);
+  --grad-card: linear-gradient(160deg, #142219 0%, #0E1A12 100%);
+}
+
 @layer base {
   * { @apply border-border; }
 

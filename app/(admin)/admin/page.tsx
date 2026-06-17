@@ -11,8 +11,8 @@ export default function AdminDashboard() {
   return (
     <div id="main-content" className="space-y-6">
       <div>
-        <h1 className="text-xl font-bold">Facility Overview</h1>
-        <p className="text-sm text-muted-foreground">June 2026 · White River Manor Recovery Centre</p>
+        <h1 className="text-3xl font-bold" style={{ color: '#F2F7F1' }}>Facility Overview</h1>
+        <p className="text-sm" style={{ color: '#74917B' }}>June 2026 &middot; White River Manor Recovery Centre</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

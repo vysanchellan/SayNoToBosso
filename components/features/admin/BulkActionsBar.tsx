@@ -17,14 +17,15 @@ export default function BulkActionsBar({ count, onClear }: BulkActionsBarProps) 
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       exit={{ y: -20, opacity: 0 }}
-      className="flex items-center justify-between rounded-2xl border border-primary/20 bg-primary/5 px-4 py-3"
+      className="flex items-center justify-between rounded-2xl px-4 py-3"
+      style={{ backgroundColor: 'rgba(74,222,128,0.05)', border: '1px solid rgba(74,222,128,0.2)' }}
     >
-      <span className="text-sm font-medium text-primary">{count} user{count > 1 ? "s" : ""} selected</span>
+      <span className="text-sm font-medium" style={{ color: '#4ADE80' }}>{count} user{count > 1 ? "s" : ""} selected</span>
       <div className="flex gap-2">
-        <Button className="rounded-full h-8 text-xs bg-card border border-muted-foreground/20 text-muted-foreground hover:bg-muted">Send Group Message</Button>
-        <Button className="rounded-full h-8 text-xs bg-card border border-muted-foreground/20 text-muted-foreground hover:bg-muted">Export Selected</Button>
-        <Button onClick={() => toast.warning(`Flagged ${count} user${count > 1 ? "s" : ""} for clinical review`)} className="rounded-full h-8 text-xs bg-destructive text-destructive-foreground hover:bg-destructive/90">Flag All</Button>
-        <Button onClick={onClear} className="rounded-full h-8 text-xs bg-card border border-muted-foreground/20 text-muted-foreground hover:bg-muted">Clear</Button>
+        <Button className="rounded-full h-8 text-xs" style={{ backgroundColor: '#0E1A12', border: '1px solid rgba(116,145,123,0.2)', color: '#74917B' }}>Send Group Message</Button>
+        <Button className="rounded-full h-8 text-xs" style={{ backgroundColor: '#0E1A12', border: '1px solid rgba(116,145,123,0.2)', color: '#74917B' }}>Export Selected</Button>
+        <Button onClick={() => toast.warning(`Flagged ${count} user${count > 1 ? "s" : ""} for clinical review`)} className="rounded-full h-8 text-xs" style={{ backgroundColor: '#F87171', color: '#F2F7F1' }}>Flag All</Button>
+        <Button onClick={onClear} className="rounded-full h-8 text-xs" style={{ backgroundColor: '#0E1A12', border: '1px solid rgba(116,145,123,0.2)', color: '#74917B' }}>Clear</Button>
       </div>
     </motion.div>
   )

@@ -31,7 +31,7 @@ export default function ProfileOverview() {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl bg-card p-5 border-l-4 border-l-primary" style={{ boxShadow: '0 0 0 1px hsl(var(--border) / 0.4)' }}>
+      <div className="rounded-2xl bg-card p-5 border-l-4 border-l-primary" style={{ boxShadow: '0 0 0 1px rgba(31,51,38,0.4)' }}>
         <div className="flex flex-col sm:flex-row items-center gap-5">
           <div className="relative">
             <div className="size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-2xl font-bold text-primary">
@@ -66,7 +66,7 @@ export default function ProfileOverview() {
         ].map((stat, i) => {
           const Icon = statIcons[i]
           return (
-            <div key={stat.label} className="rounded-2xl bg-muted/50 p-4 flex flex-col items-center gap-1" style={{ boxShadow: '0 0 0 1px hsl(var(--border) / 0.4)' }}>
+            <div key={stat.label} className="rounded-2xl bg-muted/50 p-4 flex flex-col items-center gap-1" style={{ boxShadow: '0 0 0 1px rgba(31,51,38,0.4)' }}>
               <Icon className="size-5 text-primary" />
               <p className="text-3xl font-bold text-foreground">{stat.value}</p>
               <p className="text-xs text-muted-foreground uppercase tracking-wide">{stat.label}</p>
@@ -75,21 +75,21 @@ export default function ProfileOverview() {
         })}
       </div>
 
-      <div className="rounded-2xl bg-card p-4" style={{ boxShadow: '0 0 0 1px hsl(var(--border) / 0.4)' }}>
+      <div className="rounded-2xl bg-card p-4" style={{ boxShadow: '0 0 0 1px rgba(31,51,38,0.4)' }}>
         <h3 className="text-sm font-semibold text-foreground mb-3">Mood Trend (Last 14 Days)</h3>
         <div className="h-48">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={moods}>
               <defs>
                 <linearGradient id="moodGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="hsl(142, 30%, 36%)" stopOpacity={0.3} />
-                  <stop offset="100%" stopColor="hsl(142, 30%, 36%)" stopOpacity={0} />
+                  <stop offset="0%" stopColor="#1A5C38" stopOpacity={0.3} />
+                  <stop offset="100%" stopColor="#1A5C38" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <XAxis dataKey="day" tick={{ fontSize: 10, fill: "hsl(40, 20%, 50%)" }} axisLine={false} tickLine={false} />
-              <YAxis domain={[1, 10]} ticks={[1, 3, 5, 7, 10]} tick={{ fontSize: 10, fill: "hsl(40, 20%, 50%)" }} axisLine={false} tickLine={false} />
+              <XAxis dataKey="day" tick={{ fontSize: 10, fill: "#74917B" }} axisLine={false} tickLine={false} />
+              <YAxis domain={[1, 10]} ticks={[1, 3, 5, 7, 10]} tick={{ fontSize: 10, fill: "#74917B" }} axisLine={false} tickLine={false} />
               <Tooltip />
-              <Area type="monotone" dataKey="mood" stroke="hsl(142, 30%, 36%)" fill="url(#moodGrad)" strokeWidth={2} />
+              <Area type="monotone" dataKey="mood" stroke="#4ADE80" fill="url(#moodGrad)" strokeWidth={2} />
             </AreaChart>
           </ResponsiveContainer>
         </div>

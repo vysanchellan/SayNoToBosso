@@ -30,7 +30,7 @@ export default function ArticleCard({
   return (
     <button
       onClick={onClick}
-      className="group flex flex-col rounded-2xl bg-card p-4 text-left transition-all duration-200 hover:shadow-md" style={{ boxShadow: '0 0 0 1px hsl(var(--border) / 0.4)' }}
+      className="group flex flex-col rounded-2xl bg-card p-4 text-left transition-all duration-200 hover:shadow-md" style={{ boxShadow: '0 0 0 1px rgba(31,51,38,0.4)' }}
     >
       <div className="flex items-center gap-2 mb-2">
         <span className={`rounded-full px-2.5 py-0.5 text-[10px] font-semibold border ${cs.bg} ${cs.text} ${cs.border}`}>
