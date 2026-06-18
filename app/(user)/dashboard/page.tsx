@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from "react"
 import { useDemo } from "@/lib/demo-context"
 import StreakCounter from "@/components/features/dashboard/StreakCounter"
 import DailyCheckin from "@/components/features/dashboard/DailyCheckin"
@@ -9,13 +8,11 @@ import ProgressRings from "@/components/features/dashboard/ProgressRings"
 import WeeklyProgramCard from "@/components/features/dashboard/WeeklyProgramCard"
 import MilestonesPreview from "@/components/features/dashboard/MilestonesPreview"
 import NotificationBanner from "@/components/features/dashboard/NotificationBanner"
-import TabBar from "@/components/features/dashboard/TabBar"
 import QuickTools from "@/components/features/dashboard/QuickTools"
 
 export default function UserDashboard() {
   const { user } = useDemo()
   const firstName = user?.firstName || "there"
-  const [activeTab, setActiveTab] = useState("Today")
 
   return (
     <div id="main-content" className="space-y-6 max-w-6xl mx-auto">
@@ -59,10 +56,7 @@ export default function UserDashboard() {
         <MilestonesPreview />
       </div>
 
-      <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold" style={{ color: '#F2F7F1' }}>Quick Tools</h3>
-        <TabBar active={activeTab} onChange={setActiveTab} />
-      </div>
+      <h3 className="text-lg font-semibold" style={{ color: '#F2F7F1' }}>Quick Tools</h3>
 
       <QuickTools />
     </div>

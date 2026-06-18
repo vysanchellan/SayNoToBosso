@@ -2,8 +2,6 @@
 
 import { motion } from "framer-motion"
 import { Quote } from "lucide-react"
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
-import { Card, CardContent } from "@/components/ui/card"
 
 const testimonials = [
   {
@@ -37,10 +35,10 @@ const testimonials = [
 
 export default function Testimonial() {
   return (
-    <section className="py-20 sm:py-28 bg-muted/40" aria-label="Testimonials">
+    <section className="py-20 sm:py-28" style={{ backgroundColor: '#0A1A0E' }} aria-label="Testimonials">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
+          <h2 className="text-4xl font-bold font-display" style={{ color: '#F2F7F1' }}>
             Real Stories from Real People
           </h2>
         </div>
@@ -54,26 +52,23 @@ export default function Testimonial() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.15, duration: 0.5 }}
             >
-              <Card className="h-full border border-secondary/20 bg-card">
-                <CardContent className="p-6 sm:p-8 space-y-5">
-                  <Quote className="size-8 text-primary/20" />
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    &ldquo;{t.quote}&rdquo;
-                  </p>
-                  <div className="flex items-center gap-3 pt-2">
-                    <Avatar className="size-10">
-                      <AvatarImage src={t.avatar} alt={t.name} />
-                      <AvatarFallback>{t.initials}</AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <div className="text-sm font-semibold text-foreground">{t.name}</div>
-                      <div className="text-xs text-muted-foreground">
-                        {t.location ? `${t.location} — ` : ""}{t.role}
-                      </div>
+              <div className="h-full rounded-2xl p-8" style={{ backgroundColor: '#0E1A12', border: '1px solid #1F3326' }}>
+                <Quote className="size-8 mb-4" style={{ color: 'rgba(74,222,128,0.35)' }} />
+                <p className="text-base leading-relaxed mb-6" style={{ color: '#D7E6DA' }}>
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+                <div className="flex items-center gap-3 pt-2">
+                  <div className="size-10 rounded-full overflow-hidden shrink-0" style={{ border: '2px solid #1F3326' }}>
+                    <img src={t.avatar} alt={t.name} className="size-full object-cover" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold" style={{ color: '#F2F7F1' }}>{t.name}</div>
+                    <div className="text-sm" style={{ color: '#74917B' }}>
+                      {t.location ? `${t.location} — ` : ""}{t.role}
                     </div>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>

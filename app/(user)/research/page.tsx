@@ -40,20 +40,20 @@ export default function ResearchPage() {
   return (
     <div id="main-content" className="space-y-8 max-w-6xl mx-auto">
       <div>
-        <h1 className="text-2xl font-bold text-foreground sm:text-3xl">Research &amp; Recovery Library</h1>
-        <p className="mt-1 text-muted-foreground text-sm">
+        <h1 className="text-2xl font-bold sm:text-3xl" style={{ color: '#F2F7F1' }}>Research &amp; Recovery Library</h1>
+        <p className="mt-1 text-sm" style={{ color: '#74917B' }}>
           Evidence-based information to support your recovery — written for real people, not researchers.
         </p>
       </div>
 
       <div className="relative">
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
+        <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4" style={{ color: '#74917B' }} />
         <input
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search articles..."
-          className="w-full rounded-xl border border-border bg-card py-3 pl-11 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+          className="w-full rounded-xl py-3 pl-11 pr-4 text-sm focus:outline-none focus:ring-2" style={{ border: '1px solid #1F3326', backgroundColor: '#0E1A12', color: '#F2F7F1' }}
         />
       </div>
 
@@ -62,9 +62,8 @@ export default function ResearchPage() {
           <button
             key={f}
             onClick={() => setFilter(f)}
-            className={`shrink-0 rounded-xl px-4 py-1.5 text-sm font-medium transition-colors ${
-              filter === f ? "bg-primary text-primary-foreground shadow-sm" : "bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
-            }`}
+            className="shrink-0 rounded-xl px-4 py-1.5 text-sm font-medium transition-colors"
+            style={filter === f ? { backgroundColor: '#4ADE80', color: '#07100B' } : { backgroundColor: '#142219', color: '#74917B' }}
           >
             {f}
           </button>
@@ -73,7 +72,7 @@ export default function ResearchPage() {
 
       <button
         onClick={() => setActiveArticle(featured.id)}
-        className="relative w-full overflow-hidden rounded-xl bg-gradient-to-br from-primary to-primary/80 p-6 sm:p-8 text-left shadow-md"
+        className="relative w-full overflow-hidden rounded-xl p-6 sm:p-8 text-left shadow-md" style={{ background: 'linear-gradient(135deg, #1A5C38 0%, #0C2D1A 100%)' }}
       >
         <span className="inline-block text-xs font-semibold uppercase tracking-widest text-green-100 opacity-80 mb-3">
           This Week&apos;s Focus

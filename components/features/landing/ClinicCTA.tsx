@@ -6,7 +6,7 @@ export default function ClinicCTA() {
     <section
       id="for-clinics"
       className="relative overflow-hidden py-20 sm:py-28"
-      style={{ background: "hsl(var(--primary))" }}
+      style={{ background: "#1A5C38" }}
       aria-label="For clinics"
     >
       <div
@@ -19,10 +19,10 @@ export default function ClinicCTA() {
       />
 
       <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-3xl font-bold text-primary-foreground sm:text-4xl mb-4">
+        <h2 className="text-3xl font-bold sm:text-4xl mb-4" style={{ color: '#F2F7F1' }}>
           Are You a Treatment Facility?
         </h2>
-        <p className="mx-auto max-w-2xl text-lg text-primary-foreground/80 mb-8">
+        <p className="mx-auto max-w-2xl text-lg mb-8" style={{ color: 'rgba(242,247,241,0.8)' }}>
           White-label CannaClear for your patients. Comprehensive admin dashboard, progress tracking,
           and clinical reporting — all POPIA compliant.
         </p>
@@ -30,7 +30,7 @@ export default function ClinicCTA() {
           <Link href="/register">
             <Button
               size="lg"
-              className="rounded-full bg-accent text-accent-foreground hover:bg-accent/90 px-8 py-3 text-base font-semibold"
+              className="rounded-full px-8 py-3 text-base font-semibold" style={{ backgroundColor: '#F0B429', color: '#07100B' }}
             >
               Request a Demo
             </Button>
@@ -39,7 +39,7 @@ export default function ClinicCTA() {
             <Button
               size="lg"
               variant="ghost"
-              className="rounded-full border border-white/30 text-primary-foreground hover:bg-white/10 px-8 py-3 text-base"
+              className="rounded-full border border-white/30 px-8 py-3 text-base" style={{ color: '#F2F7F1' }}
             >
               Learn More
             </Button>

@@ -27,22 +27,23 @@ export default function POPIABanner() {
       initial={{ y: 100, opacity: 0 }}
       animate={dismissed ? { y: 100, opacity: 0 } : { y: 0, opacity: 1 }}
       transition={{ duration: 0.4 }}
-      className="fixed bottom-0 left-0 right-0 z-50 border-t border-border bg-card/95 backdrop-blur-md"
+      className="fixed bottom-0 left-0 right-0 z-50"
+      style={{ backgroundColor: '#0E1A12', borderTop: '1px solid #1F3326' }}
       role="alert"
       aria-label="Privacy consent"
     >
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-4 sm:flex-row sm:px-6 lg:px-8">
-        <p className="text-sm text-muted-foreground text-center sm:text-left">
+        <p className="text-sm text-center sm:text-left" style={{ color: '#B9D0BE' }}>
           CannaClear uses cookies and stores anonymised usage data in compliance with POPIA.
           Your health data is never sold or shared.
         </p>
         <div className="flex shrink-0 items-center gap-3">
-          <Button variant="link" className="text-xs text-muted-foreground hover:text-foreground">
+          <Button variant="link" className="text-xs" style={{ color: '#74917B' }}>
             Learn More
           </Button>
           <Button
             onClick={accept}
-            className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 text-sm"
+            className="rounded-full text-sm" style={{ backgroundColor: '#4ADE80', color: '#07100B' }}
           >
             Accept &amp; Continue
           </Button>

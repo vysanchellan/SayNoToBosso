@@ -26,11 +26,14 @@ export default function DemoShortcuts() {
       </button>
 
       {open && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4" onClick={() => setOpen(false)}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={() => setOpen(false)}
+          style={{ backgroundColor: 'rgba(0,0,0,0.70)' }}>
           <div
-            className="relative w-full max-w-sm rounded-2xl p-6 shadow-2xl bg-card border-border"
+            className="relative w-full max-w-md rounded-2xl p-6"
             style={{
-              boxShadow: '0 24px 80px rgba(13,61,36,0.18)',
+              backgroundColor: '#0E1A12',
+              border: '1px solid #2A4534',
+              boxShadow: '0 24px 64px rgba(0,0,0,0.65)',
             }}
             onClick={(e) => e.stopPropagation()}
             role="dialog"
@@ -39,19 +42,20 @@ export default function DemoShortcuts() {
           >
             <button
               onClick={() => setOpen(false)}
-              className="absolute top-4 right-4 text-muted-foreground hover:text-foreground min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className="absolute top-4 right-4 min-h-[44px] min-w-[44px] flex items-center justify-center"
+              style={{ color: '#74917B' }}
               aria-label="Close demo preview"
             >
               <X className="size-5" />
             </button>
 
             <div className="mb-1 flex items-center gap-2">
-              <div className="flex size-10 items-center justify-center rounded-full" style={{ background: 'hsl(var(--accent) / 0.15)' }}>
-                <Play className="size-5" style={{ color: 'hsl(var(--accent))' }} />
+              <div className="flex size-10 items-center justify-center rounded-full" style={{ backgroundColor: 'rgba(74,222,128,0.15)' }}>
+                <Play className="size-5" style={{ color: '#4ADE80' }} />
               </div>
-              <h2 className="text-lg font-display font-bold text-foreground">Preview Demo</h2>
+              <h2 className="text-lg font-semibold" style={{ color: '#F2F7F1' }}>Preview Demo</h2>
             </div>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-sm" style={{ color: '#B9D0BE' }}>
               Explore CannaClear without creating an account. All data is simulated.
             </p>
 
@@ -60,14 +64,15 @@ export default function DemoShortcuts() {
                 onClick={() => router.push("/dashboard")}
                 className="w-full rounded-full justify-start gap-3 h-auto py-3 px-4"
                 style={{
-                  background: 'linear-gradient(135deg, hsl(155,55%,16%) 0%, hsl(155,48%,22%) 100%)',
-                  color: 'hsl(0,0%,98%)',
+                  backgroundColor: '#142219',
+                  border: '1px solid #2A4534',
+                  color: '#F2F7F1',
                 }}
               >
-                <span className="flex size-8 items-center justify-center rounded-full text-xs font-bold" style={{ background: 'rgba(255,255,255,0.15)' }}>U</span>
+                <span className="flex size-8 items-center justify-center rounded-full text-xs font-bold" style={{ backgroundColor: '#1A5C38', color: '#F2F7F1' }}>U</span>
                 <div className="text-left">
                   <p className="text-sm font-semibold">Preview as User</p>
-                  <p className="text-xs opacity-80">{DEMO_USER.firstName} &middot; Week {DEMO_USER.currentWeek}</p>
+                  <p className="text-xs" style={{ color: '#74917B' }}>{DEMO_USER.firstName} &middot; Week {DEMO_USER.currentWeek}</p>
                 </div>
               </Button>
 
@@ -75,14 +80,15 @@ export default function DemoShortcuts() {
                 onClick={() => router.push("/admin")}
                 className="w-full rounded-full justify-start gap-3 h-auto py-3 px-4"
                 style={{
-                  background: 'linear-gradient(135deg, hsl(160,45%,8%) 0%, hsl(160,38%,13%) 100%)',
-                  color: 'hsl(0,0%,98%)',
+                  backgroundColor: '#142219',
+                  border: '1px solid #2A4534',
+                  color: '#F2F7F1',
                 }}
               >
-                <span className="flex size-8 items-center justify-center rounded-full text-xs font-bold" style={{ background: 'rgba(255,255,255,0.15)' }}>A</span>
+                <span className="flex size-8 items-center justify-center rounded-full text-xs font-bold" style={{ backgroundColor: '#1A5C38', color: '#F2F7F1' }}>A</span>
                 <div className="text-left">
                   <p className="text-sm font-semibold">Preview as Admin</p>
-                  <p className="text-xs opacity-80">{DEMO_ADMIN.name} &middot; {DEMO_ADMIN.role}</p>
+                  <p className="text-xs" style={{ color: '#74917B' }}>{DEMO_ADMIN.name} &middot; {DEMO_ADMIN.role}</p>
                 </div>
               </Button>
             </div>
